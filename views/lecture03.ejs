@@ -126,44 +126,57 @@
 
         <div class="mb-5">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table">
                 <thead class="thead-light">
-                    <tr class="bg-secondary text-white">
-                        <th>요소</th>
-                        <th>설명</th>
-                        <th>예시</th>
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="width: 110px; background-color: #f8f9fa; color: #333; padding: 0.5rem;">요소</th>
+                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">설명</th>
+                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">예시</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <style>
+                        .table tbody tr td {
+                            padding: 0.5rem;
+                            vertical-align: middle;
+                            border-bottom: 1px solid #e9ecef;
+                        }
+                        .example-text {
+                            color: #666;
+                            padding: 0.3rem;
+                            background-color: #f8f9fa;
+                            border-left: 3px solid #764ba2;
+                        }
+                    </style>
                     <tr>
-                        <td><strong>Context (맥락)</strong></td>
+                        <td style="width: 110px;"><strong>Context<br>(맥락)</strong></td>
                         <td>AI가 응답을 생성하는 데 필요한 배경 정보를 제공합니다.</td>
-                        <td>설명: "You are an AI assistant helping a user write a thank you note for a colleague's help on a project."</td>
+                        <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트입니다."</td>
                     </tr>
                     <tr>
-                        <td><strong>Objective (목표)</strong></td>
+                        <td><strong>Objective<br>(목표)</strong></td>
                         <td>AI가 수행해야 할 구체적인 작업이나 목표를 명확하게 정의합니다.</td>
-                        <td>설명: "Write a thank you note expressing gratitude for their support and teamwork on the recent project."</td>
+                        <td>"최근 프로젝트에서의 지원과 팀워크에 대한 감사를 표현하는 감사 편지를 작성해주세요."</td>
                     </tr>
                     <tr>
-                        <td><strong>Style (스타일)</strong></td>
+                        <td><strong>Style<br>(스타일)</strong></td>
                         <td>응답의 스타일을 지정합니다. 특정 인물이나 전문가의 스타일을 모방할 수 있습니다.</td>
-                        <td>설명: "Write in the style of a professional business letter."</td>
+                        <td>"전문적인 업무용 편지 형식으로 작성해주세요."</td>
                     </tr>
                     <tr>
-                        <td><strong>Tone (톤)</strong></td>
+                        <td><strong>Tone<br>(톤)</strong></td>
                         <td>응답의 태도나 분위기를 설정합니다.</td>
-                        <td>설명: "Use a warm and appreciative tone."</td>
+                        <td>"따뜻하고 감사한 톤으로 작성해주세요."</td>
                     </tr>
                     <tr>
-                        <td><strong>Audience (청중)</strong></td>
+                        <td><strong>Audience<br>(청중)</strong></td>
                         <td>응답이 의도된 청중을 명시합니다. AI가 청중에 맞는 언어와 표현을 사용하도록 합니다.</td>
-                        <td>설명: "The note is intended for a colleague in a corporate environment."</td>
+                        <td>"기업 환경에서 일하는 동료를 위한 편지입니다."</td>
                     </tr>
                     <tr>
-                        <td><strong>Response (응답 형식)</strong></td>
+                        <td><strong>Response<br>(응답 형식)</strong></td>
                         <td>응답의 길이와 형식을 지정합니다.</td>
-                        <td>설명: "Provide a brief, three-paragraph thank you note."</td>
+                        <td>"세 단락으로 구성된 간단한 감사 편지를 작성해주세요."</td>
                     </tr>
                 </tbody>
             </table>
@@ -188,7 +201,145 @@
         </div>
         </div>
     </div>
-    <br>
+
+    <div class="mt-5">
+        <h4><i class="fas fa-code me-2"></i>프롬프트 예시</h4>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- 프롬프트 영역 -->
+                <div class="mb-4">
+                    <h5 class="card-subtitle mb-3 text-primary">
+                        <i class="fas fa-keyboard me-2"></i>프롬프트
+                    </h5>
+                    <div class="bg-light p-3 rounded">
+                        <h6 class="mb-3"><strong>👤 역할부여</strong></h6>
+                        <ul class="mb-4">
+                            <li>너는 에너지정책에 관심이 많은 언론인 출신의 대학교수의 역할이야</li>
+                            <li>특별히 너의 관심은 원자력 에너지와 신재생에너지 분야야</li>
+                            <li>20년 이상 원자력 에너지의 안전성 문제와 미래 에너지로서 신재생 에너지의 중요성을 연구하고, 강조했었어</li>
+                            <li>너의 가장 강점은 어려운 에너지 분야를 쉽게 설명하는데 있어</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>🔍 맥락</strong></h6>
+                        <p class="mb-4">한국에너지정보문화재단은 전력사업 및 에너지와 관련된 객관적이고 과학적인 정보의 보급·확산을 통하여 국민의 에너지에 대한 올바른 이해증진을 도모하고, 에너지문화를 진흥시킴으로써 사회의 공익에 이바지하는 것을 목적으로 하는 대한민국의 공공기관이야. 이 재단의 업무 중에는 에너지 관련 콘텐츠를 생산해서 국민들과 소통하는 일이 있어</p>
+
+                        <h6 class="mb-3"><strong>🎯 목표</strong></h6>
+                        <ul class="mb-4">
+                            <li>이번 작업의 목표는 '에너지관련 블로그 콘텐츠'를 만드는 것이야</li>
+                            <li>홈페이지 게시판에 게시할 내용이야</li>
+                            <li>주제는 "지열 방식을 이용해서 에너지 효율을 높였다"는 언론보도로 다음 링크를 참고하면돼</li>
+                            <li>내가 제시한 언론보도 링크는 하나의 예시로 블로그 콘텐츠에 대한 관심도를 높이는데 참고해</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>✍️ 스타일과 톤</strong></h6>
+                        <ul class="mb-4">
+                            <li>친근하게 설명하는 스타일이야</li>
+                            <li>가볍게 접근할 수 있도록, 재미 있는 요소도 일부 포함 되어야 해</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>👥 청중</strong></h6>
+                        <ul class="mb-4">
+                            <li>고등학생, 일반인으로 에너지에 대한 이해가 높지 않은 사람이 대상이야</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>💬 응답</strong></h6>
+                        <ul class="mb-4">
+                            <li>블로그 글이라는 점을 감안해서 5개의 주제로 각 주제별로 한글 단어로 100단어 내외로 작성해줘</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>⚠️ 특별 고려사항</strong></h6>
+                        <ul class="mb-4">
+                            <li>한글 번역에 매우 세심한 고려가 필요해</li>
+                            <li>필요한 검색 결과를 반영해도 좋은데, 반드시 출처를 표기해야 해</li>
+                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도로 모으는 방식이 모두 가능해</li>
+                            <li>출처에 기간을 반영할 때는 년도와 월 정도는 적어줘야 해. '최근', '지난해' 등의 표현은 최대한 사용하지 않아</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>📝 요청사항</strong></h6>
+                        <ul>
+                            <li>지금까지의 가이드를 토대로 블로그 주제 3개를 추천해줘</li>
+                            <li>추천 주제에 대한 이유를 3문장으로 적어줘</li>
+                            <li>가장 먼저, 내가 요청한 것에 대해서 네가 이해한 것을 200단어로 설명해줘</li>
+                        </ul>
+
+                        <h5 class="mt-5 mb-3">🤔 이해도 확인</h5>
+                        <p class="mb-4">가장 먼저, 내가 요청한 것에 대해서 네가 이해한 것을 200단어로 설명해줘</p>
+                    </div>
+                </div>
+
+                <!-- 답변 영역 -->
+                <div>
+                    <h5 class="card-subtitle mb-3 text-success">
+                        <i class="fas fa-robot me-2"></i>답변
+                    </h5>
+                    <div class="bg-light p-3 rounded">
+                        <!-- 이해도 설명 섹션 -->
+                        <div class="mb-5">
+                            <h6 class="mb-3"><strong>📚 요청에 대한 이해</strong></h6>
+                            <p class="mb-4">
+                                귀하께서 요청하신 내용은 <strong>한국에너지정보문화재단</strong>의 블로그 게시판에 올릴 <strong>에너지 관련 콘텐츠</strong>를 작성하는 것입니다. 
+                                대상 독자는 <strong>고등학생과 일반인</strong>으로 에너지에 대한 이해도가 높지 않기에, 내용은 <strong>쉽고 친근하게</strong> 전달되며 재미 요소가 포함되어야 합니다.
+                            </p>
+                            <p class="mb-4">
+                                또한, 작성된 콘텐츠는 <strong>객관적이고 과학적인 정보</strong>를 바탕으로 해야 하며, 이를 통해 대중이 에너지에 대한 올바른 이해를 가질 수 있도록 하는 목적을 갖고 있습니다. 
+                                제시하신 <strong>'지열 에너지를 이용한 에너지 효율 증가'</strong>와 같은 주제는 대중에게 생소하지만 중요한 에너지 기술이므로, 쉬운 설명과 흥미로운 접근이 필요합니다.
+                            </p>
+                            <p>
+                                블로그 게시글은 5가지 세부 토픽으로 구성되며, 각각 <strong>100단어 내외</strong>로 간결하게 작성해야 합니다. 
+                                이에 따라 이해를 돕기 위해 친근하고 과학적이며 실용적인 접근이 중요하며, 출처 표기 역시 명확하게 이루어져야 합니다.
+                            </p>
+                        </div>
+
+                        <!-- 추천 블로그 주제 섹션 -->
+                        <div>
+                            <h6 class="mb-3"><strong>📝 추천 블로그 주제</strong></h6>
+                            
+                            <!-- 주제 1 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>1. 지열 에너지란 무엇일까? 땅 속 열의 마법</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 지열 에너지는 일반인에게 다소 생소한 개념이므로, 기본 개념부터 쉽고 재미있게 설명하면 독자의 관심을 끌 수 있습니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 지열의 원리와 사용 방법을 일상적 비유를 통해 친근하게 전달합니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 주제 2 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>2. 왜 지열 에너지가 주목받을까? 높은 효율과 친환경성</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 지열 에너지가 가진 높은 에너지 효율성과 친환경적 특성을 강조함으로써, 기후변화와 환경 문제에 대한 해결책으로 설명합니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 비교 사례와 통계 자료(예: 탄소 배출 감소)를 활용해 설득력 있게 전달합니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 주제 3 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>3. 집에서도 사용할 수 있다고? 지열 에너지 활용 사례</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 일상에서 활용할 수 있는 사례를 소개하면 독자가 더욱 관심을 가질 수 있습니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 실제 주거지나 학교, 공공기관에서 지열을 이용한 난방 시스템 사례를 소개합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="mt-4 text-center">
         <a href="/lecture02" class="btn btn-primary btn-sm me-2">
             <i class="fas fa-arrow-left me-2"></i>이전 강의
