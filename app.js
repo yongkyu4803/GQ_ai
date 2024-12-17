@@ -10,8 +10,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'base');
 app.use(expressLayouts);
-app.use(express.static('public'));
-app.use('/images', express.static('images'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // lectures 데이터를 전달하는 미들웨어
 app.use((req, res, next) => {
