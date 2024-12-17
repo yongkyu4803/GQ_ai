@@ -1,0 +1,64 @@
+/* public/css/navbar.css */
+:root {
+    --nav-gradient-start: hwb(262 2% 34%);  /* 더 진한 보라색 그라데이션 시작 */
+    --nav-gradient-end: #383085;    /* 더 진한 보라색 그라데이션 끝 */
+    --primary-color: #5B21B6;       /* 더 진한 주요 보라색 */
+    --accent-color: #767eec;        /* 더 진한 강조 보라색 */
+    --background-light: #f5f7fa;
+    --text-dark: #2d3748;
+    --text-light: #6c757d;
+    --border-radius: 10px;
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--nav-gradient-start), var(--nav-gradient-end));
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-family: 'Pretendard', 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    color: white !important;
+}
+
+.nav-link {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9) !important;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    letter-spacing: -0.01em;
+}
+
+.nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.12);
+    border-radius: var(--border-radius);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(118, 75, 162, 0.08);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}

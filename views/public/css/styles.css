@@ -1,0 +1,24 @@
+.landing-section {
+    background-image: url('images/main_ai.jpg');
+    background-size: cover; /* 이미지가 섹션을 가득 채우도록 설정 */
+    background-position: center; /* 이미지의 중심을 섹션의 중심에 맞춤 */
+    height: 100vh; /* 섹션의 높이를 화면 전체로 설정 */
+    position: relative; /* 자식 요소의 위치를 기준으로 설정 */
+    overflow: hidden; /* 자식 요소가 섹션을 넘지 않도록 설정 */
+}
+
+.landing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정색 배경 */
+    z-index: 1; /* 텍스트보다 뒤에 위치 */
+}
+
+.landing-section .container {
+    position: relative; /* 텍스트가 배경 위에 위치하도록 설정 */
+    z-index: 2; /* 텍스트가 배경 위에 위치 */
+} 

@@ -1,0 +1,87 @@
+body {
+    font-family: 'Nanum Gothic', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nanum Gothic', 'Apple SD Gothic Neo', 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.landing-section {
+    background-image: url('images/main_ai.jpg');
+    background-size: cover; /* 이미지가 섹션을 가득 채우도록 설정 */
+    background-position: center; /* 이미지의 중심을 섹션의 중심에 맞춤 */
+    height: 100vh; /* 섹션의 높이를 화면 전체로 설정 */
+    position: relative; /* 자식 요소의 위치를 기준으로 설정 */
+    overflow: hidden; /* 자식 요소가 섹션을 넘지 않도록 설정 */
+}
+
+.landing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정색 배경 */
+    z-index: 1; /* 텍스트보다 뒤에 위치 */
+}
+
+.landing-section .container {
+    position: relative; /* 텍스트가 배경 위에 위치하도록 설정 */
+    z-index: 2; /* 텍스트가 배경 위에 위치 */
+} 
+
+.persona-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.persona-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.persona-img {
+    border: 3px solid #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.persona-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.persona-details p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.persona-details strong {
+    color: #2c3e50;
+}
+
+.settings-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.settings-card .card-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.settings-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+} 

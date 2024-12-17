@@ -1,0 +1,84 @@
+    <!-- 팝업창 템플릿 -->
+
+<div class="container my-5">
+    <h2>팝업 창 예시</h2>
+    <p>아래 버튼을 클릭하여 팝업 창을 확인하세요.</p>
+
+    <!-- Trigger Button for Modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#popupModal">
+        팝업 창 열기
+    </button>
+</div>
+
+<!-- Modal (Pop-up Window) -->
+<div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="popupModalLabel">팝업 창 제목</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                이곳에 팝업 창 내용을 입력하세요. 예를 들어, 새로운 공지사항이나 특별한 이벤트를 알릴 수 있습니다.
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 인용문 -->
+
+<div class="container my-4">
+    <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+        <span style="font-size: 1.5rem;">💡</span> <strong>CO-STAR 프레임워크</strong>는 싱가포르 <strong>GovTech</strong>의 
+        데이터 과학 및 인공지능 팀에 의해 개발되었으며, 
+        효과적이고 관련성 높은 AI 응답을 생성하기 위해 프롬프트를 구조화하는 데 도움이 됩니다.
+        <br><br>
+        <strong>CO-STAR</strong>는 <strong>Context, Objective, Style, Tone, Audience, Response</strong>의 약자로, 
+        각 요소별로 적절한 설명을 입력함으로써 효과적인 프롬프트를 완성할 수 있습니다.
+    </div>
+</div>
+
+
+
+<div class="container my-5">
+    <div class="row">
+        <!-- ChatGPT Custom Settings Card -->
+        <div class="col-md-6">
+            <div class="card settings-card">
+                <img src="images/gptsetting.png" class="card-img-top" alt="ChatGPT Custom Settings">
+                <div class="card-body">
+                    <h2 class="settings-title">ChatGPT Custom Settings</h2>
+                    <p class="card-text">ChatGPT의 맞춤형 설정을 통해 대화의 흐름, 음성, 톤 등을 조정할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MyGPTs Settings Card -->
+        <div class="col-md-6">
+            <div class="card settings-card">
+                <img src="images/mygptsetting.png" class="card-img-top" alt="MyGPTs Settings">
+                <div class="card-body">
+                    <h2 class="settings-title">MyGPTs Settings</h2>
+                    <p class="card-text">MyGPTs는 나만의 GPT를 구성할 수 있는 기능입니다. 나만의 GPT를 생성하고, 고유한 설정을 적용할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+박스 예시
+<div class="container mt-5">
+    <div class="card custom-box">
+        <textarea class="form-control custom-textarea" placeholder="Insert your text here..."></textarea>
+    </div>
+</div>

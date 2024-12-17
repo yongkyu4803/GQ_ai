@@ -1,0 +1,58 @@
+/* public/css/navbar.css */
+:root {
+    --nav-gradient-start: #2c3e50;
+    --nav-gradient-end: #3498db;
+    --primary-color: #2980b9;
+    --accent-color: #3498db;
+    --background-light: #f5f7fa;
+    --text-dark: #1a1a1a;
+    --text-light: #6c757d;
+    --border-radius: 10px;
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--nav-gradient-start), var(--nav-gradient-end));
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    color: white !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9) !important;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.12);
+    border-radius: var(--border-radius);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.dropdown-item {
+    padding: 0.7rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--background-light);
+    transform: translateX(5px);
+}
