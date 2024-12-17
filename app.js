@@ -1,28 +1,30 @@
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
 
 // lectures.json 파일 불러오기
 const lecturesData = require('./lectures.json');
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'base');
 app.use(expressLayouts);
 app.use(express.static('public'));
 app.use('/images', express.static('images'));
 
-// lectures 데이터를 전달하는 미들웨어를 여기에 배치
+// lectures 데이터를 전달하는 미들웨어
 app.use((req, res, next) => {
     res.locals.lectures = lecturesData.lectures;
     next();
 });
 
-// 그 다음에 라우트 정의
+// 라우팅
 app.get('/', (req, res) => {
     res.render('index', { 
-        layout: false,  // index.ejs는 레이아웃 사용하지 않음
+        layout: false,
         lectures: lecturesData.lectures,
-        path: req.path  // path 변수 추가
+        path: req.path
     });
 });
 
@@ -30,7 +32,7 @@ app.get('/lecture01', (req, res) => {
     res.render('lecture01', {
         title: "제1강 : 인공지능이란 무엇인가",
         description: "인공지능의 기초와 발전 과정",
-        path: req.path  // 현재 경로 추가
+        path: req.path
     });
 });
 
@@ -38,7 +40,7 @@ app.get('/lecture02', (req, res) => {
     res.render('lecture02', {
         title: '제2강: 디지털 리터러시와 일 잘하는 조직 만들기',
         description: "조직의 디지털 전환과 리더십",
-        path: req.path  // 현재 경로 추가
+        path: req.path
     });
 });
 
@@ -46,7 +48,7 @@ app.get('/lecture03', (req, res) => {
     res.render('lecture03', {
         title: "제3강 : 프롬프트 엔지니어링",
         description: "프롬프트에 대한 이해와 CO-STAR 기법",
-        path: req.path  // 현재 경로 추가
+        path: req.path
     });
 });
 
@@ -90,7 +92,11 @@ app.get('/mygpts', (req, res) => {
     });
 });
 
-const port = 3000;
+// 포트 설정
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-}); 
+    console.log(`Server is running on port ${port}`);
+});
+
+// Vercel을 위한 export
+module.exports = app; 
