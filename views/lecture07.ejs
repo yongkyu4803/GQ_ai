@@ -26,54 +26,59 @@
             <p>- 이번에는 '가혹한 글 수정' 방법을 통해 AI의 비판적 분석 능력을 활용해보겠습니다.</p>
         </div>
 
-        <!-- 프롬프팅 진행 순서 (이동된 위치) -->
+        <!-- 프롬프팅 진행 순서 -->
         <div class="process-step mt-4">
             <h6><i class="fas fa-list-ol me-2"></i>프롬프팅 진행 순서</h6>
             <div class="card">
-                <div class="card-body">
-                    <ol class="mb-0">
-                        <li class="mb-3">
-                            <strong>역할 부여 (워밍업)</strong>
-                            <div class="sample-text">
-                                "너는 디지털전환을 오랫동안 연구한 학자이자, 칼럼니스트의 역할을 해줘"
+                <div class="card-body p-3">
+                    <ol class="workflow-list mb-0">
+                        <li class="workflow-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <strong>역할 부여 (워밍업)</strong>
+                                <small class="text-muted d-block">"너는 디지털전환을 오랫동안 연구한 학자이자, 칼럼니스트의 역할을 해줘"</small>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <strong>원본 글에 대한 가혹한 비판 요청</strong>
-                            <div class="sample-text">
-                                "아래 칼럼 글에 대한 의견을, 가혹할 만큼 비판적인 관점에서 제시해줘"
+                        <li class="workflow-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <strong>원본 글에 대한 가혹한 비판 요청</strong>
+                                <small class="text-muted d-block">"아래 칼럼 글에 대한 의견을, 가혹할 만큼 비판적인 관점에서 제시해줘"</small>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <strong>비판 내용을 표로 정리 요청</strong>
-                            <div class="sample-text">
-                                "수정 의견을 제시해 주되, 우선 수정의견을 표로 만들어줘"
+                        <li class="workflow-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <strong>비판 내용을 표로 정리</strong>
+                                <small class="text-muted d-block">"수정 의견을 제시해 주되, 우선 수정의견을 표로 만들어줘"</small>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <strong>문단별 비교 요청</strong>
-                            <div class="sample-text">
-                                "한문단씩 끊어서 원본과 수정본을 표로 만들어줘"
+                        <li class="workflow-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <strong>문단별 비교 요청</strong>
+                                <small class="text-muted d-block">"한문단씩 끊어서 원본과 수정본을 표로 만들어줘"</small>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <strong>분량 비교 및 조정</strong>
-                            <div class="sample-text">
-                                "원본과 수정본의 분량을 비교해서 표로 만들어줘"<br>
-                                "한국어 글자수만 따로 비교해줘"<br>
-                                "수정본을 약 1500자 내로 줄여줘"
+                        <li class="workflow-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <strong>분량 비교 및 조정</strong>
+                                <small class="text-muted d-block">"원본과 수정본의 분량을 비교해서 표로 만들어줘"</small>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <strong>수정본에 대한 재비판</strong>
-                            <div class="sample-text">
-                                "수정본에 대한 '가혹한 비판'을 해줘"
+                        <li class="workflow-item">
+                            <span class="step-number">6</span>
+                            <div class="step-content">
+                                <strong>수정본에 대한 재비판</strong>
+                                <small class="text-muted d-block">"수정본에 대한 '가혹한 비판'을 해줘"</small>
                             </div>
                         </li>
-                        <li>
-                            <strong>재비판을 반영한 최종 수정</strong>
-                            <div class="sample-text">
-                                "가혹한 비판을 반영해서 최종 수정본을 작성해줘"
+                        <li class="workflow-item">
+                            <span class="step-number">7</span>
+                            <div class="step-content">
+                                <strong>재비판을 반영한 최종 수정</strong>
+                                <small class="text-muted d-block">"가혹한 비판을 반영해서 최종 수정본을 작성해줘"</small>
                             </div>
                         </li>
                     </ol>
@@ -305,5 +310,62 @@ h6 {
 .table th {
     background: linear-gradient(45deg, #f8f9fa, #e9ecef);
     border-bottom: 2px solid #dee2e6;
+}
+
+.workflow-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.workflow-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.workflow-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 35px;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    margin-right: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-content {
+    flex: 1;
+    padding-bottom: 0.5rem;
+}
+
+.step-content strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #1976D2;
+}
+
+.step-content small {
+    font-size: 0.875rem;
+    background: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
 }
 </style>
