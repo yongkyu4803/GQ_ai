@@ -42,8 +42,7 @@ app.get('/', (req, res) => {
         description: '생성형 AI를 활용한 업무 혁신',
         path: req.path,
         lectures: lecturesData.lectures,
-        layout: 'base',  // base 레이아웃 사용
-        indexPage: true  // index 페이지 여부 표시
+        layout: false  // 레이아웃 사용하지 않음
     });
 });
 
