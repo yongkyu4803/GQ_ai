@@ -38,9 +38,15 @@
         },
         {
             "number": "7강",
+            "title": "[생성형 AI 활용] 가혹한 글쓰기",
+            "description": "문서 수정 프롬프트 작성",
+            "link": "/lecture07"
+        },
+        {
+            "number": "8강",
             "title": "[생성형 AI 활용] 기타",
             "description": "데이터 정리, 문서 작성 등",
-            "link": "/lecture07"
+            "link": "/lecture08"
         }
     ]
 }
