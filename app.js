@@ -3,6 +3,21 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 
+// CSP 헤더 설정 수정
+app.use((req, res, next) => {
+    res.setHeader(
+        'Content-Security-Policy',
+        "default-src 'self'; " +
+        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; " +
+        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; " +
+        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " +
+        "img-src 'self' data: https:; " +
+        "connect-src 'self'; " +
+        "frame-ancestors 'none';"
+    );
+    next();
+});
+
 // lectures.json 파일 불러오기
 const lecturesData = require('./lectures.json');
 
@@ -44,6 +59,15 @@ app.get('/mygpts', (req, res) => {
         title: 'MyGPTs 설정 예시',
         description: 'AI 썸네일 제작을 위한 MyGPT 설정 과정을 살펴봅니다.',
         path: '/mygpts'
+    });
+});
+
+// 루트 경로 추가
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: '생성형 AI 이해하기',
+        description: '생성형 AI를 활용한 업무 혁신',
+        path: req.path
     });
 });
 
