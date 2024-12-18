@@ -51,6 +51,29 @@
             </ul>
         </div>
     </div>
+
+    <!-- 전문 보기 버튼 -->
+    <div class="text-center mt-5 mb-3">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#fullText" aria-expanded="false" aria-controls="fullText">
+            <i class="fas fa-book me-2"></i>전문 보기
+        </button>
+    </div>
+
+    <!-- 전문 내용 -->
+    <div class="collapse" id="fullText">
+        <div class="card card-body">
+            <h5 class="card-title mb-4"><i class="fas fa-file-alt me-2"></i>전문</h5>
+            <div class="full-text-content" style="white-space: pre-line;">
+                디지털 전환, 효율을 넘어 창의력의 공간으로
+
+                전 세계 모든 기업들 직면한 최근의 가장 흥미롭고 도전적인 주제는 '디지털 전환'일 것입니다. 지난해 ChatGPT가 촉발한 AI 경쟁이 이를 더욱 가속화하고 있습니다...
+                
+                ...(중략)...
+
+                더 늦기 전에 DT라는 거대한 파도에 올라타기 위한 조직의 혁신을 기획해야 할 것입니다. 그리고 전사적인 관점에서 과제를 설정하고 실행해야 합니다.
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -70,5 +93,31 @@
     margin-left: 1rem;
     padding: 1rem;
     border-left: 3px solid #6c757d;
+}
+
+.conversation {
+    margin-top: 2rem;
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+}
+
+.full-text-content {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: left;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #2196F3;
+    font-weight: 600;
 }
 </style>
