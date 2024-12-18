@@ -4,101 +4,60 @@
     <ul class="list-group list-group-flush mt-3">
         <li class="list-group-item">
             <i class="fas fa-check-circle me-2 text-secondary"></i>
-            AI 관련 추천 블로그
+            가혹한 글 수정
         </li>
     </ul>
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
 <div class="content-card">
-    <h4><i class="fas fa-book me-2"></i>추천 블로그</h4>
+    <h4><i class="fas fa-book me-2"></i>글 수정 프로세스</h4>
     
-    <div class="row mt-4">
-        <!-- 블로그 카드 1 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <img src="/images/blog1.jpg" class="card-img-top" alt="AI 트렌드">
-                <div class="card-body">
-                    <h5 class="card-title">AI 트렌드 리포트</h5>
-                    <p class="card-text">최신 AI 기술 동향과 산업별 적용 사례를 매주 업데이트하는 블로그입니다.</p>
-                    <a href="#" class="btn btn-primary btn-sm">블로그 방문</a>
-                </div>
-            </div>
+    <div class="mt-4">
+        <div class="alert alert-light" role="alert">
+            <p>지피티가 글쓰기에 능숙하다는 것은 익히 알려져 있는 사실입니다. 그런데, 보통 지피티에게 주제를 주고 작성하라고 하는 글들은 '그럴싸 하지만' 사실은 '엣지' 없는 글인 경우가 대부분입니다.</p>
+            <p>물론 이런 문제는 프롬프트를 충분하게 (반복) 수정해가면서 해결할 수도 있겠지만, 지피티에게 글 수정하기를 요청함으로써 해결할 수 도 있습니다.</p>
+            <p>이번 글의 주제는 '가혹할 만큼'의 글 수정하기이고, 이번에는 지피티가 아닌 클로드를 이용했습니다. 클로드는 지피티, 제미나이와 함께 생성형 AI 3대장이라고 평가받고 있습니다.</p>
+            <p>최근에 sonnet 버전이 나오면서 지피티보다 휠씬 낫다는 평가가 있어, 활용해 봤습니다. 클로드에 물어보니 2024년 4월까지 내용을 학습했다고 합니다.</p>
         </div>
 
-        <!-- 블로그 카드 2 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <img src="/images/blog2.jpg" class="card-img-top" alt="AI 개발자 노트">
-                <div class="card-body">
-                    <h5 class="card-title">AI 개발자 노트</h5>
-                    <p class="card-text">실제 AI 개발 과정에서 겪는 문제해결 과정과 팁을 공유하는 기술 블로그입니다.</p>
-                    <a href="#" class="btn btn-primary btn-sm">블로그 방문</a>
-                </div>
-            </div>
+        <h5 class="mt-4 mb-3">글 수정 단계</h5>
+        <div class="alert alert-secondary">
+            <ul>
+                <li>원본글에 대한 '가혹한 비판'을 요청한다.</li>
+                <li>가혹한 비판에 따라 글의 문단을 쪼개서 수정본을 요청한다.</li>
+                <li>원본 문단과 수정문단을 비교해 가면서 문서를 수정해서 최종본을 만든다.</li>
+                <li>분량이나 형식, 맞춤법 등 마무리 작업을 요청한다.</li>
+            </ul>
         </div>
 
-        <!-- 블로그 카드 3 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <img src="/images/blog3.jpg" class="card-img-top" alt="AI 비즈니스">
-                <div class="card-body">
-                    <h5 class="card-title">AI 비즈니스 인사이트</h5>
-                    <p class="card-text">AI를 활용한 비즈니스 혁신 사례와 전략을 다루는 경영 블로그입니다.</p>
-                    <a href="#" class="btn btn-primary btn-sm">블로그 방문</a>
-                </div>
-            </div>
+        <div class="mt-4">
+            <p>그리고 추가로 지피티보다 클로드의 글이 휠씬 매끄러운 것으로 보입니다.</p>
         </div>
-
-        <!-- 블로그 카드 4 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <img src="/images/blog4.jpg" class="card-img-top" alt="AI 윤리">
-                <div class="card-body">
-                    <h5 class="card-title">AI 윤리와 철학</h5>
-                    <p class="card-text">AI 발전에 따른 윤리적 문제와 사회적 영향을 다루는 전문 블로그입니다.</p>
-                    <a href="#" class="btn btn-primary btn-sm">블로그 방문</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mt-4 text-center">
-        <a href="/lecture06" class="btn btn-primary btn-sm me-2">
-            <i class="fas fa-arrow-left me-2"></i>이전 강의
-        </a>
     </div>
 </div>
 
+    
+
+<div class="mt-4 text-center">
+    <a href="/lecture06" class="btn btn-primary btn-sm me-2">
+        <i class="fas fa-arrow-left me-2"></i>이전 강의
+    </a>
+    <a href="/lecture08" class="btn btn-primary btn-sm me-2">
+        <i class="fas fa-arrow-right me-2"></i>다음 강의
+    </a>
+</div>
+
 <style>
-.card {
-    transition: transform 0.3s ease-in-out;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.alert {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 1rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-}
-
-.card-text {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.btn-primary {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+.alert-secondary {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
 }
 </style>
