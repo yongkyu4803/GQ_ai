@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/">
                         <i class="fas fa-home me-1"></i>홈
                     </a>
                 </li>
@@ -20,7 +20,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <% lectures.forEach(function(lecture) { %>
                             <li>
-                                <a class="dropdown-item" href="<%= lecture.link %>">
+                                <a class="dropdown-item <%= path === lecture.link ? 'active' : '' %>" href="<%= lecture.link %>">
                                     <%= lecture.number %> <%= lecture.title %>
                                 </a>
                             </li>
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/qna">
+                    <a class="nav-link <%= path === '/qna' ? 'active' : '' %>" href="/qna">
                         <i class="fas fa-question-circle me-1"></i>Q&A
                     </a>
                 </li>
