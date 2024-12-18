@@ -1,7 +1,7 @@
 {
     "lectures": [
         {
-            "number": "01",
+            "number": "1강",
             "title": "디지털 리터러시와 생성형 AI",
             "description": "인공지능의 기초와 발전 과정",
             "link": "/lecture01"
