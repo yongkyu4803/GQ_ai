@@ -7,31 +7,31 @@
             "link": "/lecture01"
         },
         {
-            "number": "02",
+            "number": "2강",
             "title": "생성형 AI로 일 잘하는 조직 만들기",
             "description": "조직의 디지털 전환과 리더십",
             "link": "/lecture02"
         },
         {
-            "number": "03",
+            "number": "3강",
             "title": "프롬프트 엔지니어링",
             "description": "프롬프트에 대한 이해와 CO-STAR 기법",
             "link": "/lecture03"
         },
         {
-            "number": "04",
+            "number": "4강",
             "title": "페르소나 설정을 통한 업무 피드백",
             "description": "생성형 AI와의 효과적인 소통을 위한 페르소나 설정과 피드백 방법을 알아봅니다.",
             "link": "/lecture04"
         },
         {
-            "number": "05",
+            "number": "5강",
             "title": "생성형 AI를 활용한 연설문 작성",
             "description": "15분 분량의 연설문 작성하기",
             "link": "/lecture05"
         },
         {
-            "number": "06",
+            "number": "6강",
             "title": "생성형 AI를 활용한 보고서 작성",
             "description": "실제 업무 예시를 통한 프롬프트 활용",
             "link": "/lecture06"
