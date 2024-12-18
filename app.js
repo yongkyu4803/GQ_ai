@@ -40,7 +40,9 @@ app.get('/', (req, res) => {
         title: '생성형 AI 이해하기',
         description: '생성형 AI를 활용한 업무 혁신',
         path: req.path,
-        lectures: lecturesData.lectures  // lectures 데이터 명시적 전달
+        lectures: lecturesData.lectures,
+        layout: 'base',  // base 레이아웃 사용
+        indexPage: true  // index 페이지 여부 표시
     });
 });
 
@@ -55,7 +57,8 @@ app.get('/', (req, res) => {
             title: `제${lecture.number} : ${lecture.title}`,
             description: lecture.description,
             path: req.path,
-            lectures: lecturesData.lectures  // lectures 데이터 명시적 전달
+            lectures: lecturesData.lectures,
+            layout: 'base'  // 명시적으로 base 레이아웃 사용
         });
     });
 });

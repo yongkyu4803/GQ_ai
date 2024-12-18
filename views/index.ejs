@@ -13,8 +13,6 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="/css/navbar.css">
     <style>
-        /* 네비게이션 바 스타일 - base.ejs와 동일 */
-        
         /* 인덱스 페이지 원래 스타일 */
         #landing {
             background-image: url('images/main_ai.jpg');
@@ -79,50 +77,7 @@
     </style>
 </head>
 <body>
-    <!-- 랜비게이션 바 -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-graduation-cap me-2"></i>생성형 AI 이해하기
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            <i class="fas fa-home me-1"></i>홈
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            강의 목록
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <% lectures.forEach(function(lecture) { %>
-                                <li>
-                                    <a class="dropdown-item" href="<%= lecture.link %>">
-                                        <%= lecture.number %>강: <%= lecture.title %>
-                                    </a>
-                                </li>
-                            <% }); %>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/qna">
-                            <i class="fas fa-question-circle me-1"></i>Q&A
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/mygpts">
-                            <i class="fas fa-cog me-1"></i>MyGpts 실제 세팅 사례
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%- include('navbar') %>
 
     <!-- 랜딩 섹션 -->
     <section id="landing">         
