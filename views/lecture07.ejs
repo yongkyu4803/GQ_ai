@@ -19,11 +19,16 @@
 
     <div class="content">
         <!-- 개요 -->
-        <div class="alert alert-info">
-            <h5><i class="fas fa-info-circle me-2"></i>개요</h5>
-            <p>- 지피티가 글쓰기에 능숙하다는 것은 익히 알려져 있는 사실입니다.</p>
-            <p>- 그런데, 보통 지피티에게 주제를 주고 작성하라고 하는 글들은 '그럴싸 하지만' 사실은 '엣지' 없는 글인 경우가 대부분입니다.</p>
-            <p>- 이번에는 '가혹한 글 수정' 방법을 통해 AI의 비판적 분석 능력을 활용해보겠습니다.</p>
+        <div class="overview-section">
+            <h5 class="overview-title">
+                <i class="fas fa-lightbulb me-2"></i>Overview
+            </h5>
+            <div class="overview-content">
+                <p>ChatGPT의 뛰어난 글쓰기 능력은 이미 널리 입증되었습니다. 하지만 AI가 생성하는 콘텐츠에는 
+                   종종 독창성과 날카로움이 부족한 것이 사실입니다.</p>
+                <p>이번 강의에서는 '가혹한 글쓰기(Harsh Review)' 기법을 통해 AI의 비판적 분석 능력을 활용하여, 
+                   평범한 글을 더욱 깊이 있고 설득력 있는 콘텐츠로 발전시키는 방법을 살펴보겠습니다.</p>
+            </div>
         </div>
 
         <!-- 프롬프팅 진행 순서 -->
@@ -99,8 +104,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>전 세계 모든 기업들 직면한 최근의 가장 흥미롭고 도전적인 주제는 '디지털 전환'일 것입니다...</td>
-                            <td>디지털 전환은 현대 기업들이 직면한 중요한 과제 중 하나입니다...</td>
+                            <td>전 세계 모든 기업들 직면한 최근의 가장 흥미롭고 도전적인 주제는 '디지털 전환'일 것입니다. 지난해 ChatGPT가 촉발한 AI 경쟁이 이를 더욱 가속화하고 있습니다. 지금 기업들에게 요구되는 태도는 수동적인 디지털 전환 패러다임의 수용이 아니라, 이니셔티브를 가지고 주도해 가는 적극성일 것입니다.</td>
+                            <td>디지털 전환은 현대 기업들이 직면한 중요한 과제 중 하나입니다. 최근 AI 기술의 발전으로 그 중요성이 더욱 부각되고 있습니다. 그러나 기업들은 단순히 트렌드를 따라가는 것이 아니라, 자사의 상황과 필요에 맞는 전략을 수립하고 실행해야 합니다. 이는 기술 도입뿐만 아니라 조직 문화와 비즈니스 모델의 혁신을 포함합니다.</td>
                         </tr>
                         <tr>
                             <td>디지털 전환은 디지털 기술을 활용해 기업 활동의 모든 과정을 개선하고...</td>
@@ -367,5 +372,34 @@ h6 {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     display: inline-block;
+}
+
+.overview-section {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.overview-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+}
+
+.overview-content {
+    color: #4a5568;
+    line-height: 1.8;
+}
+
+.overview-content p {
+    margin-bottom: 1rem;
+}
+
+.overview-content p:last-child {
+    margin-bottom: 0;
 }
 </style>
