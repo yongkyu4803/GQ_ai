@@ -63,6 +63,16 @@ app.get('/', (req, res) => {
     });
 });
 
+// QNA 페이지 라우트 추가
+app.get('/qna', (req, res) => {
+    res.render('QNA', {
+        title: 'Q&A - 자주 묻는 질문',
+        description: '생성형 AI 관련 자주 묻는 질문들을 모아놓았습니다.',
+        path: '/qna',
+        lectures: lecturesData.lectures
+    });
+});
+
 // 404 에러 처리
 app.use((req, res) => {
     res.status(404).render('404', {
