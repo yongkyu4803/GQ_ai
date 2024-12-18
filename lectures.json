@@ -26,15 +26,21 @@
         },
         {
             "number": "5강",
-            "title": "생성형 AI를 활용한 연설문 작성",
+            "title": "[생성형 AI 활용] 연설문 작성",
             "description": "15분 분량의 연설문 작성하기",
             "link": "/lecture05"
         },
         {
             "number": "6강",
-            "title": "생성형 AI를 활용한 보고서 작성",
+            "title": "[생성형 AI 활용] 보고서 작성",
             "description": "실제 업무 예시를 통한 프롬프트 활용",
             "link": "/lecture06"
+        },
+        {
+            "number": "7강",
+            "title": "[생성형 AI 활용] 기타",
+            "description": "데이터 정리, 문서 작성 등",
+            "link": "/lecture07"
         }
     ]
 }
