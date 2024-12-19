@@ -18,9 +18,10 @@
     </ul>
     <div class="text-end">
         <button type="button" class="btn btn-outline-primary btn-sm" 
-                onclick="initializePresentation(<%= JSON.stringify(lectures.find(l => l.link === '/lecture01')) %>)"
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture01")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
                 data-bs-toggle="modal" data-bs-target="#presentationModal">
-            <i class="fas fa-presentation me-2"></i>슬라이드 보기
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
         </button>
     </div>
 </div>
@@ -392,7 +393,7 @@
                     </tr>
                     <tr>
                         <td>Perplexity</td>
-                        <td>실시간 정보 검색/분석</td>
+                        <td>실시간 ���보 검색/분석</td>
                         <td>Perplexity AI</td>
                     </tr>
                     <tr>
