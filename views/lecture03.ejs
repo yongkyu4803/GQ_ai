@@ -16,6 +16,14 @@
             </li>
         <% }); %>
     </ul>
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture03")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
@@ -156,7 +164,7 @@
                     <tr>
                         <td style="width: 110px;"><strong>Context<br>(맥락)</strong></td>
                         <td>AI가 응답을 생성하는 데 필요한 배경 정보를 제공합니다.</td>
-                        <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트입니다."</td>
+                        <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트��니다."</td>
                     </tr>
                     <tr>
                         <td><strong>Objective<br>(목표)</strong></td>
@@ -280,7 +288,7 @@
                         <ul class="mb-4">
                             <li>한글 번역에 매우 세심한 고려가 필요해</li>
                             <li>필요한 검색 결과를 반영해도 좋은데, 반드시 출처를 표기해야 해</li>
-                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도��� 모으는 방식이 모두 가능해</li>
+                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도로 모으는 방식이 모두 가능해</li>
                             <li>출처에 기간을 반영할 때는 년도와 월 정도는 적어줘야 해. '최근', '지난해' 등의 표현은 최대한 사용하지 않아</li>
                         </ul>
 

@@ -16,6 +16,14 @@
             </li>
         <% }); %>
     </ul>
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture04")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
@@ -224,7 +232,7 @@
                 border-bottom: 1px solid #e5e7eb;
             }
             .accordion-button:hover {
-                background-color: #dbeafe;  /* 마우스 오버시 ��간 더 진한 색상 */
+                background-color: #dbeafe;  /* 마우스 오버시 간 더 진한 색상 */
             }
             .accordion-button:focus {
                 box-shadow: none;

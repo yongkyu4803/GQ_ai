@@ -16,6 +16,14 @@
             </li>
         <% }); %>
     </ul>
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture05")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
@@ -216,7 +224,7 @@
                     <li><strong>경제적 혜택:</strong> 지역 일자리 창출 계획을 구체적으로 제시</li>
                 </ul>
                 
-                <h6 class="mt-4"><strong>2. 캐나다의 단계적 접근</strong></h6>
+                <h6 class="mt-4"><strong>2. 캐나다의 ���계적 접근</strong></h6>
                 <ul>
                     <li><strong>원주민 참여:</strong> First Nations 커뮤니티와의 적극적인 협력 관계 구축</li>
                     <li><strong>교육 프로그램:</strong> 지역 대학과 연계한 인력 양성 프로그램 운영</li>
