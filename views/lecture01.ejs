@@ -132,16 +132,220 @@
         </div>
     </div>
 
-    <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
-        <span style="font-size: 1.5rem;">💡</span> <strong>파라미터란?</strong>
-        <br><br>
-        파라미터는 기계 학습 모델의 중요한 구성 요소로, 
-        모델이 데이터를 학습하고 예측을 수행하는 데 필요한 수치들을 의미합니다. 
-        각 파라미터는 모델의 신경망에서 연결된 노드 간의 가중치(weight)로 나타나며, 
-        이 가중치를 조정함으로써 모델은 입력 데이터에 대한 특정 패턴을 학습하게 됩니다. 
-        파라미터 수가 많을수록 모델이 더 많은 정보를 학습하고 복잡한 패턴을 이해할 수 있는 
-        능력이 향상되지만, 그만큼 더 많은 계산 자원과 데이터가 필요하게 됩니다.
+    <!-- 핵심 개념 설명 섹션 -->
+    <div class="concept-section">
+        <h5><i class="fas fa-brain me-2"></i>생성형 AI의 핵심 개념</h5>
+        <div class="table-responsive">
+            <table class="table table-modern">
+                <thead>
+                    <tr>
+                        <th>개념</th>
+                        <th>정의</th>
+                        <th>실생활 비유</th>
+                        <th>중요도</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 모델 구조 관련 개념 -->
+                    <tr class="category-divider">
+                        <td colspan="4" class="category-header">모델 구조 관련 개념</td>
+                    </tr>
+                    <tr>
+                        <td><strong>파라미터</strong></td>
+                        <td>AI 모델이 학습하고 저장하는 수치들의 집합으로, 모델의 지식과 능력을 결정짓는 핵심 요소입니다.</td>
+                        <td>사람의 뇌 시냅스처럼, 더 많은 연결이 더 복잡한 사고를 가능하게 함</td>
+                        <td><span class="badge bg-primary">핵심</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>멀티모달</strong></td>
+                        <td>텍스트, 이미지, 음성 등 여러 형태의 입력을 동시에 처리할 수 있는 AI 모델의 능력입니다. GPT-4V, Claude 3 등이 대표적입니다.</td>
+                        <td>사람이 보고, 듣고, 읽으면서 동시에 정보를 처리하는 것처럼</td>
+                        <td><span class="badge bg-primary">핵심</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>임베딩</strong></td>
+                        <td>텍스트나 이미지를 AI가 이해할 수 있는 고차원의 숫자 벡터로 변환하는 과정입니다.</td>
+                        <td>도서관의 책 분류 체계, 비슷한 주제는 가까운 위치에 배치</td>
+                        <td><span class="badge bg-info">중요</span></td>
+                    </tr>
+
+                    <!-- 텍스트 처리 관련 개념 -->
+                    <tr class="category-divider">
+                        <td colspan="4" class="category-header">텍스트 처리 관련 개념</td>
+                    </tr>
+                    <tr>
+                        <td><strong>토큰</strong></td>
+                        <td>AI가 처리하는 텍스트의 최소 단위로, 단어나 부분 단어를 토큰으로 분리하여 처리합니다.</td>
+                        <td>단어를 구성하는 자음과 모음, 또는 문장을 구성하는 단어들</td>
+                        <td><span class="badge bg-primary">핵심</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>컨텍스트 윈도우</strong></td>
+                        <td>AI가 한 번에 처리하고 기억할 수 있는 텍스트의 최대 길이입니다.</td>
+                        <td>한 번에 읽고 이해할 수 있는 책의 페이지 수</td>
+                        <td><span class="badge bg-info">중요</span></td>
+                    </tr>
+
+                    <!-- 생성 제어 관련 개념 -->
+                    <tr class="category-divider">
+                        <td colspan="4" class="category-header">생성 제어 관련 개념</td>
+                    </tr>
+                    <tr>
+                        <td><strong>프롬프트 엔지니어링</strong></td>
+                        <td>AI에게 더 정확하고 원하는 결과를 얻기 위해 입력값을 체계적으로 설계하는 기술입니다.</td>
+                        <td>원하는 결과를 얻기 위해 질문을 정교하게 다듬는 과정</td>
+                        <td><span class="badge bg-primary">핵심</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>스키마(Schema)</strong></td>
+                        <td>AI의 출력 형식을 미리 정의하여 일관된 구조의 응답을 받을 수 있게 하는 틀입니다. JSON, XML 등의 형식으로 지정할 수 있습니다.</td>
+                        <td>요리 레시피처럼, 결과물의 형식과 구조를 미리 정해두는 것</td>
+                        <td><span class="badge bg-primary">핵심</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>온도(Temperature)</strong></td>
+                        <td>AI 응답의 창의성과 무작위성을 조절하는 0~1 사이의 값입니다.</td>
+                        <td>요리 온도 조절처럼, 더 높으면 다양하지만 예측하기 어려운 결과</td>
+                        <td><span class="badge bg-info">중요</span></td>
+                    </tr>
+
+                    <!-- 스키마 예시 추가 -->
+                    <div class="schema-example mt-4">
+                        <h6><i class="fas fa-code me-2"></i>스키마 사용 예시</h6>
+                        <div class="code-block">
+                            <pre><code class="language-json">{
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "글의 제목"
+        },
+        "content": {
+            "type": "string",
+            "description": "본문 내용"
+        },
+        "keywords": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "주요 키워드 목록"
+        },
+        "readingTime": {
+            "type": "number",
+            "description": "예상 읽기 시간(분)"
+        }
+    },
+    "required": ["title", "content"]
+}</code></pre>
+                        </div>
+                    </div>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <style>
+    /* 기본 테이블 스타일 */
+    .table-modern {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* 테이블 헤더 스타일 */
+    .table-modern thead th {
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        border-bottom: 2px solid #dee2e6;
+        color: #495057;
+        font-weight: 600;
+        padding: 1rem;
+    }
+
+    /* 테이블 셀 스타일 */
+    .table-modern td {
+        padding: 1rem;
+        vertical-align: middle;
+    }
+
+    /* 카테고리 구분선 스타일 */
+    .category-divider .category-header {
+        background: #f8f9fa;
+        color: #2196F3;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 0.5rem 1rem;
+    }
+
+    /* 뱃지 스타일 */
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+        border-radius: 6px;
+    }
+
+    /* 중요도 표시 색상 */
+    .bg-primary {
+        background-color: #2196F3 !important; /* 핵심 개념 표시 */
+    }
+
+    .bg-info {
+        background-color: #03A9F4 !important; /* 중요 개념 표시 */
+    }
+
+    /* 섹션 컨테이너 스타일 */
+    .concept-section {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* 섹션 제목 스타일 */
+    .concept-section h5 {
+        color: #1976D2;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* 코드 블록 스타일 */
+    .schema-example {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .schema-example h6 {
+        color: #1976D2;
+        margin-bottom: 1rem;
+    }
+
+    .code-block {
+        background: #2d2d2d;
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .code-block pre {
+        margin: 0;
+        color: #e6e6e6;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* 코드 하이라이팅 */
+    .language-json .string { color: #a8ff60; }
+    .language-json .number { color: #ff9d00; }
+    .language-json .boolean { color: #ff628c; }
+    .language-json .null { color: #ff628c; }
+    .language-json .key { color: #5ccfe6; }
+    </style>
 
     <!-- AI 서비스 목록 섹션 -->
     <div class="mt-4">
