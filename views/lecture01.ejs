@@ -16,11 +16,13 @@
             </li>
         <% }); %>
     </ul>
-    <button type="button" class="btn btn-outline-primary btn-sm mb-3" 
-            onclick="initializePresentation(<%= JSON.stringify(lectures.find(l => l.link === '/lecture01')) %>)"
-            data-bs-toggle="modal" data-bs-target="#presentationModal">
-        <i class="fas fa-presentation me-2"></i>슬라이드 보기
-    </button>
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                onclick="initializePresentation(<%= JSON.stringify(lectures.find(l => l.link === '/lecture01')) %>)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-presentation me-2"></i>슬라이드 보기
+        </button>
+    </div>
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
