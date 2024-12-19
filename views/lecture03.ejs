@@ -2,14 +2,19 @@
 <div class="content-card mb-5">
     <h4><i class="fas fa-lightbulb me-2"></i>주요 주제</h4>
     <ul class="list-group list-group-flush mt-3">
-        <li class="list-group-item">
-            <i class="fas fa-check-circle me-2 text-secondary"></i>
-            프롬프트란 무엇인가?
-        </li>
-        <li class="list-group-item">
-            <i class="fas fa-check-circle me-2 text-secondary"></i>
-            COSTAR 기법
-        </li>
+        <% lectures.find(l => l.link === '/lecture03').mainTopics.forEach(topic => { %>
+            <li class="list-group-item">
+                <i class="fas fa-check-circle me-2 text-secondary"></i>
+                <%= topic.title %>
+                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                    <ul class="list-unstyled mt-2 ms-4">
+                        <% topic.subTopics.forEach(subTopic => { %>
+                            <li><small class="text-muted">• <%= subTopic %></small></li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+            </li>
+        <% }); %>
     </ul>
 </div>
 
@@ -275,7 +280,7 @@
                         <ul class="mb-4">
                             <li>한글 번역에 매우 세심한 고려가 필요해</li>
                             <li>필요한 검색 결과를 반영해도 좋은데, 반드시 출처를 표기해야 해</li>
-                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도로 모으는 방식이 모두 가능해</li>
+                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도��� 모으는 방식이 모두 가능해</li>
                             <li>출처에 기간을 반영할 때는 년도와 월 정도는 적어줘야 해. '최근', '지난해' 등의 표현은 최대한 사용하지 않아</li>
                         </ul>
 

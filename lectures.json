@@ -52,13 +52,52 @@
             "number": "3강",
             "title": "프롬프트 엔지니어링",
             "description": "프롬프트에 대한 이해와 CO-STAR 기법",
-            "link": "/lecture03"
+            "link": "/lecture03",
+            "mainTopics": [
+                {
+                    "title": "프롬프트란 무엇인가?",
+                    "subTopics": [
+                        "프롬프트의 개념과 중요성",
+                        "시스템 프롬프트와 사용자 프롬프트",
+                        "효과적인 프롬프트 작성법"
+                    ]
+                },
+                {
+                    "title": "COSTAR 기법",
+                    "subTopics": [
+                        "Context(맥락) 설정",
+                        "Objective(목표) 명확화",
+                        "Style(스타일) 지정",
+                        "Tone(톤) 설정",
+                        "Audience(청중) 정의",
+                        "Response(응답) 형식 지정"
+                    ]
+                }
+            ]
         },
         {
             "number": "4강",
             "title": "페르소나 설정을 통한 업무 피드백",
             "description": "페르소나를 통한 다양한 업무 피드백 활용 방법",
-            "link": "/lecture04"
+            "link": "/lecture04",
+            "mainTopics": [
+                {
+                    "title": "페르소나 부여를 통한 업무 피드백 설정",
+                    "subTopics": [
+                        "페르소나의 개념과 중요성",
+                        "효과적인 페르소나 설정 방법",
+                        "피드백 품질 향상을 위한 전략"
+                    ]
+                },
+                {
+                    "title": "업무 활용 사례",
+                    "subTopics": [
+                        "실제 업무 적용 예시",
+                        "성공적인 활용 사례",
+                        "주의사항과 개선점"
+                    ]
+                }
+            ]
         },
         {
             "number": "5강",
