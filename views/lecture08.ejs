@@ -2,10 +2,19 @@
 <div class="content-card mb-5">
     <h4><i class="fas fa-lightbulb me-2"></i>주요 주제</h4>
     <ul class="list-group list-group-flush mt-3">
-        <li class="list-group-item">
-            <i class="fas fa-check-circle me-2 text-secondary"></i>
-            AI 관련 추천 블로그
-        </li>
+        <% lectures.find(l => l.link === '/lecture08').mainTopics.forEach(topic => { %>
+            <li class="list-group-item">
+                <i class="fas fa-check-circle me-2 text-secondary"></i>
+                <%= topic.title %>
+                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                    <ul class="list-unstyled mt-2 ms-4">
+                        <% topic.subTopics.forEach(subTopic => { %>
+                            <li><small class="text-muted">• <%= subTopic %></small></li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+            </li>
+        <% }); %>
     </ul>
 </div>
 

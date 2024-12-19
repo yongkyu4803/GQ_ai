@@ -103,25 +103,89 @@
             "number": "5강",
             "title": "[생성형 AI 활용] 연설문 작성",
             "description": "15분 분량의 연설문 작성하기",
-            "link": "/lecture05"
+            "link": "/lecture05",
+            "mainTopics": [
+                {
+                    "title": "15분 분량의 연설문 작성하기",
+                    "subTopics": [
+                        "연설문의 구조와 특징",
+                        "시간 배분과 내용 구성",
+                        "청중을 사로잡는 기법"
+                    ]
+                },
+                {
+                    "title": "프롬프트 엔지니어링 실습",
+                    "subTopics": [
+                        "연설문 작성을 위한 프롬프트 설계",
+                        "단계별 작성 전략",
+                        "수정 및 개선 방법"
+                    ]
+                }
+            ]
         },
         {
             "number": "6강",
             "title": "[생성형 AI 활용] 보고서 작성",
             "description": "실제 업무 예시를 통한 프롬프트 활용",
-            "link": "/lecture06"
+            "link": "/lecture06",
+            "mainTopics": [
+                {
+                    "title": "생성형 AI를 활용한 보고서 작성 실제",
+                    "subTopics": [
+                        "보고서 구조 설계",
+                        "데이터 분석과 시각화",
+                        "전문성 있는 내용 구성"
+                    ]
+                },
+                {
+                    "title": "연차보고서 작성 예시",
+                    "subTopics": [
+                        "연차보고서 기본 구조",
+                        "주요 성과 정리 방법",
+                        "효과적인 데이터 표현"
+                    ]
+                }
+            ]
         },
         {
             "number": "7강",
             "title": "[생성형 AI 활용] 가혹한 글쓰기",
             "description": "문서 수정 프롬프트 작성",
-            "link": "/lecture07"
+            "link": "/lecture07",
+            "mainTopics": [
+                {
+                    "title": "가혹한 글 수정 프로세스 이해하기",
+                    "subTopics": [
+                        "비판적 글 검토 방법",
+                        "객관적 평가 기준",
+                        "개선점 도출 전략"
+                    ]
+                },
+                {
+                    "title": "연속적 프롬프팅을 통한 글 개선",
+                    "subTopics": [
+                        "단계별 수정 프로세스",
+                        "피드백 반영 방법",
+                        "최종 품질 검증"
+                    ]
+                }
+            ]
         },
         {
             "number": "8강",
             "title": "[생성형 AI 활용] 기타",
             "description": "데이터 정리, 문서 작성 등",
-            "link": "/lecture08"
+            "link": "/lecture08",
+            "mainTopics": [
+                {
+                    "title": "AI 관련 추천 블로그",
+                    "subTopics": [
+                        "국내외 주요 AI 블로그",
+                        "최신 AI 트렌드",
+                        "실무 적용 사례"
+                    ]
+                }
+            ]
         }
     ]
 }

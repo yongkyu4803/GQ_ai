@@ -2,14 +2,19 @@
 <div class="content-card mb-5">
     <h4><i class="fas fa-lightbulb me-2"></i>주요 주제</h4>
     <ul class="list-group list-group-flush mt-3">
-        <li class="list-group-item">
-            <i class="fas fa-check-circle me-2 text-secondary"></i>
-            15분 분량의 연설문 작성하기
-        </li>
-        <li class="list-group-item">
-            <i class="fas fa-check-circle me-2 text-secondary"></i>
-            프롬프트 엔지니어링 실습
-        </li>
+        <% lectures.find(l => l.link === '/lecture05').mainTopics.forEach(topic => { %>
+            <li class="list-group-item">
+                <i class="fas fa-check-circle me-2 text-secondary"></i>
+                <%= topic.title %>
+                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                    <ul class="list-unstyled mt-2 ms-4">
+                        <% topic.subTopics.forEach(subTopic => { %>
+                            <li><small class="text-muted">• <%= subTopic %></small></li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+            </li>
+        <% }); %>
     </ul>
 </div>
 
@@ -206,7 +211,7 @@
                 
                 <h6 class="mt-4"><strong>1. 미국 NuScale Power의 접근 방식</strong></h6>
                 <ul>
-                    <li><strong>지역사회 참여:</strong> 아이다호 국립연구소 부지 활용으로 지역 수용성 확��</li>
+                    <li><strong>지역사회 참여:</strong> 아이다호 국립연구소 부지 활용으로 지역 수용성 확보</li>
                     <li><strong>투명성 강화:</strong> 설계 인증 과정의 모든 단계를 공개적으로 진행</li>
                     <li><strong>경제적 혜택:</strong> 지역 일자리 창출 계획을 구체적으로 제시</li>
                 </ul>
