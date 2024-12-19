@@ -208,12 +208,14 @@
                         <td>요리 온도 조절처럼, 더 높으면 다양하지만 예측하기 어려운 결과</td>
                         <td><span class="badge bg-info">중요</span></td>
                     </tr>
+                </tbody>
+            </table>
 
-                    <!-- 스키마 예시 추가 -->
-                    <div class="schema-example mt-4">
-                        <h6><i class="fas fa-code me-2"></i>스키마 사용 예시</h6>
-                        <div class="code-block">
-                            <pre><code class="language-json">{
+            <!-- 스키마 예시 -->
+            <div class="schema-example mt-4">
+                <h6><i class="fas fa-code me-2"></i>스키마 사용 예시</h6>
+                <div class="code-block">
+                    <pre><code class="language-json">{
     "type": "object",
     "properties": {
         "title": {
@@ -238,10 +240,8 @@
     },
     "required": ["title", "content"]
 }</code></pre>
-                        </div>
-                    </div>
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -252,6 +252,7 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
     }
 
     /* 테이블 헤더 스타일 */
@@ -267,6 +268,7 @@
     .table-modern td {
         padding: 1rem;
         vertical-align: middle;
+        border-bottom: 1px solid #dee2e6;
     }
 
     /* 카테고리 구분선 스타일 */
@@ -277,7 +279,8 @@
         text-transform: uppercase;
         font-size: 0.85rem;
         letter-spacing: 0.5px;
-        padding: 0.5rem 1rem;
+        padding: 0.75rem 1rem;
+        border-top: 2px solid #e9ecef;
     }
 
     /* 뱃지 스타일 */
@@ -289,35 +292,20 @@
 
     /* 중요도 표시 색상 */
     .bg-primary {
-        background-color: #2196F3 !important; /* 핵심 개념 표시 */
+        background-color: #2196F3 !important;
     }
 
     .bg-info {
-        background-color: #03A9F4 !important; /* 중요 개념 표시 */
+        background-color: #03A9F4 !important;
     }
 
-    /* 섹션 컨테이너 스타일 */
-    .concept-section {
-        margin: 2rem 0;
-        padding: 1.5rem;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    /* 섹션 제목 스타일 */
-    .concept-section h5 {
-        color: #1976D2;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    /* 코드 블록 스타일 */
+    /* 스키마 예시 스타일 */
     .schema-example {
         background: #f8f9fa;
         border-radius: 8px;
         padding: 1.5rem;
         margin-top: 2rem;
+        border: 1px solid #e9ecef;
     }
 
     .schema-example h6 {
