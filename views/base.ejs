@@ -329,7 +329,8 @@
     let totalSlides = 1;
     let slides = [];
 
-    function initializePresentation(lectureData) {
+    function initializePresentation(data) {
+        const lectureData = typeof data === 'string' ? JSON.parse(data) : data;
         const { title, description, mainTopics } = lectureData;
         
         // 타이틀 슬라이드 준비
