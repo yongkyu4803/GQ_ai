@@ -46,6 +46,16 @@ app.get('/', (req, res) => {
     });
 });
 
+// MyGPTs 페이지 라우트 추가
+app.get('/mygpts', (req, res) => {
+    res.render('mygpts', {
+        title: 'MyGPTs 설정 사례',
+        description: 'MyGPTs를 활용한 실제 설정 사례를 살펴봅니다.',
+        path: '/mygpts',
+        lectures: lecturesData.lectures
+    });
+});
+
 // 강의 라우트들
 ['01', '02', '03', '04', '05', '06', '07', '08'].forEach(num => {
     app.get(`/lecture${num}`, (req, res) => {
