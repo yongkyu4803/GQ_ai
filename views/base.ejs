@@ -224,6 +224,25 @@
             left: 0;
             color: #667eea;
         }
+
+        .presentation-wrapper {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 비율 */
+            position: relative;
+            background: #000;
+        }
+        .presentation-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -268,7 +287,7 @@
 
     <!-- 푸레젠테이션 모달 추가 -->
     <div class="modal fade" id="presentationModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h5 class="modal-title text-white">
@@ -277,17 +296,19 @@
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="presentation-content text-white">
-                        <div id="slideContent"></div>
-                        <div class="presentation-controls mt-4">
-                            <button class="btn btn-outline-light me-2" onclick="prevSlide()">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <span id="slideCounter" class="mx-3"></span>
-                            <button class="btn btn-outline-light ms-2" onclick="nextSlide()">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                <div class="modal-body p-0">
+                    <div class="presentation-wrapper">
+                        <div class="presentation-content text-white">
+                            <div id="slideContent"></div>
+                            <div class="presentation-controls mt-4">
+                                <button class="btn btn-outline-light me-2" onclick="prevSlide()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="slideCounter" class="mx-3"></span>
+                                <button class="btn btn-outline-light ms-2" onclick="nextSlide()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

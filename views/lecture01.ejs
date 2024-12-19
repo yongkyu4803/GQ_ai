@@ -1,10 +1,10 @@
 <!-- 주요 주제 영역 -->
 <div class="content-card mb-5">
     <h4><i class="fas fa-lightbulb me-2"></i>주요 주제</h4>
-    <button type="button" class="btn btn-primary mb-3" 
-            onclick="initializePresentation(<%- JSON.stringify(lectures.find(l => l.link === '/lecture01')).replace(/'/g, '&#39;') %>)"
+    <button type="button" class="btn btn-outline-primary mb-3" 
+            onclick="initializePresentation(<%= JSON.stringify(lectures.find(l => l.link === '/lecture01')) %>)"
             data-bs-toggle="modal" data-bs-target="#presentationModal">
-        <i class="fas fa-tv me-2"></i>프레젠테이션 모드
+        <i class="fas fa-presentation me-2"></i>슬라이드 보기
     </button>
     <ul class="list-group list-group-flush mt-3">
         <% lectures.find(l => l.link === '/lecture01').mainTopics.forEach(topic => { %>
