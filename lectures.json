@@ -2,16 +2,15 @@
     "lectures": [
         {
             "number": "1강",
-            "title": "디지털 리터러시와 생성형 AI",
-            "description": "인공지능의 기초와 발전 과정",
+            "title": "인공지능의 기초",
+            "description": "생성형AI의 개념과 발전 과정",
             "link": "/lecture01",
             "mainTopics": [
                 {
                     "title": "생성형 AI의 이해",
                     "subTopics": [
                         "머신러닝과 딥러닝의 발전 과정",
-                        "GPT 모델의 진화와 특징",
-                        "생성형 AI의 현재와 미래"
+                        "GPT 모델의 진화와 특징"
                     ]
                 },
                 {
