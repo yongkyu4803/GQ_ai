@@ -1,0 +1,700 @@
+/* ─────────────────────────────────────────────
+   디자인 변수 (전역 설정)
+   ───────────────────────────────────────────── */
+:root {
+    /* 기본 색상 */
+    --background-light: #f7f7f7;
+    --text-dark: #333333;
+    --text-light: #6c757d;
+    --accent-color: #007bff;
+    --border-radius: 16px;
+    
+    /* 그라데이션 컬러 */
+    --primary-color: #764ba2;
+    --primary-rgb: 118, 75, 162;
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+    --nav-gradient-start: #2c3e50;
+    --nav-gradient-end: #3498db;
+}
+
+/* ─────────────────────────────────────────────
+   기본 타이포그래피
+   ───────────────────────────────────────────── */
+body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-stretch: 90%;      /* 장평 90% */
+    letter-spacing: -0.5px;   /* 자간 -0.5px */
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f2effa; /* 연한 보라색 배경 추가 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Noto Sans KR', 'Tuffy', 'Apple SD Gothic Neo', 'Nanum Gothic',  sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* ─────────────────────────────────────────────
+   네비게이션 바 컴포넌트
+   ───────────────────────────────────────────── */
+.navbar {
+    /* 연한 보라 그라데이션 배경 */
+    background: 
+    /* 2) 스트라이프 패턴: 밝은 흰색으로 촘촘하게 */
+    repeating-linear-gradient(
+        45deg,
+        rgba(13, 38, 85, 0.07) 0,
+        rgba(114, 121, 160, 0.07) 1px,
+        transparent 1px,
+        transparent 6px
+    ) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1rem;
+    height: 64px; /* 고정 높이 추가 */
+    display: flex;
+    align-items: center;
+}
+
+/* 반응형에서도 일관된 높이를 유지하기 위한 추가 스타일 */
+.navbar-expand-lg {
+    min-height: 64px;
+}
+
+/* 모바일 화면에서 네비게이션 높이 조정 */
+@media (max-width: 991.98px) {
+    .navbar {
+        height: auto;
+        min-height: 64px;
+    }
+    
+    .navbar-collapse {
+        margin-top: 0.5rem;
+    }
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-stretch: 90%;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-dark) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color) !important;
+}
+
+.nav-link {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-dark) !important;
+    margin: 0 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    color: var(--accent-color) !important;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,\
+      <svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'>\
+        <path stroke='rgba(51,51,51,0.8)' stroke-width='2' \
+          d='M4 7h22M4 15h22M4 23h22'/>\
+      </svg>");
+}
+
+/* 대체 네비게이션 스타일 (필요시 활성화) */
+.navbar-alt {
+    background: linear-gradient(135deg, var(--nav-gradient-start), var(--nav-gradient-end));
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.navbar-alt .navbar-brand {
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    color: white !important;
+}
+
+.navbar-alt .nav-link {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9) !important;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar-alt .nav-link:hover {
+    color: white !important;
+    background-color: rgba(255,255,255,0.12);
+}
+
+/* ─────────────────────────────────────────────
+   드롭다운 메뉴
+   ───────────────────────────────────────────── */
+.dropdown-menu {
+    background-color: var(--background-light);
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    padding: 0.6rem 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    border-radius: calc(var(--border-radius) / 2);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    transform: translateX(5px);
+    color: var(--accent-color);
+}
+
+/* ─────────────────────────────────────────────
+   랜딩 섹션
+   ───────────────────────────────────────────── */
+.landing-section {
+    background-image: url('/images/main_ai.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.landing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정색 배경 */
+    z-index: 1;
+}
+
+.landing-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 인덱스 랜딩 섹션 (index.ejs) */
+#landing {
+    background-image: url('/images/main_ai.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+/* landing 전용 텍스트 묶음에만 슬라이드·페이드인 */
+.landing-container {
+    opacity: 0;
+    animation: slideFadeIn 0.8s ease-out 0.5s forwards;
+}
+
+/* landing 텍스트 스타일 유지 */
+#landing h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #9fd3f5;
+}
+
+#landing p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 카드 스타일 */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.4s ease;
+    background-color: #f7f7f7;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.03) 0,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 8px
+    );
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1.5rem;                                    /* 여유로운 패딩 */
+}
+
+.card-title {
+    font-family: 'Montserrat', sans-serif;              /* Montserrat 사용 */
+    font-size: 1.5rem;                                  /* 적당한 크기 */
+    font-weight: 700;                                   /* 굵은 타이틀 */
+    color: #333333;                                     /* 딥 그레이 톤 */
+    margin-bottom: 0.75rem;
+    font-stretch: 90%;                      /* 장평 90% */
+    letter-spacing: -1px;
+}
+
+.card-text {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    color: #555555;                                     /* 읽기 편한 중성 그레이 */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.card .btn-outline-primary {
+    border-width: 2px;
+    border-radius: 999px;                               /* 완전 라운드 버튼 */
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.card .btn-outline-primary:hover {
+    background-color: rgba(0, 123, 255, 0.1);           /* 연한 블루 백그라운드 */
+    color: #007bff;                                     /* 버튼 텍스트 블루 강조 */
+}
+
+/* 애니메이션 키프레임 */
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   강의 헤더
+   ───────────────────────────────────────────── */
+.lecture-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2.8rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.lecture-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.lecture-header h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.lecture-header .lead {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+}
+
+/* ─────────────────────────────────────────────
+   컨텐츠 카드
+   ───────────────────────────────────────────── */
+.content-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* lecture01에서는 content-card 안에 content-card가 있으므로 중첩된 경우 처리 */
+.content-card .content-card {
+    padding: 1rem;
+    box-shadow: none;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 주요 주제 영역 컨텐츠 카드 */
+.content-card.mb-3 {
+    padding: 0 1.5rem 1rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.content-card h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* 모든 h5 기본 스타일 */
+.content-card h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* 주요 주제 영역의 h5 태그 */
+.content-card.mb-3 h5.d-flex.align-items-center.py-2 {
+    margin: 0;
+    padding-top: 1.5rem !important;
+    padding-bottom: 0.5rem !important;
+    cursor: default;
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+/* 주요 주제 영역의 h5 태그에서 before 가상 요소 명시적 제거 */
+.content-card.mb-3 h5.d-flex.align-items-center.py-2::before {
+    content: none;
+    display: none;
+}
+
+/* 주요 주제 영역의 내부 여백 조정 */
+.content-card.mb-3 .py-2 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0 !important;
+}
+
+/* 슬라이드 보기 버튼 영역 여백 관리 */
+.content-card.mb-3 .text-end {
+    margin-top: 0.5rem;
+}
+
+/* 실제 컨텐츠 영역의 h5 */
+.content-card:not(.mb-3) h5 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: default;
+}
+
+/* 토글 가능한 h5에만 커서 포인터 적용 */
+.content-card h5.toggle-head {
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+/* 기본적으로 모든 h5의 before 가상 요소 제거 */
+.content-card h5::before {
+    content: none;
+}
+
+/* 토글 가능한 h5에만 화살표 아이콘 표시 */
+.content-card h5.toggle-head::before {
+    content: '▶';
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* 토글 활성화 시 화살표 회전 */
+.content-card h5.toggle-head.active::before,
+.content-card h5.active::before {
+    transform: rotate(90deg);
+}
+
+.content-card h5 + * {
+    display: block;
+}
+
+.content-card h5.active + * {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 주제 리스트 스타일 */
+.topic-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.subtopic-list {
+    list-style-type: none;
+}
+
+.content-card h5 .text-warning {
+    color: #f8c51c !important;
+}
+
+.content-card .fa-check-circle.text-primary {
+    color: #2196F3 !important;
+}
+
+.content-card .fa-check-circle {
+    color: #28a745;
+}
+
+.content-card .list-group-item {
+    border: none;
+    padding: 1rem;
+    background: var(--background-light);
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.content-card .list-group-item:hover {
+    transform: translateX(5px);
+    background: #f8f9fa;
+}
+
+/* ─────────────────────────────────────────────
+   페르소나 카드
+   ───────────────────────────────────────────── */
+.persona-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.persona-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.persona-img {
+    border: 3px solid #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.persona-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.persona-details p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.persona-details strong {
+    color: #2c3e50;
+}
+
+/* ─────────────────────────────────────────────
+   설정 카드
+   ───────────────────────────────────────────── */
+.settings-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.settings-card .card-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.settings-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────
+   사이드바
+   ───────────────────────────────────────────── */
+.sidebar .card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.sidebar .card-header {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 0.95rem;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    color: var(--text-light) !important;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0.2rem 0;
+}
+
+.sidebar .nav-link .lecture-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-right: 0.8rem;
+    min-width: 24px;
+}
+
+.sidebar .nav-link .lecture-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.sidebar .nav-link.active {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: white !important;
+}
+
+.sidebar .nav-link.active .lecture-number {
+    color: white;
+    opacity: 0.9;
+}
+
+.sidebar .nav-link:hover {
+    background: rgba(var(--primary-rgb), 0.08);
+    transform: translateX(3px);
+    color: var(--text-dark) !important;
+}
+
+.sidebar .nav-link:hover .lecture-number {
+    color: var(--primary-color);
+}
+
+.sidebar .card-body {
+    padding: 0.8rem;
+}
+
+/* ─────────────────────────────────────────────
+   기타 유틸리티
+   ───────────────────────────────────────────── */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(246, 211, 101, 0.2) 0%, rgba(253, 160, 133, 0.2) 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: var(--text-dark);
+}
+
+.table-modern {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────
+   토글 컴포넌트
+   ───────────────────────────────────────────── */
+.toggleable {
+    margin-bottom: 1rem;
+}
+
+.toggleable .toggle-head {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.toggleable .toggle-head::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.toggleable .toggle-head.active::before {
+    transform: rotate(90deg);
+}
+
+.toggleable .toggle-content {
+    display: none;
+    overflow: hidden;
+    padding-left: 1.5rem;
+    padding-top: 0.2rem;
+    transition: max-height 0.3s ease;
+}
+
+.toggleable .toggle-head.active + .toggle-content {
+    display: block;
+    animation: fadeIn 0.5s ease;
+} 

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fa-solid fa-paper-plane me-2"></i>GQ AI Learning Platform
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        강의 목록
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <% lectures.forEach(function(lecture) { %>
+                            <li>
+                                <a class="dropdown-item <%= path === lecture.link ? 'active' : '' %>" href="<%= lecture.link %>">
+                                    <%= lecture.number %> <%= lecture.title %>
+                                </a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= path === '/qna' ? 'active' : '' %>" href="/qna">
+                        <i class="fas fa-question-circle me-1"></i>Q&A
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= path === '/contact' ? 'active' : '' %>" href="/contact">
+                        contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

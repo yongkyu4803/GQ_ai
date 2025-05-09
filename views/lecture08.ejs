@@ -1,0 +1,139 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture08').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture08")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">    
+    <div class="row mt-4">
+        <!-- 블로그 카드 1 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="/images/blog1.png" class="card-img-top" alt="ChatGPT 데이터 분석">
+                <div class="card-body">
+                    <h5 class="card-title">ChatGPT의 실제 사용 사례: 데이터 서칭 및 시각화</h5>
+                    <p class="card-text">ChatGPT와의 대화를 통해 데이터를 단계적으로 분석하고 시각화하는 학습 과정을 소개합니다. 
+                    단순 데이터 요청부터 비율 계산, 시각화까지 - 목적에 맞는 프롬프트 작성 방법과 결과물 개선을 위한 
+                    대화 기법을 실제 사례로 배워볼 수 있습니다.</p>
+                    <a href="https://allna.tistory.com/87" target="_blank" class="btn btn-primary btn-sm">바로가기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 블로그 카드 2 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="/images/blog2.png" class="card-img-top" alt="엑셀 파일 분할 기법">
+                <div class="card-body">
+                    <h5 class="card-title">ChatGPT로 업무 효율 극대화하기: 엑셀 파일 분할 기법</h5>
+                    <p class="card-text">ChatGPT를 활용해 엑셀 파일을 효과적으로 분할하는 방법을 소개합니다.
+                    지피티에게 연습용 파일을 생성하게 하고, 이를 토대로 작업의 실제 적용 가능성을 따져보는 작업입니다.</p>
+                    <a href="https://allna.tistory.com/63" target="_blank" class="btn btn-primary btn-sm">바로가기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 블로그 카드 3 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="/images/blog3.png" class="card-img-top" alt="AI 비즈니스">
+                <div class="card-body">
+                    <h5 class="card-title">행사 기획안 작성 프롬프트 예시: 성공적인 행사 준비를 위한 종합 가이드</h5>
+                    <p class="card-text">행사를 기획하는 과정은 복잡하고 세부적인 요소들을 고려해야 합니다.
+                    이 가이드에서는 효과적인 행사 기획을 위한 단계별 프롬프트와 체크리스트를 제공하여, 행사의 목적 설정부터 타겟 청중 정의, 예산 관리, 홍보 전략, 후속 조치까지 모든 과정을 체계적으로 준비할 수 있도록 도와드립니다.
+                    이제 성공적인 행사를 기획해 보세요!</p>
+                    <a href="https://blog.naver.com/mir4803/223464584541" target="_blank" class="btn btn-primary btn-sm">바로가기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 블로그 카드 4 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="/images/blog4.png" class="card-img-top" alt="AI 뉴스 검색 서비스">
+                <div class="card-body">
+                    <h5 class="card-title">'AI 뉴스검색 및 요약 서비스' 에이전트 개발기 (1)</h5>
+                    <p class="card-text">네이버 뉴스 API와 GPT-4를 활용한 실용적인 뉴스 검색/요약 애플리케이션 개발 과정을 소개합니다. 
+                    자주 쓰는 검색어 관리, 크롤링, AI 요약, DB 저장, 트렌드 분석 등 실무에서 바로 활용 가능한 기능들의 구현 방법을 
+                    상세히 설명합니다.</p>
+                    <a href="https://blog.naver.com/mir4803" target="_blank" class="btn btn-primary btn-sm">바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="/lecture06" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+        <a href="/lecture09" class="btn btn-primary btn-sm">
+            다음 강의<i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease-in-out;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+</style>

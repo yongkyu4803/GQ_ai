@@ -1,0 +1,258 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture06').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture06")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">
+    <h4><i class="fas fa-book me-2"></i>강의 내용</h4>
+    <!--
+    <div class="mt-4">
+        <h5 class="mb-3"><b>1. AI 개요 생성기 활용하기</b></h5>
+        <div class="conversation">
+            <p><b>사용자:</b> "2023년 대출금융협회 연차보고서의 개요를 작성해 주세요."</p>
+            <p><b>AI 응답:</b></p>
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <p>I. 서론</p>
+                <ul>
+                    <li>A. 협회장의 인사말</li>
+                    <li>B. 2023년 주요 성과 요약</li>
+                </ul>
+                
+                <p>II. 산업 동향</p>
+                <ul>
+                    <li>A. 대출 금융 시장 현황</li>
+                    <li>B. 규제 환경의 변화</li>
+                    <li>C. 기술 혁신 및 디지털화</li>
+                </ul>
+                
+                <p>III. 협회 활동 보고서</p>
+                <ul>
+                    <li>A. 정책 제안 및 법적 대응</li>
+                    <li>B. 소비자 보호 이니셔티브</li>
+                    <li>C. 회원사 지원 프로그램</li>
+                    <li>D. 외부 협력 및 홍보 활동</li>
+                </ul>
+                
+                <p>IV. 재무 보고서</p>
+                <ul>
+                    <li>A. 주요 재무 지표</li>
+                    <li>B. 예산 집행 현황</li>
+                    <li>C. 2024년 예산 계획</li>
+                </ul>
+                
+                <p>V. 향후 전략 및 과제</p>
+                <ul>
+                    <li>A. 중장기 발전 방향</li>
+                    <li>B. 2024년 주요 과제</li>
+                    <li>C. 리스크 관리 및 대응 계획</li>
+                </ul>
+                
+                <p>VI. 부록</p>
+                <ul>
+                    <li>A. 조직도</li>
+                    <li>B. 주요 통계</li>
+                    <li>C. 회원사 목록</li>
+                </ul>
+            </div>
+
+            <h5 class="mb-3"><b>2. 스타일 가이드 어시스턴트 사용하기</b></h5>
+            <p><b>사용자:</b> "우리 협회의 문서 스타일 가이드에 따라 '서론' 섹션을 작성해 주세요."</p>
+            <p><b>AI 응답:</b> "네, 대출금융협회의 문서 스타일 가이드에 따라 '서론' 섹션을 작성하겠습니다. 주요 가이드를 적용하여 작성하겠습니다."</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <p><strong>서문</strong></p>
+                <p>대출금융협회 회원 여러분께,</p>
+                <p>이번 2023년 연차보고서는 우리 협회와 회원사들의 노력과 성과의 결실입니다. 지난 한 해 동안 급변하는 금융 환경 속에서도 우리는 흔들림 없이 전진해 왔습니다.</p>
+                
+                <p><strong>주요 성과:</strong></p>
+                <ul>
+                    <li>법정 이자율 인하에 대응하기 위한 회원사 지원</li>
+                    <li>디지털 금융 혁신을 위한 'DeFi 포럼' 출범</li>
+                    <li>금융소비자보호법 전면 시행에 따른 교육 프로그램 확대</li>
+                </ul>
+                
+                <p>이러한 성과는 회원사 여러분의 적극적인 참여와 헌신 덕분입니다. 2024년에도 대출 금융 산업의 건전한 발전을 이끌어 나가겠습니다.</p>
+                <p>감사합니다</p>
+                <p>홍길동</p>
+                <p>대출금융협회 회장</p>
+            </div>
+
+            <h5 class="mb-3"><b>3. 독자 반응 시뮬레이션</b></h5>
+            <p><b>사용자:</b> "이 서문에 대해 금융 감독 당국, 회원사, 일반 소비자의 반응을 예측해 주세요."</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <b>1. 금융 감독 당국의 예상 반응:</b>
+                <ul>
+                    <li>긍정적: 준법성 및 소비자 보호 언급 확인</li>
+                    <li>우려: 구체적인 준법 노력 부족</li>
+                </ul>
+                
+                <b>2. 회원사의 예상 반응:</b>
+                <ul>
+                    <li>긍정적: 회원사 지원 노력이 인정됨</li>
+                    <li>실망: 개별 회원사의 성과 또는 기여 언급 없음</li>
+                </ul>
+                
+                <b>3. 일반 소비자의 예상 반응:</b>
+                <ul>
+                    <li>긍정적: 소비자 보호 언급</li>
+                    <li>의문: 구체적인 소비자 혜택이나 권리 보호 방안 부족</li>
+                </ul>
+            </div>
+
+            <h5 class="mb-3"><b>4. AI 기반 사실 확인</b></h5>
+            <p><b>사용자:</b> "서문에 언급된 '법정 최고 이자율 인하'의 구체적인 수치와 시행일을 확인해 주세요."</p>
+            <p><b>AI 응답:</b> "2023년 7월 7일부터 법정 최고 이자율은 연 20%에서 18%로 인하되었습니다. 
+                이는 대부업법 시행령 및 이자제한법 개정에 따른 것입니다."</p>
+
+            <h5 class="mb-3"><b>5. 맞춤형 개선 제안</b></h5>
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <p><b>AI:</b> "서론을 개선하기 위해 다음을 제안합니다:</p>
+                <ul>
+                    <li>법정 최고 이자율 인하의 구체적인 수치(20%에서 18%)와 시행일(2023년 7월 7일)을 명시하여 정확성을 높입니다.</li>
+                    <li>'DeFi 포럼'에 대한 간략한 설명을 추가하여 이해도를 높입니다.</li>
+                    <li>소비자 보호를 위한 구체적인 노력(예: 민원 처리 개선, 금융 교육 확대 등)을 언급합니다.</li>
+                    <li>회원사 기여의 구체적인 예 1~2개를 추가합니다.</li>
+                    <li>미래 지향적인 메시지를 강화하기 위해 2024년의 주요 과제를 간략히 언급합니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="content-card">
+        <h5 class="mb-2">📚 주요 생성형 AI 기업의 심층 리서치 기능 비교</h5>
+        <div>
+            <p>
+                최근 생성형 AI의 발전과 함께 심층 리서치(Deep Research) 기능이 등장하며, 사용자에게 더욱 상세하고 신뢰성 있는 정보를 제공하고 있습니다.
+            </p>
+            
+            <div class="table-responsive mt-3">
+                <table class="table table-modern">
+                    <thead>
+                        <tr>
+                            <th>기업/모델</th>
+                            <th>기능명</th>
+                            <th>주요 특징</th>
+                            <th>이용 요금 및 제한사항</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>OpenAI / ChatGPT</strong></td>
+                            <td>Deep Research</td>
+                            <td>
+                                웹을 자동으로 탐색하여 5~30분 내에 인용이 포함된 보고서 생성<br>
+                                - 텍스트, 이미지, PDF 분석 가능<br>
+                                - o3 모델 기반으로 고급 추론 수행
+                            </td>
+                            <td>
+                                Pro 요금제($200/월): 월 250회 사용 가능<br>
+                                - Plus/Team/Enterprise 요금제: 월 25회 사용 가능<br>
+                                - 무료 사용자: 월 5회 경량 버전 사용 가능
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google / Gemini</strong></td>
+                            <td>Deep Research</td>
+                            <td>
+                                복잡한 주제에 대한 상세 보고서 제공<br>
+                                - 오디오 요약 기능 포함<br>
+                                - 링크 및 원본 출처 제공<br>
+                                - Gemini 2.0 Flash 모델 기반
+                            </td>
+                            <td>
+                                모든 사용자에게 제공<br>
+                                - Gemini Advanced 사용자에게 우선 제공됨
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Perplexity AI</strong></td>
+                            <td>Deep Research</td>
+                            <td>
+                                4분 이내에 전문가 수준의 분석 제공<br>
+                                - 빠른 처리 속도와 상세한 보고서 생성<br>
+                                - 정보의 정확성에 주의 필요
+                            </td>
+                            <td>
+                                무료로 제공되나, 정확성 검토 필요
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>라이너 (Riner)</strong></td>
+                            <td>Deep Research</td>
+                            <td>
+                                국내 최초의 심층 리서치 기능<br>
+                                - 하루 10회까지 무료 사용 가능<br>
+                                - 한국어에 최적화된 정보 제공
+                            </td>
+                            <td>
+                                무료로 제공되며, 하루 10회 사용 제한 있음
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h6 class="mt-4 mb-3">🔍 심층 리서치 기능의 활용 예시</h6>
+            <ul>
+                <li><strong>시장 조사</strong>: 특정 산업의 최신 동향, 경쟁사 분석, 소비자 행동 등</li>
+                <li><strong>학술 연구</strong>: 논문 요약, 관련 연구 동향 파악, 참고 문헌 정리 등</li>
+                <li><strong>제품 비교</strong>: 다양한 제품의 기능, 가격, 사용자 리뷰 등을 종합하여 비교 분석</li>
+                <li><strong>여행 계획</strong>: 여행지 정보, 숙박 시설, 교통편, 현지 문화 등 종합 정보 수집</li>
+            </ul>
+            
+            <div class="alert alert-warning mt-4" role="alert">
+                <h6 class="mb-2">⚠️ 사용 시 주의사항</h6>
+                <ul class="mb-0">
+                    <li><strong>정보의 정확성 검토</strong>: AI가 제공하는 정보는 항상 정확하지 않을 수 있으므로, 중요한 결정 전에 추가적인 검토가 필요합니다.</li>
+                    <li><strong>출처 확인</strong>: 제공된 정보의 출처를 확인하여 신뢰성을 확보해야 합니다.</li>
+                    <li><strong>개인정보 보호</strong>: 민감한 정보를 입력할 때는 개인정보 보호에 유의해야 합니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="mt-10 text-center">
+        <a href="/lecture05" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+        <a href="/lecture07" class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-right me-2"></i>다음 강의
+        </a>
+    </div>
+</div>

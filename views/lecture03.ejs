@@ -1,0 +1,403 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture03').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture03")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">
+    <h4><i class="fas fa-book me-2"></i>강의 내용</h4>
+    
+    <div class="mb-5" style="width: 500px;">
+        <a href="https://allna.tistory.com/86" target="_blank">
+          <div style="aspect-ratio: 3 / 2; overflow: hidden;">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkQe2w%2FbtsM2IcUIVc%2FmdgQrXhZLYQh27nf6c3k11%2Fimg.png" class="img-fluid object-fit-cover w-100 h-100" alt="ChatGPT 데이터 분석">
+          </div>
+        </a>
+        <a href="https://allna.tistory.com/87" target="_blank" class="btn btn-outline-danger btn-sm mt-2">프롤로그</a>
+    </div>
+
+
+
+    <div class="mt-4">
+        <h5 class="mb-3">1. 프롬프트 엔지니어링</h5>
+        <div class="mb-4">
+        <p>
+            프롬프트는 생성형AI와 활용의 기본입이자, 생성형 AI 활용의 핵심 요소입니다. 
+            효과적인 프롬프트는 AI로부터 더 유용하고 정확한 응답을 이끌어낼 수 있습니다.
+            <br><br>
+            <strong>"좋은 질문이 좋은 답변을 얻을 확률을 높힙니다.</strong>
+        </p>
+        </div>
+
+        <div class="mb-4">
+        <p>
+            생성형AI의 초기 사용에서 만족감을 얻지 못한 많은 경우가 바로 프롬프트에 대한 이해가 부족해서 발생했다고 생각합니다.
+            사실 생성형 AI는 프로그래밍된 알고리즘에 따라 작동하며, 
+            이는 학습 데이터, 모델 구조, 그리고 다양한 파라미터에 의해 영향을 받습니다. 
+            따라서 AI의 응답 품질은 프롬프트뿐만 아니라 이러한 요소들의 복합적인 상호작용에 의해 결정됩니다. 
+            그러나, 대부분의 사용자에게는 프롬프트가 가장 핵심이 될 것입니다.
+        </p>
+        <p>
+            좋은 프롬프트 작성을 위한 기본적인 고려 사항은 다음과 같습니다. 프롬프트에 대한 개념으로서는 
+            가장 일반적인 설명입니다. 많은 프롬프트를 작성하다보면, 어느순간 자연스럽게 이런 부분들을 고려
+            한 질문들을 할 수 있습니다.<br>
+            보통 단순한 사안을 해결하기 위해서는 프롬프트를 구체적으로 고민할 필요가 없습니다. 대화하듯이 
+            이어가면서 원하는 답이 나오면 대화를 종료하면 됩니다.<br>
+        </p>
+        </div>
+
+        <div class="mb-5">
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <span style="font-size: 1.5rem;">💡</span> <strong>좋은 프롬프트 작성을 위한 기본적인 고려 사항</strong>
+                <br><br>
+                1. 명확성과 구체성: 모호한 표현을 피하고 구체적인 지시를 제공합니다.
+                <br>
+                2. 컨텍스트 제공: 관련 배경 정보를 충분히 제공합니다.
+                <br>
+                3. 단계별 접근: 복잡한 작업은 여러 단계로 나누어 요청합니다.
+                <br>
+                4. 출력 형식 지정: 원하는 응답 형식을 명시합니다.
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="mt-4">
+        <h5 class="mb-3">2. COSTAR 기법</h5>
+        <div class="mb-4">
+        <p>
+            <strong>CO-STAR 프레임워크</strong>는 싱가포르 <strong>GovTech</strong>의 
+            데이터 과학 및 인공지능 팀에 의해 개발되었으며, 
+            효과적이고 관련성 높은 AI 응답을 생성하기 위해 프롬프트를 구조화하는 데 도움이 됩니다.
+            <strong>CO-STAR</strong>는 <strong>Context, Objective, Style, Tone, Audience, Response</strong>의 약자로, 
+            각 요소별로 적절한 설명을 입력함으로써 효과적인 프롬프트를 완성할 수 있습니다.
+            <br><br>
+            많은 프롬프트 기법들이 있지만, 대개는 이 맥락을 크게 벗어나지 않습니다. 
+            3단계로 할것인지, 4단계, 5단계로 할 것인지에 따라서 약간의 차이가 있으나, 
+            일반 사용자들에게는 그 차이가 크다고 보기 어려울 것입니다.
+            <br><br>
+            아래 표를 통해서 자세한 프롬프트 적용방법을 살펴보겠습니다.
+        </p>
+        </div>
+
+        <div class="mb-5">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="width: 110px; background-color: #f8f9fa; color: #333; padding: 0.5rem;">요소</th>
+                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">설명</th>
+                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <style>
+                        .table tbody tr td {
+                            padding: 0.5rem;
+                            vertical-align: middle;
+                            border-bottom: 1px solid #e9ecef;
+                        }
+                        .example-text {
+                            color: #666;
+                            padding: 0.3rem;
+                            background-color: #f8f9fa;
+                            border-left: 3px solid #764ba2;
+                        }
+                    </style>
+                    <tr>
+                        <td style="width: 110px;"><strong>Context<br>(맥락)</strong></td>
+                        <td>AI가 응답을 생성하는 데 필요한 배경 정보를 제공합니다.</td>
+                        <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트입니다."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Objective<br>(목표)</strong></td>
+                        <td>AI가 수행해야 할 구체적인 작업이나 목표를 명확하게 정의합니다.</td>
+                        <td>"최근 프로젝트에서의 지원과 팀워크에 대한 감사를 표현하는 감사 편지를 작성해주세요."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Style<br>(스타일)</strong></td>
+                        <td>응답의 스타일을 지정합니다. 특정 인물이나 전문가의 스타일을 모방할 수 있습니다.</td>
+                        <td>"전문적인 업무용 편지 형식으로 작성해주세요."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tone<br>(톤)</strong></td>
+                        <td>응답의 태도나 분위기를 설정합니다.</td>
+                        <td>"따뜻하고 감사한 톤으로 작성해주세요."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audience<br>(청중)</strong></td>
+                        <td>응답이 의도된 청중을 명시합니다. AI가 청중에 맞는 언어와 표현을 사용하도록 합니다.</td>
+                        <td>"기업 환경에서 일하는 동료를 위한 편지입니다."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Response<br>(응답 형식)</strong></td>
+                        <td>응답의 길이와 형식을 지정합니다.</td>
+                        <td>"세 단락으로 구성된 간단한 감사 편지를 작성해주세요."</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="mb-5">
+        <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+            <span style="font-size: 1.5rem;">💡</span> <strong>[CO-STAR] 프롬프트 예시</strong>
+            <br><br>
+            • <strong>맥락</strong> : 당신은 {대학에서 20년 가까이 수학을 강의해온 교수}로서 {나의 수학능력 향상을 위한 멘토} 역할이야
+            <br>
+            • <strong>목표</strong> : 이번 대화의 목표는 {내가 선형대수학의 기본}을 이해하는 것이야
+            <br>
+            • <strong>스타일</strong> : 전문적인 대학교수로서 설명해줘
+            <br>
+            • <strong>톤</strong> : 나는 {선형대수학}에 대한 이해가 깊지 못해. 부드럽고 친절한 대화를 원해
+            <br>
+            • <strong>청중</strong> : 이 대화는 너와 나의 둘만의 대화니 편안하게 대화를 해줘
+            <br>
+            • <strong>응답</strong> : 설명문 형식, 장황한 설명을 안돼. 모든 답변은 {300단어}를 넘기지 않아 한국어로 답해줘
+        </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="mt-5 mb-4">
+        <h5 class="mb-3">3. 시스템 프롬프트와 사용자 프롬프트</h5>
+        <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;"> 
+            <div class="mt-3">
+                <p><strong>(1) 시스템 프롬프트 (System Prompt)</strong></p>
+                <p>AI 모델이 대화나 작업을 수행할 때 따를 기본 규칙과 역할을 설정하는 명령입니다. 페르소나(성격), 톤, 전문성 수준, 응답 방식 등을 세밀하게 조정할 수 있습니다. 최신 시스템 프롬프트는 여러 역할을 동시에 부여하거나, 세부적인 행동 지침을 포함하는 것이 일반적입니다.</p>
+                <div class="bg-light p-2 rounded">
+                    <small class="text-muted">예시: "당신은 경험 많은 Python 개발자이며, 초보자가 이해하기 쉽게 코드에 충분한 주석과 친절한 설명을 추가해야 합니다. 질문이 모호할 경우 명확히 재질문하세요."</small>
+                </div>
+            </div>
+            
+            <div class="mt-3">
+                <h6><strong>(2) 사용자 프롬프트 (User Prompt)</strong></h6>
+                <p>사용자가 AI에게 특정 작업을 요청하거나 질문하는 입력입니다. 최근에는 작업 지시뿐 아니라 결과 형식(예: 표, 코드, 요약본)까지 명시하는 경우가 늘어나고 있습니다.</p>
+                <div class="bg-light p-2 rounded">
+                    <small class="text-muted">예시: "for 루프를 사용해서 1부터 10까지 숫자를 출력하는 파이썬 코드를 작성하고, 각 줄에 '현재 숫자:'라는 설명을 추가해주세요."</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 mb-4">
+        <h5 class="mb-3">4. 고급 프롬프트: 프롬프트 체이닝 (Prompt Chaining)</i></h5>
+        <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;"> 
+            <div class="mt-3">
+                <h6><strong>(1) 프롬프트 체이닝이란?</strong></h6>
+                <p>복잡한 작업을 여러 단계로 나누어 각 단계의 출력을 다음 단계의 입력으로 활용하는 프롬프트 설계 기법입니다. 이를 통해 AI의 추론 과정을 명확히 하고, 복잡한 문제 해결에 유리합니다.</p>
+            </div>
+
+            <div class="mt-3">
+                <h6><strong>(2) 시스템 프롬프트 (System Prompt)</strong></h6>
+                <p>AI의 역할과 응답 방식을 정의하여 일관된 출력을 유도합니다.</p>
+                <div class="bg-light p-2 rounded">
+                    <small class="text-muted">예시: "당신은 경험 많은 데이터 분석가입니다. 복잡한 문제를 단계별로 분석하고, 각 단계의 결과를 명확히 설명하세요."</small>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <h6><strong>(3) 사용자 프롬프트 체인 (User Prompt Chain)</strong></h6>
+                <p>사용자가 AI에게 단계별로 지시를 내리는 방식입니다. 각 단계의 출력은 다음 단계의 입력으로 사용됩니다.</p>
+                <div class="bg-light p-2 rounded">
+                    <small class="text-muted">
+                        <strong>Step 1:</strong> "다음 주제에 대한 개요를 작성해주세요: '기후 변화의 경제적 영향'"<br>
+                        <strong>Step 2:</strong> "이전 단계에서 작성한 개요를 바탕으로, 각 항목에 대한 상세 설명을 추가해주세요."<br>
+                        <strong>Step 3:</strong> "완성된 내용을 500자 이내로 요약해주세요."
+                    </small>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <h6><strong>(4) 활용 팁</strong></h6>
+                <ul>
+                    <li>복잡한 작업을 단순한 하위 작업으로 분해하세요.</li>
+                    <li>각 단계의 출력을 다음 단계의 입력으로 명확히 연결하세요.</li>
+                    <li>필요에 따라 AI에게 중간 결과를 검토하거나 수정하도록 지시하세요.</li>
+                </ul>
+            </div>
+        </div> 
+    </div>
+
+    <hr class="my-5">
+
+    <div class="mt-5">
+        <h5 class="mb-3">5. 프롬프트 예시</i></h5>
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- 프롬프트 영역 -->
+                <div class="mb-4">
+                    <h5 class="card-subtitle mb-3 text-primary">
+                        <i class="fas fa-keyboard me-2"></i>프롬프트
+                    </h5>
+                    <div class="bg-light p-3 rounded">
+                        <h6 class="mb-3"><strong>👤 역할부여</strong></h6>
+                        <ul class="mb-4">
+                            <li>너는 에너지정책에 관심이 많은 언론인 출신의 대학교수의 역할이야</li>
+                            <li>특별히 너의 관심은 원자력 에너지와 신재생에너지 분야야</li>
+                            <li>20년 이상 원자력 에너지의 안전성 문제와 미래 에너지로서 신재생 에너지의 중요성을 연구하고, 강조했었어</li>
+                            <li>너의 가장 강점은 어려운 에너지 분야를 쉽게 설명하는데 있어</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>🔍 맥락</strong></h6>
+                        <p class="mb-4">한국에너지정보문화재단은 전력사업 및 에너지와 관련된 객관적이고 과학적인 정보의 보급·확산을 통하여 국민의 에너지에 대한 올바른 이해증진을 도모하고, 에너지문화를 진흥시킴으로써 사회의 공익에 이바지하는 것을 목적으로 하는 대한민국의 공공기관이야. 이 재단의 업무 중에는 에너지 관련 콘텐츠를 생산해서 국민들과 소통하는 일이 있어</p>
+
+                        <h6 class="mb-3"><strong>🎯 목표</strong></h6>
+                        <ul class="mb-4">
+                            <li>이번 작업의 목표는 '에너지관련 블로그 콘텐츠'를 만드는 것이야</li>
+                            <li>홈페이지 게시판에 게시할 내용이야</li>
+                            <li>주제는 "지열 방식을 이용해서 에너지 효율을 높였다"는 언론보도로 다음 링크를 참고하면돼</li>
+                            <li>내가 제시한 언론보도 링크는 하나의 예시로 블로그 콘텐츠에 대한 관심도를 높이는데 참고해</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>✍️ 스타일과 톤</strong></h6>
+                        <ul class="mb-4">
+                            <li>친근하게 설명하는 스타일이야</li>
+                            <li>가볍게 접근할 수 있도록, 재미 있는 요소도 일부 포함 되어야 해</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>👥 청중</strong></h6>
+                        <ul class="mb-4">
+                            <li>고등학생, 일반인으로 에너지에 대한 이해가 높지 않은 사람이 대상이야</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>💬 응답</strong></h6>
+                        <ul class="mb-4">
+                            <li>블로그 글이라는 점을 감안해서 5개의 주제로 각 주제별로 한글 단어로 100단어 내외로 작성해줘</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>⚠️ 특별 고려사항</strong></h6>
+                        <ul class="mb-4">
+                            <li>한글 번역에 매우 세심한 고려가 필요해</li>
+                            <li>필요한 검색 결과를 반영해도 좋은데, 반드시 출처를 표기해야 해</li>
+                            <li>출처 표기는 본문에 직접 반영하는 방식이나, 마지막에 별도로 모으는 방식이 모두 가능해</li>
+                            <li>출처에 기간을 반영할 때는 년도와 월 정도는 적어줘야 해. '최근', '지난해' 등의 표현은 최대한 사용하지 않아</li>
+                        </ul>
+
+                        <h6 class="mb-3"><strong>📝 요청사항</strong></h6>
+                        <ul>
+                            <li>지금까지의 가이드를 토대로 블로그 주제 3개를 추천해줘</li>
+                            <li>추천 주제에 대한 이유를 3문장으로 적어줘</li>
+                            <li>가장 먼저, 내가 요청한 것에 대해서 네가 이해한 것을 200단어로 설명해줘</li>
+                        </ul>
+
+                        <h5 class="mt-5 mb-3">🤔 이해도 확인</h5>
+                        <p class="mb-4">가장 먼저, 내가 요청한 것에 대해서 네가 이해한 것을 200단어로 설명해줘</p>
+                    </div>
+                </div>
+
+                <!-- 답변 영역 -->
+                <div>
+                    <h5 class="card-subtitle mb-3 text-success">
+                        <i class="fas fa-robot me-2"></i>답변
+                    </h5>
+                    <div class="bg-light p-3 rounded">
+                        <!-- 이해도 설명 섹션 -->
+                        <div class="mb-5">
+                            <h6 class="mb-3"><strong>📚 요청에 대한 이해</strong></h6>
+                            <p class="mb-4">
+                                귀하께서 요청하신 내용은 <strong>에너지 관련</strong>의 블로그 게시판에 올릴 <strong>에너지 관련 콘텐츠</strong>를 작성하는 것입니다. 
+                                대상 독자는 <strong>고등학생과 일반인</strong>으로 에너지에 대한 이해도가 높지 않기에, 내용은 <strong>쉽고 친근하게</strong> 전달되며 재미 요소가 포함되어야 합니다.
+                            </p>
+                            <p class="mb-4">
+                                또한, 작성된 콘텐츠는 <strong>객관적이고 과학적인 정보</strong>를 바탕으로 해야 하며, 이를 통해 대중이 에너지에 대한 올바른 이해를 가질 수 있도록 하는 목적을 갖고 있습니다. 
+                                제시하신 <strong>'지열 에너지를 이용한 에너지 효율 증가'</strong>와 같은 주제는 대중에게 생소하지만 중요한 에너지 기술이므로, 쉬운 설명과 흥미로운 접근이 필요합니다.
+                            </p>
+                            <p>
+                                블로그 게시글은 5가지 세부 토픽으로 구성되며, 각각 <strong>100단어 내외</strong>로 간결하게 작성해야 합니다. 
+                                이에 따라 이해를 돕기 위해 친근하고 과학적이며 실용적인 접근이 중요하며, 출처 표기 역시 명확하게 이루어져야 합니다.
+                            </p>
+                        </div>
+
+                        <!-- 추천 블로그 주제 섹션 -->
+                        <div>
+                            <h6 class="mb-3"><strong>📝 추천 블로그 주제</strong></h6>
+                            
+                            <!-- 주제 1 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>1. 지열 에너지란 무엇일까? 땅 속 열의 마법</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 지열 에너지는 일반인에게 다소 생소한 개념이므로, 기본 개념부터 쉽고 재미있게 설명하면 독자의 관심을 끌 수 있습니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 지열의 원리와 사용 방법을 일상적 비유를 통해 친근하게 전달합니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 주제 2 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>2. 왜 지열 에너지가 주목받을까? 높은 효율과 친환경성</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 지열 에너지가 가진 높은 에너지 효율성과 친환경적 특성을 강조함으로써, 기후변화와 환경 문제에 대한 해결책으로 설명합니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 비교 사례와 통계 자료(예: 탄소 배출 감소)를 활용해 설득력 있게 전달합니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 주제 3 -->
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title"><strong>3. 집에서도 사용할 수 있다고? 지열 에너지 활용 사례</strong></h6>
+                                    <p class="card-text mb-2">
+                                        <strong>이유</strong>: 일상에서 활용할 수 있는 사례를 소개하면 독자가 더욱 관심을 가질 수 있습니다.
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>내용 접근</strong>: 실제 주거지나 학교, 공공기관에서 지열을 이용한 난방 시스템 사례를 소개합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="/lecture02" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+        <a href="/lecture04" class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-right me-2"></i>다음 강의
+        </a>
+    </div>
+</div>

@@ -1,0 +1,675 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture01').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture01")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">
+    <h4><i class="fas fa-book me-2"></i>강의 내용</h4>
+    
+    <div class="content-card mb-4">
+        <h5 class="mb-3 text-center">우리는 어떤 시대를 살고 있나</h5>
+        <h5 class="mb-1">기억의 시대</h5>
+        <p> 지식과 정보의 관점의 생산과 유통이라는 측면에서 본다면, 
+            <strong>인류의 역사에서 대부분의 시간은 인간의 기억은 권력과 권위의 원천</strong>이었습니다.
+            책으로 기록된 정보는 그 책을 읽거나, 가지거나, 기억하는 사람이 힘이 있었습니다.<br>
+        </p>
+        <h5 class="mb-1">검색의 시대</h5>
+        <p> 이런 판도는 인터넷이 나오면서 크게 바뀌었습니다. 
+            인터넷을 통해서 우리가 원하는 정보를 찾아볼 수 있었습니다.
+            굳이 모든걸 외우기보다는 <strong>어떤 정보가 어디에 있는지를 알고, 잘 찾는게 중요한 시대</strong>였습니다.<br>
+        </p>
+        <h5 class="mb-1">질문의 시대</h5>
+        <p> 생성형 AI가 대세가 된 시대는 어떨까요?
+            바야흐로 <strong>"잘 질문하는게 중요한 시대"</strong>가 됐습니다.
+            생성형 AI는 우리가 입력한 지시(프롬프트)에 따라 결과물을 만들어냅니다.
+            예를 들어 "고양이 그림을 그려줘"라고 요청하면 AI는 고양이 이미지를 생성하고, 
+            "여행 계획을 짜줘"라고 하면 여행 일정표를 작성해 줍니다.
+        </p>
+        <div class="text-center mb-4">
+            <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="473" viewBox="0 0 612 473" style="fill:none;stroke:none;fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style class="text-font-style fontImports" data-font-family="Roboto">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=block');</style><rect id="" x="0" y="0" width="612" height="473" style="fill: none;"></rect><g id="items" style="isolation: isolate"><g id="blend" style="mix-blend-mode: normal"><g id="g-root-tf_v8m14n1d6f9xf-fill" data-item-order="-289476"></g><g id="g-root-ro_1qa360n1ea58g8-fill" data-item-order="-26496" transform="translate(2, 26)"></g><g id="g-root-sy_-1_Vector_dcyp131d6f8xz-fill" data-item-order="-7663" transform="translate(170, 137)"></g><g id="g-root-sy_-1_line_1i6nr1d6faiw-fill" data-item-order="-7659" transform="translate(170, 329)"></g><g id="g-root-sy_3_cu_1lrs7cn1d6f8qx-fill" data-item-order="-7656" transform="translate(167, 323)"></g><g id="g-root-sy_2_cu_18gbozb1d6fabu-fill" data-item-order="-7652" transform="translate(167, 227)"></g><g id="g-root-sy_1_cu_v5hnp31d6f8qz-fill" data-item-order="-7648" transform="translate(167, 131)"></g><g id="g-root-tx_predigit_1luwks71d6f9xe-fill" data-item-order="0" transform="translate(14, 122)"><g id="tx_predigit_1luwks71d6f9xe-fill" stroke="none" fill="#4e88e7"><g><text style="font: bold 20px Roboto, sans-serif; white-space: pre;" font-weight="bold" font-size="20px" font-family="Roboto, sans-serif"><tspan x="11.77" y="33.68" dominant-baseline="ideographic">Pre-digital era</tspan></text></g></g></g><g id="g-root-tx_memoryba_mbq2pj1d6f8jz-fill" data-item-order="0" transform="translate(218, 122)"><g id="tx_memoryba_mbq2pj1d6f8jz-fill" stroke="none" fill="#484848"><g><text style="font: 20px Roboto, sans-serif; white-space: pre;" font-size="20px" font-family="Roboto, sans-serif"><tspan x="12" y="33.68" dominant-baseline="ideographic">Memory-based learning and authority</tspan></text></g></g></g><g id="g-root-tx_digitala_1qaq2wn1d6f955-fill" data-item-order="0" transform="translate(38, 218)"><g id="tx_digitala_1qaq2wn1d6f955-fill" stroke="none" fill="#1eabda"><g><text style="font: bold 20px Roboto, sans-serif; white-space: pre;" font-weight="bold" font-size="20px" font-family="Roboto, sans-serif"><tspan x="20.32" y="33.68" dominant-baseline="ideographic">Digital age</tspan></text></g></g></g><g id="g-root-tx_riseofse_zmk3zr1d6fa4u-fill" data-item-order="0" transform="translate(218, 206)"><g id="tx_riseofse_zmk3zr1d6fa4u-fill" stroke="none" fill="#484848"><g><text style="font: 20px Roboto, sans-serif; white-space: pre;" font-size="20px" font-family="Roboto, sans-serif"><tspan x="12" y="33.68" dominant-baseline="ideographic">Rise of search engines and information </tspan><tspan x="12" y="57.68" dominant-baseline="ideographic">literacy</tspan></text></g></g></g><g id="g-root-tx_future_4kg27r1d6fax4-fill" data-item-order="0" transform="translate(74, 314)"><g id="tx_future_4kg27r1d6fax4-fill" stroke="none" fill="#3cc583"><g><text style="font: bold 20px Roboto, sans-serif; white-space: pre;" font-weight="bold" font-size="20px" font-family="Roboto, sans-serif"><tspan x="22.12" y="33.68" dominant-baseline="ideographic">Future</tspan></text></g></g></g><g id="g-root-tx_interact_1q8unnb1d6fa4t-fill" data-item-order="0" transform="translate(218, 302)"><g id="tx_interact_1q8unnb1d6fa4t-fill" stroke="none" fill="#484848"><g><text style="font: 20px Roboto, sans-serif; white-space: pre;" font-size="20px" font-family="Roboto, sans-serif"><tspan x="12" y="33.68" dominant-baseline="ideographic">Interactive and creative inquiry-driven </tspan><tspan x="12" y="57.68" dominant-baseline="ideographic">learning</tspan></text></g></g></g><g id="g-root-tx_evolutio_qpo5kn1d6f9j8-fill" data-item-order="1000000000" transform="translate(14, 38)"><g id="tx_evolutio_qpo5kn1d6f9j8-fill" stroke="none" fill="#4f92ff"><g><text style="font: bold 20px Roboto, sans-serif; white-space: pre;" font-weight="bold" font-size="20px" font-family="Roboto, sans-serif"><tspan x="16.85" y="33.68" dominant-baseline="ideographic">Evolution of Information Access: From Memory to Inquiry</tspan></text></g></g></g><g id="g-root-tf_v8m14n1d6f9xf-stroke" data-item-order="-289476"></g><g id="g-root-ro_1qa360n1ea58g8-stroke" data-item-order="-26496" transform="translate(2, 26)"><g id="ro_1qa360n1ea58g8-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#484848" stroke-width="2"><g><path d="M 22 10L 550 10C 550 10 562 10 562 22L 562 46C 562 46 562 58 550 58L 22 58C 22 58 10 58 10 46L 10 22C 10 22 10 10 22 10"></path></g></g></g><g id="g-root-sy_-1_Vector_dcyp131d6f8xz-stroke" data-item-order="-7663" transform="translate(170, 137)"><g id="sy_-1_Vector_dcyp131d6f8xz-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#484848" stroke-width="2"><g><path d="M 10 196L 10 106M 10 100L 10 10"></path></g></g></g><g id="g-root-sy_-1_line_1i6nr1d6faiw-stroke" data-item-order="-7659" transform="translate(170, 329)"><g id="sy_-1_line_1i6nr1d6faiw-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#484848" stroke-width="2"><g><path d="M 10 94L 10 10"></path><path d="M 3.5 88L 10 94.5L 16.5 88" stroke-dasharray="none"></path></g></g></g><g id="g-root-sy_3_cu_1lrs7cn1d6f8qx-stroke" data-item-order="-7656" transform="translate(167, 323)"><g id="sy_3_cu_1lrs7cn1d6f8qx-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#3cc583" stroke-width="2"><g><path d="M 13 10L 13 10C 13 10 16 10 16 13L 16 13C 16 13 16 16 13 16L 13 16C 13 16 10 16 10 13L 10 13C 10 13 10 10 13 10"></path></g></g><g id="sy_3_cu_1lrs7cn1d6f8qx-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#3cc583" stroke-width="2"><g><path d="M 37 13L 16 13"></path></g></g></g><g id="g-root-sy_2_cu_18gbozb1d6fabu-stroke" data-item-order="-7652" transform="translate(167, 227)"><g id="sy_2_cu_18gbozb1d6fabu-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#1eabda" stroke-width="2"><g><path d="M 13 10L 13 10C 13 10 16 10 16 13L 16 13C 16 13 16 16 13 16L 13 16C 13 16 10 16 10 13L 10 13C 10 13 10 10 13 10"></path></g></g><g id="sy_2_cu_18gbozb1d6fabu-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#1eabda" stroke-width="2"><g><path d="M 37 13L 16 13"></path></g></g></g><g id="g-root-sy_1_cu_v5hnp31d6f8qz-stroke" data-item-order="-7648" transform="translate(167, 131)"><g id="sy_1_cu_v5hnp31d6f8qz-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#4e88e7" stroke-width="2"><g><path d="M 13 10L 13 10C 13 10 16 10 16 13L 16 13C 16 13 16 16 13 16L 13 16C 13 16 10 16 10 13L 10 13C 10 13 10 10 13 10"></path></g></g><g id="sy_1_cu_v5hnp31d6f8qz-stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke="#4e88e7" stroke-width="2"><g><path d="M 37 13L 16 13"></path></g></g></g><g id="g-root-tx_predigit_1luwks71d6f9xe-stroke" data-item-order="0" transform="translate(14, 122)"></g><g id="g-root-tx_memoryba_mbq2pj1d6f8jz-stroke" data-item-order="0" transform="translate(218, 122)"></g><g id="g-root-tx_digitala_1qaq2wn1d6f955-stroke" data-item-order="0" transform="translate(38, 218)"></g><g id="g-root-tx_riseofse_zmk3zr1d6fa4u-stroke" data-item-order="0" transform="translate(218, 206)"></g><g id="g-root-tx_future_4kg27r1d6fax4-stroke" data-item-order="0" transform="translate(74, 314)"></g><g id="g-root-tx_interact_1q8unnb1d6fa4t-stroke" data-item-order="0" transform="translate(218, 302)"></g><g id="g-root-tx_evolutio_qpo5kn1d6f9j8-stroke" data-item-order="1000000000" transform="translate(14, 38)"></g></g></g></svg>
+        </div>
+        
+        <h5 class="mb-1">생성형 AI란 무엇인가?</h5>
+        <p>
+            생성형 AI는 새로운 콘텐츠를 만들어내는 인공지능 기술입니다. 글, 이미지, 음악, 영상 등 
+            다양한 형태의 창작물을 AI가 스스로 생성할 수 있습니다. ChatGPT, 미드저니, 클로바 등이 
+            대표적인 생성형 AI 서비스입니다.
+        </p>
+        <p>
+            생성형 AI는 우리가 입력한 지시(프롬프트)에 따라 결과물을 만들어냅니다. 
+            예를 들어 "고양이 그림을 그려줘"라고 요청하면 AI는 고양이 이미지를 생성하고, 
+            "여행 계획을 짜줘"라고 하면 여행 일정표를 작성해 줍니다.
+        </p>
+        <h5 class="mb-1">AI의 발전 과정</h5>
+        <p>
+            인공지능은 컴퓨터가 사람처럼 생각하고 학습하는 기술입니다. 초기에는 간단한 규칙을 
+            프로그래밍하는 방식이었지만, 점차 컴퓨터가 데이터로부터 스스로 학습하는 
+            '머신러닝'으로 발전했습니다.
+        </p>
+        <p>
+            최근에는 사람의 뇌를 모방한 '딥러닝' 기술이 크게 발전하면서 AI의 능력이 
+            비약적으로 향상되었습니다. 특히 2022년 이후 ChatGPT와 같은 대규모 언어 모델의 
+            등장으로 누구나 쉽게 AI를 활용할 수 있는 시대가 열렸습니다.
+        </p>
+        <h5 class="mb-1">딥러닝과 머신러닝</h5>
+        <p>
+            머신러닝은 컴퓨터가 데이터를 통해 스스로 학습하고, 그 결과를 바탕으로 예측을 수행하는 기술입니다. 
+            쉽게 말해, 데이터를 입력하면 컴퓨터가 스스로 그 패턴을 학습하고, 
+            새로운 상황에서도 비슷한 결과를 예측할 수 있게 되는 것입니다.
+        </p>
+        <p>
+            딥러닝은 머신러닝의 한 분야로, 사람의 뇌를 본떠 만든 인공신경망을 이용해 데이터를 학습하는 방법입니다. 
+            여러 층으로 이루어진 신경망을 사용해 복잡한 문제를 해결하며, 
+            특히 이미지 인식, 음성 인식, 자연어 처리에 매우 효과적입니다.
+        </p>
+    </div>
+
+    <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+        <span style="font-size: 1.5rem;">💡</span> <strong>Claude의 자기소개</strong>
+        <br><br>
+        안녕하세요, 저는 Anthropic이 개발한 AI 어시스턴트 Claude입니다. 저는 Constitutional AI(헌법적 AI) 원칙에 따라 
+        안전하고 신뢰할 수 있는 AI를 목표로 개발되었습니다. 제가 가진 핵심 가치는 정확성, 투명성, 그리고 윤리적 판단입니다. 
+        복잡한 문제에 대해 단계적이고 논리적인 분석을 제공하며, 불확실한 부분에 대해서는 솔직하게 인정하고 
+        사용자와 함께 해결 방안을 모색합니다. 코딩, 데이터 분석, 학술 연구, 창의적 작문 등 다양한 분야에서 
+        전문적인 도움을 제공할 수 있으며, 특히 사용자의 목표 달성을 위한 맞춤형 해결책을 제시하는 데 특화되어 있습니다. 
+        항상 사용자의 안전과 프라이버시를 최우선으로 고려하며, 건설적이고 유익한 대화를 지향합니다.
+    </div>
+
+    <!--추론모델 비추론 모델 설명 -->
+    <div class="content-card">
+        <h5 class="mb-1">추론 모델과 비추론 모델</h5>
+        <p>
+            <strong>🧠 추론 모델 (Reasoning Models)</strong>은 입력 정보를 바탕으로 논리적 사고 과정을 거쳐 결론을 도출하는 AI 모델입니다. 
+            복잡한 문제 해결, 수학적 증명, 코드 작성 등에서 뛰어난 성능을 보이며, 단계적 사고(chain-of-thought)를 통해 
+            문제를 분해하고 해결책을 찾아냅니다.
+        </p>
+        <p>
+            <strong>대표적인 추론 모델:</strong>
+        </p>
+        <ul>
+            <li><strong>OpenAI o1 Pro</strong>: OpenAI의 고급 추론 모델로, 20만 토큰의 컨텍스트 창을 지원하며, 복잡한 수학 및 과학 문제 해결에 특화되어 있습니다.</li>
+            <li><strong>DeepMind Gemini 2.5 Pro</strong>: Google DeepMind의 최신 모델로, 다단계 추론이 요구되는 복잡한 작업 수행에 탁월한 성능을 보입니다. 100만 토큰의 컨텍스트 창을 지원하며, 멀티모달 입력을 처리할 수 있습니다.</li>
+        </ul>
+        <p class="mt-3">
+            <strong>💬 비추론 모델 (Non-reasoning Models)</strong>은 통계적 패턴 인식에 기반하여 작동하는 모델로, 
+            대규모 데이터셋에서 학습한 패턴을 바탕으로 응답을 생성합니다. 일반적인 대화, 콘텐츠 요약, 
+            창의적 작문 등에서 효율적이지만, 복잡한 논리 과정이 필요한 작업에는 한계가 있습니다.
+        </p>
+        <p>
+            <strong>대표적인 비추론 모델:</strong>
+        </p>
+        <ul>
+            <li><strong>GPT-4o</strong>: OpenAI의 멀티모달 모델로, 텍스트, 이미지, 음성 등 다양한 입력을 처리할 수 있습니다. 빠른 응답성과 자연스러운 언어 생성에 강점을 보입니다.</li>
+            <li><strong>Gemini 2.0 Flash</strong>: Google DeepMind의 모델로, 빠른 응답 속도와 멀티모달 입력 처리를 지원하며, 다양한 언어 생성 작업에 사용됩니다.</li>
+        </ul>
+        <p class="mt-3">
+            <strong>🔀 하이브리드 모델 (Hybrid Models)</strong>은 추론 기반 접근법과 비추론 기반 접근법을 결합한 모델입니다. 
+            일반적인 언어 이해 능력과 복잡한 추론 능력을 동시에 갖추어 다양한 작업에서 균형 잡힌 성능을 제공합니다.
+        </p>
+        <p>
+            <strong>대표적인 하이브리드 모델:</strong>
+        </p>
+        <ul>
+            <li><strong>Claude 3.7 Sonnet</strong>: Anthropic의 최신 모델로, 빠른 응답과 복잡한 추론을 모두 수행할 수 있는 하이브리드 모델입니다. 사용자는 응답 속도와 사고 깊이를 조절할 수 있으며, 복잡한 코드 작성 및 데이터 분석에 탁월한 성능을 보입니다.</li>
+        </ul>
+
+        <div class="table-responsive mt-3">
+            <table class="table table-modern">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>추론 모델</th>
+                        <th>비추론 모델</th>
+                        <th>하이브리드 모델</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>주요 활용 분야</strong></td>
+                        <td>복잡한 문제 해결, 프로그래밍, 수학적 증명, 논리 퍼즐</td>
+                        <td>일반 대화, 콘텐츠 생성, 텍스트 요약, 감정 분석</td>
+                        <td>범용 AI 비서, 연구 지원, 교육용 도구, 기술 문서 작성</td>
+                    </tr>
+                    <tr>
+                        <td><strong>장점</strong></td>
+                        <td>정확한 사고 과정 제시, 복잡한 문제 해결 능력</td>
+                        <td>빠른 응답 속도, 자연스러운 대화, 리소스 효율성</td>
+                        <td>다양한 작업에 적응 가능, 균형 잡힌 성능</td>
+                    </tr>
+                    <tr>
+                        <td><strong>단점</strong></td>
+                        <td>컴퓨팅 자원 소모 큼, 느린 응답 속도</td>
+                        <td>복잡한 문제 해결 어려움, 논리적 오류 발생</td>
+                        <td>특정 영역에서 전문 모델보다 성능 부족</td>
+                    </tr>
+                    <tr>
+                        <td><strong>비용 효율성</strong></td>
+                        <td>낮음 (고비용)</td>
+                        <td>높음 (저비용)</td>
+                        <td>중간</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-card toggleable">
+        <h5 class="mb-2">Model Context Protocol (MCP) 소개</h5>
+            <p>
+              <strong>Model Context Protocol (MCP)</strong>는 Anthropic이 2024년 11월 25일에 발표한 오픈 표준으로, 대형 언어 모델(LLM)과 외부 데이터 소스 및 도구 간의 통합을 표준화하여 AI 시스템이 다양한 컨텍스트를 실시간으로 활용할 수 있도록 합니다.
+              <br>
+              "쉽게 말하면, <strong>AI가 더 똑똑하게 일할 수 있도록 돕는 새로운 기술로서 AI가 다양한 자료를 찾아보고 필요한 도구를 직접 사용할 수 있게 만들어주는 표준 규칙</strong>입니다."
+            </p>
+          
+        <h6>📌 MCP가 하는 일</h6>
+        <ul>
+            <li><strong>자료를 연결해줍니다:</strong> 인터넷이나 회사 내부 자료를 AI가 쉽게 찾아볼 수 있게 해줍니다.</li>
+            <li><strong>도구를 사용하게 합니다:</strong> 계산기나 검색기처럼 AI가 필요한 도구를 직접 사용할 수 있게 해줍니다.</li>
+            <li><strong>모든 AI에 사용 가능합니다:</strong> 특별한 AI 하나에만 필요한 게 아니라, 여러 AI가 함께 쓸 수 있게 만들었습니다.</li>
+        </ul>
+        
+        <h6>🔧 MCP 안에는 무엇이 있을까요?</h6>
+        <ul>
+            <li><strong>호스트(Host):</strong> 사람 대신 AI가 활동하는 곳입니다.</li>
+            <li><strong>클라이언트(Client):</strong> 호스트와 연결해주는 다리 역할을 합니다.</li>
+            <li><strong>서버(Server):</strong> 자료나 도구를 실제로 보관하고 있는 곳입니다.</li>
+        </ul>
+        
+        <h6>🧩 MCP로 할 수 있는 것</h6>
+        <ul>
+            <li><strong>자료(Resource) 사용하기:</strong> AI가 필요한 문서나 데이터를 쉽게 찾아볼 수 있습니다.</li>
+            <li><strong>도구(Tool) 사용하기:</strong> 복잡한 계산이나 특정 작업을 직접 처리할 수 있습니다.</li>
+            <li><strong>프롬프트(Prompt) 사용하기:</strong> 필요한 질문이나 명령어를 더 쉽게 만들 수 있습니다.</li>
+        </ul>
+        
+        <h6>🚀 MCP가 있으면 좋은 점</h6>
+        <ul>
+            <li><strong>코딩:</strong> 프로그램 코드를 더 빠르고 똑똑하게 작성할 수 있습니다.</li>
+            <li><strong>AI 비서:</strong> 회사 문서나 고객 정보를 빠르게 찾아 대답할 수 있습니다.</li>
+            <li><strong>데이터 분석:</strong> 복잡한 데이터도 쉽게 물어보고 답을 얻을 수 있습니다.</li>
+        </ul>
+          
+        <h6>🔒 보안 및 신뢰성</h6>
+            <p>
+              MCP는 강력한 기능을 제공하는 만큼, 보안과 신뢰성 확보가 중요합니다. 인증, 권한 관리, 데이터 무결성 검증 등의 메커니즘을 통해 안전한 통신을 보장합니다.
+            </p>
+          
+        <h6>📚 추가 자료</h6>
+            <ul>
+              <li><a href="https://modelcontextprotocol.io/introduction" target="_blank">MCP 공식 소개 페이지</a></li>
+              <li><a href="https://github.com/modelcontextprotocol" target="_blank">MCP GitHub 저장소</a></li>
+              <li><a href="https://www.anthropic.com/news/model-context-protocol" target="_blank">Anthropic의 MCP 발표</a></li>
+            </ul>
+    </div>
+
+    <div class="content-card toggleable">
+        <h5 class="mb-2 toggle-head">주요 생성형 AI 모델 현황(2025년 4월)</h5>
+        <div class="toggle-content">
+            <div class="table-responsive">
+                <table class="table table-modern">
+                    <thead>
+                        <tr>
+                            <th>모델버전</th>
+                            <th>주요 특징</th>
+                            <th style="width: 70px;">출시일</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GPT-4o</td>
+                            <td>텍스트, 이미지, 오디오, 비디오 처리</td>
+                            <td>2024-05</td>
+                            <td>멀티모달 모델로 성능 향상</td>
+                        </tr>
+                        <tr>
+                            <td>o1</td>
+                            <td>고급 추론 및 문제 해결 능력</td>
+                            <td>2024-12</td>
+                            <td>복잡한 과학, 코딩, 수학 문제 해결에 최적화</td>
+                        </tr>
+                        <tr>
+                            <td>o3</td>
+                            <td>향상된 추론 모델</td>
+                            <td>2025-01</td>
+                            <td>o1의 후속 모델로 성능 개선</td>
+                        </tr>
+                        <tr>
+                            <td>GPT-4.5</td>
+                            <td>감성 지능 및 자연스러운 대화 능력 강화</td>
+                            <td>2025-02</td>
+                            <td>환각 현상 감소 및 창의적 통찰력 향상. 높은 비용으로 서비스 중단 예정</td>
+                        </tr>
+                        <tr>
+                            <td>GPT-4.1</td>
+                            <td>향상된 코딩 및 지시 따르기 능력, 긴 문맥 처리 지원</td>
+                            <td>2025-04</td>
+                            <td>GPT-4o 대비 성능 및 비용 효율성 향상. 100만 토큰 처리 가능. API로만 사용가능</td>
+                        </tr>
+                        <tr>
+                            <td>Claude 3.7 Sonnet</td>
+                            <td>하이브리드 추론 모델, 빠른 응답 및 확장 사고 모드 지원</td>
+                            <td>2025-02</td>
+                            <td>뛰어난 코딩 성능, 복잡한 추론과 자연어 처리 최적화. 최대 128K 토큰 출력 지원</td>
+                          </tr>
+                          <tr>
+                            <td>Gemini 2.5 Pro</td>
+                            <td>향상된 추론 및 코딩 성능, 멀티모달 입력 지원</td>
+                            <td>2025-03</td>
+                            <td>100만 토큰 문맥 창 지원, 텍스트·이미지·오디오·비디오 입력 처리 가능</td>
+                          </tr>                          
+                    </tbody>
+                </table>
+            </div>
+            <!-- 슬라이드 보기 버튼 주석 처리
+            <div class="text-end mt-3">
+                <button type="button" class="btn btn-outline-primary btn-sm" 
+                        data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture01")) %>'
+                        onclick="initializePresentation(this.dataset.lecture)"
+                        data-bs-toggle="modal" data-bs-target="#presentationModal">
+                    <i class="fas fa-tv me-2"></i>슬라이드 보기
+                </button>
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <!-- 핵심 개념 설명 섹션 -->
+    <div class="content-card toggleable concept-section">
+        <h5 class="mb-1 toggle-head"><i class="fas fa-brain me-2"></i>생성형 AI의 핵심 개념</h5>
+        <div class="toggle-content">
+            <div class="table-responsive">
+                <table class="table table-modern">
+                    <thead>
+                        <tr>
+                            <th>개념</th>
+                            <th>정의</th>
+                            <th>실생활 비유</th>
+                            <th style="width: 80px;">중요도</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 모델 구조 관련 개념 -->
+                        <tr class="category-divider">
+                            <td colspan="4" class="category-header">모델 구조 관련 개념</td>
+                        </tr>
+                        <tr>
+                            <td><strong>파라미터</strong></td>
+                            <td>AI 모델이 학습하고 저장하는 수치들의 집합으로, 모델의 지식과 능력을 결정짓는 핵심 요소.</td>
+                            <td>사람의 뇌 시냅스처럼, 더 많은 연결이 더 복잡한 사고를 가능하게 함</td>
+                            <td><span class="badge bg-primary">핵심</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>멀티모달</strong></td>
+                            <td>텍스트, 이미지, 음성 등 여러 형태의 입력을 동시에 처리할 수 있는 AI 모델의 능력입니다. GPT-4o가 대표적.</td>
+                            <td>사람이 보고, 듣고, 읽으면서 동시에 정보를 처리하는 것처럼</td>
+                            <td><span class="badge bg-primary">핵심</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>임베딩</strong></td>
+                            <td>텍스트나 이미지를 AI가 이해할 수 있는 고차원의 숫자 벡터로 변환하는 과정입니다.</td>
+                            <td>도서관의 책 분류 체계, 비슷한 주제는 가까운 위치에 배치</td>
+                            <td><span class="badge bg-info">중요</span></td>
+                        </tr>
+
+                        <!-- 텍스트 처리 관련 개념 -->
+                        <tr class="category-divider">
+                            <td colspan="4" class="category-header">텍스트 처리 관련 개념</td>
+                        </tr>
+                        <tr>
+                            <td><strong>토큰</strong></td>
+                            <td>AI가 처리하는 텍스트의 최소 단위로, 단어나 부분 단어를 토큰으로 분리하여 처리합니다.</td>
+                            <td>단어를 구성하는 자음과 모음, 또는 문장을 구성하는 단어들</td>
+                            <td><span class="badge bg-primary">핵심</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>컨텍스트 윈도우</strong></td>
+                            <td>AI가 한 번에 처리하고 기억할 수 있는 텍스트의 최대 길이입니다.</td>
+                            <td>한 번에 읽고 이해할 수 있는 토큰의 양</td>
+                            <td><span class="badge bg-info">중요</span></td>
+                        </tr>
+
+                        <!-- 생성 제어 관련 개념 -->
+                        <tr class="category-divider">
+                            <td colspan="4" class="category-header">생성 제어 관련 개념</td>
+                        </tr>
+                        <tr>
+                            <td><strong>프롬프트 엔지니어링</strong></td>
+                            <td>AI에게 더 정확하고 원하는 결과를 얻기 위해 입력값을 체계적으로 설계하는 기술입니다.</td>
+                            <td>원하는 결과를 얻기 위해 질문을 정교하게 다듬는 과정</td>
+                            <td><span class="badge bg-primary">핵심</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>스키마(Schema)</strong></td>
+                            <td>AI의 출력 형식을 미리 정의하여 일관된 구조의 응답을 받을 수 있게 하는 틀입니다. JSON, XML 등의 형식으로 지정할 수 있습니다.</td>
+                            <td>요리 레시피처럼, 결과물의 형식과 구조를 미리 정해두는 것</td>
+                            <td><span class="badge bg-primary">핵심</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temperature</strong></td>
+                            <td>AI 응답의 창의성과 무작위성을 조절하는 0~1 사이의 값입니다.</td>
+                            <td>1에 가까울수록 창의적인 답변을 반환환</td>
+                            <td><span class="badge bg-info">중요</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+ 
+    <!-- AI 서비스 목록 섹션 -->
+    <div class="content-card toggleable">
+        <h5 class="mb-2 toggle-head">주요 생성형 AI 서비스 현황</h5>
+        <div class="toggle-content">
+            <div class="table-responsive">
+                <table class="table table-modern">
+                    <thead>
+                      <tr>
+                        <th>분야</th>
+                        <th>서비스명</th>
+                        <th>주요 특징</th>
+                        <th>제공사</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td rowspan="3">텍스트 생성</td>
+                        <td>ChatGPT (GPT-4o)</td>
+                        <td>멀티모달 지원, 실시간 대화형 AI</td>
+                        <td>OpenAI</td>
+                      </tr>
+                      <tr>
+                        <td>Claude 3.7 Sonnet</td>
+                        <td>고급 추론 및 확장 사고 모드 지원</td>
+                        <td>Anthropic</td>
+                      </tr>
+                      <tr>
+                        <td>Gemini 2.5</td>
+                        <td>멀티모달 처리, 구글 생태계 통합</td>
+                        <td>Google DeepMind</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="3">이미지 생성</td>
+                        <td>Imagen 3</td>
+                        <td>고품질 이미지 생성, 빠른 처리 속도</td>
+                        <td>Google</td>
+                      </tr>
+                      <tr>
+                        <td>FLUX Pro 1.1 Ultra</td>
+                        <td>스타일 제어 강화, 높은 사용자 만족도</td>
+                        <td>BlackForestLabs</td>
+                      </tr>
+                      <tr>
+                        <td>Midjourney V7</td>
+                        <td>예술적 이미지 생성, 스타일 다양성</td>
+                        <td>Midjourney</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2">비디오 생성</td>
+                        <td>Veo 2</td>
+                        <td>고품질 비디오 생성, 빠른 렌더링</td>
+                        <td>Google DeepMind</td>
+                      </tr>
+                      <tr>
+                        <td>Runway</td>
+                        <td>AI 기반 영상 생성 및 편집, 실시간 협업</td>
+                        <td>Runway</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2">생산성 도구</td>
+                        <td>Notion AI</td>
+                        <td>문서 요약, 자동화된 콘텐츠 생성</td>
+                        <td>Notion</td>
+                      </tr>
+                      <tr>
+                        <td>Gamma</td>
+                        <td>프레젠테이션 자동 생성, 디자인 지원</td>
+                        <td>Gamma</td>
+                      </tr>
+                      <tr>
+                        <td>생산성 도구</td>
+                        <td>Napkin</td>
+                        <td>아이디어 정리 및 시각화 도구</td>
+                        <td>Napkin</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="4">검색 기능</td>
+                        <td>Perplexity AI</td>
+                        <td>실시간 검색 기반 응답, GPT-4 Turbo 및 Claude 3 통합</td>
+                        <td>Perplexity AI</td>
+                      </tr>
+                      <tr>
+                        <td>Liner</td>
+                        <td>생성형 웹 검색, 개인화된 정보 제공</td>
+                        <td>Liner</td>
+                      </tr>
+                      <tr>
+                        <td>Felo</td>
+                        <td>AI 검색 및 자료 정리, 마인드맵 생성</td>
+                        <td>Sparticle</td>
+                      </tr>
+                      <tr>
+                        <td>Genspark</td>
+                        <td>다중 모델 응답, 무료 사용 가능</td>
+                        <td>Genspark</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+        </div>
+        <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+            <span style="font-size: 1.5rem;">💡</span> <strong>AI 서비스 선택 시 고려사항</strong>
+            <br><br>
+            <ul>
+                <li>사용 목적에 맞는 특화 기능 여부</li>
+                <li>한국어 지원 수준</li>
+                <li>가격 정책 및 사용량 제한</li>
+                <li>데이터 보안 및 프라이버시 정책</li>
+                <li>API 제공 여부 및 통합 가능성</li>
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <!-- 푸터 -->
+    <div class="mt-4 text-center">
+        <a href="/lecture02" class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-right me-2"></i>다음 강의로
+        </a>
+    </div>
+</div>
+
+
+
+<style>
+    /* 기본 테이블 스타일 */
+    .table-modern {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        margin: 1rem 0;
+        padding: 0.8rem;
+    }
+
+    /* 테이블 헤더 스타일 */
+    .table-modern thead th {
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        border-bottom: 2px solid #dee2e6;
+        color: #495057;
+        font-weight: 600;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    /* 테이블 셀 스타일 */
+    .table-modern td {
+        padding: 0.5rem 0.6rem;
+        vertical-align: middle;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 0.9rem;
+    }
+
+    /* 카테고리 구분선 스타일 */
+    .category-divider {
+        border-top: 2px solid #e9ecef;
+        margin-top: 1rem;
+    }
+
+    .category-divider .category-header {
+        background: #f8f9fa;
+        color: #2196F3;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 0.6rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    /* 카테고리 다음 행의 상단 여백 */
+    .category-divider + tr td {
+        padding-top: 0.8rem;
+    }
+
+    /* 카테고리 마지막 행의 하단 여백 */
+    .category-divider:not(:last-child) {
+        margin-bottom: 0.8rem;
+    }
+
+    /* 뱃지 스타일 */
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+        border-radius: 6px;
+    }
+
+    /* 중요도 표시 색상 */
+    .bg-primary {
+        background-color: #2196F3 !important;
+    }
+
+    .bg-info {
+        background-color: #03A9F4 !important;
+    }
+
+    /* 스키마 예시 스타일 */
+    .schema-example {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 2rem;
+        margin: 3rem 0 2rem;
+        border: 1px solid #e9ecef;
+    }
+
+    .schema-example h6 {
+        color: #1976D2;
+        margin-bottom: 1rem;
+    }
+
+    .code-block {
+        background: #2d2d2d;
+        border-radius: 6px;
+        padding: 1rem;
+    }
+
+    .code-block pre {
+        margin: 0;
+        color: #e6e6e6;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* 코드 하이라이팅 */
+    .language-json .string { color: #a8ff60; }
+    .language-json .number { color: #ff9d00; }
+    .language-json .boolean { color: #ff628c; }
+    .language-json .null { color: #ff628c; }
+    .language-json .key { color: #5ccfe6; }
+</style>
+
+<style>
+.content-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background-color: #fff;
+    padding: 0.8rem;
+}
+.topic-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.subtopic-list {
+    list-style-type: none;
+}
+</style>
+
+<script>
+    // 토글 기능 직접 구현
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleHeadings = document.querySelectorAll('.toggleable .toggle-head');
+        
+        toggleHeadings.forEach(heading => {
+            // 초기 상태 설정
+            if(heading.classList.contains('active')) {
+                const content = heading.nextElementSibling;
+                if(content && content.classList.contains('toggle-content')) {
+                    content.style.display = 'block';
+                }
+            }
+            
+            heading.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                
+                if(content && content.classList.contains('toggle-content')) {
+                    if(this.classList.contains('active')) {
+                        content.style.display = 'block';
+                        content.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+</script>

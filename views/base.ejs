@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성형 AI 이해하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <!-- lecture-header 영역 -->
+    <div class="lecture-header">
+        <div class="container">
+            <h1><%= title %></h1>
+            <p class="lead"><%= description %></p>
+        </div>
+    </div>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <%- body %>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-list me-2"></i>강의 목차
+                        </div>
+                        <div class="card-body">
+                            <div class="nav flex-column nav-pills">
+                                <% lectures.forEach(function(lecture) { %>
+                                    <a class="nav-link <%= path === lecture.link ? 'active' : '' %>" 
+                                       href="<%= lecture.link %>">
+                                        <span class="lecture-number"><%= lecture.number %></span>
+                                        <span class="lecture-title"><%= lecture.title %></span>
+                                    </a>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸레젠테이션 모달 추가 -->
+    <div class="modal fade" id="presentationModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white">
+                        <i class="fas fa-graduation-cap me-2"></i>
+                        <span id="modalTitle"></span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="presentation-wrapper">
+                        <div class="presentation-content text-white">
+                            <div id="slideContent"></div>
+                            <div class="presentation-controls mt-4">
+                                <button class="btn btn-outline-light me-2" onclick="prevSlide()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="slideCounter" class="mx-3"></span>
+                                <button class="btn btn-outline-light ms-2" onclick="nextSlide()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 유지 -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 AI Lecture. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    let currentSlide = 1;
+    let totalSlides = 1;
+    let slides = [];
+
+    function initializePresentation(data) {
+        const lectureData = typeof data === 'string' ? JSON.parse(data) : data;
+        const { title, description, mainTopics } = lectureData;
+        
+        // 타이틀 슬라이드 준비
+        slides = [{
+            type: 'title',
+            content: `<h1>${title}</h1><h3>${description}</h3>`
+        }];
+        
+        // 주제별 슬라이드 준비
+        mainTopics.forEach(topic => {
+            slides.push({
+                type: 'content',
+                content: `
+                    <h2>${topic.title}</h2>
+                    <ul>
+                        ${topic.subTopics.map(sub => `<li>${sub}</li>`).join('')}
+                    </ul>
+                `
+            });
+        });
+        
+        totalSlides = slides.length;
+        currentSlide = 1;
+        showSlide(1);
+        
+        document.getElementById('modalTitle').textContent = title;
+    }
+
+    function showSlide(n) {
+        currentSlide = n;
+        if (currentSlide > totalSlides) currentSlide = 1;
+        if (currentSlide < 1) currentSlide = totalSlides;
+        
+        const slideContent = document.getElementById('slideContent');
+        slideContent.innerHTML = `<div class="slide active">${slides[currentSlide-1].content}</div>`;
+        
+        document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    </script>
+</body>
+</html> 

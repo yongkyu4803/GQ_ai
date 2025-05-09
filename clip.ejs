@@ -1,0 +1,592 @@
+<!-- 가이드라인 버튼 추가 
+        
+        <div class="conversation">
+            <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+            SMR이 한국원자력산업의 미래라는 주제로 15분 내외의 키노트 스피티치를 해야 해.
+            이 주제를 정확하게 진행하기 위해서 필요한 질문을 너의 의문점이 해소될 때까지 해줘</p>
+                
+            <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+            소형모듈원자로(SMR)가 한국 원자력산업의 미래라는 주제로 15분 내외의 키노트 스피치를 준비하기 위해, 다음과 같은 질문들을 고려해보면 좋겠습니다:</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <ol class="mb-4">
+                    <li class="mb-3">
+                        <strong>SMR의 정의와 특징은 무엇인가요?</strong>
+                        <p class="mt-2">SMR이 기존 대형 원자로와 비교하여 어떤 점에서 차별화되는지, 특히 크기, 출력, 안전성, 경제성 측면에서의 특징을 살펴보는 것이 중요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>글로벌 SMR 시장의 현황과 전망은 어떻게 되나요?</strong>
+                        <p class="mt-2">현재 전 세계적으로 SMR 개발이 어떻게 진행되고 있으며, 주요 국가들의 개발 현황과 향후 시장 성장 전망을 파악하는 것이 필요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>한국의 SMR 개발 현황과 목표는 무엇인가요?</strong>
+                        <p class="mt-2">한국이 추진 중인 혁신형 SMR(i-SMR)의 개발 단계, 목표 시점, 그리고 이를 통해 달성하고자 하는 바를 이해하는 것이 중요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR이 한국 원자력산업에 미치는 영향은 무엇인가요?</strong>
+                        <p class="mt-2">SMR 도입이 한국의 에너지 정책, 산업 경쟁력, 수출 시장 등에 어떤 긍정적 영향을 미칠 수 있는지 분석해보는 것이 필요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR 개발 및 도입에 따른 도전 과제는 무엇인가요?</strong>
+                        <p class="mt-2">기술적, 규제적, 경제적 측면에서 SMR 개발과 상용화 과정에서 예상되는 어려움과 이를 극복하기 위한 전략을 고려해야 합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR의 안전성과 환경적 이점은 무엇인가요?</strong>
+                        <p class="mt-2">SMR이 기존 원자로에 비해 안전성에서 어떤 개선이 이루어졌는지, 그리고 환경적으로 어떤 이점을 제공하는지 살펴보는 것이 중요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR 관련 국내외 주요 기업들의 동향은 어떻게 되나요?</strong>
+                        <p class="mt-2">SMR 개발에 참여하고 있는 주요 기업들의 활동과 협력 현황을 파악하여 산업계의 움직임을 이해하는 것이 필요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>정부의 지원 정책과 규제 현황은 어떻게 되나요?</strong>
+                        <p class="mt-2">한국 정부의 SMR 관련 지원 정책, 규제 체계, 그리고 인허가 절차 등에 대한 정보를 수집하여 정책적 환경을 이해해야 합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR의 경제성 분석은 어떻게 이루어지나요?</strong>
+                        <p class="mt-2">SMR의 건설 비용, 운영 비용, 그리고 경제적 수익성에 대한 분석을 통해 투자 가치와 경제적 타당성을 평가하는 것이 중요합니다.</p>
+                    </li>
+                    <li class="mb-3">
+                        <strong>SMR 도입에 대한 사회적 수용성은 어떤가요?</strong>
+                        <p class="mt-2">SMR에 대한 국민들의 인식, 수용성, 그리고 이를 높이기 위한 홍보 및 교육 방안 등을 고려해야 합니다.</p>
+                    </li>
+                </ol>
+                
+                <p class="mt-3">이러한 질문들을 통해 SMR이 한국 원자력산업의 미래에 어떤 역할을 할 수 있는지에 
+                대한 종합적인 이해를 제공할 수 있을 것입니다.</p>
+            </div>
+            <button type="button" class="btn btn-outline-danger btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#guidelineModal">
+                <i class="fas fa-book me-2"></i>참고, Claude 답변
+            </button>
+            <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+             질문이 너무 많아. 사회적 수용성을 주요 주제로 해서 질문을 5개로 좁혀줘</p>
+             
+             <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+             소형모듈원자로(SMR)의 사회적 수용성을 주요 주제로 다루기 위해, 다음과 같은 다섯 가지 핵심 질문을 고려해보면 좋겠습니다:</p>
+             
+             <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                 <ol class="mb-4">
+                     <li class="mb-3">
+                         <strong>SMR에 대한 일반 대중의 인식은 어떠한가요?</strong>
+                         <p class="mt-2">일반 국민들이 SMR에 대해 얼마나 알고 있으며, 어떤 감정을 가지고 있는지 파악하는 것이 중요합니다.</p>
+                     </li>
+                     <li class="mb-3">
+                         <strong>SMR 도입에 대한 지역 주민들의 반응은 어떤가요?</strong>
+                         <p class="mt-2">SMR 설치 예정 지역 주민들의 수용성 및 우려 사항을 조사하여, 지역 사회와의 소통 방안을 마련해야 합니다.</p>
+                     </li>
+                     <li class="mb-3">
+                         <strong>SMR의 안전성과 환경 영향에 대한 사회적 신뢰 수준은 어느 정도인가요?</strong>
+                         <p class="mt-2">SMR의 기술적 안전성과 환경적 영향을 대중이 얼마나 신뢰하는지 평가하여, 신뢰 구축을 위한 전략을 수립해야 합니다.</p>
+                     </li>
+                     <li class="mb-3">
+                         <strong>SMR 관련 정책 결정 과정에서의 시민 참여는 어떻게 이루어지고 있나요?</strong>
+                         <p class="mt-2">SMR 도입과 관련된 정책 결정 시 시민들의 의견 수렴과 참여가 어떻게 진행되고 있는지 살펴보는 것이 필요합니다.</p>
+                     </li>
+                     <li class="mb-3">
+                         <strong>SMR의 사회적 수용성을 높이기 위한 교육 및 홍보 전략은 무엇인가요?</strong>
+                         <p class="mt-2">대중의 이해와 지지를 얻기 위해 어떤 교육 프로그램과 홍보 활동이 계획되고 있는지 검토해야 합니다.</p>
+                     </li>
+                 </ol>
+                 
+                 <p class="mt-3">이러한 질문들을 통해 SMR의 사회적 수용성을 심층적으로 분석하고, 성공적인 도입을 위한 방안을 모색할 수 있을 것입니다.</p>
+             </div>
+             
+             <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+             1. SMR에 대한 일반 대중의 인식은 어떠한가요?<br><br>
+             - 일반 국민들이 SMR에 대해 얼마나 알고 있으며, 어떤 감정을 가지고 있는지 파악하는 것이 중요합니다.<br><br>
+             이 질문에 대해서 네가 자료 조사를 해서 알려줘, 최근 5년내 데이터만 유효해</p>
+             
+             <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+             최근 5년 내에 소형모듈원자로(SMR)에 대한 일반 대중의 인식에 대한 구체적인 설문조사나 통계 자료는 제한적입니다. 
+             그러나 SMR 기술에 대한 관심이 증가하고 있으며, 정부와 산업계에서 이를 미래 에너지 솔루션으로 적극적으로 홍보하고 있다는 점을 
+             고려하면, 대중의 인식도 점차 높아지고 있을 것으로 추정됩니다.</p>
+             
+             <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                 <h6><strong>SMR에 대한 대중의 인식 추정:</strong></h6>
+                 <ul class="mb-4">
+                     <li class="mb-2">
+                         <strong>기술적 관심 증가:</strong> 정부와 기업들이 SMR 개발에 적극적으로 참여하고 있으며, 미디어에서도 관련 소식을 
+                         다루고 있어 대중의 관심이 높아지고 있습니다. 
+                         <a href="https://www.knpnews.com/news/articleView.html?idxno=30648" target="_blank">[한국원자력신문]</a>
+                     </li>
+                     <li class="mb-2">
+                         <strong>안전성과 환경성 강조:</strong> SMR이 기존 원자력 발전소보다 안전하고 친환경적이라는 점이 부각되면서 긍정적인 
+                         인식이 형성되고 있습니다. 
+                         <a href="https://m.blog.naver.com/commetbh/223635833056" target="_blank">[네이버 블로그]</a>
+                     </li>
+                     <li class="mb-2">
+                         <strong>정보의 제한:</strong> 그러나 일반 국민들이 SMR에 대해 상세히 알고 있는지는 미지수이며, 구체적인 정보 제공과 
+                         교육이 필요할 것으로 보입니다.
+                     </li>
+                 </ul>
+                 
+                 <h6><strong>참고 자료:</strong></h6>
+                 <ul>
+                     <li><a href="https://www.ismr.or.kr/sub/smr" target="_blank">혁신형 SMR 기술개발사업단</a></li>
+                     <li><a href="https://news.mt.co.kr/mtview.php?no=2023070315434991530" target="_blank">소형모듈원자로(SMR)의 미래 - 머니투데이</a></li>
+                 </ul>
+                 
+                 <p class="mt-3">이러한 자료들을 통해 SMR에 대한 대중의 인식을 높이고, 긍정적인 감정을 형성하기 위한 노력이 필요합니다.</p>
+             </div>
+            
+            <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+            'SMR의 사회적 수용성을 중심으로 하는 원자력의 미래'라는 주제로 진행할 키노트 스피치를 위해서 추가로 살펴봐야 할 이슈나 주제가 있을까?</p>
+            
+            <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+            네, 다음과 같은 추가 이슈들을 고려해볼 수 있습니다:</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <h5><strong>추가 고려 사항</strong></h5>
+                
+                <h6 class="mt-4"><strong>1. 지역사회와의 관계 구축</strong></h6>
+                <ul>
+                    <li>SMR 설치 예정 지역의 주민 수용성 현황</li>
+                    <li>지역 상생 프로그램 개발 및 운영 방안</li>
+                    <li>지역 경제 활성화 효과 분석</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>2. 세대별 인식 차이</strong></h6>
+                <ul>
+                    <li>MZ세대의 원자력/SMR 인식 조사</li>
+                    <li>세대별 맞춤형 커뮤니케이션 전략</li>
+                    <li>미래세대 교육 프로그램 개발</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>3. 국제 사회의 시각</strong></h6>
+                <ul>
+                    <li>주요국의 SMR 수용성 비교 분석</li>
+                    <li>국제 환경단체들의 입장과 대응 방안</li>
+                    <li>글로벌 에너지 전환 정책에서의 위치</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>4. 위기관리 및 소통 전략</strong></h6>
+                <ul>
+                    <li>잠재적 위기 상황 시나리오 개발</li>
+                    <li>투명한 정보 공개 시스템 구축</li>
+                    <li>미디어 대응 전략 수립</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>5. 경제적 파급효과 분석</strong></h6>
+                <ul>
+                    <li>일자리 창출 효과</li>
+                    <li>연관 산업 발전 가능성</li>
+                    <li>지역 경제 활성화 방안</li>
+                </ul>
+                
+                <p class="mt-4">이러한 추가 이슈들을 포함하여 발표를 구성하면, SMR의 사회적 수용성에 대해 더욱 포괄적이고 
+                심도 있는 논의가 가능할 것입니다. 특히 다양한 이해관계자들의 관점을 균형있게 다루는 것이 중요합니다.</p>
+            </div>
+
+            <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+            해외 SMR 추진 현황이나, 사회적 수용성 확보를 위한 좋은 사례가 있는지 검토해줘</p>
+            
+            <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+            네, 해외의 주요 성공 사례들을 살펴보겠습니다:</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <h5><strong>해외 SMR 추진 성공 사례</strong></h5>
+                
+                <h6 class="mt-4"><strong>1. 미국 NuScale Power의 접근 방식</strong></h6>
+                <ul>
+                    <li><strong>지역사회 참여:</strong> 아이다호 국립연구소 부지 활용으로 지역 수용성 확보</li>
+                    <li><strong>투명성 강화:</strong> 설계 인증 과정의 모든 단계를 공개적으로 진행</li>
+                    <li><strong>경제적 혜택:</strong> 지역 일자리 창출 계획을 구체적으로 제시</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>2. 캐나다의 계적 접근</strong></h6>
+                <ul>
+                    <li><strong>원주민 참여:</strong> First Nations 커뮤니티와의 적극적인 협력 관계 구축</li>
+                    <li><strong>교육 프로그램:</strong> 지역 대학과 연계한 인력 양성 프로그램 운영</li>
+                    <li><strong>규제 혁신:</strong> SMR 특성에 맞는 새로운 규제 체계 도입</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>3. 영국 Rolls-Royce의 전략</strong></h6>
+                <ul>
+                    <li><strong>브랜드 신뢰도:</strong> 기존 기업 이미지를 활용한 신뢰 구축</li>
+                    <li><strong>산업 생태계:</strong> 지역 공급망 구축을 통한 경제적 이익 공유</li>
+                    <li><strong>미디어 전략:</strong> 적극적인 언론 소통으로 긍정적 이미지 형성</li>
+                </ul>
+                
+                <h6 class="mt-4"><strong>주요 시사점</strong></h6>
+                <ul>
+                    <li><strong>조기 참여:</strong> 계획 단계부터 지역사회 참여 보장</li>
+                    <li><strong>경제적 동기:</strong> 구체적인 지역 발전 계획 제시</li>
+                    <li><strong>정보 공유:</strong> 투명한 정보 공개와 지속적인 소통</li>
+                    <li><strong>단계적 접근:</strong> 점진적이고 체계적인 수용성 확보 전략</li>
+                </ul>
+                
+                <p class="mt-4">이러한 해외 사례들은 한국의 SMR 사회적 수용성 확보 전략 수립에 있어 중요한 참고가 될 수 있습니다. 
+                특히 지역사회와의 협력, 투명한 정보 공개, 경제적 이익 공유 등이 핵심 성공 요인으로 파악됩니다.</p>
+            </div>
+
+            <p><code style="background-color: #fce4ec; padding: 2px 6px; border-radius: 4px; color: #c2185b;">User</code> 
+            지금까지 논의된 내용을 바탕으로 15분 분량의 키노트 스피치 목차를 만들어줘. 주제별로 할당 시간도 포함해줘.</p>
+            
+            <p><code style="background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; color: #0d47a1;">ChatGPT</code> 
+            네, 15분 키노트 스피치를 위한 상세 목차를 구성해보았습니다:</p>
+            
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <h5><strong>SMR의 사회적 수용성을 중심으로 하는 원자력의 미래</strong></h5>
+                <p class="text-muted">키노트 스피치 구성 (총 15분)</p>
+                
+                <div class="mt-4">
+                    <h6><strong>1. 서론 (2분)</strong></h6>
+                    <ul>
+                        <li>SMR의 정의와 필요성</li>
+                        <li>발표 주제의 중요성과 구성 소개</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><strong>2. SMR의 현재와 미래 (3분)</strong></h6>
+                    <ul>
+                        <li>국내 SMR 개발 현황과 목표</li>
+                        <li>정부의 정책적 지원과 규제 현황</li>
+                        <li>글로벌 시장에서의 위치와 전망</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><strong>3. 사회적 수용성의 현주소 (3분)</strong></h6>
+                    <ul>
+                        <li>일반 대중의 인식 수준</li>
+                        <li>세대별 인식 차이와 특징</li>
+                        <li>지역사회의 우려사항과 기대</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><strong>4. 해외 성공 사례 분석 (3분)</strong></h6>
+                    <ul>
+                        <li>미국 NuScale Power의 지역사회 참여 모델</li>
+                        <li>캐나다의 단계적 접근 방식</li>
+                        <li>영국 Rolls-Royce의 신뢰 구축 전략</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><strong>5. 한국형 수용성 확보 전략 (3분)</strong></h6>
+                    <ul>
+                        <li>투명한 정보 공개와 소통 체계</li>
+                        <li>지역사회 상생 방안</li>
+                        <li>경제적 파급효과 극대화</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><strong>6. 결론 (1분)</strong></h6>
+                    <ul>
+                        <li>주요 시사점 정리</li>
+                        <li>미래 비전 제시</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4 p-3" style="background-color: #f8f9fa; border-radius: 5px;">
+                    <h6><strong>[참고] 질의응답 준비 사항</strong></h6>
+                    <ul class="mb-0">
+                        <li>안전성 관련 질문</li>
+                        <li>경제성 관련 질문</li>
+                        <li>환경 영향 관련 질문</li>
+                    </ul>
+                </div>
+                
+                <p class="mt-4">이 구성은 청중의 이해도를 고려한 단계적 접근, 해외 사례를 통한 설득력 강화, 
+                그리고 실질적인 전략 제시로 마무리되는 흐름을 가지고 있습니다. 각 섹션은 핵심 메시지를 전달하면서도 
+                시간 제약을 고려했습니다.</p>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#speechModal">
+                    <i class="fas fa-file-alt me-2"></i>전체 연설문 보기
+                </button>
+            </div>
+            
+            <div class="mt-4">
+                <h6><strong>예상 질의응답 준비</strong></h6>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Q1. SMR의 안전성은 기존 원전과 비교하여 어느 정도 향상되었나요?</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Q2. SMR 건설비용은 어느 정도이며, 경제성은 어떻게 확보할 수 있나요?</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Q3. 방사성폐기물 처리는 어떻게 할 계획인가요?</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+
+
+        <!-- 모달 추가 -->
+<div class="modal fade" id="guidelineModal" tabindex="-1" aria-labelledby="guidelineModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="guidelineModalLabel">SMR: 한국 원자력산업의 미래 키노트 스피치 준비 가이드</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="guideline-content">
+                    <h5>스피치 구성을 위한 핵심 탐구 질문들</h5>
+                    
+                    <div class="section mb-4">
+                        <h6>1. SMR의 정의와 특징</h6>
+                        <ul>
+                            <li><strong>정의:</strong> 소형모듈원자로(Small Modular Reactor)</li>
+                            <li><strong>핵심 차별화 요소:</strong>
+                                <ul>
+                                    <li>크기: 기존 대형 원자로 대비 현저히 작은 규모</li>
+                                    <li>출력: 50~300MW 수준의 소규모 발전</li>
+                                    <li>안전성: 수동적 안전시스템 강화</li>
+                                    <li>경제성: 모듈형 설계로 건설 및 운영 비용 절감</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>2. 글로벌 SMR 시장 현황과 전망</h6>
+                        <ul>
+                            <li><strong>주요 개발 국가:</strong>
+                                <ul>
+                                    <li>미국</li>
+                                    <li>캐나다</li>
+                                    <li>영국</li>
+                                    <li>러시아</li>
+                                    <li>중국</li>
+                                </ul>
+                            </li>
+                            <li><strong>시장 전망:</strong>
+                                <ul>
+                                    <li>2030년까지 글로벌 SMR 시장 규모 급성장 예상</li>
+                                    <li>클린에너지 전환의 핵심 기술로 부상</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>3. 한국의 SMR 개발 현황</h6>
+                        <ul>
+                            <li><strong>혁신형 SMR(i-SMR) 프로젝트:</strong>
+                                <ul>
+                                    <li>개발 단계: 핵심 기술 연구 및 실증</li>
+                                    <li>목표 시점: 2030년 상용화</li>
+                                    <li>주요 개발 주체: 한국원자력연구원, 한전 등</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>4. SMR의 한국 원자력산업 영향</h6>
+                        <ul>
+                            <li><strong>에너지 정책:</strong>
+                                <ul>
+                                    <li>탄소중립 목표 달성 지원</li>
+                                    <li>분산형 에너지 시스템 구축</li>
+                                </ul>
+                            </li>
+                            <li><strong>산업 경쟁력:</strong>
+                                <ul>
+                                    <li>원자력 기술 혁신 선도</li>
+                                    <li>글로벌 수출 시장 개척</li>
+                                </ul>
+                            </li>
+                            <li><strong>경제적 파급효과:</strong>
+                                <ul>
+                                    <li>새로운 산업 생태계 조성</li>
+                                    <li>고부가가치 일자리 창출</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>5. SMR 개발의 주요 도전 과제</h6>
+                        <ul>
+                            <li><strong>기술적 과제:</strong>
+                                <ul>
+                                    <li>안전성 검증</li>
+                                    <li>핵심 부품 국산화</li>
+                                </ul>
+                            </li>
+                            <li><strong>규제적 과제:</strong>
+                                <ul>
+                                    <li>인허가 체계 정비</li>
+                                    <li>국제 안전 기준 충족</li>
+                                </ul>
+                            </li>
+                            <li><strong>경제적 과제:</strong>
+                                <ul>
+                                    <li>초기 투자비용 확보</li>
+                                    <li>경제성 입증</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>6. SMR의 안전성 및 환경적 이점</h6>
+                        <ul>
+                            <li><strong>안전성 특징:</strong>
+                                <ul>
+                                    <li>수동적 냉각 시스템</li>
+                                    <li>방사능 유출 최소화 설계</li>
+                                    <li>자연재해 대응력 향상</li>
+                                </ul>
+                            </li>
+                            <li><strong>환경적 이점:</strong>
+                                <ul>
+                                    <li>탄소배출 최소화</li>
+                                    <li>재생에너지 보완</li>
+                                    <li>에너지 전환에 기여</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>7. 국내외 주요 기업 동향</h6>
+                        <ul>
+                            <li><strong>글로벌 기업:</strong>
+                                <ul>
+                                    <li>NuScale (미국)</li>
+                                    <li>Rolls-Royce (영국)</li>
+                                    <li>OKBM Afrikantov (러시아)</li>
+                                </ul>
+                            </li>
+                            <li><strong>한국 기업:</strong>
+                                <ul>
+                                    <li>한전</li>
+                                    <li>두산에너빌리티</li>
+                                    <li>현대중공업</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>8. 정부 지원 정책 및 규제</h6>
+                        <ul>
+                            <li><strong>지원 정책:</strong>
+                                <ul>
+                                    <li>R&D 투자 확대</li>
+                                    <li>규제 프레임워크 개선</li>
+                                    <li>국제 협력 강화</li>
+                                </ul>
+                            </li>
+                            <li><strong>인허가 절차:</strong>
+                                <ul>
+                                    <li>안전성 평가 기준 마련</li>
+                                    <li>단계별 인증 체계 구축</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>9. SMR의 경제성 분석</h6>
+                        <ul>
+                            <li><strong>비용 구조:</strong>
+                                <ul>
+                                    <li>건설비용 절감</li>
+                                    <li>모듈형 설계로 효율성 증대</li>
+                                </ul>
+                            </li>
+                            <li><strong>투자 매력도:</strong>
+                                <ul>
+                                    <li>낮은 초기 투자 부담</li>
+                                    <li>유연한 확장성</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section mb-4">
+                        <h6>10. 사회적 수용성 제고 방안</h6>
+                        <ul>
+                            <li><strong>대국민 소통:</strong>
+                                <ul>
+                                    <li>안전성 홍보</li>
+                                    <li>교육 프로그램 운영</li>
+                                </ul>
+                            </li>
+                            <li><strong>투명성 확보:</strong>
+                                <ul>
+                                    <li>정보 공개</li>
+                                    <li>지역사회 참여 확대</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 연설문 모달 -->
+<div class="modal fade" id="speechModal" tabindex="-1" aria-labelledby="speechModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="speechModalLabel">SMR의 사회적 수용성을 중심으로 하는 원자력의 미래</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="speech-content">
+                    <h5>키노트 스피치 원고</h5>
+                    
+                    <div class="section mb-4">
+                        <h6>1. 서론 (2분)</h6>
+                        <p>"안녕하십니까? 오늘 '소형모듈원자로의 사회적 수용성'이라는 주제로 말씀드리게 된 [발표자 이름]입니다.</p>
+                        <p>최근 원자력 발전은 탄소중립 달성을 위한 현실적 대안으로 재조명받고 있습니다. 특히 소형모듈원자로(이하 SMR)는 기존 대형 원전의 한계를 극복할 수 있는 차세대 원자력 기술로 주목받고 있습니다.</p>
+                        <p>SMR은 출력 300MW 이하의 소형 원자로를 공장에서 모듈 형태로 제작하여 현장에서 조립하는 방식을 채택하고 있습니다. 이는 건설 기간 단축과 비용 절감이라는 경제성과 함께, 안전성 향상이라는 기술적 진보를 동시에 달성할 수 있는 혁신적인 접근법입니다.</p>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>2. SMR의 현재와 미래 (3분)</h6>
+                        <p>우리나라는 '한국형 혁신 소형모듈원자로(i-SMR)' 개발을 통해 2028년 표준설계 인가 획득을 목표로 하고 있습니다. 산업통상자원부는 올해 초 'SMR 기술개발 혁신전략'을 발표하며, 2030년까지 약 4,000억원의 연구개발 예산을 투입하기로 결정했습니다.</p>
+                        <p>특히 주목할 만한 점은 정부의 전폭적인 지원 의지입니다. 규제혁신을 통한 인허가 절차 개선, 수출 금융 지원 확대, 전문인력 양성 등 종합적인 지원체계를 구축하고 있습니다.</p>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>3. 사회적 수용성의 현주소 (3분)</h6>
+                        <p>그러나 이러한 기술적, 정책적 진전에도 불구하고 가장 큰 과제는 사회적 수용성 확보입니다. 후쿠시마 사고 이후 원자력에 대한 국민적 우려가 여전히 존재하는 상황에서, SMR이 어떻게 이러한 인식을 개선할 수 있을지가 관건입니다.</p>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>4. 해외 성공 사례 분석 (3분)</h6>
+                        <p>해외 선진국들의 SMR 도입 사례는 우리에게 중요한 시사점을 제공합니다.</p>
+                        <p>미국의 경우, 뉴스케일파워(NuScale Power)사가 아이다호 국립연구소 부지를 활용하여 성공적으로 지역사회의 지지를 확보했습니다. 이들은 '지역사회 자문위원회'를 구성하여 프로젝트의 모든 단계에서 주민들의 의견을 수렴했고, 지역 일자리 창출 계획을 구체적으로 제시하여 신뢰를 구축했습니다.</p>
+                        <p>캐나다의 사례는 더욱 주목할 만합니다. 온타리오주 정부는 원주민 공동체인 퍼스트 네이션스(First Nations)와의 적극적인 협력을 통해 SMR 실증사업을 추진하고 있습니다. 특히 지역 대학과 연계한 '원자력 기술 인력양성 프로그램'은 지역사회의 참여를 이끌어내는 좋은 본보기가 되고 있습니다.</p>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>5. 한국형 수용성 확보 전략 (3분)</h6>
+                        <p>이러한 해외 사례를 참고하여, 우리나라 실정에 맞는 사회적 수용성 확보 전략을 다음과 같이 제안하고자 합니다.</p>
+                        <p>첫째, '열린 소통 체계' 구축입니다. SMR 안전성 정보 공개 플랫폼을 구축하여 실시간으로 안전 관련 정보를 투명하게 공개하고, 시민참여형 모니터링 시스템을 도입해야 합니다.</p>
+                        <p>둘째, '지역 상생 방안'입니다. SMR 클러스터 조성을 통해 관련 기업 유치, 연구소 설립, 교육 인프라 구축 등 지역발전의 새로운 성장동력으로 활용할 수 있습니다.</p>
+                        <p>셋째, '경제적 파급효과의 공정한 분배'입니다. 발전 수익의 일정 부분을 지역발전기금으로 환원하고, 지역주민 우선 채용, 지역기업 육성 등 실질적인 혜택이 지역사회에 돌아가도록 해야 합니다.</p>
+                    </div>
+                    
+                    <div class="section mb-4">
+                        <h6>6. 결론 (1분)</h6>
+                        <p>SMR은 단순한 에너지 기술의 진보를 넘어, 우리 사회의 지속가능한 발전을 위한 새로운 패러다임을 제시합니다. 그러나 이러한 혁신이 성공하기 위해서는 기술적 완성도 못지않게 사회적 합의가 중요합니다.</p>
+                        <p>앞서 살펴본 전략들이 성공적으로 실행된다면, SMR은 우리나라가 글로벌 원자력 산업을 선도하는 새로운 성장동력이 될 것입니다. 더불어 지역사회와 상생하는 혁신 기술의 모범 사례로 자리매김할 수 있을 것입니다.</p>
+                        <p>경청해 주셔서 감사합니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary" onclick="window.print()">인쇄하기</button>
+            </div>
+        </div>
+    </div>
+</div>

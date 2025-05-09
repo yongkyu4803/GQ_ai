@@ -1,0 +1,314 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture07').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture07")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">
+    <h4><i class="fas fa-edit me-2 mb-3"></i>생성형 AI로 일하기 - '가혹한 글 수정'</h4>
+
+    <div class="content">
+        <!-- 개요 -->
+        <div class="overview-section">
+            <h5 class="overview-title">
+                <i class="fas fa-lightbulb me-2"></i>Overview
+            </h5>
+            <div class="overview-content">
+                <p>ChatGPT의 뛰어난 글쓰기 능력은 이미 널리 입증되었습니다. 하지만 AI가 생성하는 콘텐츠에는 
+                   종종 독창성과 날카로움이 부족한 것이 사실입니다.</p>
+                <p>이번 강의에서는 '가혹한 글쓰기(Harsh Review)' 기법을 통해 AI의 비판적 분석 능력을 활용하여, 
+                   평범한 글을 더욱 깊이 있고 설득력 있는 콘텐츠로 발전시키는 방법을 살펴보겠습니다.</p>
+            </div>
+        </div>
+
+        <!-- 
+        <div class="process-step mt-4">
+            <h6><i class="fas fa-list-ol me-2"></i>프롬프팅 진행 순서</h6>
+            <div class="card">
+                <div class="card-body p-3">
+                    <ol class="workflow-list mb-0">
+                        <li class="workflow-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <strong>역할 부여 (워밍업)</strong>
+                                <small class="text-muted d-block">"너는 디지털전환을 오랫동안 연구한 학자이자, 칼럼니스트의 역할을 해줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <strong>원본 글에 대한 가혹한 비판 요청</strong>
+                                <small class="text-muted d-block">"아래 칼럼 글에 대한 의견을, 가혹할 만큼 비판적인 관점에서 제시해줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <strong>비판 내용을 표로 정리</strong>
+                                <small class="text-muted d-block">"수정 의견을 제시해 주되, 우선 수정의견을 표로 만들어줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <strong>문단별 비교 요청</strong>
+                                <small class="text-muted d-block">"한문단씩 끊어서 원본과 수정본을 표로 만들어줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <strong>분량 비교 및 조정</strong>
+                                <small class="text-muted d-block">"원본과 수정본의 분량을 비교해서 표로 만들어줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">6</span>
+                            <div class="step-content">
+                                <strong>수정본에 대한 재비판</strong>
+                                <small class="text-muted d-block">"수정본에 대한 '가혹한 비판'을 해줘"</small>
+                            </div>
+                        </li>
+                        <li class="workflow-item">
+                            <span class="step-number">7</span>
+                            <div class="step-content">
+                                <strong>재비판을 반영한 최종 수정</strong>
+                                <small class="text-muted d-block">"가혹한 비판을 반영해서 최종 수정본을 작성해줘"</small>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+프롬프팅 진행 순서 -->
+        <!-- 프로세스의 특징 -->
+        <div class="alert alert-light mt-4" role="alert" style="border-left: 5px solid #f8c51c;">
+            <h5><i class="fas fa-star me-2"></i>프로세스의 특징</h5>
+            <ul>
+                <li>연속적인 대화형 프롬프팅을 통한 점진적 개선</li>
+                <li>각 단계마다 더욱 비판적이고 깊이 있는 분석 가능</li>
+                <li>원문의 의도를 해치지 않는 선에서 선택적 수용 가능</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-10 text-center">
+        <a href="/lecture06" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+        <a href="/lecture08" class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-right me-2"></i>다음 강의
+        </a>
+    </div>
+
+</div>
+
+<style>
+.content-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(45deg, #2196F3, #1976D2);
+    color: white;
+    border-bottom: none;
+    padding: 1rem 1.5rem;
+}
+
+.process-step {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.sample-text {
+    margin: 1rem 0 1rem 1rem;
+    padding: 1.5rem;
+    border-left: 4px solid #2196F3;
+    background-color: #f8f9fa;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+}
+
+.sample-text:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+
+
+.full-text-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    padding: 1rem;
+}
+
+h6 {
+    color: #1976D2;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.fas {
+    color: inherit;
+}
+
+.table-responsive {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border-bottom: 2px solid #dee2e6;
+}
+
+.workflow-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.workflow-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.workflow-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 35px;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    margin-right: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-content {
+    flex: 1;
+    padding-bottom: 0.5rem;
+}
+
+.step-content strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #1976D2;
+}
+
+.step-content small {
+    font-size: 0.875rem;
+    background: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.overview-section {
+    background: linear-gradient(145deg, #e3f2fd, #f8f9fa);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border-left: 5px solid #2196F3;
+}
+
+.overview-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+}
+
+.overview-content {
+    color: #4a5568;
+    line-height: 1.8;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.overview-content p {
+    margin-bottom: 1rem;
+}
+
+.overview-content p:last-child {
+    margin-bottom: 0;
+}
+</style>

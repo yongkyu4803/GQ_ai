@@ -1,0 +1,192 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture09').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 주석 처리
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture09")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">    
+    <div class="row mt-4">
+        <!-- 프로젝트 카드 1 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 project-card">
+                <img src="/images/bill-analysis_001.png" class="card-img-top" alt="AI 문서 분석기">
+                <div class="card-body">
+                    <div class="tech-badges mb-2">
+                        <span class="badge bg-warning text-dark">Streamlit</span>
+                        <span class="badge bg-success">GPT-4.1</span>
+                    </div>
+                    <h5 class="card-title">국회회의록 분석기</h5>
+                    <p class="card-text">국회 회의록을 업로드하면 AI가 문서의 내용을 분석하고 
+                    핵심 내용을 요약해주는 웹 애플리케이션입니다. 문서 유형별 맞춤 분석과 주요 키워드 추출 기능을 
+                    제공하며, 요약 결과는 마크다운 형식으로 내보낼 수 있습니다.</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://yongkyu4803-bill-test-ai-app-ommrml.streamlit.app/" target="_blank" class="btn btn-outline-secondary btn-sm"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg> 바로가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 프로젝트 카드 2 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 project-card">
+                <img src="/images/009_exnews.png" class="card-img-top" alt="AI 뉴스 검색 애플리케이션">
+                <div class="card-body">
+                    <div class="tech-badges mb-2">
+                        <span class="badge bg-primary">Next.js</span>
+                        <span class="badge bg-success">Claude</span>
+                        <span class="badge bg-secondary">Supabase</span>
+                    </div>
+                    <h5 class="card-title">단독 및 랭킹뉴스 보기 & 국회앞 식당정보</h5>
+                    <p class="card-text">네이버 뉴스 API를 활용한 '단독뉴스' 보기와 웹크롤링 기반의 '랭킹뉴스'를 볼 수 있습니다. 
+                    단독뉴스는 네이버 뉴스 API를 통한 검색, 필터링을 통해서 뉴스를 검색하고, 클로드가 뉴스 메타정보를 기반으로 카테고리 분류를 합니다. 
+                    PWA(Progressive Web App）기반으로 모바일 최적화가 되어 있습니다。 국회 앞 식당 정보도 제공합니다。</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://exnews-next.vercel.app/" target="_blank" class="btn btn-outline-secondary btn-sm"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg> 바로가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- 프로젝트 카드 3 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 project-card">
+                <img src="/images/009_bill-analysis_002.png" class="card-img-top" alt="AI 회의 어시스턴트">
+                <div class="card-body">
+                    <div class="tech-badges mb-2">
+                        <span class="badge bg-primary">javascript</span>
+                        <span class="badge bg-success">OpenAI API</span>
+                        <span class="badge bg-secondary">supabase</span>
+                    </div>
+                    <h5 class="card-title">발의 법안 분석 플랫폼 ｖ.１</h5>
+                    <p class="card-text">국회의 발의된 법안과 정부 추진 법률안을 분석합니다. 
+                    검토보고서 기반의 분석으로 '일반' 분석과 '심층' 분석을 제공합니다. 
+                    발의 법률안이 기업에 어떤 영향을 미치는지 분석합니다.</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://bill-analysis-nu.vercel.app/" target="_blank" class="btn btn-outline-secondary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                            바로가기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 프로젝트 카드 4 -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 project-card">
+                <img src="/images/009_newslens.png" class="card-img-top" alt="AI 콘텐츠 생성기">
+                <div class="card-body">
+                    <div class="tech-badges mb-2">
+                        <span class="badge bg-info">Django</span>
+                        <span class="badge bg-success">GPT-4o</span>
+                        <span class="badge bg-dark">MySQL</span>
+                    </div>
+                    <h5 class="card-title">NewsLens</h5>
+                    <p class="card-text">정책 및 사회 이슈 모니터링 애플리케이션입니다.
+                    - Naver 뉴스 API를 통한 뉴스 검색 및 AI 요약
+                    - 사설, 라디오, 정당 회의록 등의 데일리 모니터링
+                    - 정부 기관 및 정당의 보도자료, 입법예고 게시판 크롤링</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">
+                            로컬기반 애플리케이션</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="/lecture08" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+    </div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto; /* 비율 유지 */
+    object-fit: contain; /* 또는 필요에 따라 cover */
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.tech-badges .badge {
+    margin-right: 5px;
+    font-weight: 500;
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+}
+
+.btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-outline-secondary {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+}
+</style> 

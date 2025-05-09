@@ -1,0 +1,266 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture05').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <!-- 슬라이드 보기 버튼 
+    <div class="text-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" 
+                data-lecture='<%- JSON.stringify(lectures.find(l => l.link === "/lecture04")) %>'
+                onclick="initializePresentation(this.dataset.lecture)"
+                data-bs-toggle="modal" data-bs-target="#presentationModal">
+            <i class="fas fa-tv me-2"></i>슬라이드 보기
+        </button>
+    </div>
+    -->
+</div>
+
+<!-- 실제 컨텐츠 영역 -->
+<div class="content-card">
+    <h4><i class="fas fa-book me-2"></i>강의 내용</h4>
+    
+    <div class="mt-4">
+        <p class="lecture-text">
+            페르소나 부여를 통한 업무 피드백을 검토하는 것은 생성형 AI의 업무 활용에서 가장 효과적인 것 중 하나입니다<br>
+            업무 중에 다양한 관점의 피드백을 받는 것은 매우 필요하지만, 일상적으로 진행하기 어렵습니다.<br>
+            아래에서는 페르소나 부여와 업무 활용 사례를 진행해봅니다. 
+        </p>
+
+        <br>
+        <h4 class="mb-4"><strong>페르소나 부여 예시:</strong></h4>
+        <br>
+        <!-- 김정훈 페르소나 -->
+        <div class="card mb-4 persona-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <img src="/images/kim_jeonghoon_1.png" alt="김정훈 캐리커처" 
+                             class="persona-img rounded-circle mb-3" 
+                             style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="persona-title mb-3">김정훈 (45세, 홍보팀장)</h5>
+                        <div class="persona-details">
+                            <p class="mb-2"><strong>💼 업무 스타일:</strong> 체계적이고 전략적인 접근, 외부 이미지와 커뮤니케이션에 중점</p>
+                            <p class="mb-2"><strong>💭 피드백 방법:</strong> 건설적이면서도 직설적인 피드백, 전체적인 메시지와 톤에 주의</p>
+                            <p class="mb-0"><strong>🎯 주요 관심사:</strong> 명확하고 설득력 있는 메시지 전달, 대외 관계 강화</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 이미래 페르소나 -->
+        <div class="card mb-4 persona-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <img src="/images/lee_mirae_1.png" alt="이미래 캐리커처" 
+                             class="persona-img rounded-circle mb-3" 
+                             style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="persona-title mb-3">이미래 (35세, 정책연구팀장)</h5>
+                        <div class="persona-details">
+                            <p class="mb-2"><strong>💼 업무 스타일:</strong> 데이터 중심의 분석적 접근, 최신 트렌드와 정책 변화에 민감</p>
+                            <p class="mb-2"><strong>💭 피드백 방법:</strong> 객관적이고 사실 기반의 피드백, 구체적인 개선 사항과 대안 제시</p>
+                            <p class="mb-0"><strong>🎯 주요 관심사:</strong> 정확한 데이터 해석과 활용, 정책 제안의 논리성과 실행 가능성</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 박성실 페르소나 -->
+        <div class="card mb-4 persona-card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <img src="/images/park_seongsil_1.png" alt="박성실 캐리커처" 
+                             class="persona-img rounded-circle mb-3" 
+                             style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="persona-title mb-3">박성실 (50세, 법무팀장)</h5>
+                        <div class="persona-details">
+                            <p class="mb-2"><strong>💼 업무 스타일:</strong> 꼼꼼하고 보수적인 접근, 법적 준수와 리스크 관리에 중점</p>
+                            <p class="mb-2"><strong>💭 피드백 방법:</strong> 세부 사항과 정확성을 강조한 피드백. 법적,윤리적 관점에서 검토</p>
+                            <p class="mb-0"><strong>🎯 주요 관심사:</strong> 법률의 정확한 해석 및 적용, 문서의 법적 안정성과 윤리적 고려</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div>
+            <h4 class="precautions-title"> <strong>🔍 페르소나 설정 시 유의사항</strong></h4>
+            <ol>
+                <li><strong>고정관념에 주의:</strong> 나이, 성별, 직위 등으로 인한 고정관념을 반영하지 않도록 주의해야 합니다.</li>
+                <li><strong>다양성 고려:</strong> 다양한 배경, 경험, 관점을 가진 패딩 포함해야 합니다.</li>
+                <li><strong>현실성 유지:</strong> 너무 이상적이거나 완벽한 페르소나가 아닌, 현실적인 강점과 약점을 지닌 인물을 만들어야 합니다.</li>
+                <li><strong>단순화의 한계:</strong> 너무 단순하면 실제 상황을 반영하지 못할 수 있으므로, 충분한 깊이와 복잡성을 부여해야 합니다.</li>
+                <li><strong>정기적인 업데이트:</strong> 조직과 환경이 변화함에 따라 페르소나도 주기적으로 검토 및 업데이트해야 합니다.</li>
+                <li><strong>부정적인 특성의 균형:</strong> 모든 페르소나를 긍정적으로만 묘사하는 것을 피하고, 현실적인 도전, 약점을 포함해야 합니다.</li>
+                <li><strong>문화적 맥락 고려:</strong> 조직의 문화와 가치를 반영하고, 다양한 문화적 배경을 고려한 포용적인 페르소나를 만들어야 합니다.</li>
+                <li><strong>과도한 의존성 경계:</strong> 페르소나는 도구일 뿐이며 실제 사용자나 동료의 의견을 대체할 수 없습니다.</li>
+                <li><strong>유연성 유지:</strong> 너무 경직된 적용은 창의성과 유연성을 제한하므로 상황에 맞게 조정할 수 있게 여유를 둬야 합니다.</li>
+            </ol>
+        </div>
+
+        <br><hr><br>
+
+        <div class="container">
+            <!-- 첫 번째 토글 섹션 -->
+            <div class="accordion" id="feedbackAccordion">
+                <div class="accordion-item">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <strong> 블로그 피드백 예제</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#feedbackAccordion">
+                            <div class="accordion-body">
+                                <h4>제목: <a href="https://www.e-policy.or.kr/web/lay1/bbs/S1T10C23/B/9/view.do?article_seq=4193&cpage=1&rows=12&condition=&keyword=" target="_blank" style="text-decoration: none; color: inherit;">500조 원에 달하는 글로벌 원전 해체 시장을 잡아라</a></h4>
+                                <p>글로벌 원전 해체 시장 현황과 전망에 대한 피드백을 제시합니다.</p>
+                                <p>주요 내용은 다음과 같다:</p>
+                                <ol>
+                                    <li>전 세계 원전의 68%가 노후화되어 해체 시장이 급성장할 전망</li>
+                                    <li>282기의 원전이 해체 대상으로 분류됨</li>
+                                    <li>첨단기술 활용한 해체 기술 개발이 경쟁력의 핵심</li>
+                                </ol>
+                                <p>피드백은 다음과 같습니다:</p>
+                                <div class="feedback-title"><strong>🟦 김정훈 (홍보팀 팀장) :</strong></div>
+                                <ul>
+                                    <li>제목의 "500조 원에 달하는 시장"이라는 표현이 주목도가 높으나, 부제로 "미래를 여는 새로운 기회"와 같은 희망적 메시지를 추가하면 좋겠습니다.</li>
+                                    <li>원전 해체의 필요성과 시장성을 더 드라마틱하게 전달할 수 있는 스토리텔링이 필요합니다.</li>
+                                    <li>글로벌 기업들의 성공 사례를 더 구체적으로 소개하면 독자들의 이해도를 높일 수 있을 것 같습니다.</li>
+                                    <li>첨단기술(로봇, 디지털트윈 등)에 대한 시각적 자료나 인포그래픽 추가가 필요해 보입니다.</li>
+                                </ul>
+                                <div class="feedback-title"><strong>🟦 이미래 (정책연구팀 과장) :</strong></div>
+                                <ul>
+                                    <li>글로벌 원전해체 시장 규모(500조 원)에 대한 구체적인 산출 근거와 출처가 필요합니다.</li>
+                                    <li>국가별 원전 해체 기술 수준과 시장 점유율에 대한 비교 분석이 추가되면 좋겠습니다.</li>
+                                    <li>노후 원전 통계(282기, 68%)의 국가별, 지역별 분포 데이터가 필요합니다.</li>
+                                    <li>우리나라의 원전해체 기술 경쟁력과 해외 선진국과의 격차 분석이 필요합니다.</li>
+                                </ul>
+                                <div class="feedback-title"><strong>🟦 박성실 (법무팀 부장) :</strong></div>
+                                <ul>
+                                    <li>충전 해체 관련 국내외 법적 규제와 기준에 대한 설명이 보완되어야 합니다.</li>
+                                    <li>방사성 폐기물 처리에 관한 법적 책임과 절차를 구체적으로 명시해야 합니다.</li>
+                                    <li>해외 원전 해체 시장 진출을 위한 법적 요건과 인증 절차를 추가할 필요가 있습니다.</li>
+                                    <li>원전 해체 과정에서의 환경 복원 관련 법적 기준과 의무사항을 설명하면 좋겠습니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <strong>보도자료 피드백 예제</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#feedbackAccordion">
+                        <div class="accordion-body">
+                            <h4>제목: 금융협회, 신용취약계층 지원 위한 '따뜻한 금융' 캠페인 실시</h4>
+                            <p>금융협회(회장 홍길동)는 오는 10월부터 '따뜻한 금융' 캠페인을 실시한다고 밝혔다. <br>
+                                이번 캠페인은 코로나19로 인한 경기침체로 어려움을 겪는 신용취약계층을 지원하기 위해 마련되었다.</p>
+                            <p>주요 내용은 다음과 같다:</p>
+                            <ol>
+                                <li>주요 금융업체들의 자발적 금리 인하 (최대 2%p)</li>
+                                <li>상환유예 프로그램 도입</li>
+                                <li>금융교육 프로그램 확대</li>
+                            </ol>
+                            <p>협회 관계자는 "이번 캠페인을 통해 서민금융의 건전한 발전과 금융소외계층 지원에 기여할 것"이라고 밝혔다.</p>
+
+                            <br><br>
+                            <div class="section-header">
+                                <h4>페르소나별 피드백</h4>
+                            </div>
+
+                            <div class="feedback-title"><strong>🟦 김정훈 (홍보팀 팀장) :</strong></div>
+                            <ul>
+                                <li>제목이 주목을 끌만하나, '따뜻한 금융'이라는 표현이 다소 진부해 보입니다. 더 참신한 표현을 고민해 볼 필요가 있습니다.</li>
+                                <li>첫 문단에서 협회의 결정 배경과 목표를 더 명확히 제시하면 좋겠습니다.</li>
+                                <li>캠페인의 구체적인 혜택과 예상 수혜자 수를 언급하면 더 설득력 있을 것 같습니다.</li>
+                                <li>관계자 인용구는 좀 더 강력하고 기억에 남는 메시지로 다듬을 필요가 있습니다.</li>
+                            </ul>
+
+                            <div class="feedback-title"><strong>🟦 이미래 (정책연구팀 과장) :</strong></div>
+                            <ul>
+                                <li>경기침체와 신용취약계층의 어려움을 뒷받침할 수 있는 구체적인 통계 데이터가 필요합니다.</li>
+                                <li>자발적 금리 인하의 근거와 예상 효과에 대한 분석이 추가되면 좋겠습니다.</li>
+                                <li>상환유예 프로그램의 구체적인 조건과 기간을 명시해야 합니다.</li>
+                                <li>금융교육 프로그램의 내용과 기대효과에 대한 설명이 필요합니다.</li>
+                            </ul>
+
+                            <div class="feedback-title"><strong>🟦 박성실 (법무팀 부장) :</strong></div>
+                            <ul>
+                                <li>'자발적 금리 인하'라는 표현이 담합으로 오해될 소지가 있어 보입니다. 법적으로 문제없는지 확인이 필요합니다.</li>
+                                <li>상환유예 프로그램 관련 법규 및 금융당국의 지침 준수 여부를 명확히 해야 합니다.</li>
+                                <li>금융소비자보호법에 따른 금융교육 의무사항을 충족하는지 검토가 필요합니다.</li>
+                                <li>개인정보보호법 관련 유의사항을 캠페인 내용에 포함시켜야 할 것 같습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 두 번째 토글 섹션 -->
+                
+            </div>
+        </div>
+
+        <style>
+            .accordion-button:not(.collapsed) {
+                background-color: #f8f9fa;
+                color: #333;
+            }
+            .accordion-button {
+                background-color: #eef2ff;  /* 연한 파란색 계열 */
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .accordion-button:hover {
+                background-color: #dbeafe;  /* 마우스 오버시 간 더 진한 색상 */
+            }
+            .accordion-button:focus {
+                box-shadow: none;
+                border-color: rgba(0,0,0,.125);
+            }
+            .accordion-item {
+                border: 1px solid #e5e7eb;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </div>
+    <br>
+    <div class="mt-4 text-center">
+        <a href="/lecture04" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-arrow-left me-2"></i>이전 강의
+        </a>
+        <a href="/lecture06" class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-right me-2"></i>다음 강의
+        </a>
+    </div>
+</div>
