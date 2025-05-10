@@ -1,0 +1,78 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+  <h5 class="d-flex align-items-center py-2 border-bottom">
+    <i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제
+  </h5>
+  <div class="py-2">
+    <div class="row">
+      <% lectures.find(l => l.link === '/lecture11').mainTopics.forEach(topic => { %>
+        <div class="col-md-6">
+          <div class="topic-item py-1 h-100">
+            <div class="d-flex align-items-start">
+              <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+              <div>
+                <span class="fw-medium"><%= topic.title %></span>
+                <% if (topic.subTopics && topic.subTopics.length) { %>
+                  <ul class="subtopic-list ps-3 mt-1 mb-0">
+                    <% topic.subTopics.forEach(sub => { %>
+                      <li class="small text-secondary">• <%= sub %></li>
+                    <% }) %>
+                  </ul>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<div class="content-card">
+  <h4><i class="fas fa-code me-2 mb-3"></i>바이브코딩 기초</h4>
+
+  <div class="overview-section">
+    <h5 class="overview-title"><i class="fas fa-rocket me-2"></i>Overview</h5>
+    <div class="overview-content">
+      <p>바이브코딩은 가볍고 빠른 JavaScript UI 라이브러리입니다. 이 강의에서는 설치부터 첫 컴포넌트 제작까지 기본 워크플로를 학습합니다.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-info mt-4" role="alert">
+    <h5><i class="fas fa-cogs me-2"></i>핵심 학습 포인트</h5>
+    <ul>
+      <li>라이브러리 설치 및 환경 설정</li>
+      <li>첫 번째 컴포넌트 작성 및 렌더링</li>
+      <li>상태(state)와 프롭스(props) 개념 이해</li>
+      <li>간단한 이벤트 처리</li>
+      <li>컴포넌트 구조화 및 재사용성</li>
+    </ul>
+  </div>
+
+  <div class="mt-4">
+    <h5 class="mb-3">설치 예시</h5>
+    <pre><code>npm install vibe-coding</code></pre>
+  </div>
+
+  <div class="mt-4">
+    <h5 class="mb-3">기본 컴포넌트 코드</h5>
+    <pre><code>
+import { createComponent } from 'vibe-coding';
+
+const HelloWorld = createComponent({
+  render: () => '<h1>Hello, Vibe Coding!</h1>'
+});
+
+HelloWorld.mount('#app');
+    </code></pre>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a href="/lecture10" class="btn btn-secondary btn-sm me-2">
+      <i class="fas fa-arrow-left me-2"></i>이전 강의
+    </a>
+    <a href="/lecture12" class="btn btn-primary btn-sm">
+      <i class="fas fa-arrow-right me-2"></i>다음 강의
+    </a>
+  </div>
+</div>

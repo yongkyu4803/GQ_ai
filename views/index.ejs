@@ -32,6 +32,10 @@
         <section id="lectures" class="py-5">         
             <div class="container">             
                 <div class="row">                 
+                    <!-- DEBUG: 확인용 lectures 출력 -->
+                    <script>
+                      console.log("DEBUG lectures:", <%- JSON.stringify(lectures) %>);
+                    </script>
                     <% lectures.forEach(function(lecture) { %>
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card">

@@ -57,7 +57,7 @@ app.get('/mygpts', (req, res) => {
 });
 
 // 강의 라우트들
-['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'].forEach(num => {
+['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'].forEach(num => {
     app.get(`/lecture${num}`, (req, res) => {
         const lecture = lecturesData.lectures.find(l => l.link === `/lecture${num}`);
         if (!lecture) {
