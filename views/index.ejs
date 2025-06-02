@@ -29,36 +29,216 @@
 
 
         <!-- 강의 섹션 -->
-        <section id="lectures" class="py-5">         
-            <div class="container">             
+        <section id="lectures" class="py-4">         
+            <div class="container">
+                <!-- 🎯 기초 단계 -->
+                <div class="section-header">
+                    <h2 class="section-title basic">🎯 기초</h2>
+                    <p class="section-subtitle">AI 기본 개념</p>
+                </div>
+                
                 <div class="row">                 
                     <!-- DEBUG: 확인용 lectures 출력 -->
                     <script>
                       console.log("DEBUG lectures:", <%- JSON.stringify(lectures) %>);
                     </script>
-                    <% lectures.forEach(function(lecture) { %>
-                        <div class="col-md-6 col-lg-4 mb-4">
+                    
+                    <!-- 1-2강: 기초 단계 -->
+                    <% 
+                    const basicLectures = lectures.slice(0, 2);
+                    const basicIcons = ['fa-brain', 'fa-users'];
+                    const basicTimes = ['45분', '50분'];
+                    basicLectures.forEach(function(lecture, index) { %>
+                        <div class="col-md-6 col-lg-4 mb-3">
                             <div class="card">
-                                <div class="card-body">
-                                    <h2 class="card-title mb-4"><%= lecture.number %>. <%= lecture.title %></h2>
-                                    <p class="card-text"><%= lecture.description %></p>
-                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="<%= lecture.link %>">바로가기</a>
+                                <div class="card-header-custom basic">
+                                    <div class="card-header-icon">
+                                        <i class="fas <%= basicIcons[index] %>"></i>
+                                    </div>
+                                    <h3 class="card-title-header"><%= lecture.number %>. <%= lecture.title %></h3>
                                 </div>
+                                <div class="card-body">
+                                    <div class="card-content">
+                                        <p class="card-text"><%= lecture.description %></p>
+                                        <div class="card-meta">
+                                            <div class="meta-item">
+                                                <i class="fas fa-clock"></i><span><%= basicTimes[index] %></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-signal"></i><span>초급</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn-outline-small" href="<%= lecture.link %>">
+                                        <i class="fas fa-play"></i>강의보기
+                                    </a>
+                                </div>
+                                <div class="lecture-number"><%= index + 1 %></div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- ⚡ 중급 단계 -->
+                <div class="section-header">
+                    <h2 class="section-title">⚡ 중급</h2>
+                    <p class="section-subtitle">프롬프트 엔지니어링</p>
+                </div>
+                
+                <div class="row">
+                    <!-- 3-4강: 중급 단계 -->
+                    <% 
+                    const intermediateLectures = lectures.slice(2, 4);
+                    const intermediateIcons = ['fa-terminal', 'fa-cogs'];
+                    const intermediateTimes = ['60분', '55분'];
+                    intermediateLectures.forEach(function(lecture, index) { %>
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-header-custom intermediate">
+                                    <div class="card-header-icon">
+                                        <i class="fas <%= intermediateIcons[index] %>"></i>
+                                    </div>
+                                    <h3 class="card-title-header"><%= lecture.number %>. <%= lecture.title %></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-content">
+                                        <p class="card-text"><%= lecture.description %></p>
+                                        <div class="card-meta">
+                                            <div class="meta-item">
+                                                <i class="fas fa-clock"></i><span><%= intermediateTimes[index] %></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-signal"></i><span>중급</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn-outline-small" href="<%= lecture.link %>">
+                                        <i class="fas fa-play"></i>강의보기
+                                    </a>
+                                </div>
+                                <div class="lecture-number"><%= index + 3 %></div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- 🚀 활용 단계 -->
+                <div class="section-header">
+                    <h2 class="section-title">🚀 활용</h2>
+                    <p class="section-subtitle">실무 적용</p>
+                </div>
+                
+                <div class="row">
+                    <!-- 5-7강: 활용 단계 -->
+                    <% 
+                    const practicalLectures = lectures.slice(4, 7);
+                    const practicalIcons = ['fa-masks-theater', 'fa-file-alt', 'fa-pen-fancy'];
+                    const practicalTimes = ['40분', '50분', '45분'];
+                    practicalLectures.forEach(function(lecture, index) { %>
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-header-custom practical">
+                                    <div class="card-header-icon">
+                                        <i class="fas <%= practicalIcons[index] %>"></i>
+                                    </div>
+                                    <h3 class="card-title-header"><%= lecture.number %>. <%= lecture.title %></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-content">
+                                        <p class="card-text"><%= lecture.description %></p>
+                                        <div class="card-meta">
+                                            <div class="meta-item">
+                                                <i class="fas fa-clock"></i><span><%= practicalTimes[index] %></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-signal"></i><span>중급</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn-outline-small" href="<%= lecture.link %>">
+                                        <i class="fas fa-play"></i>강의보기
+                                    </a>
+                                </div>
+                                <div class="lecture-number"><%= index + 5 %></div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- 💎 고급 · 전문 단계 (통합) -->
+                <div class="section-header">
+                    <h2 class="section-title">💎 고급 · 전문</h2>
+                    <p class="section-subtitle">프로젝트 & 코딩</p>
+                </div>
+                
+                <div class="row">
+                    <!-- 8-11강: 고급/전문 단계 + Q&A -->
+                    <% 
+                    const advancedLectures = lectures.slice(7, 11);
+                    const advancedIcons = ['fa-tools', 'fa-project-diagram', 'fa-cog', 'fa-code'];
+                    const advancedTimes = ['55분', '60분', '35분', '70분'];
+                    const advancedLevels = ['고급', '고급', '전문', '전문'];
+                    const advancedClasses = ['advanced', 'advanced', 'expert', 'expert'];
+                    
+                    advancedLectures.forEach(function(lecture, index) { %>
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                                <div class="card-header-custom <%= advancedClasses[index] %>">
+                                    <div class="card-header-icon">
+                                        <i class="fas <%= advancedIcons[index] %>"></i>
+                                    </div>
+                                    <h3 class="card-title-header"><%= lecture.number %>. <%= lecture.title %></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-content">
+                                        <p class="card-text"><%= lecture.description %></p>
+                                        <div class="card-meta">
+                                            <div class="meta-item">
+                                                <i class="fas fa-clock"></i><span><%= advancedTimes[index] %></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-signal"></i><span><%= advancedLevels[index] %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn-outline-small" href="<%= lecture.link %>">
+                                        <i class="fas fa-play"></i>강의보기
+                                    </a>
+                                </div>
+                                <div class="lecture-number"><%= index + 8 %></div>
                             </div>
                         </div>
                     <% }); %>
 
-                    <!-- Q&A 카드 -->
-                    <div class="col-md-6 col-lg-4 mb-4">                     
-                        <div class="card">                         
-                            <div class="card-body">                             
-                                <h2 class="card-title mb-4">Q&amp;A</h2>
-                                <p class="card-text">질문을 통해 이해도를 높이세요.</p>
-                                <a class="btn btn-outline-primary btn-sm rounded-pill" href="/qna">바로가기</a>                         
-                            </div>                     
+                    <!-- Q&A 카드 (특별) -->
+                    <div class="col-md-6 col-lg-4 mb-3">                     
+                        <div class="card">
+                            <div class="card-header-custom special">
+                                <div class="card-header-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <h3 class="card-title-header">Q&amp;A</h3>
+                            </div>                         
+                            <div class="card-body">     
+                                <div class="card-content">                        
+                                    <p class="card-text">질문을 통해 이해도를 높이세요.</p>
+                                    <div class="card-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-comments"></i><span>상시</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i><span>커뮤니티</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn-outline-small" href="/qna">
+                                    <i class="fas fa-arrow-right"></i>질문하기
+                                </a>                         
+                            </div>
+                            <div class="lecture-number">Q&A</div>                     
                         </div>                 
-                    </div>             
-                </div>         
+                    </div>
+                </div>
             </div>     
         </section>
 

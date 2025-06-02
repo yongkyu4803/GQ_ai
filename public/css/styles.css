@@ -235,63 +235,206 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* 카드 스타일 */
+/* 카드 스타일 - 개선된 현대적 디자인 */
 .card {
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
-                box-shadow 0.4s ease;
-    background-color: #f7f7f7;
-    background-image: repeating-linear-gradient(
-        45deg,
-        rgba(0, 0, 0, 0.03) 0,
-        rgba(0, 0, 0, 0.03) 1px,
-        transparent 1px,
-        transparent 8px
-    );
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    margin-bottom: 1.5rem;
+    height: 220px;
 }
 
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 카드 헤더 - 개선된 그라데이션과 그림자 */
+.card-header-custom {
+    padding: 1.25rem 1.5rem 1rem 1.5rem;
+    border-bottom: none;
+    position: relative;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: all 0.4s ease;
+}
+
+.card:hover .card-header-custom {
+    background-position: 100% 50%;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header-custom.basic {
+    background: linear-gradient(135deg, 
+        var(--basic-start) 0%, 
+        var(--basic-end) 50%, 
+        #9a76c2 100%);
+}
+
+.card-header-custom.intermediate {
+    background: linear-gradient(135deg, 
+        var(--intermediate-start) 0%, 
+        var(--intermediate-end) 50%, 
+        #8660b8 100%);
+}
+
+.card-header-custom.practical {
+    background: linear-gradient(135deg, 
+        var(--practical-start) 0%, 
+        var(--practical-end) 50%, 
+        #7248a3 100%);
+}
+
+.card-header-custom.advanced {
+    background: linear-gradient(135deg, 
+        var(--advanced-start) 0%, 
+        var(--advanced-end) 50%, 
+        #64308e 100%);
+}
+
+.card-header-custom.expert {
+    background: linear-gradient(135deg, 
+        var(--expert-start) 0%, 
+        var(--expert-end) 50%, 
+        #5e1879 100%);
+}
+
+.card-header-custom.special {
+    background: linear-gradient(135deg, 
+        var(--special-start) 0%, 
+        var(--special-end) 50%, 
+        #b8860b 20%, 
+        #9964c4 100%);
+}
+
+/* 헤더의 강의 제목 - 개선된 타이포그래피 */
+.card-title-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-right: 45px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    letter-spacing: -0.02em;
+}
+
+/* 헤더의 아이콘 - 개선된 디자인 */
+.card-header-icon {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover .card-header-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {
-    padding: 1.5rem;                                    /* 여유로운 패딩 */
+    padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+    position: relative;
+    z-index: 2;
+    height: calc(100% - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
 }
 
-.card-title {
-    font-family: 'Montserrat', sans-serif;              /* Montserrat 사용 */
-    font-size: 1.5rem;                                  /* 적당한 크기 */
-    font-weight: 700;                                   /* 굵은 타이틀 */
-    color: #333333;                                     /* 딥 그레이 톤 */
-    margin-bottom: 0.75rem;
-    font-stretch: 90%;                      /* 장평 90% */
-    letter-spacing: -1px;
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .card-text {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 1rem;
-    color: #555555;                                     /* 읽기 편한 중성 그레이 */
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+/* 개선된 작은 테두리 버튼 */
+.btn-outline-small {
+    padding: 0.6rem 1.25rem !important;
+    font-size: 0.8rem !important;
+    border-radius: 25px !important;
+    border: 2px solid rgba(108, 117, 125, 0.3) !important;
+    color: #495057 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    width: auto !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-outline-small:hover {
+    border-color: #495057 !important;
+    color: white !important;
+    background: #495057 !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 4px 16px rgba(73, 80, 87, 0.3) !important;
 }
 
 .card .btn-outline-primary {
-    border-width: 2px;
-    border-radius: 999px;                               /* 완전 라운드 버튼 */
-    padding: 0.5rem 1.2rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .card .btn-outline-primary:hover {
-    background-color: rgba(0, 123, 255, 0.1);           /* 연한 블루 백그라운드 */
-    color: #007bff;                                     /* 버튼 텍스트 블루 강조 */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    color: white;
 }
 
 /* 애니메이션 키프레임 */
@@ -698,3 +841,336 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     animation: fadeIn 0.5s ease;
 } 
+
+/* ─────────────────────────────────────────────
+   기존 아이덴티티 유지 + 미묘한 차이 시스템
+   ───────────────────────────────────────────── */
+
+:root {
+    /* 기존 아이덴티티 컬러를 베이스로 미묘한 변화 */
+    --base-start: #667eea;    /* 기존 메인 컬러 */
+    --base-end: #764ba2;      /* 기존 메인 컬러 */
+    
+    /* 기초: 약간 밝은 톤 (10% 밝게) */
+    --basic-start: #7b8ceb;
+    --basic-end: #8560b2;
+    
+    /* 중급: 표준 색상 (기존 아이덴티티) */
+    --intermediate-start: #667eea;
+    --intermediate-end: #764ba2;
+    
+    /* 활용: 약간 더 진함 (10% 어둡게) */
+    --practical-start: #5a70e9;
+    --practical-end: #68428d;
+    
+    /* 고급: 더 깊은 톤 (20% 어둡게) */
+    --advanced-start: #4e62e8;
+    --advanced-end: #5a3678;
+    
+    /* 전문: 가장 진한 톤 (30% 어둡게) */
+    --expert-start: #4054e7;
+    --expert-end: #4c2a63;
+    
+    /* 특별 (Q&A): 기존 색상에 골드 힌트 */
+    --special-start: #7b84ea;
+    --special-end: #8654a8;
+}
+
+/* 섹션 헤더 스타일 - 개선된 현대적 디자인 */
+.section-header {
+    text-align: left;
+    margin: 2.5rem 0 1.5rem 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    position: relative;
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    color: #4a5568;
+    border: 2px solid rgba(74, 85, 104, 0.15);
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%),
+        linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.06),
+        0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.section-title:hover {
+    border-color: rgba(74, 85, 104, 0.25);
+    color: #2d3748;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.1),
+        0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.section-subtitle {
+    color: #718096;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    font-weight: 500;
+    margin-left: 0.25rem;
+}
+
+/* 반응형 디자인 - 개선된 모바일 최적화 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+    }
+    
+    .card {
+        height: 200px;
+        margin-bottom: 1.25rem;
+        border-radius: 16px;
+    }
+    
+    .card-header-custom {
+        padding: 1rem 1.25rem 0.75rem 1.25rem;
+    }
+    
+    .card-title-header {
+        font-size: 1rem;
+        padding-right: 40px;
+        line-height: 1.3;
+    }
+    
+    .card-header-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+        top: 1rem;
+        right: 1rem;
+        border-radius: 10px;
+    }
+    
+    .card-body {
+        padding: 1rem 1.25rem 1.25rem 1.25rem;
+        height: calc(100% - 55px);
+    }
+    
+    .card-text {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .card-meta {
+        font-size: 0.7rem;
+        margin-bottom: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .meta-item {
+        padding: 0.2rem 0.6rem;
+        gap: 0.3rem;
+    }
+    
+    .btn-outline-small {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.75rem !important;
+        border-radius: 20px !important;
+    }
+    
+    .lecture-number {
+        width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+        bottom: 0.75rem;
+        right: 1rem;
+        border-radius: 11px;
+    }
+}
+
+/* 카드 메타 정보 - 개선된 디자인 */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.5rem 0;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #718096;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    border: 1px solid rgba(113, 128, 150, 0.2);
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.meta-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #4a5568;
+    transform: translateY(-1px);
+}
+
+.meta-item i {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* 강의 번호 표시 - 개선된 디자인 */
+.lecture-number {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.25rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #2d3748;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover .lecture-number {
+    opacity: 1;
+    transform: scale(1.15) rotate(-5deg);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* 애니메이션 키프레임 추가 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 디자인 - 컴팩트 버전 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1rem;
+        padding: 0.3rem 1.2rem;
+    }
+    
+    .card {
+        height: 180px;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    
+    .card-title {
+        padding-right: 35px !important;
+        font-size: 1rem !important;
+    }
+    
+    .card-text {
+        font-size: 0.8rem;
+    }
+    
+    .card-meta {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card .btn-outline-primary {
+        padding: 0.4rem 1rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .lecture-number {
+        width: 20px;
+        height: 20px;
+        font-size: 0.65rem;
+        bottom: 0.5rem;
+        right: 0.75rem;
+    }
+}
+
+/* 강의 섹션 - 개선된 레이아웃 */
+#lectures {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* 카드 그리드 개선 */
+.lectures-grid {
+    margin-bottom: 1.5rem;
+}
+
+/* 개선된 마진 */
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+/* 카드 그룹별 애니메이션 딜레이 */
+.row .col-md-6:nth-child(1) .card { animation-delay: 0.1s; }
+.row .col-md-6:nth-child(2) .card { animation-delay: 0.2s; }
+.row .col-md-6:nth-child(3) .card { animation-delay: 0.3s; }
+.row .col-md-6:nth-child(4) .card { animation-delay: 0.4s; }
+
+/* 카드 등장 애니메이션 */
+.card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFadeIn 0.6s ease forwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 텍스트 개선 */
+.card-title, .card-text {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+/* 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
