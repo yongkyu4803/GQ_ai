@@ -25,7 +25,7 @@ body {
     font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-stretch: 90%;      /* 장평 90% */
     letter-spacing: -0.5px;   /* 자간 -0.5px */
-    line-height: 1.6;
+    line-height: 2;
     color: var(--text-dark);
     background-color: #f2effa; /* 연한 보라색 배경 추가 */
 }
@@ -39,135 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ─────────────────────────────────────────────
    네비게이션 바 컴포넌트
    ───────────────────────────────────────────── */
-.navbar {
-    /* 연한 보라 그라데이션 배경 */
-    background: 
-    /* 2) 스트라이프 패턴: 밝은 흰색으로 촘촘하게 */
-    repeating-linear-gradient(
-        45deg,
-        rgba(13, 38, 85, 0.07) 0,
-        rgba(114, 121, 160, 0.07) 1px,
-        transparent 1px,
-        transparent 6px
-    ) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 0.75rem 1rem;
-    height: 64px; /* 고정 높이 추가 */
-    display: flex;
-    align-items: center;
-}
-
-/* 반응형에서도 일관된 높이를 유지하기 위한 추가 스타일 */
-.navbar-expand-lg {
-    min-height: 64px;
-}
-
-/* 모바일 화면에서 네비게이션 높이 조정 */
-@media (max-width: 991.98px) {
-    .navbar {
-        height: auto;
-        min-height: 64px;
-    }
-    
-    .navbar-collapse {
-        margin-top: 0.5rem;
-    }
-}
-
-.navbar-brand {
-    font-family: 'Montserrat', sans-serif;
-    font-stretch: 90%;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--text-dark) !important;
-    transition: color 0.3s ease;
-}
-
-.navbar-brand:hover {
-    color: var(--accent-color) !important;
-}
-
-.nav-link {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    color: var(--text-dark) !important;
-    margin: 0 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--border-radius);
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
-    color: var(--accent-color) !important;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,\
-      <svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'>\
-        <path stroke='rgba(51,51,51,0.8)' stroke-width='2' \
-          d='M4 7h22M4 15h22M4 23h22'/>\
-      </svg>");
-}
-
-/* 대체 네비게이션 스타일 (필요시 활성화) */
-.navbar-alt {
-    background: linear-gradient(135deg, var(--nav-gradient-start), var(--nav-gradient-end));
-    padding: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-.navbar-alt .navbar-brand {
-    font-size: 1.6rem;
-    letter-spacing: -0.5px;
-    color: white !important;
-}
-
-.navbar-alt .nav-link {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.9) !important;
-    padding: 0.5rem 1rem;
-    margin: 0 0.2rem;
-    letter-spacing: 0.5px;
-}
-
-.navbar-alt .nav-link:hover {
-    color: white !important;
-    background-color: rgba(255,255,255,0.12);
-}
-
-/* ─────────────────────────────────────────────
-   드롭다운 메뉴
-   ───────────────────────────────────────────── */
-.dropdown-menu {
-    background-color: var(--background-light);
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 0.5rem 0;
-}
-
-.dropdown-item {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    padding: 0.6rem 1.2rem;
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-    border-radius: calc(var(--border-radius) / 2);
-}
-
-.dropdown-item:hover {
-    background-color: rgba(0, 0, 0, 0.03);
-    transform: translateX(5px);
-    color: var(--accent-color);
-}
+/* .navbar, .navbar-brand, .nav-link, .navbar-toggler, .navbar-toggler-icon, .dropdown-menu, .dropdown-item 등 내브바 관련 기존 스타일은 주석 처리됨 */
 
 /* ─────────────────────────────────────────────
    랜딩 섹션
@@ -247,8 +119,8 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    margin-bottom: 1.5rem;
-    height: 220px;
+    margin-bottom: 0.5rem;
+    height: 100px;
 }
 
 .card:hover {
@@ -262,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 카드 헤더 - 개선된 그라데이션과 그림자 */
 .card-header-custom {
-    padding: 1.25rem 1.5rem 1rem 1.5rem;
+    padding: 0.5rem 0.25rem 0.5rem 1.25rem;
     border-bottom: none;
     position: relative;
     background-size: 200% 200%;
@@ -321,8 +193,8 @@ h1, h2, h3, h4, h5, h6 {
 /* 헤더의 강의 제목 - 개선된 타이포그래피 */
 .card-title-header {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     color: white;
     margin: 0;
     line-height: 1.4;
@@ -338,10 +210,10 @@ h1, h2, h3, h4, h5, h6 {
 /* 헤더의 아이콘 - 개선된 디자인 */
 .card-header-icon {
     position: absolute;
-    top: 1.25rem;
+    top: 0.5rem;
     right: 1.25rem;
-    width: 36px;
-    height: 36px;
+    width: 23px;
+    height: 23px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -362,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-body {
-    padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+    padding: 0.5rem 1rem 1rem 1rem;
     position: relative;
     z-index: 2;
     height: calc(100% - 65px);
@@ -377,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .card-text {
@@ -728,6 +600,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0.2rem 0;
 }
 
+/* 강의 목차(사이드바)의 강의 번호 스타일 */
 .sidebar .nav-link .lecture-number {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -735,6 +608,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-light);
     margin-right: 0.8rem;
     min-width: 24px;
+    display: inline-block;
+    text-align: center;
 }
 
 .sidebar .nav-link .lecture-title {
@@ -751,7 +626,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidebar .nav-link.active .lecture-number {
     color: white;
-    opacity: 0.9;
 }
 
 .sidebar .nav-link:hover {
@@ -877,74 +751,81 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 섹션 헤더 스타일 - 개선된 현대적 디자인 */
+/* ─────────────────────────────────────────────
+   섹션 헤더 및 단계별 타이틀 스타일 (2024 리뉴얼)
+   ───────────────────────────────────────────── */
 .section-header {
+    margin: 3.2rem 0 1.6rem 0;
     text-align: left;
-    margin: 2.5rem 0 1.5rem 0;
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
+    width: 100%;
 }
 
+/* ─────────────────────────────────────────────
+   섹션 타이틀 - 구분선형 스타일 (2024 리뉴얼)
+   ───────────────────────────────────────────── */
 .section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.05rem;
-    margin-bottom: 0.4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.22rem;
+    letter-spacing: -0.01em;
+    padding: 0.25rem 0 0.5rem 0;
+    background: none;
+    color: #3e2763;
     position: relative;
-    display: inline-block;
-    padding: 0.6rem 1.5rem;
-    border-radius: 25px;
-    color: #4a5568;
-    border: 2px solid rgba(74, 85, 104, 0.15);
-    background: 
-        linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%),
-        linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.06),
-        0 1px 4px rgba(0, 0, 0, 0.04);
+    margin-bottom: 1.3rem;
+    border-radius: 0 !important;
+    box-shadow: none;
+    border: none;
+    transition: none;
+    /* 구분선: 아래쪽 border */
+    border-bottom: 3px solid #c0b3e6;
 }
-
-.section-title:hover {
-    border-color: rgba(74, 85, 104, 0.25);
-    color: #2d3748;
-    transform: translateY(-2px);
-    box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.1),
-        0 3px 8px rgba(0, 0, 0, 0.06);
+.section-title.basic {
+    border-bottom-color: #7b8ceb;
 }
-
-.section-subtitle {
-    color: #718096;
-    font-size: 0.85rem;
-    margin-bottom: 0;
-    font-weight: 500;
-    margin-left: 0.25rem;
+.section-title.intermediate {
+    border-bottom-color: #667eea;
+}
+.section-title.practical {
+    border-bottom-color: #5a70e9;
+}
+.section-title.advanced, .section-title.expert {
+    border-bottom-color: #f8b500;
+}
+.section-title .section-icon {
+    font-size: 1.5rem;
+    margin-right: 1.2rem;
+    filter: none;
+    flex-shrink: 0;
+    /* 색 강조 (단계별 바꿔도 됨) */
+    color: #a987ee;
 }
 
 /* 반응형 디자인 - 개선된 모바일 최적화 */
 @media (max-width: 768px) {
     .section-title {
-        font-size: 0.9rem;
-        padding: 0.3rem 1rem;
+        font-size: 1rem;
+        padding: 0.15rem 0 0.3rem 0;
+        border-bottom-width: 2px;
     }
-    
     .card {
         height: 200px;
         margin-bottom: 1.25rem;
         border-radius: 16px;
     }
-    
     .card-header-custom {
         padding: 1rem 1.25rem 0.75rem 1.25rem;
     }
-    
     .card-title-header {
         font-size: 1rem;
         padding-right: 40px;
         line-height: 1.3;
     }
-    
     .card-header-icon {
         width: 32px;
         height: 32px;
@@ -953,34 +834,28 @@ h1, h2, h3, h4, h5, h6 {
         right: 1rem;
         border-radius: 10px;
     }
-    
     .card-body {
         padding: 1rem 1.25rem 1.25rem 1.25rem;
         height: calc(100% - 55px);
     }
-    
     .card-text {
         font-size: 0.85rem;
         line-height: 1.4;
     }
-    
     .card-meta {
         font-size: 0.7rem;
         margin-bottom: 0.75rem;
         gap: 0.5rem;
     }
-    
     .meta-item {
         padding: 0.2rem 0.6rem;
         gap: 0.3rem;
     }
-    
     .btn-outline-small {
         padding: 0.5rem 1rem !important;
         font-size: 0.75rem !important;
         border-radius: 20px !important;
     }
-    
     .lecture-number {
         width: 22px;
         height: 22px;
@@ -1173,4 +1048,125 @@ h1, h2, h3, h4, h5, h6 {
 /* 부드러운 스크롤 */
 html {
     scroll-behavior: smooth;
+}
+
+/* 사이드바 강의번호 항상 노출, 카드 스타일 무력화 */
+.sidebar .nav-link .lecture-number {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    color: var(--text-light) !important;
+    margin-right: 0.8rem !important;
+    min-width: 24px !important;
+    text-align: center !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+}
+.sidebar .nav-link.active .lecture-number {
+    color: white !important;
+}
+
+.persona-card {
+    height: auto !important;
+    min-height: 180px;
+}
+
+
+
+/* 내브바 스타일 우선순위 보장: 항상 마지막에 선언 */
+.navbar {
+    background: #fff !important;
+    border-bottom: 2.5px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    padding: 0.55rem 1rem;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+/* 내브바 브랜드 및 링크 폰트 스타일 교체 및 letter-spacing/font-size 조정 */
+.navbar-brand {
+    font-family: 'Pretendard', 'Noto Sans KR', 'Segoe UI', 'Apple SD Gothic Neo', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #764ba2 !important;
+    letter-spacing: -0.01em;
+    transition: color 0.22s;
+}
+
+.navbar-brand:hover {
+    color: #49306b !important;
+}
+
+.nav-link {
+    font-family: 'Pretendard', 'Noto Sans KR', 'Segoe UI', 'Apple SD Gothic Neo', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #3e2763 !important;
+    margin: 0 0.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.22s, color 0.22s;
+    letter-spacing: -0.01em;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background-color: #f5f2fa !important;
+    color: #764ba2 !important;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,\
+      <svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'>\
+        <path stroke='rgba(120, 75, 162, 0.8)' stroke-width='2' \
+          d='M4 7h22M4 15h22M4 23h22'/>\
+      </svg>");
+}
+
+.dropdown-menu {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(102, 126, 234, 0.08);
+    border: 1px solid #f2eaff;
+    padding: 0.3rem 0;
+}
+.dropdown-item {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.97rem;
+    color: #3e2763;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    transition: background 0.19s, color 0.18s;
+}
+.dropdown-item:hover,
+.dropdown-item.active {
+    background: #f5f2fa;
+    color: #764ba2;
+}
+
+/* 반응형 */
+@media (max-width: 991.98px) {
+    .navbar {
+        height: auto;
+        min-height: 56px;
+        border-bottom-width: 1.5px;
+    }
 }
