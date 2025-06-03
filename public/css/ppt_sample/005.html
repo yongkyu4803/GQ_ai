@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털 리터러시와 인공지능 시대의 일하기</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #0F4C81 0%, #1F7A8C 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .leadership-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .leadership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(79, 209, 197, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .leadership-card:hover .icon-container {
+            background: rgba(79, 209, 197, 0.4);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col px-24 py-16">
+        <!-- Background elements -->
+        <div class="circle" style="width: 500px; height: 500px; top: -200px; right: -100px;"></div>
+        <div class="circle" style="width: 400px; height: 400px; bottom: -150px; left: -150px;"></div>
+        
+        <!-- Header -->
+        <div class="mb-6">
+            <h1 class="text-5xl font-bold mb-4">성공적인 디지털 전환을 위한 리더십의 역할</h1>
+            <div class="w-32 h-1 bg-teal-300"></div>
+            <p class="text-xl mt-4 text-gray-200 max-w-3xl">
+                무엇보다도 리더십들의 개방성이 디지털 전환의 성공을 위해 매우 중요합니다.
+                리더십의 의지가 없다면 변화는 불가능하며, 그 파급력 또한 무의미할 정도로 약해질 것입니다.
+            </p>
+        </div>
+        
+        <!-- Main content -->
+        <div class="grid grid-cols-2 gap-8 mt-2">
+            <div class="leadership-card p-6 flex items-center">
+                <div class="icon-container mr-6">
+                    <i class="fas fa-graduation-cap text-2xl text-teal-300"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-2">학습 의지</h3>
+                    <p class="text-gray-200">리더들이 직접 디지털 기술을 이해하고 적극적으로 배우려는 자세를 보여야 합니다.</p>
+                </div>
+            </div>
+            
+            <div class="leadership-card p-6 flex items-center">
+                <div class="icon-container mr-6">
+                    <i class="fas fa-chart-pie text-2xl text-teal-300"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-2">데이터 기반 의사결정</h3>
+                    <p class="text-gray-200">직관이나 경험에만 의존하지 않고 객관적인 데이터를 바탕으로 결정을 내리는 문화를 만들어야 합니다.</p>
+                </div>
+            </div>
+            
+            <div class="leadership-card p-6 flex items-center">
+                <div class="icon-container mr-6">
+                    <i class="fas fa-flask text-2xl text-teal-300"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-2">실험과 실패 허용</h3>
+                    <p class="text-gray-200">디지털 혁신 과정에서는 시행착오가 불가피하므로, 이를 학습의 기회로 삼는 태도가 중요합니다.</p>
+                </div>
+            </div>
+            
+            <div class="leadership-card p-6 flex items-center">
+                <div class="icon-container mr-6">
+                    <i class="fas fa-coins text-2xl text-teal-300"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-2">자원 할당</h3>
+                    <p class="text-gray-200">디지털 전환에 필요한 예산과 자원을 적극적으로 할당하여 실질적인 변화를 지원해야 합니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom quote -->
+        <div class="mt-10 max-w-3xl mx-auto text-center">
+            <i class="fas fa-quote-left text-teal-300 text-2xl mb-4"></i>
+            <p class="text-xl italic">리더십은 변화를 이끄는 첫 번째 원동력입니다. 디지털 전환을 성공시키려면 리더가 먼저 변해야 합니다.</p>
+        </div>
+        
+        <div class="absolute bottom-10 right-24 text-gray-300 text-sm">
+            <p>5 / 5</p>
+        </div>
+    </div>
+</body>
+</html>

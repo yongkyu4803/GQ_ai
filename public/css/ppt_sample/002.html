@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털 리터러시와 인공지능 시대의 일하기</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #0F4C81 0%, #1F7A8C 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col px-24 py-16">
+        <!-- Background elements -->
+        <div class="circle" style="width: 500px; height: 500px; top: -200px; right: -100px;"></div>
+        <div class="circle" style="width: 400px; height: 400px; bottom: -150px; left: -150px;"></div>
+        
+        <!-- Header -->
+        <div class="mb-12">
+            <h1 class="text-5xl font-bold mb-4">디지털 리터러시의 의미와 구성요소</h1>
+            <div class="w-32 h-1 bg-teal-300"></div>
+            <p class="text-xl mt-6 text-gray-200">
+                문해력이라고 번역되는 리터러시가 디지털과 만났을 때는 단순히 읽고 쓰는 능력 이상을 의미합니다.
+            </p>
+        </div>
+        
+        <!-- Content - Digital Literacy Components -->
+        <div class="grid grid-cols-2 gap-8 mt-4">
+            <div class="card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-teal-500 rounded-full p-3 mr-4">
+                        <i class="fas fa-laptop text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-medium">디지털 도구 활용 능력</h3>
+                </div>
+                <p class="text-gray-200">다양한 소프트웨어와 플랫폼을 효과적으로 사용할 수 있는 능력을 의미합니다.</p>
+            </div>
+            
+            <div class="card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-teal-500 rounded-full p-3 mr-4">
+                        <i class="fas fa-search text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-medium">정보 평가 및 비판적 사고</h3>
+                </div>
+                <p class="text-gray-200">온라인 정보의 신뢰성을 평가하고 분석하는 능력은 디지털 환경에서 중요한 요소입니다.</p>
+            </div>
+            
+            <div class="card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-teal-500 rounded-full p-3 mr-4">
+                        <i class="fas fa-comments text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-medium">디지털 커뮤니케이션 능력</h3>
+                </div>
+                <p class="text-gray-200">온라인 환경에서 효과적으로 소통하고 협업하는 능력은 현대 사회에서 필수적입니다.</p>
+            </div>
+            
+            <div class="card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-teal-500 rounded-full p-3 mr-4">
+                        <i class="fas fa-chart-bar text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-medium">데이터 수집 및 분석 능력</h3>
+                </div>
+                <p class="text-gray-200">디지털 도구를 활용해 데이터를 수집, 분석하고 이를 통해 의사결정을 내리는 능력을 포함합니다.</p>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 right-24 text-gray-300 text-sm">
+            <p>2 / 5</p>
+        </div>
+    </div>
+</body>
+</html>

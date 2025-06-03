@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털 리터러시와 인공지능 시대의 일하기</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #0F4C81 0%, #1F7A8C 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .ai-icon {
+            font-size: 2.5rem;
+            color: #4FD1C5;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col px-24 py-16">
+        <!-- Background elements -->
+        <div class="circle" style="width: 500px; height: 500px; top: -200px; right: -100px;"></div>
+        <div class="circle" style="width: 400px; height: 400px; bottom: -150px; left: -150px;"></div>
+        
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-5xl font-bold mb-4">인공지능 시대의 일하기</h1>
+            <div class="w-32 h-1 bg-teal-300"></div>
+            <p class="text-xl mt-6 text-gray-200">
+                인공지능 시대의 일하기는 기존의 방식과는 많이 다릅니다. 새로운 도구와 방법으로 업무 효율성을 높이고 
+                창의적인 문제 해결 능력을 발휘하는 것이 중요해졌습니다.
+            </p>
+        </div>
+        
+        <!-- Main content -->
+        <div class="grid grid-cols-2 gap-8 mt-2">
+            <div class="flex flex-col">
+                <h2 class="text-3xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-robot mr-4 text-teal-400"></i>
+                    AI 도구 활용 사례
+                </h2>
+                <div class="space-y-4">
+                    <div class="card p-5 flex">
+                        <div class="mr-4 text-teal-300 text-3xl"><i class="fas fa-comments"></i></div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-2">AI 챗봇 활용</h3>
+                            <p class="text-gray-200">고객 서비스를 자동화하고 사용자 경험을 개선</p>
+                        </div>
+                    </div>
+                    <div class="card p-5 flex">
+                        <div class="mr-4 text-teal-300 text-3xl"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-2">AI 분석 도구</h3>
+                            <p class="text-gray-200">방대한 데이터를 신속하게 해석하고 시각화</p>
+                        </div>
+                    </div>
+                    <div class="card p-5 flex">
+                        <div class="mr-4 text-teal-300 text-3xl"><i class="fas fa-file-alt"></i></div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-2">자동화된 보고서</h3>
+                            <p class="text-gray-200">보고서 작성 시간을 단축하고 정확성 향상</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col">
+                <h2 class="text-3xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-brain mr-4 text-teal-400"></i>
+                    AI 시대에 필요한 역량
+                </h2>
+                <div class="card p-6 mb-4 flex-1">
+                    <h3 class="text-2xl font-medium mb-4">지속적인 학습과 적응</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-3 text-teal-300"></i>
+                            <span>AI 도구 사용법 숙달 및 신기술 학습</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-3 text-teal-300"></i>
+                            <span>AI 결과물에 대한 비판적 평가 능력</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-3 text-teal-300"></i>
+                            <span>데이터 기반의 의사결정 역량</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card p-6 flex-1">
+                    <h3 class="text-2xl font-medium mb-4">인간 고유의 강점 개발</h3>
+                    <div class="flex justify-around text-center">
+                        <div>
+                            <div class="ai-icon"><i class="fas fa-heart"></i></div>
+                            <div>공감 능력</div>
+                        </div>
+                        <div>
+                            <div class="ai-icon"><i class="fas fa-balance-scale"></i></div>
+                            <div>윤리적 판단</div>
+                        </div>
+                        <div>
+                            <div class="ai-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div>창의적 사고</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 right-24 text-gray-300 text-sm">
+            <p>3 / 5</p>
+        </div>
+    </div>
+</body>
+</html>
