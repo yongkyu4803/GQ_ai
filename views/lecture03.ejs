@@ -255,11 +255,22 @@
 
     <hr class="my-5">
 
+
+    <!-- 5. 프롬프트 예시 카드 바로 위에 추가 -->
+    <style>
+        #lecture03-prompt-card, #lecture03-card, #lecture03-prompt-body {
+        height: auto !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        overflow: visible !important;
+        display: block !important;
+        }
+    </style>
+
     <div class="mt-5">
         <h5 class="mb-3">5. 프롬프트 예시</i></h5>
-        <div class="card mb-4">
-            <div class="card-body">
-                <!-- 프롬프트 영역 -->
+        <div class="card mb-4" id="lecture03-prompt-card">
+            <div class="card-body" id="lecture03-prompt-body">                <!-- 프롬프트 영역 -->
                 <div class="mb-4">
                     <h5 class="card-subtitle mb-3 text-primary">
                         <i class="fas fa-keyboard me-2"></i>프롬프트
@@ -348,7 +359,7 @@
                             <h6 class="mb-3"><strong>📝 추천 블로그 주제</strong></h6>
                             
                             <!-- 주제 1 -->
-                            <div class="card mb-3">
+                            <div class="card mb-3" style="height:auto !important; min-height:unset !important; max-height:unset !important;">
                                 <div class="card-body">
                                     <h6 class="card-title"><strong>1. 지열 에너지란 무엇일까? 땅 속 열의 마법</strong></h6>
                                     <p class="card-text mb-2">
@@ -361,7 +372,7 @@
                             </div>
 
                             <!-- 주제 2 -->
-                            <div class="card mb-3">
+                            <div class="card mb-3" style="height:auto !important; min-height:unset !important; max-height:unset !important;">
                                 <div class="card-body">
                                     <h6 class="card-title"><strong>2. 왜 지열 에너지가 주목받을까? 높은 효율과 친환경성</strong></h6>
                                     <p class="card-text mb-2">

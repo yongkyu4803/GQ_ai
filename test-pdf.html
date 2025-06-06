@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF 뷰어</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>PDF 뷰어 테스트</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pdfModal">
+            <i class="fas fa-file-pdf"></i> Genspark AI 프레젠테이션 샘플
+        </h5>
+        </button>
+    </div>
+
+    <!-- PDF 모달 -->
+    <div class="modal fade" id="pdfModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-file-pdf"></i> Genspark AI 프레젠테이션 샘플
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- 브라우저 내장 PDF 뷰어 사용 - 가장 확실한 방법 -->
+                    <iframe 
+                        src="/images/ppt_sample/digital_literacy_ai_era_20250603111325.pdf"
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0"
+                        style="min-height: 90vh;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    // URL 파라미터 확인해서 자동으로 모달 열기
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('auto') === 'true') {
+            // 페이지가 완전히 로드된 후 모달 열기
+            setTimeout(() => {
+                const pdfButton = document.querySelector('[data-bs-target="#pdfModal"]');
+                if (pdfButton) {
+                    pdfButton.click();
+                }
+            }, 100);
+        }
+    });
+    </script>
+</body>
+</html> 

@@ -73,6 +73,11 @@ app.get('/mygpts', (req, res) => {
     });
 });
 
+// 테스트 페이지 라우트 추가
+app.get('/test-pdf', (req, res) => {
+    res.sendFile(path.join(__dirname, 'test-pdf.html'));
+});
+
 // QNA 페이지 라우트 추가
 app.get('/qna', (req, res) => {
     res.render('QNA', {
