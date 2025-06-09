@@ -179,19 +179,19 @@
 
                 <!-- 💎 고급 · 전문 단계 (통합) -->
                 <div class="section-header">
-                    <h2 class="section-title">💎 바이브코딩 & 프로젝트</h2>
+                    <h2 class="section-title">💎 프로젝트</h2>
                 </div>
                 
                 <div class="row">
-                    <!-- 8-11강: 고급/전문 단계 + Q&A -->
-                    <% 
+                    <!-- 8-10강: 고급/전문 단계(11강 제외) -->
+                    <%
                     const advancedLectures = lectures.slice(7, 11);
                     const advancedIcons = ['fa-tools', 'fa-project-diagram', 'fa-cog', 'fa-code'];
                     const advancedTimes = ['55분', '60분', '35분', '70분'];
                     const advancedLevels = ['고급', '고급', '전문', '전문'];
                     const advancedClasses = ['advanced', 'advanced', 'expert', 'expert'];
-                    
-                    advancedLectures.forEach(function(lecture, index) { %>
+                    advancedLectures.forEach(function(lecture, index) {
+                        if (index < 3) { %>
                         <div class="col-md-6 col-lg-4 mb-3">
                             <div class="card" onclick="window.location.href='<%= lecture.link %>'" style="cursor: pointer;">
                                 <div class="card-header-custom <%= advancedClasses[index] %>">
@@ -223,43 +223,74 @@
                                 <div class="lecture-number"><%= index + 8 %></div>
                             </div>
                         </div>
-                    <% }); %>
+                    <% }
+                    }); %>
+                </div>
 
-                    <!-- Q&A 카드 (특별, 강의 카드와 동일 구조) -->
+<div class="section-header">
+                    <h2 class="section-title">🎹 바이브 코딩</h2>
+                </div>
+
+                <!-- 11강, 12강 단독 카드 (같은 row 내) -->
+                <div class="row">
+                    <%
+                    // advancedLectures[3] = 11강
+                    const advIdx = 3;
+                    const advLecture = advancedLectures[advIdx];
+                    %>
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card" onclick="window.location.href='<%= lectures[11]?.link || '/qna' %>'" style="cursor: pointer;">
-                            <div class="card-header-custom advanced">
+                        <div class="card" onclick="window.location.href='<%= advLecture.link %>'" style="cursor: pointer;">
+                            <div class="card-header-custom <%= advancedClasses[advIdx] %>">
                                 <div class="card-header-icon">
-                                    <i class="fas fa-question-circle"></i>
+                                    <i class="fas <%= advancedIcons[advIdx] %>"></i>
                                 </div>
-                                <h3 class="card-title-header">
-                                    <%= lectures[11]?.number || "Q&A" %>. <%= lectures[11]?.title || "" %>
-                                </h3>
+                                <h3 class="card-title-header"><%= advLecture.number %>. <%= advLecture.title %></h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-content">
-                                    <p class="card-text"><%= lectures[11]?.description || "안내문" %></p>
+                                    <p class="card-text"><%= advLecture.description %></p>
                                     <% if (false) { %>
                                     <div class="card-meta">
                                         <div class="meta-item">
-                                            <i class="fas fa-comments"></i><span>상시</span>
+                                            <i class="fas fa-clock"></i><span><%= advancedTimes[advIdx] %></span>
                                         </div>
                                         <div class="meta-item">
-                                            <i class="fas fa-users"></i><span>커뮤니티</span>
+                                            <i class="fas fa-signal"></i><span><%= advancedLevels[advIdx] %></span>
                                         </div>
                                     </div>
                                     <% } %>
                                 </div>
                                 <% if (false) { %>
-                                <a class="btn-outline-small" href="<%= lectures[11]?.link || '/qna' %>">
-                                    <i class="fas fa-arrow-right"></i>질문하기
+                                <a class="btn-outline-small" href="<%= advLecture.link %>">
+                                    <i class="fas fa-play"></i>강의보기
                                 </a>
                                 <% } %>
                             </div>
-                            <div class="lecture-number"><%= lectures[11]?.number || "Q&A" %></div>
+                            <div class="lecture-number"><%= advIdx + 8 %></div>
+                        </div>
+                    </div>
+                    <!-- 12강 단독 카드 -->
+                    <%
+                      const lecture12 = lectures.find(l => l.number === "12강");
+                    %>
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card" onclick="window.location.href='<%= lecture12.link %>'" style="cursor: pointer;">
+                            <div class="card-header-custom expert">
+                                <div class="card-header-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3 class="card-title-header"><%= lecture12.number %>. <%= lecture12.title %></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-content">
+                                    <p class="card-text"><%= lecture12.description %></p>
+                                </div>
+                            </div>
+                            <div class="lecture-number">12</div>
                         </div>
                     </div>
                 </div>
+
             </div>     
         </section>
 
