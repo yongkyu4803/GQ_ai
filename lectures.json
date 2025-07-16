@@ -268,6 +268,34 @@
                 ]
               }
             ]
+        },
+        {
+            "number": "13강",
+            "title": "AI 바이브코딩 마스터",
+            "description": "ChatGPT와 Claude를 활용한 고급 바이브코딩 기법",
+            "link": "/lecture13",
+            "mainTopics": [
+                {
+                    "title": "ChatGPT + VSCode 바이브코딩",
+                    "subTopics": [
+                        "ChatGPT와 VSCode 연동 환경 설정",
+                        "GPT-4를 활용한 실시간 코드 생성",
+                        "VSCode 확장 프로그램과 ChatGPT 플러그인 활용",
+                        "코드 리뷰 및 디버깅 자동화",
+                        "프로젝트 구조 설계부터 배포까지 AI 어시스턴트 활용"
+                    ]
+                },
+                {
+                    "title": "Claude 바이브코딩",
+                    "subTopics": [
+                        "Claude의 코드 생성 및 분석 특성 이해",
+                        "Claude Desktop App을 활용한 로컬 개발 환경 연동",
+                        "대화형 코딩 세션과 반복적 개선 프로세스",
+                        "복잡한 로직 구현을 위한 Claude와의 협업 방법",
+                        "ChatGPT와 Claude의 장단점 비교 및 상황별 선택 가이드"
+                    ]
+                }
+            ]
         }
     ]
 }

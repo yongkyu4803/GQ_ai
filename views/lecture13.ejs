@@ -1,0 +1,230 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture13').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<div class="content-card">
+  <h4><i class="fas fa-robot me-2"></i>AI 바이브코딩 마스터</h4>
+  <div class="overview-section">
+    <div class="alert alert-info mt-2" role="alert">
+      <h5><i class="fas fa-target me-2"></i>이 강의의 목표</h5>
+      <ul>
+        <li>ChatGPT와 Claude를 활용한 고급 바이브코딩 기법을 마스터합니다.</li>
+        <li>각 AI 도구의 특성을 이해하고 상황에 맞는 최적의 선택을 할 수 있습니다.</li>
+        <li>실시간 코드 생성부터 배포까지 전체 개발 프로세스를 AI와 협업으로 완성합니다.</li>
+      </ul>
+    </div>
+
+    <h5 class="mt-4">AI 바이브코딩의 핵심 원칙</h5>
+    <ul>
+      <li><strong>명확한 컨텍스트 제공:</strong> AI가 정확히 이해할 수 있는 상세한 요구사항 전달</li>
+      <li><strong>반복적 개선:</strong> 결과를 확인하고 피드백을 통해 지속적으로 개선</li>
+      <li><strong>도구별 특성 활용:</strong> ChatGPT와 Claude의 장단점을 파악하여 적재적소 활용</li>
+      <li><strong>실행 중심 접근:</strong> 이론보다는 실제 동작하는 코드 우선 생성</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ChatGPT + VSCode 바이브코딩 섹션 -->
+<div class="content-card mt-4">
+  <h5><i class="fas fa-code me-2 text-success"></i>ChatGPT + VSCode 바이브코딩</h5>
+  
+  <div class="mt-3">
+    <h6 class="fw-bold text-primary">1. 환경 설정 및 연동</h6>
+    <div class="ps-3">
+      <div class="alert alert-light border">
+        <strong>필수 도구:</strong>
+        <ul class="mb-0 mt-2">
+          <li>VSCode + GitHub Copilot 확장 프로그램</li>
+          <li>ChatGPT Plus 구독 (GPT-4 접근용)</li>
+          <li>Code GPT 확장 프로그램 (선택사항)</li>
+        </ul>
+      </div>
+      
+      <h6 class="fw-medium mt-3">연동 프로세스:</h6>
+      <ol>
+        <li><strong>VSCode 확장 설치:</strong> GitHub Copilot, Code GPT, REST Client</li>
+        <li><strong>ChatGPT API 연동:</strong> API 키 설정 및 프로젝트별 컨텍스트 설정</li>
+        <li><strong>워크플로우 설정:</strong> 코드 생성 → 실행 → 피드백 → 개선 사이클 구축</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">2. GPT-4 활용 실시간 코드 생성</h6>
+    <div class="ps-3">
+      <div class="bg-light p-3 rounded">
+        <strong>효과적인 프롬프트 패턴:</strong>
+        <pre class="mt-2 mb-0"><code>역할: 당신은 [기술스택] 전문 개발자입니다.
+목적: [구체적인 기능]을 구현하는 코드를 작성해주세요.
+요구사항:
+- 기술: [React/Vue/JavaScript 등]
+- 스타일: [CSS Framework 지정]
+- 기능: [상세 기능 명세]
+- 제약사항: [파일 구조, 네이밍 규칙 등]
+
+추가 요청:
+- 주석을 포함한 완전한 코드
+- 에러 처리 로직 포함
+- 반응형 디자인 적용</code></pre>
+      </div>
+      
+      <div class="mt-3">
+        <strong>실습 예제:</strong>
+        <ul>
+          <li>To-Do 앱의 컴포넌트별 코드 생성</li>
+          <li>API 연동 로직 자동 생성</li>
+          <li>CSS 스타일링 및 애니메이션 구현</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">3. 코드 리뷰 및 디버깅 자동화</h6>
+    <div class="ps-3">
+      <div class="alert alert-warning">
+        <strong>디버깅 프롬프트 템플릿:</strong>
+        <pre class="mt-2 mb-0 small"><code>다음 코드에서 [오류 유형] 오류가 발생합니다:
+[에러 메시지 전체 복사]
+
+코드:
+[문제가 되는 코드 블록]
+
+요청:
+1. 오류 원인 분석
+2. 수정된 코드 제공
+3. 예방법 제시</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">4. 프로젝트 구조 설계부터 배포까지</h6>
+    <div class="ps-3">
+      <strong>전체 워크플로우:</strong>
+      <ol>
+        <li><strong>프로젝트 초기화:</strong> 폴더 구조, package.json, 기본 설정 파일 생성</li>
+        <li><strong>컴포넌트 설계:</strong> 기능별 컴포넌트 분리 및 코드 생성</li>
+        <li><strong>스타일링 및 UX:</strong> CSS/Tailwind를 활용한 디자인 구현</li>
+        <li><strong>기능 구현:</strong> 상태 관리, API 연동, 이벤트 처리</li>
+        <li><strong>테스트 및 최적화:</strong> 버그 수정, 성능 개선</li>
+        <li><strong>배포 준비:</strong> 빌드 설정, 환경변수 관리</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- Claude 바이브코딩 섹션 -->
+<div class="content-card mt-4">
+  <h5><i class="fas fa-brain me-2 text-info"></i>Claude 바이브코딩</h5>
+  
+  <div class="mt-3">
+    <h6 class="fw-bold text-primary">1. Claude의 코드 생성 특성</h6>
+    <div class="ps-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert alert-success">
+            <strong>Claude의 강점:</strong>
+            <ul class="mb-0 mt-2">
+              <li>긴 컨텍스트 유지 능력</li>
+              <li>복잡한 로직 이해 및 구현</li>
+              <li>자연스러운 대화형 코딩</li>
+              <li>코드 품질 및 구조 분석</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert alert-info">
+            <strong>최적 활용 상황:</strong>
+            <ul class="mb-0 mt-2">
+              <li>복잡한 알고리즘 구현</li>
+              <li>데이터 처리 로직</li>
+              <li>아키텍처 설계</li>
+              <li>코드 리팩토링</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">2. Claude Desktop App 활용</h6>
+    <div class="ps-3">
+      <div class="bg-light p-3 rounded">
+        <strong>로컬 개발 환경 연동 방법:</strong>
+        <ol class="mt-2">
+          <li><strong>MCP (Model Context Protocol) 설정:</strong> 로컬 파일 시스템 접근 권한 설정</li>
+          <li><strong>프로젝트 폴더 연결:</strong> Claude가 프로젝트 구조를 이해할 수 있도록 설정</li>
+          <li><strong>실시간 파일 모니터링:</strong> 코드 변경사항을 Claude와 실시간 공유</li>
+        </ol>
+      </div>
+
+      <div class="mt-3">
+        <strong>실습 시나리오:</strong>
+        <ul>
+          <li>기존 프로젝트 분석 및 개선점 도출</li>
+          <li>새로운 기능 추가를 위한 전체 구조 검토</li>
+          <li>성능 최적화 및 코드 품질 향상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">3. 대화형 코딩 세션</h6>
+    <div class="ps-3">
+      <div class="alert alert-light border">
+        <strong>효과적인 대화형 코딩 패턴:</strong>
+        <pre class="mt-2 mb-0 small"><code>1단계: 요구사항 상세 논의
+"저는 [프로젝트명]을 개발 중입니다. 현재 [현재 상태]이고, [원하는 기능]을 추가하려고 합니다."
+
+2단계: 구현 방안 협의
+"이 기능을 구현하기 위한 최적의 접근 방법은 무엇인가요?"
+
+3단계: 코드 생성 및 검토
+"제안해주신 방법으로 코드를 작성해주세요. 단계별로 설명도 함께 부탁드립니다."
+
+4단계: 개선 및 최적화
+"이 코드에서 개선할 수 있는 부분이 있나요?"</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw-bold text-primary">4. 복잡한 로직 구현 협업</h6>
+    <div class="ps-3">
+      <strong>고급 활용 사례:</strong>
+      <ul>
+        <li><strong>알고리즘 최적화:</strong> 데이터 구조 선택부터 성능 개선까지</li>
+        <li><strong>상태 관리 설계:</strong> 복잡한 애플리케이션의 상태 흐름 설계</li>
+        <li><strong>API 설계:</strong> RESTful API 또는 GraphQL 스키마 설계</li>
+        <li><strong>테스트 코드 작성:</strong> 단위 테스트부터 통합 테스트까지</li>
+      </ul>
+    </div>
+  </div>
+</div>

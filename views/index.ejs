@@ -231,7 +231,7 @@
                     <h2 class="section-title">🎹 바이브 코딩</h2>
                 </div>
 
-                <!-- 11강, 12강 단독 카드 (같은 row 내) -->
+                <!-- 11강, 12강, 13강 카드들 -->
                 <div class="row">
                     <%
                     // advancedLectures[3] = 11강
@@ -269,7 +269,7 @@
                             <div class="lecture-number"><%= advIdx + 8 %></div>
                         </div>
                     </div>
-                    <!-- 12강 단독 카드 -->
+                    <!-- 12강 카드 -->
                     <%
                       const lecture12 = lectures.find(l => l.number === "12강");
                     %>
@@ -287,6 +287,26 @@
                                 </div>
                             </div>
                             <div class="lecture-number">12</div>
+                        </div>
+                    </div>
+                    <!-- 13강 카드 -->
+                    <%
+                      const lecture13 = lectures.find(l => l.number === "13강");
+                    %>
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card" onclick="window.location.href='<%= lecture13.link %>'" style="cursor: pointer;">
+                            <div class="card-header-custom expert">
+                                <div class="card-header-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h3 class="card-title-header"><%= lecture13.number %>. <%= lecture13.title %></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-content">
+                                    <p class="card-text"><%= lecture13.description %></p>
+                                </div>
+                            </div>
+                            <div class="lecture-number">13</div>
                         </div>
                     </div>
                 </div>
