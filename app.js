@@ -11,8 +11,8 @@ app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
         "default-src 'self' https://vercel.live; " +
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app; " +
-        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com; " +
+        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com; " +
         "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; " +
         "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " +
         "img-src 'self' data: https:; " +
@@ -76,6 +76,17 @@ app.get('/mygpts', (req, res) => {
 // 테스트 페이지 라우트 추가
 app.get('/test-pdf', (req, res) => {
     res.sendFile(path.join(__dirname, 'test-pdf.html'));
+});
+
+// Quiz 페이지 라우트 추가
+app.get('/quiz', (req, res) => {
+    res.render('quiz', {
+        title: '생성형 AI 이해도 평가 퀴즈',
+        description: '당신의 AI 지식 수준을 확인해보세요',
+        path: '/quiz',
+        lectures: lecturesData.lectures,
+        layout: false  // 퀴즈 페이지는 독립적인 레이아웃 사용
+    });
 });
 
 // QNA 페이지 라우트 추가

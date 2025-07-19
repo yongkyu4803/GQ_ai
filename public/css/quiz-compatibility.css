@@ -1,0 +1,146 @@
+/* Bootstrap과 Tailwind CSS 호환성을 위한 스타일 */
+
+/* 퀴즈 컨테이너에서 Tailwind 스타일이 Bootstrap과 충돌하지 않도록 격리 */
+.quiz-container {
+    /* Tailwind의 기본 reset이 Bootstrap과 충돌하지 않도록 */
+    box-sizing: border-box;
+}
+
+.quiz-container * {
+    box-sizing: border-box;
+}
+
+/* 기존 navbar 스타일 보존 */
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, 
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f8f9fa !important;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.dropdown-menu {
+    background-color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu .dropdown-item {
+    color: #333;
+    padding: 8px 16px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #667eea;
+}
+
+.dropdown-menu .dropdown-item.active {
+    background-color: #667eea;
+    color: white;
+}
+
+/* 퀴즈 페이지에서 Tailwind 클래스들이 정상 작동하도록 보장 */
+.quiz-container .min-h-screen {
+    min-height: 100vh;
+}
+
+.quiz-container .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.quiz-container .from-blue-50 {
+    --tw-gradient-from: #eff6ff;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(239, 246, 255, 0));
+}
+
+.quiz-container .to-indigo-100 {
+    --tw-gradient-to: #e0e7ff;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .quiz-container .max-w-4xl,
+    .quiz-container .max-w-3xl,
+    .quiz-container .max-w-2xl {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .quiz-container .p-8 {
+        padding: 1rem;
+    }
+    
+    .quiz-container .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .quiz-container .text-2xl {
+        font-size: 1.5rem;
+    }
+}
+
+/* 접근성 개선 */
+.quiz-container button:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.quiz-container button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 애니메이션 효과 */
+.quiz-container .transition-colors {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.quiz-container .transition-shadow {
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.quiz-container .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 커스텀 스크롤바 (Webkit 브라우저용) */
+.quiz-container ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.quiz-container ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.quiz-container ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.quiz-container ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
