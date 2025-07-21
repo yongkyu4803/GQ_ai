@@ -41,6 +41,25 @@
         .dropdown-menu .dropdown-item.active {
             background-color: #667eea;
         }
+        
+        /* Quiz background images - Using !important to override Tailwind */
+        .bg-quiz-beginner {
+            background-image: url('/images/cho.jpg') !important;
+            background-color: #3B82F6 !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            min-height: 16rem !important;
+        }
+        
+        .bg-quiz-intermediate {
+            background-image: url('/images/jong.jpg') !important;
+            background-color: #10B981 !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            min-height: 16rem !important;
+        }
     </style>
 </head>
 <body>
@@ -454,48 +473,135 @@
           };
 
           if (currentLevel === '선택') {
-            return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6" },
-              React.createElement('div', { className: "max-w-4xl mx-auto" },
-                React.createElement('div', { className: "text-center mb-12" },
-                  React.createElement('h1', { className: "text-4xl font-bold text-gray-800 mb-4" }, "생성형 AI 이해도 평가 퀴즈"),
-                  React.createElement('p', { className: "text-xl text-gray-600" }, "당신의 AI 지식 수준을 확인해보세요")
+            return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 p-6" },
+              React.createElement('div', { className: "max-w-5xl mx-auto" },
+                React.createElement('div', { className: "text-center mb-16" },
+                  React.createElement('div', { className: "inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6 shadow-xl" },
+                    React.createElement('i', { className: "fas fa-brain text-white text-3xl" })
+                  ),
+                  React.createElement('h1', { className: "text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6" }, "생성형 AI 이해도 진단"),
+                  React.createElement('p', { className: "text-2xl text-gray-600 font-medium" }, "당신의 생성형 AI 활용수준은?"),
+                  React.createElement('div', { className: "mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-lg" },
+                    React.createElement('i', { className: "fas fa-clock text-blue-600" }),
+                    React.createElement('span', { className: "text-gray-700 font-medium" }, "예상 소요시간: 10-15분")
+                  )
                 ),
-                React.createElement('div', { className: "grid md:grid-cols-2 gap-8" },
+                React.createElement('div', { className: "grid md:grid-cols-2 gap-10" },
                   React.createElement('div', { 
                     onClick: () => handleLevelSelect('초급'),
-                    className: "bg-white rounded-xl shadow-lg p-8 cursor-pointer hover:shadow-xl transition-shadow border-2 border-transparent hover:border-blue-300"
+                    className: "group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl cursor-pointer border-2 border-transparent hover:border-blue-300 transition-all duration-300 transform hover:scale-105 overflow-hidden"
                   },
-                    React.createElement('div', { className: "text-center" },
-                      React.createElement(BookOpen, { className: "w-16 h-16 text-blue-500 mx-auto mb-4" }),
-                      React.createElement('h2', { className: "text-2xl font-bold text-gray-800 mb-3" }, "초급 단계"),
-                      React.createElement('p', { className: "text-gray-600 mb-4" }, "기본 개념과 도구 이해도"),
-                      React.createElement('ul', { className: "text-sm text-gray-500 text-left space-y-1" },
-                        React.createElement('li', null, "• 생성형 AI 기본 개념"),
-                        React.createElement('li', null, "• 주요 AI 도구 구분"),
-                        React.createElement('li', null, "• 기본 프롬프트 작성"),
-                        React.createElement('li', null, "• AI 한계점 인식")
+                    React.createElement('div', { 
+                      className: "relative h-64 overflow-hidden"
+                    },
+                      React.createElement('img', { 
+                        src: "/images/cho.jpg",
+                        alt: "초급 배경",
+                        className: "absolute inset-0 w-full h-full object-cover z-10",
+                        onError: (e) => {
+                          console.log('초급 이미지 로드 실패:', e.target.src);
+                          e.target.style.backgroundColor = '#FF0000';
+                        },
+                        onLoad: () => console.log('초급 이미지 로드 성공')
+                      }),
+                      // React.createElement('div', { className: "absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" }),
+                      React.createElement('div', { className: "absolute top-4 right-4 z-20" },
+                        React.createElement('div', { className: "text-right text-white" },
+                          React.createElement('div', { className: "inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-3 backdrop-blur-sm ml-auto" },
+                            React.createElement(BookOpen, { className: "w-6 h-6 text-white" })
+                          ),
+                          React.createElement('h2', { className: "text-6xl font-bold mb-1 drop-shadow-lg" }, "초급 단계"),
+                          React.createElement('p', { className: "text-2xl font-medium drop-shadow-md" }, "기본 개념과 도구 이해도")
+                        )
                       ),
-                      React.createElement('div', { className: "mt-6" },
-                        React.createElement('span', { className: "bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full" }, "10문항")
+                      React.createElement('div', { className: "absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" },
+                        React.createElement('i', { className: "fas fa-arrow-right text-white text-2xl drop-shadow-lg" })
+                      )
+                    ),
+                    React.createElement('div', { className: "p-6" },
+                      React.createElement('div', { className: "bg-blue-50 rounded-xl p-6 mb-6 border border-blue-100" },
+                        React.createElement('h3', { className: "text-lg font-bold text-blue-800 mb-4" }, "평가 내용"),
+                        React.createElement('ul', { className: "text-gray-700 space-y-3" },
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-check-circle text-blue-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "생성형 AI 기본 개념")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-check-circle text-blue-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "주요 AI 도구 구분")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-check-circle text-blue-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "기본 프롬프트 작성")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-check-circle text-blue-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "AI 한계점 인식")
+                          )
+                        )
+                      ),
+                      React.createElement('div', { className: "flex items-center justify-center gap-4" },
+                        React.createElement('span', { className: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-bold px-6 py-3 rounded-full shadow-lg" }, "10문항"),
+                        React.createElement('span', { className: "text-gray-600 font-medium" }, "약 5-8분")
                       )
                     )
                   ),
                   React.createElement('div', { 
                     onClick: () => handleLevelSelect('중급'),
-                    className: "bg-white rounded-xl shadow-lg p-8 cursor-pointer hover:shadow-xl transition-shadow border-2 border-transparent hover:border-green-300"
+                    className: "group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl cursor-pointer border-2 border-transparent hover:border-green-300 transition-all duration-300 transform hover:scale-105 overflow-hidden"
                   },
-                    React.createElement('div', { className: "text-center" },
-                      React.createElement(Trophy, { className: "w-16 h-16 text-green-500 mx-auto mb-4" }),
-                      React.createElement('h2', { className: "text-2xl font-bold text-gray-800 mb-3" }, "중급 단계"),
-                      React.createElement('p', { className: "text-gray-600 mb-4" }, "실무 활용과 고급 기법"),
-                      React.createElement('ul', { className: "text-sm text-gray-500 text-left space-y-1" },
-                        React.createElement('li', null, "• 프롬프트 엔지니어링"),
-                        React.createElement('li', null, "• 업무 적용 전략"),
-                        React.createElement('li', null, "• AI 윤리와 보안"),
-                        React.createElement('li', null, "• 성능 평가와 최적화")
+                    React.createElement('div', { 
+                      className: "relative h-64 overflow-hidden"
+                    },
+                      React.createElement('img', { 
+                        src: "/images/jong.jpg",
+                        alt: "중급 배경",
+                        className: "absolute inset-0 w-full h-full object-cover z-10",
+                        onError: (e) => {
+                          console.log('중급 이미지 로드 실패:', e.target.src);
+                          e.target.style.backgroundColor = '#00FF00';
+                        },
+                        onLoad: () => console.log('중급 이미지 로드 성공')
+                      }),
+                      // React.createElement('div', { className: "absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" }),
+                      React.createElement('div', { className: "absolute top-4 right-4 z-20" },
+                        React.createElement('div', { className: "text-right text-white" },
+                          React.createElement('div', { className: "inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-3 backdrop-blur-sm ml-auto" },
+                            React.createElement(Trophy, { className: "w-6 h-6 text-white" })
+                          ),
+                          React.createElement('h2', { className: "text-6xl font-bold mb-1 drop-shadow-lg" }, "중급 단계"),
+                          React.createElement('p', { className: "text-2xl font-medium drop-shadow-md" }, "실무 활용과 고급 기법")
+                        )
                       ),
-                      React.createElement('div', { className: "mt-6" },
-                        React.createElement('span', { className: "bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full" }, "10문항")
+                      React.createElement('div', { className: "absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" },
+                        React.createElement('i', { className: "fas fa-arrow-right text-white text-2xl drop-shadow-lg" })
+                      )
+                    ),
+                    React.createElement('div', { className: "p-6" },
+                      React.createElement('div', { className: "bg-green-50 rounded-xl p-6 mb-6 border border-green-100" },
+                        React.createElement('h3', { className: "text-lg font-bold text-green-800 mb-4" }, "평가 내용"),
+                        React.createElement('ul', { className: "text-gray-700 space-y-3" },
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-star text-green-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "프롬프트 엔지니어링")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-star text-green-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "업무 적용 전략")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-star text-green-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "AI 윤리와 보안")
+                          ),
+                          React.createElement('li', { className: "flex items-start gap-3" },
+                            React.createElement('i', { className: "fas fa-star text-green-500 mt-1" }),
+                            React.createElement('span', { className: "font-medium" }, "성능 평가와 최적화")
+                          )
+                        )
+                      ),
+                      React.createElement('div', { className: "flex items-center justify-center gap-4" },
+                        React.createElement('span', { className: "bg-gradient-to-r from-green-600 to-emerald-600 text-white text-lg font-bold px-6 py-3 rounded-full shadow-lg" }, "10문항"),
+                        React.createElement('span', { className: "text-gray-600 font-medium" }, "약 8-12분")
                       )
                     )
                   )
@@ -506,74 +612,145 @@
 
           if (showResult) {
             const scoreInfo = getScoreLevel(showResult.score, showResult.total);
+            const percentage = Math.round((showResult.score / showResult.total) * 100);
             return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6" },
-              React.createElement('div', { className: "max-w-2xl mx-auto" },
-                React.createElement('div', { className: "bg-white rounded-xl shadow-lg p-8 text-center" },
-                  React.createElement(Trophy, { className: "w-20 h-20 text-yellow-500 mx-auto mb-6" }),
-                  React.createElement('h2', { className: "text-3xl font-bold text-gray-800 mb-4" }, "퀴즈 완료!"),
-                  React.createElement('div', { className: "text-6xl font-bold mb-4" },
-                    React.createElement('span', { className: scoreInfo.color }, `${showResult.score}/${showResult.total}`)
+              React.createElement('div', { className: "max-w-3xl mx-auto" },
+                React.createElement('div', { className: "bg-white rounded-2xl shadow-2xl overflow-hidden" },
+                  React.createElement('div', { className: `bg-gradient-to-r ${scoreInfo.level === '우수' ? 'from-green-500 to-emerald-600' : scoreInfo.level === '양호' ? 'from-blue-500 to-indigo-600' : scoreInfo.level === '보통' ? 'from-yellow-500 to-orange-600' : 'from-red-500 to-pink-600'} p-8 text-center text-white relative overflow-hidden` },
+                    React.createElement('div', { className: "absolute inset-0 bg-black opacity-10" }),
+                    React.createElement('div', { className: "relative z-10" },
+                      React.createElement('div', { className: "flex justify-center mb-6" },
+                        React.createElement('div', { className: "w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm" },
+                          React.createElement(Trophy, { className: "w-14 h-14 text-white drop-shadow-lg" })
+                        )
+                      ),
+                      React.createElement('h2', { className: "text-4xl font-bold mb-4 drop-shadow-lg" }, "퀴즈 완료!"),
+                      React.createElement('div', { className: "flex items-center justify-center gap-4 mb-4" },
+                        React.createElement('div', { className: "text-7xl font-black drop-shadow-lg" }, `${showResult.score}`),
+                        React.createElement('div', { className: "text-3xl font-medium opacity-80" }, "/"),
+                        React.createElement('div', { className: "text-4xl font-bold opacity-90" }, `${showResult.total}`)
+                      ),
+                      React.createElement('div', { className: "text-2xl font-semibold mb-2" }, `${percentage}%`),
+                      React.createElement('div', { className: "text-3xl font-bold mb-2" }, scoreInfo.level),
+                      React.createElement('p', { className: "text-xl opacity-90" }, scoreInfo.message)
+                    )
                   ),
-                  React.createElement('div', { className: "mb-6" },
-                    React.createElement('div', { className: `text-2xl font-semibold mb-2 ${scoreInfo.color}` }, scoreInfo.level),
-                    React.createElement('p', { className: "text-gray-600" }, scoreInfo.message)
-                  ),
-                  React.createElement('div', { className: "bg-gray-50 rounded-lg p-4 mb-6" },
-                    React.createElement('h3', { className: "font-semibold text-gray-800 mb-4" }, "상세 결과"),
-                    React.createElement('div', { className: "space-y-3" },
+                  React.createElement('div', { className: "p-8" },
+                  React.createElement('div', { className: "bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 mb-8 border border-gray-200 shadow-sm" },
+                    React.createElement('h3', { className: "text-xl font-bold text-gray-800 mb-6 flex items-center gap-2" }, 
+                      React.createElement('i', { className: "fas fa-chart-line text-blue-600" }),
+                      "상세 결과"
+                    ),
+                    React.createElement('div', { className: "space-y-4" },
                       quizData[currentLevel].questions.map((question, index) => {
                         const isCorrect = selectedAnswers[question.id] === question.correct;
                         const userAnswer = selectedAnswers[question.id];
                         const showExp = showExplanation[question.id];
-                        return React.createElement('div', { key: question.id, className: "border rounded-lg p-4 bg-white" },
-                          React.createElement('div', { className: "flex items-start justify-between mb-3" },
-                            React.createElement('div', { className: "flex-1 pr-4" },
-                              React.createElement('div', { className: "font-medium text-gray-800 mb-2" }, `문항 ${index + 1}`),
-                              React.createElement('div', { className: "text-sm text-gray-700 mb-2" }, question.question),
-                              React.createElement('div', { className: "flex justify-start" },
-                                React.createElement('button', {
-                                  onClick: () => toggleExplanation(question.id),
-                                  className: "text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 rounded bg-blue-50 hover:bg-blue-100 transition-colors"
-                                }, showExp ? "해설 닫기" : "해설 보기")
+                        return React.createElement('div', { 
+                          key: question.id, 
+                          className: `relative overflow-hidden rounded-xl border-2 transition-all duration-300 hover:shadow-lg group ${
+                            isCorrect 
+                              ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 hover:border-green-300' 
+                              : 'bg-gradient-to-r from-red-50 to-pink-50 border-red-200 hover:border-red-300'
+                          }`
+                        },
+                          React.createElement('div', { className: "absolute inset-0 bg-white opacity-70" }),
+                          React.createElement('div', { className: "relative p-5" },
+                            React.createElement('div', { className: "flex items-start justify-between mb-4" },
+                              React.createElement('div', { className: "flex-1 pr-4" },
+                                React.createElement('div', { className: "flex items-center gap-3 mb-3" },
+                                  React.createElement('div', { 
+                                    className: `w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white ${
+                                      isCorrect ? 'bg-green-500' : 'bg-red-500'
+                                    }`
+                                  }, index + 1),
+                                  React.createElement('div', { className: "font-semibold text-gray-800 text-lg" }, `문항 ${index + 1}`)
+                                ),
+                                React.createElement('div', { className: "text-gray-700 mb-4 leading-relaxed" }, question.question),
+                                React.createElement('div', { className: "flex items-center gap-3" },
+                                  React.createElement('button', {
+                                    onClick: () => toggleExplanation(question.id),
+                                    className: `flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                      isCorrect 
+                                        ? 'bg-green-100 text-green-700 hover:bg-green-200 hover:scale-105' 
+                                        : 'bg-blue-100 text-blue-700 hover:bg-blue-200 hover:scale-105'
+                                    } shadow-sm hover:shadow-md`
+                                  }, 
+                                    React.createElement('i', { className: `fas ${showExp ? 'fa-eye-slash' : 'fa-eye'}` }),
+                                    showExp ? "해설 닫기" : "해설 보기"
+                                  ),
+                                  React.createElement('div', { className: `px-3 py-1 rounded-full text-xs font-semibold ${
+                                    isCorrect ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                                  }`}, isCorrect ? "정답" : "오답")
+                                )
+                              ),
+                              React.createElement('div', { className: "flex-shrink-0" },
+                                React.createElement('div', { 
+                                  className: `w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${
+                                    isCorrect ? 'bg-green-500' : 'bg-red-500'
+                                  }`
+                                },
+                                  isCorrect ? 
+                                    React.createElement(CheckCircle, { className: "w-7 h-7 text-white" }) :
+                                    React.createElement(XCircle, { className: "w-7 h-7 text-white" })
+                                )
                               )
                             ),
-                            React.createElement('div', { className: "flex-shrink-0" },
-                              isCorrect ? 
-                                React.createElement(CheckCircle, { className: "w-6 h-6 text-green-500" }) :
-                                React.createElement(XCircle, { className: "w-6 h-6 text-red-500" })
-                            )
-                          ),
-                          showExp && React.createElement('div', { className: "mt-3 p-3 bg-blue-50 rounded-lg text-sm" },
-                            React.createElement('div', { className: "mb-2" },
-                              React.createElement('span', { className: "font-semibold text-blue-800" }, "정답: "),
-                              React.createElement('span', { className: "text-blue-700" }, question.explanation?.answer || "정답 정보 없음")
-                            ),
-                            React.createElement('div', { className: "mb-2" },
-                              React.createElement('span', { className: "font-semibold text-gray-700" }, "당신의 답: "),
-                              React.createElement('span', { 
-                                className: isCorrect ? "text-green-600" : "text-red-600" 
-                              }, userAnswer !== undefined ? question.options[userAnswer] : "답변 안함")
-                            ),
-                            React.createElement('div', null,
-                              React.createElement('span', { className: "font-semibold text-gray-700" }, "해설: "),
-                              React.createElement('div', { className: "text-gray-600 mt-1" }, question.explanation?.description || "해설 정보 없음")
+                            showExp && React.createElement('div', { 
+                              className: `mt-4 p-4 rounded-xl border-l-4 transition-all duration-300 ${
+                                isCorrect 
+                                  ? 'bg-green-50 border-green-400' 
+                                  : 'bg-blue-50 border-blue-400'
+                              }`
+                            },
+                              React.createElement('div', { className: "space-y-3" },
+                                React.createElement('div', { className: "flex items-start gap-2" },
+                                  React.createElement('i', { className: "fas fa-check-circle text-green-600 mt-1" }),
+                                  React.createElement('div', null,
+                                    React.createElement('span', { className: "font-bold text-green-800" }, "정답: "),
+                                    React.createElement('span', { className: "text-green-700 font-medium" }, question.explanation?.answer || "정답 정보 없음")
+                                  )
+                                ),
+                                React.createElement('div', { className: "flex items-start gap-2" },
+                                  React.createElement('i', { className: `fas ${isCorrect ? 'fa-user-check' : 'fa-user-times'} ${isCorrect ? 'text-green-600' : 'text-red-600'} mt-1` }),
+                                  React.createElement('div', null,
+                                    React.createElement('span', { className: "font-bold text-gray-800" }, "당신의 답: "),
+                                    React.createElement('span', { 
+                                      className: `font-medium ${isCorrect ? "text-green-600" : "text-red-600"}` 
+                                    }, userAnswer !== undefined ? question.options[userAnswer] : "답변 안함")
+                                  )
+                                ),
+                                React.createElement('div', { className: "border-t pt-3 mt-3" },
+                                  React.createElement('div', { className: "flex items-start gap-2" },
+                                    React.createElement('i', { className: "fas fa-lightbulb text-yellow-600 mt-1" }),
+                                    React.createElement('div', null,
+                                      React.createElement('span', { className: "font-bold text-gray-800" }, "해설: "),
+                                      React.createElement('div', { className: "text-gray-700 mt-1 leading-relaxed" }, question.explanation?.description || "해설 정보 없음")
+                                    )
+                                  )
+                                )
+                              )
                             )
                           )
                         );
                       })
                     )
-                  ),
-                  React.createElement('div', { className: "space-y-3" },
-                    React.createElement('button', {
-                      onClick: () => handleLevelSelect(currentLevel === '초급' ? '중급' : '초급'),
-                      className: "w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                    }, currentLevel === '초급' ? '중급 단계 도전하기' : '초급 단계 다시하기'),
-                    React.createElement('button', {
-                      onClick: resetQuiz,
-                      className: "w-full bg-gray-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
-                    }, 
-                      React.createElement(RotateCcw, { className: "w-5 h-5" }),
-                      "처음으로 돌아가기"
+                    ),
+                    React.createElement('div', { className: "grid md:grid-cols-2 gap-4 mt-8" },
+                      React.createElement('button', {
+                        onClick: () => handleLevelSelect(currentLevel === '초급' ? '중급' : '초급'),
+                        className: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      }, 
+                        React.createElement('i', { className: currentLevel === '초급' ? "fas fa-arrow-up" : "fas fa-redo" }),
+                        currentLevel === '초급' ? '중급 단계 도전하기' : '초급 단계 다시하기'
+                      ),
+                      React.createElement('button', {
+                        onClick: resetQuiz,
+                        className: "bg-gradient-to-r from-gray-600 to-gray-700 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-gray-700 hover:to-gray-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      }, 
+                        React.createElement(RotateCcw, { className: "w-6 h-6" }),
+                        "처음으로 돌아가기"
+                      )
                     )
                   )
                 )
