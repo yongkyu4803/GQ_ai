@@ -86,14 +86,146 @@
         </div>
     </div>
 
-    <!-- 푸터 유지 -->
-    <footer class="footer text-center">
+    <!-- 확장된 푸터 -->
+    <footer class="expanded-footer">
         <div class="container">
-            <p>&copy; 2024 AI Lecture. All Rights Reserved.</p>
+            <div class="row g-4">
+                <!-- 플랫폼 정보 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h5 class="footer-title">
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            GQ AI Learning Platform
+                        </h5>
+                        <p class="footer-description">
+                            생성형 AI를 활용한 업무 혁신과 실무 적용을 위한 종합 교육 플랫폼입니다.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 빠른 링크 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-subtitle">빠른 링크</h6>
+                        <ul class="footer-links">
+                            <li><a href="/"><i class="fas fa-home me-2"></i>홈</a></li>
+                            <li><a href="/quiz"><i class="fas fa-brain me-2"></i>퀴즈</a></li>
+                            <li><a href="/qna"><i class="fas fa-question-circle me-2"></i>Q&A</a></li>
+                            <li><a href="/contact"><i class="fas fa-envelope me-2"></i>문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 방문자 통계 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-subtitle">
+                            <i class="fas fa-chart-bar me-2"></i>방문자 통계
+                        </h6>
+                        <div class="visitor-stats-footer">
+                            <div class="stat-item">
+                                <div class="stat-number" id="footer-total-visitors">-</div>
+                                <div class="stat-label">총 방문자</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="footer-daily-visitors">-</div>
+                                <div class="stat-label">오늘 방문자</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 강의 정보 -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-subtitle">강의 과정</h6>
+                        <div class="course-stats">
+                            <div class="course-item">
+                                <span class="course-number">13</span>
+                                <span class="course-label">개 강의</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-number">4</span>
+                                <span class="course-label">개 단계</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 카피라이트 -->
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="copyright-text">
+                            © <%= new Date().getFullYear() %> GQ AI Learning Platform. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="footer-tagline">
+                            <i class="fas fa-star me-1"></i>
+                            Designed with <i class="fas fa-heart mx-1 text-danger"></i> by GQ
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 방문자 카운터 JavaScript -->
+    <script>
+    // 방문자 카운트 로드 (푸터용)
+    async function loadFooterVisitorCounts() {
+        try {
+            const response = await fetch('/api/visitors');
+            const data = await response.json();
+            
+            // 데이터 검증 및 안전한 표시
+            const totalVisitors = data && typeof data.totalVisitors === 'number' ? data.totalVisitors : 0;
+            const dailyVisitors = data && typeof data.dailyVisitors === 'number' ? data.dailyVisitors : 0;
+            
+            // 푸터의 방문자 통계 업데이트
+            const footerTotalElement = document.getElementById('footer-total-visitors');
+            const footerDailyElement = document.getElementById('footer-daily-visitors');
+            
+            if (footerTotalElement) {
+                footerTotalElement.textContent = totalVisitors.toLocaleString();
+            }
+            if (footerDailyElement) {
+                footerDailyElement.textContent = dailyVisitors.toLocaleString();
+            }
+            
+            // 개발 모드 표시 (콘솔에서만)
+            if (data && data.mode === 'local-memory') {
+                console.log('🏠 로컬 개발 모드: 메모리 저장소 사용 중');
+            } else if (data && data.mode === 'vercel-kv') {
+                console.log('☁️ Vercel KV 모드: 클라우드 저장소 사용 중');
+            }
+            
+            if (data && data.error) {
+                console.warn('⚠️ 방문자 카운터 오류:', data.error);
+            }
+        } catch (error) {
+            console.error('Failed to load visitor counts:', error);
+            const footerTotalElement = document.getElementById('footer-total-visitors');
+            const footerDailyElement = document.getElementById('footer-daily-visitors');
+            
+            if (footerTotalElement) footerTotalElement.textContent = '0';
+            if (footerDailyElement) footerDailyElement.textContent = '0';
+        }
+    }
+
+    // 페이지 로드 시 방문자 카운트 로드
+    document.addEventListener('DOMContentLoaded', loadFooterVisitorCounts);
+    </script>
+    
     <script>
     let currentSlide = 1;
     let totalSlides = 1;

@@ -42,6 +42,218 @@ h1, h2, h3, h4, h5, h6 {
 /* .navbar, .navbar-brand, .nav-link, .navbar-toggler, .navbar-toggler-icon, .dropdown-menu, .dropdown-item 등 내브바 관련 기존 스타일은 주석 처리됨 */
 
 /* ─────────────────────────────────────────────
+   확장된 푸터 스타일
+   ───────────────────────────────────────────── */
+.expanded-footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #667eea 100%);
+    color: white;
+    padding: 4rem 0 1rem;
+    margin-top: 3rem;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ecf0f1;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #bdc3c7;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.footer-description {
+    color: #bdc3c7;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* 소셜 링크 */
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 푸터 링크 */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.7rem;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #ecf0f1;
+}
+
+/* 방문자 통계 스타일 */
+.visitor-stats-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f39c12;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #bdc3c7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 강의 정보 */
+.course-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.course-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.course-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3498db;
+    margin-right: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.course-label {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+/* 푸터 하단 */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.copyright-text {
+    margin: 0;
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.footer-tagline {
+    margin: 0;
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .expanded-footer {
+        padding: 3rem 0 1rem;
+    }
+    
+    .visitor-stats-footer {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .footer-social {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .course-stats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .course-item {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .course-number {
+        margin-right: 0;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* ─────────────────────────────────────────────
    랜딩 섹션
    ───────────────────────────────────────────── */
 .landing-section {
