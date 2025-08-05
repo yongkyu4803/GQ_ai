@@ -23,9 +23,10 @@ try {
 
 // 로컬 개발용 메모리 저장소
 const localStorage = {
-    totalVisitors: 0,
+    totalVisitors: parseInt(process.env.INIT_TOTAL_VISITORS) || 0,
     dailyVisitors: {},
-    visitorIPs: new Set()
+    visitorIPs: new Set(),
+    maxIPsToStore: 10000 // 메모리 누수 방지를 위한 최대 IP 저장 수
 };
 
 // lectures.json 파일 불러오기
@@ -54,12 +55,68 @@ app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// 프록시 신뢰 설정 (Vercel/Netlify 등)
+app.set('trust proxy', true);
+
+// IP 추출 유틸리티 함수
+function getClientIP(req) {
+    return req.headers['x-real-ip'] || 
+           req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+           req.headers['x-client-ip'] ||
+           req.headers['cf-connecting-ip'] || // Cloudflare
+           req.ip ||
+           req.socket.remoteAddress ||
+           'unknown';
+}
+
+// 메모리 정리 함수
+function cleanupMemoryStorage(today) {
+    try {
+        // 7일 이전 dailyVisitors 데이터 삭제
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        const cutoffDate = sevenDaysAgo.toISOString().split('T')[0];
+        
+        Object.keys(localStorage.dailyVisitors).forEach(date => {
+            if (date < cutoffDate) {
+                delete localStorage.dailyVisitors[date];
+            }
+        });
+        
+        // visitorIPs Set 크기 제한 (최신 방문자만 유지)
+        if (localStorage.visitorIPs.size > localStorage.maxIPsToStore) {
+            const ipsArray = Array.from(localStorage.visitorIPs);
+            // 오늘 방문자는 유지하고 나머지는 정리
+            const todayIPs = ipsArray.filter(ip => ip.startsWith(today + ':'));
+            const oldIPs = ipsArray.filter(ip => !ip.startsWith(today + ':'));
+            
+            // 오래된 IP 중 절반 제거
+            const toRemove = oldIPs.slice(0, Math.floor(oldIPs.length / 2));
+            toRemove.forEach(ip => localStorage.visitorIPs.delete(ip));
+            
+            console.log(`🧹 메모리 정리: ${toRemove.length}개 오래된 IP 제거`);
+        }
+    } catch (error) {
+        console.error('Memory cleanup error:', error);
+    }
+}
+
 // 방문자 카운터 미들웨어
 const visitorCounter = async (req, res, next) => {
     try {
-        const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
+        // 정적 파일 요청, API 호출, 봇 요청은 카운트하지 않음
+        const userAgent = req.headers['user-agent'] || 'unknown';
+        const isBot = /bot|crawler|spider|scraper/i.test(userAgent);
+        const isStaticFile = /\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf)$/i.test(req.path);
+        const isApiCall = req.path.startsWith('/api/');
+        
+        if (isBot || isStaticFile || isApiCall) {
+            return next();
+        }
+        
+        const clientIP = getClientIP(req);
         const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD 형식
-        const ipKey = `${today}:${clientIP}`;
+        const ipKey = `${today}:${clientIP}:${Buffer.from(userAgent).toString('base64').slice(0, 10)}`;
         
         if (isKvAvailable && kv) {
             // Vercel KV 사용
@@ -85,20 +142,18 @@ const visitorCounter = async (req, res, next) => {
                 }
                 localStorage.dailyVisitors[today]++;
                 
-                // 메모리 정리 (7일 이전 데이터 삭제)
-                const sevenDaysAgo = new Date();
-                sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-                const cutoffDate = sevenDaysAgo.toISOString().split('T')[0];
-                
-                Object.keys(localStorage.dailyVisitors).forEach(date => {
-                    if (date < cutoffDate) {
-                        delete localStorage.dailyVisitors[date];
-                    }
-                });
+                // 메모리 정리 로직 개선
+                cleanupMemoryStorage(today);
             }
         }
     } catch (error) {
-        console.error('Visitor counter error:', error);
+        console.error('방문자 카운터 오류:', {
+            error: error.message,
+            ip: req.ip || 'unknown',
+            path: req.path,
+            userAgent: req.headers['user-agent']?.substring(0, 100) || 'unknown',
+            timestamp: new Date().toISOString()
+        });
         // 에러가 발생해도 페이지 로딩은 계속
     }
     next();
@@ -192,31 +247,56 @@ app.get('/api/visitors', async (req, res) => {
         const today = new Date().toISOString().split('T')[0];
         let totalVisitors = 0;
         let dailyVisitors = 0;
+        let storageMode = 'unknown';
         
         if (isKvAvailable && kv) {
             // Vercel KV 사용
-            totalVisitors = await kv.get('total_visitors') || 0;
-            dailyVisitors = await kv.get(`daily_visitors:${today}`) || 0;
+            const [totalResult, dailyResult] = await Promise.all([
+                kv.get('total_visitors').catch(() => null),
+                kv.get(`daily_visitors:${today}`).catch(() => null)
+            ]);
+            
+            totalVisitors = parseInt(totalResult) || 0;
+            dailyVisitors = parseInt(dailyResult) || 0;
+            storageMode = 'vercel-kv';
         } else {
             // 로컬 메모리 저장소 사용
-            totalVisitors = localStorage.totalVisitors;
-            dailyVisitors = localStorage.dailyVisitors[today] || 0;
+            totalVisitors = parseInt(localStorage.totalVisitors) || 0;
+            dailyVisitors = parseInt(localStorage.dailyVisitors[today]) || 0;
+            storageMode = 'local-memory';
         }
         
-        res.json({
-            totalVisitors: parseInt(totalVisitors),
-            dailyVisitors: parseInt(dailyVisitors),
+        // 데이터 검증
+        if (totalVisitors < 0) totalVisitors = 0;
+        if (dailyVisitors < 0) dailyVisitors = 0;
+        if (dailyVisitors > totalVisitors) dailyVisitors = totalVisitors;
+        
+        const response = {
+            success: true,
+            totalVisitors,
+            dailyVisitors,
             date: today,
-            mode: isKvAvailable ? 'vercel-kv' : 'local-memory'
-        });
+            mode: storageMode,
+            timestamp: new Date().toISOString()
+        };
+        
+        res.json(response);
+        
     } catch (error) {
-        console.error('Error fetching visitor counts:', error);
-        res.json({
+        console.error('방문자 수 조회 오류:', {
+            error: error.message,
+            stack: error.stack,
+            timestamp: new Date().toISOString()
+        });
+        
+        res.status(500).json({
+            success: false,
             totalVisitors: 0,
             dailyVisitors: 0,
             date: new Date().toISOString().split('T')[0],
-            error: 'Failed to fetch visitor counts',
-            mode: 'error'
+            error: '방문자 수를 불러오는데 실패했습니다',
+            mode: 'error',
+            timestamp: new Date().toISOString()
         });
     }
 });

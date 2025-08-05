@@ -412,42 +412,74 @@
     <script>
     // 방문자 카운트 로드 (푸터용)
     async function loadFooterVisitorCounts() {
+        const footerTotalElement = document.getElementById('footer-total-visitors');
+        const footerDailyElement = document.getElementById('footer-daily-visitors');
+        
         try {
-            const response = await fetch('/api/visitors');
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5초 타임아웃
+            
+            const response = await fetch('/api/visitors', {
+                signal: controller.signal,
+                headers: {
+                    'Accept': 'application/json',
+                    'Cache-Control': 'no-cache'
+                }
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
             const data = await response.json();
             
+            // 응답 데이터 검증
+            if (!data || typeof data !== 'object') {
+                throw new Error('잘못된 응답 형식');
+            }
+            
+            if (!data.success) {
+                throw new Error(data.error || '방문자 수 조회 실패');
+            }
+            
             // 데이터 검증 및 안전한 표시
-            const totalVisitors = data && typeof data.totalVisitors === 'number' ? data.totalVisitors : 0;
-            const dailyVisitors = data && typeof data.dailyVisitors === 'number' ? data.dailyVisitors : 0;
+            const totalVisitors = Number.isInteger(data.totalVisitors) && data.totalVisitors >= 0 ? data.totalVisitors : 0;
+            const dailyVisitors = Number.isInteger(data.dailyVisitors) && data.dailyVisitors >= 0 ? data.dailyVisitors : 0;
             
             // 푸터의 방문자 통계 업데이트
-            const footerTotalElement = document.getElementById('footer-total-visitors');
-            const footerDailyElement = document.getElementById('footer-daily-visitors');
-            
             if (footerTotalElement) {
-                footerTotalElement.textContent = totalVisitors.toLocaleString();
+                footerTotalElement.textContent = totalVisitors.toLocaleString('ko-KR');
             }
             if (footerDailyElement) {
-                footerDailyElement.textContent = dailyVisitors.toLocaleString();
+                footerDailyElement.textContent = dailyVisitors.toLocaleString('ko-KR');
             }
             
             // 개발 모드 표시 (콘솔에서만)
-            if (data && data.mode === 'local-memory') {
+            if (data.mode === 'local-memory') {
                 console.log('🏠 로컬 개발 모드: 메모리 저장소 사용 중');
-            } else if (data && data.mode === 'vercel-kv') {
+            } else if (data.mode === 'vercel-kv') {
                 console.log('☁️ Vercel KV 모드: 클라우드 저장소 사용 중');
             }
             
-            if (data && data.error) {
-                console.warn('⚠️ 방문자 카운터 오류:', data.error);
-            }
         } catch (error) {
-            console.error('Failed to load visitor counts:', error);
-            const footerTotalElement = document.getElementById('footer-total-visitors');
-            const footerDailyElement = document.getElementById('footer-daily-visitors');
+            console.error('방문자 수 로드 실패:', error.message);
             
-            if (footerTotalElement) footerTotalElement.textContent = '0';
-            if (footerDailyElement) footerDailyElement.textContent = '0';
+            // 기본값으로 설정
+            if (footerTotalElement) {
+                footerTotalElement.textContent = '-';
+                footerTotalElement.title = '방문자 수를 불러올 수 없습니다';
+            }
+            if (footerDailyElement) {
+                footerDailyElement.textContent = '-';
+                footerDailyElement.title = '방문자 수를 불러올 수 없습니다';
+            }
+            
+            // 재시도 로직 (5초 후)
+            if (!document.hidden) {
+                setTimeout(loadFooterVisitorCounts, 5000);
+            }
         }
     }
 
