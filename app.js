@@ -241,8 +241,8 @@ app.get('/contact', (req, res) => {
     });
 });
 
-// promt platform 리디렉션 라우트
-app.get('/promt', (req, res) => {
+// prompt platform 리디렉션 라우트
+app.get('/prompt', (req, res) => {
     res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
 });
 
