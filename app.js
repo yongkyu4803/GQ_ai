@@ -241,6 +241,16 @@ app.get('/contact', (req, res) => {
     });
 });
 
+// promt platform 페이지 라우트 추가
+app.get('/promt', (req, res) => {
+    res.render('promt', {
+        title: 'promt platform',
+        description: '프롬프트 플랫폼 페이지',
+        path: '/promt',
+        lectures: lecturesData.lectures
+    });
+});
+
 // 방문자 카운트 API 엔드포인트
 app.get('/api/visitors', async (req, res) => {
     try {
