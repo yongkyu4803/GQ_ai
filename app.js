@@ -241,14 +241,9 @@ app.get('/contact', (req, res) => {
     });
 });
 
-// promt platform 페이지 라우트 추가
+// promt platform 리디렉션 라우트
 app.get('/promt', (req, res) => {
-    res.render('promt', {
-        title: 'promt platform',
-        description: '프롬프트 플랫폼 페이지',
-        path: '/promt',
-        lectures: lecturesData.lectures
-    });
+    res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
 });
 
 // 방문자 카운트 API 엔드포인트
