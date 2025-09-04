@@ -18,6 +18,73 @@
 <body>
     <%- include('navbar') %>
 
+    <!-- 새 서비스 런칭 알림 팝업 -->
+    <div class="modal fade" id="launchPopup" tabindex="-1" aria-labelledby="launchPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-primary text-white">
+                    <h5 class="modal-title" id="launchPopupLabel">
+                        <i class="fas fa-rocket me-2"></i>
+                        🎉 새로운 서비스가 런칭되었습니다!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="launch-content">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-magic fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="mb-3">프롬프트 플랫폼</h4>
+                        <p class="lead mb-4">
+                            AI 프롬프트를 더욱 쉽고 효율적으로 작성할 수 있는<br>
+                            전문 프롬프트 플랫폼이 새롭게 런칭되었습니다!
+                        </p>
+                        <div class="features mb-4">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="feature-item">
+                                        <i class="fas fa-lightbulb text-warning mb-2"></i>
+                                        <h6>스마트 프롬프트</h6>
+                                        <small class="text-muted">AI 최적화된 프롬프트 생성</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="feature-item">
+                                        <i class="fas fa-palette text-info mb-2"></i>
+                                        <h6>맞춤형 템플릿</h6>
+                                        <small class="text-muted">업무별 전문 템플릿 제공</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="feature-item">
+                                        <i class="fas fa-users text-success mb-2"></i>
+                                        <h6>커뮤니티</h6>
+                                        <small class="text-muted">프롬프트 공유 및 협업</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="launch-badge mb-3">
+                            <span class="badge bg-success fs-6 px-3 py-2">
+                                <i class="fas fa-star me-1"></i>
+                                지금 바로 무료로 체험하세요!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="#" class="btn btn-primary btn-lg px-4" onclick="visitPromptPlatform()">
+                        <i class="fas fa-external-link-alt me-2"></i>
+                        프롬프트 플랫폼 바로가기
+                    </a>
+                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
+                        나중에 보기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- lecture-header 영역 -->
     <div class="lecture-header">
         <div class="container">
@@ -224,6 +291,75 @@
 
     // 페이지 로드 시 방문자 카운트 로드
     document.addEventListener('DOMContentLoaded', loadFooterVisitorCounts);
+    </script>
+    
+    <!-- 런칭 팝업 JavaScript -->
+    <script>
+    // 런칭 팝업 관리
+    document.addEventListener('DOMContentLoaded', function() {
+        const LAUNCH_POPUP_KEY = 'launch_popup_shown_v1';
+        const LAUNCH_POPUP_DELAY = 2000; // 2초 후 표시
+        
+        // 이미 팝업을 본 사용자인지 확인
+        function hasSeenPopup() {
+            return localStorage.getItem(LAUNCH_POPUP_KEY) === 'true';
+        }
+        
+        // 팝업을 봤다고 표시
+        function markPopupAsSeen() {
+            localStorage.setItem(LAUNCH_POPUP_KEY, 'true');
+        }
+        
+        // 팝업 표시
+        function showLaunchPopup() {
+            const popupElement = document.getElementById('launchPopup');
+            if (popupElement) {
+                const modal = new bootstrap.Modal(popupElement, {
+                    backdrop: 'static', // 배경 클릭으로 닫히지 않도록
+                    keyboard: true      // ESC 키로 닫을 수 있도록
+                });
+                modal.show();
+                
+                // 팝업이 닫힐 때 "본 것으로" 표시
+                popupElement.addEventListener('hidden.bs.modal', function () {
+                    markPopupAsSeen();
+                });
+            }
+        }
+        
+        // 페이지 로드 후 조건부 팝업 표시
+        if (!hasSeenPopup()) {
+            setTimeout(showLaunchPopup, LAUNCH_POPUP_DELAY);
+        }
+        
+        // 다시 보기 기능 (개발용 - 콘솔에서 사용 가능)
+        window.resetLaunchPopup = function() {
+            localStorage.removeItem(LAUNCH_POPUP_KEY);
+            console.log('런칭 팝업이 리셋되었습니다. 페이지를 새로고침하면 다시 표시됩니다.');
+        };
+    });
+    
+    // 프롬프트 플랫폼 방문 함수
+    function visitPromptPlatform() {
+        // 네비게이션 바의 프롬프트 플랫폼 링크를 찾아서 클릭
+        const promptLink = document.querySelector('a[href*="프롬프트"]') || 
+                          document.querySelector('a[href*="prompt"]') ||
+                          document.querySelector('a[href="/prompt"]');
+        
+        if (promptLink) {
+            // 같은 탭에서 열기
+            window.location.href = promptLink.href;
+        } else {
+            // 링크를 찾을 수 없는 경우 알림
+            alert('프롬프트 플랫폼으로 이동합니다.\n네비게이션 바에서 "프롬프트 플랫폼" 메뉴를 확인해주세요.');
+        }
+        
+        // 팝업 닫기
+        const modal = bootstrap.Modal.getInstance(document.getElementById('launchPopup'));
+        if (modal) {
+            modal.hide();
+        }
+    }
     </script>
     
     <script>
