@@ -25,10 +25,9 @@
     <!-- Hero Section -->
     <div class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <!-- 좌측 영역: 브랜드 (4:3 비율 중 4) -->
-                <div class="col-lg-7">
-                    <div class="hero-left">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="hero-content">
                         <div class="brand-container">
                             <h1 class="hero-title">
                                 <span class="text-gradient">GQ AI</span>
@@ -38,12 +37,6 @@
                                 <div class="tagline-decoration"></div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- 우측 영역: 설명 및 액션 (4:3 비율 중 3) -->
-                <div class="col-lg-5">
-                    <div class="hero-right">
                         <p class="hero-description">
                             체계적인 학습부터 실무 프롬프트까지, AI 시대의 필수 역량을 키워보세요
                         </p>
@@ -268,32 +261,21 @@
             });
 
             // 페이지 로드 시 애니메이션
-            const heroLeft = document.querySelector('.hero-left');
-            const heroRight = document.querySelector('.hero-right');
+            const heroContent = document.querySelector('.hero-content');
             const serviceCards = document.querySelectorAll('.service-card');
             
-            // 좌측 영역 애니메이션 (먼저 등장)
             setTimeout(() => {
-                if (heroLeft) {
-                    heroLeft.style.opacity = '1';
-                    heroLeft.style.transform = 'translateY(0)';
+                if (heroContent) {
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
                 }
             }, 200);
 
-            // 우측 영역 애니메이션 (0.3초 후 등장)
-            setTimeout(() => {
-                if (heroRight) {
-                    heroRight.style.opacity = '1';
-                    heroRight.style.transform = 'translateY(0)';
-                }
-            }, 500);
-
-            // 서비스 카드 애니메이션
             serviceCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, 800 + (index * 200));
+                }, 400 + (index * 200));
             });
         });
     </script>
