@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="/css/education-inquiry.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="inquiry-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="header-nav">
+                        <a href="/landing" class="brand-logo">
+                            <span class="logo-text">GQ AI</span>
+                        </a>
+                        <div class="header-links">
+                            <a href="/landing" class="nav-link">홈</a>
+                            <a href="/" class="nav-link">AI 러닝</a>
+                            <a href="/prompt" class="nav-link">프롬프트</a>
+                            <a href="/qna" class="nav-link">Q&A</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="inquiry-main">
+        <!-- Hero Section -->
+        <section class="inquiry-hero">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                <span class="title-highlight">기업교육</span> 문의하기
+                            </h1>
+                            <p class="hero-subtitle">
+                                귀하의 조직에 최적화된 AI 교육 프로그램을<br>
+                                설계하여 제공해드립니다
+                            </p>
+                            <div class="hero-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>맞춤형 교육과정</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>전문 강사진</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>실무 중심 커리큘럼</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry Form Section -->
+        <section class="inquiry-form-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="form-container">
+                            <div class="form-header">
+                                <h2 class="form-title">교육 문의하기</h2>
+                                <p class="form-description">
+                                    아래 정보를 입력해 주시면, 담당자가 24시간 내 연락드리겠습니다.
+                                </p>
+                            </div>
+
+                            <form class="inquiry-form" id="educationInquiryForm">
+                                <!-- 기본 정보 -->
+                                <div class="form-section">
+                                    <h3 class="section-title">기본 정보</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="company" class="form-label">회사명 *</label>
+                                            <input type="text" class="form-control" id="company" name="company" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="name" class="form-label">담당자명 *</label>
+                                            <input type="text" class="form-control" id="name" name="name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="position" class="form-label">직급/부서</label>
+                                            <input type="text" class="form-control" id="position" name="position" placeholder="예: 인사팀 팀장">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">연락처 *</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="010-1234-5678" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="email" class="form-label">이메일 *</label>
+                                            <input type="email" class="form-control" id="email" name="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 교육 정보 -->
+                                <div class="form-section">
+                                    <h3 class="section-title">교육 정보</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="participants" class="form-label">예상 교육 인원 *</label>
+                                            <select class="form-select" id="participants" name="participants" required>
+                                                <option value="">선택하세요</option>
+                                                <option value="1-10">1-10명</option>
+                                                <option value="11-30">11-30명</option>
+                                                <option value="31-50">31-50명</option>
+                                                <option value="51-100">51-100명</option>
+                                                <option value="100+">100명 이상</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="duration" class="form-label">희망 교육 기간</label>
+                                            <select class="form-select" id="duration" name="duration">
+                                                <option value="">선택하세요</option>
+                                                <option value="1day">1일</option>
+                                                <option value="2-3days">2-3일</option>
+                                                <option value="1week">1주</option>
+                                                <option value="2-4weeks">2-4주</option>
+                                                <option value="1-3months">1-3개월</option>
+                                                <option value="custom">맞춤형</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="format" class="form-label">교육 형태</label>
+                                            <select class="form-select" id="format" name="format">
+                                                <option value="">선택하세요</option>
+                                                <option value="offline">오프라인</option>
+                                                <option value="online">온라인</option>
+                                                <option value="hybrid">혼합형</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="level" class="form-label">교육 대상 수준</label>
+                                            <select class="form-select" id="level" name="level">
+                                                <option value="">선택하세요</option>
+                                                <option value="beginner">초급 (AI 기초)</option>
+                                                <option value="intermediate">중급 (AI 활용)</option>
+                                                <option value="advanced">고급 (AI 전문)</option>
+                                                <option value="mixed">혼합</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 교육 내용 -->
+                                <div class="form-section">
+                                    <h3 class="section-title">교육 내용</h3>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">관심 교육 분야 (복수 선택 가능)</label>
+                                            <div class="checkbox-grid">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic1" name="topics" value="ai-basics">
+                                                    <label class="form-check-label" for="topic1">AI 기초 이해</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic2" name="topics" value="chatgpt">
+                                                    <label class="form-check-label" for="topic2">ChatGPT 활용</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic3" name="topics" value="prompt-engineering">
+                                                    <label class="form-check-label" for="topic3">프롬프트 엔지니어링</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic4" name="topics" value="ai-tools">
+                                                    <label class="form-check-label" for="topic4">AI 도구 활용</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic5" name="topics" value="workflow">
+                                                    <label class="form-check-label" for="topic5">업무 프로세스 개선</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="topic6" name="topics" value="custom">
+                                                    <label class="form-check-label" for="topic6">맞춤형 교육</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="budget" class="form-label">교육 예산 범위</label>
+                                            <select class="form-select" id="budget" name="budget">
+                                                <option value="">선택하세요</option>
+                                                <option value="under-100">100만원 미만</option>
+                                                <option value="100-300">100-300만원</option>
+                                                <option value="300-500">300-500만원</option>
+                                                <option value="500-1000">500-1000만원</option>
+                                                <option value="1000+">1000만원 이상</option>
+                                                <option value="discuss">협의</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 추가 정보 -->
+                                <div class="form-section">
+                                    <h3 class="section-title">추가 정보</h3>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="message" class="form-label">특별 요청사항 또는 기타 문의</label>
+                                            <textarea class="form-control" id="message" name="message" rows="5" 
+                                                placeholder="교육 목적, 특별한 요구사항, 기대효과 등을 자유롭게 작성해 주세요."></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="privacy" name="privacy" required>
+                                                <label class="form-check-label" for="privacy">
+                                                    개인정보 수집 및 이용에 동의합니다. *
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 제출 버튼 -->
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary btn-submit">
+                                        <i class="fas fa-paper-plane"></i>
+                                        문의하기
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="inquiry-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-text">&copy; 2024 GQ AI. 생성형 AI 전문 교육 플랫폼</p>
+                    <div class="footer-links">
+                        <a href="/landing">홈</a>
+                        <span>|</span>
+                        <a href="/qna">FAQ</a>
+                        <span>|</span>
+                        <a href="/contact">문의하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('educationInquiryForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 간단한 폼 검증
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+                if (isValid) {
+                    // 폼 데이터 수집
+                    const formData = new FormData(form);
+                    const topics = [];
+                    form.querySelectorAll('input[name="topics"]:checked').forEach(cb => {
+                        topics.push(cb.value);
+                    });
+                    
+                    // 성공 메시지 표시
+                    alert('문의가 성공적으로 접수되었습니다!\n담당자가 24시간 내 연락드리겠습니다.');
+                    
+                    // 실제 구현시에는 여기서 서버로 데이터 전송
+                    console.log('Form Data:', {
+                        company: formData.get('company'),
+                        name: formData.get('name'),
+                        position: formData.get('position'),
+                        phone: formData.get('phone'),
+                        email: formData.get('email'),
+                        participants: formData.get('participants'),
+                        duration: formData.get('duration'),
+                        format: formData.get('format'),
+                        level: formData.get('level'),
+                        topics: topics,
+                        budget: formData.get('budget'),
+                        message: formData.get('message')
+                    });
+                    
+                    // 폼 초기화
+                    form.reset();
+                } else {
+                    alert('필수 항목을 모두 입력해 주세요.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="/css/landing.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="hero-content">
+                        <div class="brand-container">
+                            <h1 class="hero-title">
+                                <span class="text-gradient">GQ AI</span>
+                            </h1>
+                            <div class="brand-tagline">
+                                <span class="tagline-text">생성형 AI의 모든 것을 한 곳에서</span>
+                                <div class="tagline-decoration"></div>
+                            </div>
+                            <p class="hero-description">
+                                체계적인 학습부터 실무 프롬프트까지, AI 시대의 필수 역량을 키워보세요
+                            </p>
+                            <div class="hero-actions">
+                                <a href="/education-inquiry" class="btn btn-primary btn-cta">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    기업교육 문의
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Cards Section -->
+    <div class="main-cards-section">
+        <div class="container">
+            <div class="row justify-content-center g-4">
+                <!-- AI 러닝 플랫폼 카드 -->
+                <div class="col-lg-5 col-md-6">
+                    <a href="/" class="card-link">
+                        <div class="service-card learning-card">
+                            <div class="card-image">
+                                <img src="/images/landing/ai-learning-card.jpg" alt="AI 러닝 플랫폼" class="img-fluid">
+                                <div class="card-overlay">
+                                    <i class="fas fa-graduation-cap card-icon"></i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">AI 러닝 플랫폼</h3>
+                                <p class="card-description">
+                                    체계적 학습 프로그램
+                                </p>
+                                <div class="card-features">
+                                    <span class="feature-tag">
+                                        <i class="fas fa-book-open"></i> 13개 강의
+                                    </span>
+                                    <span class="feature-tag">
+                                        <i class="fas fa-quiz"></i> 퀴즈 시스템
+                                    </span>
+                                </div>
+                                <div class="card-action">
+                                    <span class="btn-text">학습 시작하기</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 프롬프트 라이브러리 카드 -->
+                <div class="col-lg-5 col-md-6">
+                    <a href="/prompt" class="card-link">
+                        <div class="service-card prompt-card">
+                            <div class="card-image">
+                                <img src="/images/landing/prompt-library-card.jpg" alt="프롬프트 라이브러리" class="img-fluid">
+                                <div class="card-overlay">
+                                    <i class="fas fa-magic card-icon"></i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">프롬프트 라이브러리</h3>
+                                <p class="card-description">
+                                    전문 프롬프트 컬렉션
+                                </p>
+                                <div class="card-features">
+                                    <span class="feature-tag">
+                                        <i class="fas fa-database"></i> 프롬프트 DB
+                                    </span>
+                                    <span class="feature-tag">
+                                        <i class="fas fa-tools"></i> 맞춤 생성
+                                    </span>
+                                </div>
+                                <div class="card-action">
+                                    <span class="btn-text">라이브러리 접속</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub Services Section -->
+    <div class="sub-services-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <!-- 확장 가능한 서브 버튼 영역 -->
+                        <div class="col-md-4">
+                            <a href="/qna" class="sub-service-btn">
+                                <div class="sub-service-content">
+                                    <i class="fas fa-question-circle sub-service-icon"></i>
+                                    <h4 class="sub-service-title">Q&A</h4>
+                                    <p class="sub-service-description">자주 묻는 질문</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 추후 확장을 위한 주석 영역
+                        <div class="col-md-4">
+                            <a href="#" class="sub-service-btn">
+                                <div class="sub-service-content">
+                                    <i class="fas fa-users sub-service-icon"></i>
+                                    <h4 class="sub-service-title">커뮤니티</h4>
+                                    <p class="sub-service-description">AI 전문가 네트워크</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="sub-service-btn">
+                                <div class="sub-service-content">
+                                    <i class="fas fa-blog sub-service-icon"></i>
+                                    <h4 class="sub-service-title">블로그</h4>
+                                    <p class="sub-service-description">최신 AI 트렌드</p>
+                                </div>
+                            </a>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- 방문자 통계 -->
+                    <div class="visitor-stats-landing mb-3">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <div class="stat-item">
+                                    <div class="stat-label">총 방문자</div>
+                                    <div class="stat-number" id="landing-total-visitors">-</div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat-item">
+                                    <div class="stat-label">오늘 방문</div>
+                                    <div class="stat-number" id="landing-daily-visitors">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="footer-text">&copy; 2024 GQ AI. 생성형 AI 전문 교육 플랫폼</p>
+                    <div class="footer-links">
+                        <a href="/contact">문의하기</a>
+                        <span>|</span>
+                        <a href="/qna">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 방문자 카운트 로드 (랜딩 페이지용)
+        async function loadLandingVisitorCounts() {
+            try {
+                const response = await fetch('/api/visitors');
+                const data = await response.json();
+                
+                // 데이터 검증 및 안전한 표시
+                const totalVisitors = data && typeof data.totalVisitors === 'number' ? data.totalVisitors : 0;
+                const dailyVisitors = data && typeof data.dailyVisitors === 'number' ? data.dailyVisitors : 0;
+                
+                // 랜딩 페이지의 방문자 통계 업데이트
+                const landingTotalElement = document.getElementById('landing-total-visitors');
+                const landingDailyElement = document.getElementById('landing-daily-visitors');
+                
+                if (landingTotalElement) {
+                    landingTotalElement.textContent = totalVisitors.toLocaleString();
+                }
+                if (landingDailyElement) {
+                    landingDailyElement.textContent = dailyVisitors.toLocaleString();
+                }
+                
+                // 개발 모드 표시 (콘솔에서만)
+                if (data && data.mode === 'local-memory') {
+                    console.log('🏠 로컬 개발 모드: 메모리 저장소 사용 중');
+                } else if (data && data.mode === 'vercel-kv') {
+                    console.log('☁️ Vercel KV 모드: 클라우드 저장소 사용 중');
+                }
+                
+                if (data && data.error) {
+                    console.warn('⚠️ 방문자 카운터 오류:', data.error);
+                }
+            } catch (error) {
+                console.error('Failed to load visitor counts:', error);
+                const landingTotalElement = document.getElementById('landing-total-visitors');
+                const landingDailyElement = document.getElementById('landing-daily-visitors');
+                
+                if (landingTotalElement) landingTotalElement.textContent = '0';
+                if (landingDailyElement) landingDailyElement.textContent = '0';
+            }
+        }
+
+        // 카드 호버 효과 및 애니메이션
+        document.addEventListener('DOMContentLoaded', function() {
+            // 방문자 카운트 로드
+            loadLandingVisitorCounts();
+            
+            const cards = document.querySelectorAll('.service-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // 페이지 로드 시 애니메이션
+            const heroContent = document.querySelector('.hero-content');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            setTimeout(() => {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 200);
+
+            serviceCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 400 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>

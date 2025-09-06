@@ -241,6 +241,28 @@ app.get('/contact', (req, res) => {
     });
 });
 
+// 교육문의 페이지 라우트 추가
+app.get('/education-inquiry', (req, res) => {
+    res.render('education-inquiry', {
+        title: '교육문의 - GQ AI 기업교육',
+        description: 'GQ AI 기업교육 및 교육과정 문의하기',
+        path: '/education-inquiry',
+        lectures: lecturesData.lectures,
+        layout: false  // 독립적인 레이아웃 사용
+    });
+});
+
+// 랜딩 페이지 라우트 추가
+app.get('/landing', (req, res) => {
+    res.render('landing', {
+        title: 'GQ AI - 생성형 AI 플랫폼',
+        description: 'AI 러닝 플랫폼과 프롬프트 라이브러리로 구성된 통합 AI 서비스',
+        path: '/landing',
+        lectures: lecturesData.lectures,
+        layout: false  // 독립적인 레이아웃 사용
+    });
+});
+
 // prompt platform 리디렉션 라우트
 app.get('/prompt', (req, res) => {
     res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
