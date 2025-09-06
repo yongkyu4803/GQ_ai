@@ -244,8 +244,8 @@ app.get('/contact', (req, res) => {
 // 교육문의 페이지 라우트 추가
 app.get('/education-inquiry', (req, res) => {
     res.render('education-inquiry', {
-        title: '교육문의 - GQ AI 기업교육',
-        description: 'GQ AI 기업교육 및 교육과정 문의하기',
+        title: '교육문의 - GQ AI ',
+        description: 'GQ AI 교육 문의하기',
         path: '/education-inquiry',
         lectures: lecturesData.lectures,
         layout: false  // 독립적인 레이아웃 사용
