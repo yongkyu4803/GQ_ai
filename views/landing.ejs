@@ -32,10 +32,6 @@
                             <h1 class="hero-title">
                                 <span class="text-gradient">GQ AI</span>
                             </h1>
-                            <div class="brand-tagline">
-                                <span class="tagline-text">생성형 AI의 모든 것을 한 곳에서</span>
-                                <div class="tagline-decoration"></div>
-                            </div>
                         </div>
                         <p class="hero-description">
                             체계적인 학습부터 실무 프롬프트까지, AI 시대의 필수 역량을 키워보세요
@@ -43,7 +39,7 @@
                         <div class="hero-actions">
                             <a href="/education-inquiry" class="btn btn-primary btn-cta">
                                 <i class="fas fa-graduation-cap"></i>
-                                기업교육 문의
+                                교육 문의
                             </a>
                         </div>
                     </div>
@@ -58,7 +54,7 @@
             <div class="row justify-content-center g-4">
                 <!-- AI 러닝 플랫폼 카드 -->
                 <div class="col-lg-5 col-md-6">
-                    <a href="/" class="card-link">
+                    <a href="/learning" class="card-link">
                         <div class="service-card learning-card">
                             <div class="card-image">
                                 <img src="/images/landing/ai-learning-card.jpg" alt="AI 러닝 플랫폼" class="img-fluid">
@@ -67,16 +63,16 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <h3 class="card-title">AI 러닝 플랫폼</h3>
+                                <h3 class="card-title">AI Learning Platform</h3>
                                 <p class="card-description">
-                                    체계적 학습 프로그램
+                                    체계적 AI 학습 프로그램
                                 </p>
                                 <div class="card-features">
                                     <span class="feature-tag">
                                         <i class="fas fa-book-open"></i> 13개 강의
                                     </span>
                                     <span class="feature-tag">
-                                        <i class="fas fa-quiz"></i> 퀴즈 시스템
+                                        <i class="fas fa-quiz"></i> 진단평가
                                     </span>
                                 </div>
                                 <div class="card-action">
@@ -99,16 +95,16 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <h3 class="card-title">프롬프트 라이브러리</h3>
+                                <h3 class="card-title">Prompt Library</h3>
                                 <p class="card-description">
                                     전문 프롬프트 컬렉션
                                 </p>
                                 <div class="card-features">
                                     <span class="feature-tag">
-                                        <i class="fas fa-database"></i> 프롬프트 DB
+                                        <i class="fas fa-database"></i> Prompt DB
                                     </span>
                                     <span class="feature-tag">
-                                        <i class="fas fa-tools"></i> 맞춤 생성
+                                        <i class="fas fa-tools"></i> 프롬프트 학습 시스템
                                     </span>
                                 </div>
                                 <div class="card-action">
@@ -131,11 +127,10 @@
                     <div class="row g-3">
                         <!-- 확장 가능한 서브 버튼 영역 -->
                         <div class="col-md-4">
-                            <a href="/qna" class="sub-service-btn">
+                            <a href="https://exnews-next.vercel.app/" class="sub-service-btn" data-bg-image="/images/landing/newslens_logo_002.png">
                                 <div class="sub-service-content">
-                                    <i class="fas fa-question-circle sub-service-icon"></i>
-                                    <h4 class="sub-service-title">Q&A</h4>
-                                    <p class="sub-service-description">자주 묻는 질문</p>
+                                    <h2 class="sub-service-title">단독&랭킹뉴스</h2>
+                                    <h4 class="sub-service-description">실시간 단독뉴스를 제공합니다.<br> 부록: 국회앞식당 정보</h4>
                                 </div>
                             </a>
                         </div>
@@ -276,6 +271,23 @@
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, 400 + (index * 200));
+            });
+
+            // 서브 서비스 버튼 호버 효과
+            const subServiceBtns = document.querySelectorAll('.sub-service-btn[data-bg-image]');
+            
+            subServiceBtns.forEach(btn => {
+                const bgImage = btn.getAttribute('data-bg-image');
+                
+                btn.addEventListener('mouseenter', function() {
+                    this.style.backgroundImage = `url('${bgImage}')`;
+                    this.classList.add('hover-bg');
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.backgroundImage = '';
+                    this.classList.remove('hover-bg');
+                });
             });
         });
     </script>

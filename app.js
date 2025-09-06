@@ -168,8 +168,19 @@ app.use((req, res, next) => {
     next();
 });
 
-// 루트 경로
+// 루트 경로 - 랜딩 페이지로 변경
 app.get('/', (req, res) => {
+    res.render('landing', {
+        title: 'GQ AI - 생성형 AI 플랫폼',
+        description: 'AI 러닝 플랫폼과 프롬프트 라이브러리로 구성된 통합 AI 서비스',
+        path: '/',
+        lectures: lecturesData.lectures,
+        layout: false  // 독립적인 레이아웃 사용
+    });
+});
+
+// AI 러닝 플랫폼 페이지 (기존 메인 페이지)
+app.get('/learning', (req, res) => {
     res.render('index', {
         title: '생성형 AI 이해하기',
         description: '생성형 AI를 활용한 업무 혁신',

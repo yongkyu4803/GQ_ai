@@ -47,7 +47,7 @@ body {
    Hero Section
    ======================================== */
 .hero-section {
-    padding: 60px 0 40px;
+    padding: 40px 0 30px;
     background: var(--hero-gradient);
     position: relative;
     overflow: hidden;
@@ -92,7 +92,7 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 12vw, 8rem);
+    font-size: clamp(1.8rem, 12vw, 8rem);
     font-weight: 900;
     margin-bottom: 2rem;
     letter-spacing: -0.02em;
@@ -452,24 +452,59 @@ body {
 
 .sub-service-btn {
     display: block;
-    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%);
     border-radius: var(--border-radius);
-    padding: 2rem 1.5rem;
+    padding: 1.6rem 1.2rem;
     text-decoration: none;
     transition: var(--transition);
     box-shadow: var(--shadow-md);
-    height: 100%;
+    height: 176px;
+    min-height: 176px;
     backdrop-filter: blur(20px);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
+/* 호버 시 배경 이미지 적용 */
 .sub-service-btn:hover {
-    background: rgba(255, 255, 255, 1);
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
+.sub-service-btn.hover-bg {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* 호버 시 텍스트 숨기기 및 배경 이미지 오버레이 */
+.sub-service-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: var(--transition);
+    z-index: 0;
+}
+
+.sub-service-btn:hover::before {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
 .sub-service-content {
     text-align: center;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .sub-service-icon {
@@ -485,16 +520,35 @@ body {
 }
 
 .sub-service-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 
+        0 0 10px rgba(6, 182, 212, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.8),
+        0 4px 16px rgba(6, 182, 212, 0.6);
+    margin-bottom: 0.4rem;
+    transition: var(--transition);
+    letter-spacing: -0.02em;
 }
 
 .sub-service-description {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.3;
+    font-weight: 600;
+    text-shadow: 
+        0 0 8px rgba(6, 182, 212, 0.7),
+        0 2px 6px rgba(0, 0, 0, 0.9),
+        0 3px 12px rgba(6, 182, 212, 0.5);
     margin: 0;
+    transition: var(--transition);
+}
+
+/* 호버 시 텍스트 숨기기 */
+.sub-service-btn:hover .sub-service-title,
+.sub-service-btn:hover .sub-service-description {
+    opacity: 0;
 }
 
 /* ========================================
@@ -613,7 +667,9 @@ body {
     }
     
     .sub-service-btn {
-        padding: 1.5rem 1rem;
+        padding: 1.2rem 0.8rem;
+        height: 144px;
+        min-height: 144px;
     }
     
     .sub-service-icon {
