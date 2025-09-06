@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
+const nodemailer = require('nodemailer');
+
+// 환경변수 로드
+require('dotenv').config();
 
 // Vercel KV 연결 시도 (로컬 개발 시 fallback)
 let kv = null;
@@ -54,6 +58,10 @@ app.set('layout', 'base');
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// JSON 파싱 미들웨어
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // 프록시 신뢰 설정 (Vercel/Netlify 등)
 app.set('trust proxy', true);
@@ -277,6 +285,85 @@ app.get('/landing', (req, res) => {
 // prompt platform 리디렉션 라우트
 app.get('/prompt', (req, res) => {
     res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
+});
+
+// 교육 문의 폼 제출 처리
+app.post('/education-inquiry', async (req, res) => {
+    try {
+        const {
+            company,
+            name,
+            position,
+            phone,
+            email,
+            participants,
+            duration,
+            level,
+            topics,
+            message
+        } = req.body;
+
+        // 메일 전송 설정 (Gmail 사용 예시)
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER, // 환경변수에서 설정
+                pass: process.env.EMAIL_PASS  // 환경변수에서 설정
+            }
+        });
+
+        // 선택된 교육 분야 처리
+        const selectedTopics = Array.isArray(topics) ? topics : [topics];
+        const topicsText = selectedTopics ? selectedTopics.join(', ') : '선택 없음';
+
+        // 메일 내용 구성
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.RECEIVER_EMAIL, // 받을 이메일 주소
+            subject: `[GQ AI] 교육 문의 - ${company} (${name})`,
+            html: `
+                <h2>교육 문의가 접수되었습니다</h2>
+                
+                <h3>기본 정보</h3>
+                <ul>
+                    <li><strong>단체명:</strong> ${company}</li>
+                    <li><strong>담당자명:</strong> ${name}</li>
+                    <li><strong>직급/부서:</strong> ${position || '미입력'}</li>
+                    <li><strong>연락처:</strong> ${phone}</li>
+                    <li><strong>이메일:</strong> ${email}</li>
+                </ul>
+
+                <h3>교육 정보</h3>
+                <ul>
+                    <li><strong>예상 교육 인원:</strong> ${participants}</li>
+                    <li><strong>희망 교육 시간:</strong> ${duration || '미선택'}</li>
+                    <li><strong>교육 대상 수준:</strong> ${level || '미선택'}</li>
+                    <li><strong>관심 교육 분야:</strong> ${topicsText}</li>
+                </ul>
+
+                <h3>추가 정보</h3>
+                <p><strong>특별 요청사항:</strong></p>
+                <p>${message || '없음'}</p>
+
+                <hr>
+                <p><small>접수 시간: ${new Date().toLocaleString('ko-KR')}</small></p>
+            `
+        };
+
+        // 메일 전송
+        await transporter.sendMail(mailOptions);
+
+        res.json({ 
+            success: true, 
+            message: '문의가 성공적으로 접수되었습니다!' 
+        });
+    } catch (error) {
+        console.error('메일 전송 오류:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: '문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' 
+        });
+    }
 });
 
 // 방문자 카운트 API 엔드포인트

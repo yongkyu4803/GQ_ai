@@ -55,8 +55,7 @@
                                 <span class="title-highlight">교육</span> 문의하기
                             </h1>
                             <p class="hero-subtitle">
-                                귀하의 조직에 최적화된 AI 교육 프로그램을<br>
-                                설계하여 제공해드립니다
+                                최적화된 AI 교육 프로그램을 설계하여 제공해드립니다
                             </p>
                             <div class="hero-features">
                                 <div class="feature-item">
@@ -130,24 +129,14 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="duration" class="form-label">희망 교육 기간</label>
+                                            <label for="duration" class="form-label">희망 교육 시간(1차시 50분)</label>
                                             <select class="form-select" id="duration" name="duration">
                                                 <option value="">선택하세요</option>
-                                                <option value="1day">1일</option>
-                                                <option value="2-3days">2-3일</option>
-                                                <option value="1week">1주</option>
-                                                <option value="2-4weeks">2-4주</option>
-                                                <option value="1-3months">1-3개월</option>
+                                                <option value="1day">2차시 </option>
+                                                <option value="2-3days">2~4차시</option>
+                                                <option value="1week">4~8차시</option>
+                                                <option value="2-4weeks">8차시 이상</option>
                                                 <option value="custom">맞춤형</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="format" class="form-label">교육 형태</label>
-                                            <select class="form-select" id="format" name="format">
-                                                <option value="">선택하세요</option>
-                                                <option value="offline">오프라인</option>
-                                                <option value="online">온라인</option>
-                                                <option value="hybrid">혼합형</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
@@ -156,7 +145,7 @@
                                                 <option value="">선택하세요</option>
                                                 <option value="beginner">초급 (AI 기초)</option>
                                                 <option value="intermediate">중급 (AI 활용)</option>
-                                                <option value="advanced">고급 (AI 전문)</option>
+                                                <option value="advanced">바이브 코딩</option>
                                                 <option value="mixed">혼합</option>
                                             </select>
                                         </div>
@@ -172,7 +161,7 @@
                                             <div class="checkbox-grid">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="topic2" name="topics" value="chatgpt">
-                                                    <label class="form-check-label" for="topic2">ChatGPT 활용</label>
+                                                    <label class="form-check-label" for="topic2">생성형AI 활용</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="topic3" name="topics" value="prompt-engineering">
@@ -180,7 +169,7 @@
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="topic4" name="topics" value="ai-tools">
-                                                    <label class="form-check-label" for="topic4">AI 도구 활용</label>
+                                                    <label class="form-check-label" for="topic4">AI 도구 활용 및 업무효율화</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="topic5" name="topics" value="workflow">
@@ -254,7 +243,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('educationInquiryForm');
             
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // 간단한 폼 검증
@@ -271,34 +260,56 @@
                 });
                 
                 if (isValid) {
-                    // 폼 데이터 수집
-                    const formData = new FormData(form);
-                    const topics = [];
-                    form.querySelectorAll('input[name="topics"]:checked').forEach(cb => {
-                        topics.push(cb.value);
-                    });
+                    // 제출 버튼 비활성화
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 전송 중...';
                     
-                    // 성공 메시지 표시
-                    alert('문의가 성공적으로 접수되었습니다!\n담당자가 24시간 내 연락드리겠습니다.');
-                    
-                    // 실제 구현시에는 여기서 서버로 데이터 전송
-                    console.log('Form Data:', {
-                        company: formData.get('company'),
-                        name: formData.get('name'),
-                        position: formData.get('position'),
-                        phone: formData.get('phone'),
-                        email: formData.get('email'),
-                        participants: formData.get('participants'),
-                        duration: formData.get('duration'),
-                        format: formData.get('format'),
-                        level: formData.get('level'),
-                        topics: topics,
-                        budget: formData.get('budget'),
-                        message: formData.get('message')
-                    });
-                    
-                    // 폼 초기화
-                    form.reset();
+                    try {
+                        // 폼 데이터 수집
+                        const formData = new FormData(form);
+                        const topics = [];
+                        form.querySelectorAll('input[name="topics"]:checked').forEach(cb => {
+                            topics.push(cb.value);
+                        });
+                        
+                        // 서버로 데이터 전송
+                        const response = await fetch('/education-inquiry', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                company: formData.get('company'),
+                                name: formData.get('name'),
+                                position: formData.get('position'),
+                                phone: formData.get('phone'),
+                                email: formData.get('email'),
+                                participants: formData.get('participants'),
+                                duration: formData.get('duration'),
+                                level: formData.get('level'),
+                                topics: topics,
+                                message: formData.get('message')
+                            })
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            alert('문의가 성공적으로 접수되었습니다!\n담당자가 24시간 내 연락드리겠습니다.');
+                            form.reset();
+                        } else {
+                            alert(result.message || '문의 접수 중 오류가 발생했습니다.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                    } finally {
+                        // 제출 버튼 복원
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
                 } else {
                     alert('필수 항목을 모두 입력해 주세요.');
                 }
