@@ -13,13 +13,21 @@ let isKvAvailable = false;
 
 try {
     const kvModule = require('@vercel/kv');
-    kv = kvModule.kv;
-    // 환경변수 확인
-    if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+    
+    // URL이 실제 값인지 확인 (기본값이 아닌지)
+    const isValidUrl = process.env.KV_REST_API_URL && 
+                      process.env.KV_REST_API_TOKEN &&
+                      process.env.KV_REST_API_URL !== 'your_kv_url' &&
+                      process.env.KV_REST_API_TOKEN !== 'your_kv_token' &&
+                      process.env.KV_REST_API_URL.startsWith('https://');
+    
+    if (isValidUrl) {
+        kv = kvModule.kv;
         isKvAvailable = true;
         console.log('✅ Vercel KV 연결 가능');
     } else {
-        console.log('⚠️  로컬 개발 모드: Vercel KV 환경변수 없음, 메모리 저장소 사용');
+        console.log('⚠️  로컬 개발 모드: Vercel KV 환경변수 설정 필요, 메모리 저장소 사용');
+        console.log('💡 개발 환경에서는 로컬 메모리로 정상 작동합니다.');
     }
 } catch (error) {
     console.log('⚠️  로컬 개발 모드: @vercel/kv 사용 불가, 메모리 저장소 사용');
