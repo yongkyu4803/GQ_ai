@@ -3,7 +3,6 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const nodemailer = require('nodemailer');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // 환경변수 로드
 require('dotenv').config();
@@ -180,14 +179,14 @@ const lecturesData = require('./lectures.json');
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self' https://vercel.live https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "img-src 'self' data: https: https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "connect-src 'self' https://vercel.live https://*.vercel.app https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
-        "frame-src 'self' https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app;"
+        "default-src 'self' https://vercel.live https://*.gqai.kr; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr; " +
+        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr; " +
+        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://*.gqai.kr; " +
+        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://*.gqai.kr; " +
+        "img-src 'self' data: https: https://*.gqai.kr; " +
+        "connect-src 'self' https://vercel.live https://*.vercel.app https://*.gqai.kr; " +
+        "frame-src 'self' https://*.gqai.kr;"
     );
     next();
 });
@@ -339,86 +338,28 @@ const visitorCounter = async (req, res, next) => {
 app.use(visitorCounter);
 
 // =====================================================
-// 프록시 미들웨어 설정 (외부 Vercel 앱들을 서브패스로 연결)
+// 서브도메인 리디렉트 설정 (통합된 gqai.kr 하위 도메인으로 연결)
 // =====================================================
 
-// 프롬프트 라이브러리 프록시
-app.use('/prompt', createProxyMiddleware({
-    target: 'https://prompt-parkyongkyus-projects.vercel.app',
-    changeOrigin: true,
-    pathRewrite: {
-        '^/prompt': '', // /prompt 제거하고 루트로 전달
-    },
-    onProxyReq: (proxyReq, req, res) => {
-        // 필요한 헤더 추가
-        proxyReq.setHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
-        proxyReq.setHeader('User-Agent', 'Mozilla/5.0 (compatible; GQAI-Proxy/1.0)');
-    },
-    onError: (err, req, res) => {
-        console.error('프롬프트 라이브러리 프록시 오류:', err.message);
-        // 401 오류 시 외부 링크로 리다이렉트
-        if (err.statusCode === 401) {
-            res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
-        } else {
-            res.status(502).render('error', {
-                title: '서비스 연결 오류',
-                message: '프롬프트 라이브러리에 일시적으로 연결할 수 없습니다.',
-                error: { status: 502 }
-            });
-        }
-    }
-}));
+// 서브도메인 매핑 객체
+const subdomainMappings = {
+    '/prompt': 'https://prompt.gqai.kr',
+    '/genpro': 'https://genpro.gqai.kr', 
+    '/news': 'https://news.gqai.kr',
+    '/bill': 'https://bill.gqai.kr'
+};
 
-// 프롬프트 생성기(GenPro) 프록시
-app.use('/genpro', createProxyMiddleware({
-    target: 'https://gqai-genpro.vercel.app',
-    changeOrigin: true,
-    pathRewrite: {
-        '^/genpro': '',
-    },
-    onError: (err, req, res) => {
-        console.error('GenPro 프록시 오류:', err.message);
-        res.status(502).render('error', {
-            title: '서비스 연결 오류',
-            message: '프롬프트 생성기에 일시적으로 연결할 수 없습니다.',
-            error: { status: 502 }
-        });
-    }
-}));
-
-// 뉴스 서비스 프록시
-app.use('/news', createProxyMiddleware({
-    target: 'https://exnews-next.vercel.app',
-    changeOrigin: true,
-    pathRewrite: {
-        '^/news': '',
-    },
-    onError: (err, req, res) => {
-        console.error('뉴스 서비스 프록시 오류:', err.message);
-        res.status(502).render('error', {
-            title: '서비스 연결 오류',
-            message: '뉴스 서비스에 일시적으로 연결할 수 없습니다.',
-            error: { status: 502 }
-        });
-    }
-}));
-
-// 법안 분석 도구 프록시
-app.use('/bill', createProxyMiddleware({
-    target: 'https://bill-analysis-nu.vercel.app',
-    changeOrigin: true,
-    pathRewrite: {
-        '^/bill': '',
-    },
-    onError: (err, req, res) => {
-        console.error('법안 분석 프록시 오류:', err.message);
-        res.status(502).render('error', {
-            title: '서비스 연결 오류',
-            message: '법안 분석 도구에 일시적으로 연결할 수 없습니다.',
-            error: { status: 502 }
-        });
-    }
-}));
+// 서브도메인 리디렉트 미들웨어
+Object.entries(subdomainMappings).forEach(([path, subdomain]) => {
+    app.use(path, (req, res) => {
+        // 원본 경로에서 서브패스 제거 후 서브도메인으로 리디렉트
+        const targetPath = req.originalUrl.replace(path, '') || '/';
+        const redirectUrl = subdomain + targetPath;
+        
+        console.log(`🔀 리디렉트: ${req.originalUrl} → ${redirectUrl}`);
+        res.redirect(302, redirectUrl);
+    });
+});
 
 // =====================================================
 // 앱 시작 시 마이그레이션 실행
