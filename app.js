@@ -180,13 +180,13 @@ app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
         "default-src 'self' https://vercel.live https://*.gqai.kr; " +
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr; " +
-        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr https://www.googletagmanager.com; " +
+        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://*.gqai.kr https://www.googletagmanager.com; " +
         "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://*.gqai.kr; " +
         "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://*.gqai.kr; " +
         "img-src 'self' data: https: https://*.gqai.kr; " +
-        "connect-src 'self' https://vercel.live https://*.vercel.app https://*.gqai.kr; " +
-        "frame-src 'self' https://*.gqai.kr;"
+        "connect-src 'self' https://vercel.live https://*.vercel.app https://*.gqai.kr https://cdn.jsdelivr.net https://www.google-analytics.com https://analytics.google.com " + process.env.SUPABASE_URL + "; " +
+        "frame-src 'self' https://*.gqai.kr https://vercel.live;"
     );
     next();
 });
