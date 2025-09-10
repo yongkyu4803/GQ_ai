@@ -8,6 +8,22 @@
     ],
     "routes": [
         {
+            "src": "/prompt/(.*)",
+            "dest": "app.js"
+        },
+        {
+            "src": "/genpro/(.*)",
+            "dest": "app.js"
+        },
+        {
+            "src": "/news/(.*)",
+            "dest": "app.js"
+        },
+        {
+            "src": "/bill/(.*)",
+            "dest": "app.js"
+        },
+        {
             "src": "/(.*)",
             "dest": "app.js"
         }

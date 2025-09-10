@@ -3,34 +3,64 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // 환경변수 로드
 require('dotenv').config();
 
-// Vercel KV 연결 시도 (로컬 개발 시 fallback)
+// Supabase 연결 설정 (우선순위)
+const { createClient } = require('@supabase/supabase-js');
+let supabase = null;
+let isSupabaseAvailable = false;
+
+try {
+    // Supabase 환경변수 검증
+    const isValidSupabase = process.env.SUPABASE_URL && 
+                           process.env.SUPABASE_ANON_KEY &&
+                           process.env.SUPABASE_URL !== 'your_supabase_url' &&
+                           process.env.SUPABASE_ANON_KEY !== 'your_supabase_anon_key' &&
+                           process.env.SUPABASE_URL.startsWith('https://');
+    
+    if (isValidSupabase) {
+        supabase = createClient(
+            process.env.SUPABASE_URL,
+            process.env.SUPABASE_ANON_KEY
+        );
+        isSupabaseAvailable = true;
+        console.log('✅ Supabase 연결 성공');
+    } else {
+        console.log('⚠️  Supabase 환경변수 설정 필요 - 대체 저장소 사용');
+    }
+} catch (error) {
+    console.log('⚠️  Supabase 연결 실패:', error.message);
+}
+
+// Vercel KV 연결 시도 (Supabase 대체제)
 let kv = null;
 let isKvAvailable = false;
 
-try {
-    const kvModule = require('@vercel/kv');
-    
-    // URL이 실제 값인지 확인 (기본값이 아닌지)
-    const isValidUrl = process.env.KV_REST_API_URL && 
-                      process.env.KV_REST_API_TOKEN &&
-                      process.env.KV_REST_API_URL !== 'your_kv_url' &&
-                      process.env.KV_REST_API_TOKEN !== 'your_kv_token' &&
-                      process.env.KV_REST_API_URL.startsWith('https://');
-    
-    if (isValidUrl) {
-        kv = kvModule.kv;
-        isKvAvailable = true;
-        console.log('✅ Vercel KV 연결 가능');
-    } else {
-        console.log('⚠️  로컬 개발 모드: Vercel KV 환경변수 설정 필요, 메모리 저장소 사용');
-        console.log('💡 개발 환경에서는 로컬 메모리로 정상 작동합니다.');
+if (!isSupabaseAvailable) {
+    try {
+        const kvModule = require('@vercel/kv');
+        
+        // URL이 실제 값인지 확인 (기본값이 아닌지)
+        const isValidUrl = process.env.KV_REST_API_URL && 
+                          process.env.KV_REST_API_TOKEN &&
+                          process.env.KV_REST_API_URL !== 'your_kv_url' &&
+                          process.env.KV_REST_API_TOKEN !== 'your_kv_token' &&
+                          process.env.KV_REST_API_URL.startsWith('https://');
+        
+        if (isValidUrl) {
+            kv = kvModule.kv;
+            isKvAvailable = true;
+            console.log('✅ Vercel KV 연결 가능 (Supabase 대체)');
+        } else {
+            console.log('⚠️  로컬 개발 모드: 메모리 저장소 사용');
+            console.log('💡 개발 환경에서는 로컬 메모리로 정상 작동합니다.');
+        }
+    } catch (error) {
+        console.log('⚠️  로컬 개발 모드: 외부 저장소 사용 불가, 메모리 저장소 사용');
     }
-} catch (error) {
-    console.log('⚠️  로컬 개발 모드: @vercel/kv 사용 불가, 메모리 저장소 사용');
 }
 
 // 로컬 개발용 메모리 저장소
@@ -41,6 +71,108 @@ const localStorage = {
     maxIPsToStore: 10000 // 메모리 누수 방지를 위한 최대 IP 저장 수
 };
 
+// =====================================================
+// Supabase 헬퍼 함수들
+// =====================================================
+
+// Supabase 방문자 증가 함수
+async function incrementSupabaseVisitor(ipAddress, userAgent = null, pagePath = '/') {
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        
+        const { data, error } = await supabase.rpc('increment_visitor', {
+            visitor_ip: ipAddress,
+            visit_date: today,
+            user_agent_str: userAgent,
+            page_path_str: pagePath
+        });
+        
+        if (error) {
+            console.error('Supabase 방문자 증가 오류:', error);
+            return null;
+        }
+        
+        return {
+            isNewVisitor: data.isNewVisitor,
+            dailyVisitors: data.dailyVisitors,
+            totalVisitors: data.totalVisitors,
+            storageMode: 'supabase'
+        };
+    } catch (error) {
+        console.error('Supabase 연결 오류:', error);
+        return null;
+    }
+}
+
+// Supabase 방문자 통계 조회 함수
+async function getSupabaseVisitorStats(targetDate = null) {
+    try {
+        const date = targetDate || new Date().toISOString().split('T')[0];
+        
+        const { data, error } = await supabase.rpc('get_visitor_stats', {
+            target_date: date
+        });
+        
+        if (error) {
+            console.error('Supabase 통계 조회 오류:', error);
+            return null;
+        }
+        
+        return {
+            dailyVisitors: data.dailyVisitors || 0,
+            totalVisitors: data.totalVisitors || 0,
+            storageMode: 'supabase'
+        };
+    } catch (error) {
+        console.error('Supabase 연결 오류:', error);
+        return null;
+    }
+}
+
+// 로컬 데이터를 Supabase로 마이그레이션
+async function migrateLocalDataToSupabase() {
+    if (!isSupabaseAvailable || localStorage.totalVisitors === 0) {
+        return false;
+    }
+    
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        const dailyCount = localStorage.dailyVisitors[today] || 0;
+        
+        const { data, error } = await supabase.rpc('migrate_local_data', {
+            initial_total: localStorage.totalVisitors,
+            initial_daily: dailyCount,
+            target_date: today
+        });
+        
+        if (error) {
+            console.error('마이그레이션 오류:', error);
+            return false;
+        }
+        
+        console.log('✅ 로컬 데이터 Supabase 마이그레이션 완료:', data);
+        return true;
+    } catch (error) {
+        console.error('마이그레이션 실행 오류:', error);
+        return false;
+    }
+}
+
+// 안전한 Supabase 작업 실행 (fallback 포함)
+async function safeSupabaseOperation(operation, fallbackFn = null) {
+    if (!isSupabaseAvailable) {
+        return fallbackFn ? await fallbackFn() : null;
+    }
+    
+    try {
+        const result = await operation();
+        return result;
+    } catch (error) {
+        console.error('Supabase 작업 실패, fallback 실행:', error.message);
+        return fallbackFn ? await fallbackFn() : null;
+    }
+}
+
 // lectures.json 파일 불러오기
 const lecturesData = require('./lectures.json');
 
@@ -48,13 +180,14 @@ const lecturesData = require('./lectures.json');
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self' https://vercel.live; " +
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com; " +
-        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com; " +
-        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; " +
-        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " +
-        "img-src 'self' data: https:; " +
-        "connect-src 'self' https://vercel.live https://*.vercel.app;"
+        "default-src 'self' https://vercel.live https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://*.vercel.app https://unpkg.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "img-src 'self' data: https: https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "connect-src 'self' https://vercel.live https://*.vercel.app https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app; " +
+        "frame-src 'self' https://prompt-parkyongkyus-projects.vercel.app https://gqai-genpro.vercel.app https://exnews-next.vercel.app https://bill-analysis-nu.vercel.app;"
     );
     next();
 });
@@ -117,7 +250,7 @@ function cleanupMemoryStorage(today) {
     }
 }
 
-// 방문자 카운터 미들웨어
+// 방문자 카운터 미들웨어 (Supabase 우선)
 const visitorCounter = async (req, res, next) => {
     try {
         // 정적 파일 요청, API 호출, 봇 요청은 카운트하지 않음
@@ -131,24 +264,49 @@ const visitorCounter = async (req, res, next) => {
         }
         
         const clientIP = getClientIP(req);
-        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD 형식
+        const today = new Date().toISOString().split('T')[0];
         const ipKey = `${today}:${clientIP}:${Buffer.from(userAgent).toString('base64').slice(0, 10)}`;
+        let visitorProcessed = false;
         
-        if (isKvAvailable && kv) {
-            // Vercel KV 사용
-            const hasVisitedToday = await kv.get(`visitor_ips:${ipKey}`);
+        // 1단계: Supabase 우선 시도
+        if (isSupabaseAvailable && !visitorProcessed) {
+            const result = await safeSupabaseOperation(
+                () => incrementSupabaseVisitor(clientIP, userAgent, req.path),
+                null
+            );
             
-            if (!hasVisitedToday) {
-                // 새로운 방문자인 경우
-                await kv.set(`visitor_ips:${ipKey}`, '1', { ex: 86400 });
-                await kv.incr('total_visitors');
-                
-                const dailyKey = `daily_visitors:${today}`;
-                await kv.incr(dailyKey);
-                await kv.expire(dailyKey, 604800);
+            if (result) {
+                visitorProcessed = true;
+                // 로컬 메모리 동기화 (선택적)
+                if (result.isNewVisitor) {
+                    localStorage.totalVisitors = Math.max(localStorage.totalVisitors, result.totalVisitors);
+                    localStorage.dailyVisitors[today] = Math.max(localStorage.dailyVisitors[today] || 0, result.dailyVisitors);
+                }
             }
-        } else {
-            // 로컬 메모리 저장소 사용
+        }
+        
+        // 2단계: Supabase 실패 시 Vercel KV 시도
+        if (!visitorProcessed && isKvAvailable && kv) {
+            try {
+                const hasVisitedToday = await kv.get(`visitor_ips:${ipKey}`);
+                
+                if (!hasVisitedToday) {
+                    // 새로운 방문자인 경우
+                    await kv.set(`visitor_ips:${ipKey}`, '1', { ex: 86400 });
+                    await kv.incr('total_visitors');
+                    
+                    const dailyKey = `daily_visitors:${today}`;
+                    await kv.incr(dailyKey);
+                    await kv.expire(dailyKey, 604800);
+                    visitorProcessed = true;
+                }
+            } catch (kvError) {
+                console.error('KV 방문자 처리 오류:', kvError.message);
+            }
+        }
+        
+        // 3단계: 모든 외부 저장소 실패 시 로컬 메모리 사용
+        if (!visitorProcessed) {
             if (!localStorage.visitorIPs.has(ipKey)) {
                 localStorage.visitorIPs.add(ipKey);
                 localStorage.totalVisitors++;
@@ -158,10 +316,12 @@ const visitorCounter = async (req, res, next) => {
                 }
                 localStorage.dailyVisitors[today]++;
                 
-                // 메모리 정리 로직 개선
+                // 메모리 정리 로직
                 cleanupMemoryStorage(today);
+                visitorProcessed = true;
             }
         }
+        
     } catch (error) {
         console.error('방문자 카운터 오류:', {
             error: error.message,
@@ -177,6 +337,129 @@ const visitorCounter = async (req, res, next) => {
 
 // 방문자 카운터 미들웨어 적용 (정적 파일 제외)
 app.use(visitorCounter);
+
+// =====================================================
+// 프록시 미들웨어 설정 (외부 Vercel 앱들을 서브패스로 연결)
+// =====================================================
+
+// 프롬프트 라이브러리 프록시
+app.use('/prompt', createProxyMiddleware({
+    target: 'https://prompt-parkyongkyus-projects.vercel.app',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/prompt': '', // /prompt 제거하고 루트로 전달
+    },
+    onProxyReq: (proxyReq, req, res) => {
+        // 필요한 헤더 추가
+        proxyReq.setHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
+        proxyReq.setHeader('User-Agent', 'Mozilla/5.0 (compatible; GQAI-Proxy/1.0)');
+    },
+    onError: (err, req, res) => {
+        console.error('프롬프트 라이브러리 프록시 오류:', err.message);
+        // 401 오류 시 외부 링크로 리다이렉트
+        if (err.statusCode === 401) {
+            res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
+        } else {
+            res.status(502).render('error', {
+                title: '서비스 연결 오류',
+                message: '프롬프트 라이브러리에 일시적으로 연결할 수 없습니다.',
+                error: { status: 502 }
+            });
+        }
+    }
+}));
+
+// 프롬프트 생성기(GenPro) 프록시
+app.use('/genpro', createProxyMiddleware({
+    target: 'https://gqai-genpro.vercel.app',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/genpro': '',
+    },
+    onError: (err, req, res) => {
+        console.error('GenPro 프록시 오류:', err.message);
+        res.status(502).render('error', {
+            title: '서비스 연결 오류',
+            message: '프롬프트 생성기에 일시적으로 연결할 수 없습니다.',
+            error: { status: 502 }
+        });
+    }
+}));
+
+// 뉴스 서비스 프록시
+app.use('/news', createProxyMiddleware({
+    target: 'https://exnews-next.vercel.app',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/news': '',
+    },
+    onError: (err, req, res) => {
+        console.error('뉴스 서비스 프록시 오류:', err.message);
+        res.status(502).render('error', {
+            title: '서비스 연결 오류',
+            message: '뉴스 서비스에 일시적으로 연결할 수 없습니다.',
+            error: { status: 502 }
+        });
+    }
+}));
+
+// 법안 분석 도구 프록시
+app.use('/bill', createProxyMiddleware({
+    target: 'https://bill-analysis-nu.vercel.app',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/bill': '',
+    },
+    onError: (err, req, res) => {
+        console.error('법안 분석 프록시 오류:', err.message);
+        res.status(502).render('error', {
+            title: '서비스 연결 오류',
+            message: '법안 분석 도구에 일시적으로 연결할 수 없습니다.',
+            error: { status: 502 }
+        });
+    }
+}));
+
+// =====================================================
+// 앱 시작 시 마이그레이션 실행
+// =====================================================
+(async () => {
+    try {
+        // Supabase 연결 확인 및 마이그레이션
+        if (isSupabaseAvailable) {
+            console.log('🔄 Supabase 연결 확인 중...');
+            
+            // 연결 테스트
+            const testResult = await safeSupabaseOperation(
+                () => getSupabaseVisitorStats(),
+                null
+            );
+            
+            if (testResult) {
+                console.log('✅ Supabase 연결 정상');
+                
+                // 로컬 데이터가 있으면 마이그레이션
+                if (localStorage.totalVisitors > 0) {
+                    console.log('🔄 로컬 메모리 데이터를 Supabase로 마이그레이션 중...');
+                    const migrationResult = await migrateLocalDataToSupabase();
+                    
+                    if (migrationResult) {
+                        console.log('✅ 마이그레이션 완료');
+                        // 마이그레이션 후 로컬 메모리 초기화 (선택적)
+                        // localStorage.totalVisitors = 0;
+                        // localStorage.dailyVisitors = {};
+                    } else {
+                        console.log('⚠️ 마이그레이션 실패, 로컬 메모리 유지');
+                    }
+                }
+            } else {
+                console.log('⚠️ Supabase 연결 실패, fallback 모드로 실행');
+            }
+        }
+    } catch (initError) {
+        console.error('앱 초기화 오류:', initError.message);
+    }
+})();
 
 // lectures 데이터를 모든 뷰에서 사용할 수 있도록 설정
 app.use((req, res, next) => {
@@ -290,10 +573,7 @@ app.get('/landing', (req, res) => {
     });
 });
 
-// prompt platform 리디렉션 라우트
-app.get('/prompt', (req, res) => {
-    res.redirect('https://prompt-parkyongkyus-projects.vercel.app/library');
-});
+// prompt platform은 프록시 미들웨어가 처리
 
 // 교육 문의 폼 제출 처리
 app.post('/education-inquiry', async (req, res) => {
@@ -374,26 +654,48 @@ app.post('/education-inquiry', async (req, res) => {
     }
 });
 
-// 방문자 카운트 API 엔드포인트
+// 방문자 카운트 API 엔드포인트 (Supabase 우선)
 app.get('/api/visitors', async (req, res) => {
     try {
         const today = new Date().toISOString().split('T')[0];
         let totalVisitors = 0;
         let dailyVisitors = 0;
         let storageMode = 'unknown';
+        let result = null;
         
-        if (isKvAvailable && kv) {
-            // Vercel KV 사용
-            const [totalResult, dailyResult] = await Promise.all([
-                kv.get('total_visitors').catch(() => null),
-                kv.get(`daily_visitors:${today}`).catch(() => null)
-            ]);
+        // 1단계: Supabase 우선 시도
+        if (isSupabaseAvailable) {
+            result = await safeSupabaseOperation(
+                () => getSupabaseVisitorStats(today),
+                null
+            );
             
-            totalVisitors = parseInt(totalResult) || 0;
-            dailyVisitors = parseInt(dailyResult) || 0;
-            storageMode = 'vercel-kv';
-        } else {
-            // 로컬 메모리 저장소 사용
+            if (result) {
+                totalVisitors = result.totalVisitors;
+                dailyVisitors = result.dailyVisitors;
+                storageMode = 'supabase';
+            }
+        }
+        
+        // 2단계: Supabase 실패 시 Vercel KV 시도
+        if (!result && isKvAvailable && kv) {
+            try {
+                const [totalResult, dailyResult] = await Promise.all([
+                    kv.get('total_visitors').catch(() => null),
+                    kv.get(`daily_visitors:${today}`).catch(() => null)
+                ]);
+                
+                totalVisitors = parseInt(totalResult) || 0;
+                dailyVisitors = parseInt(dailyResult) || 0;
+                storageMode = 'vercel-kv';
+                result = { totalVisitors, dailyVisitors };
+            } catch (kvError) {
+                console.error('KV 조회 오류:', kvError.message);
+            }
+        }
+        
+        // 3단계: 모든 외부 저장소 실패 시 로컬 메모리 사용
+        if (!result) {
             totalVisitors = parseInt(localStorage.totalVisitors) || 0;
             dailyVisitors = parseInt(localStorage.dailyVisitors[today]) || 0;
             storageMode = 'local-memory';
