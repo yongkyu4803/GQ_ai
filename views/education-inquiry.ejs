@@ -92,7 +92,7 @@
                                     <h3 class="section-title">기본 정보</h3>
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label for="company" class="form-label">단체명 *</label>
+                                            <label for="company" class="form-label">단체명/기관명 *</label>
                                             <input type="text" class="form-control" id="company" name="company" required>
                                         </div>
                                         <div class="col-md-6">
@@ -100,98 +100,40 @@
                                             <input type="text" class="form-control" id="name" name="name" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="position" class="form-label">직급/부서</label>
-                                            <input type="text" class="form-control" id="position" name="position" placeholder="예: 인사팀 팀장">
-                                        </div>
-                                        <div class="col-md-6">
                                             <label for="phone" class="form-label">연락처 *</label>
                                             <input type="tel" class="form-control" id="phone" name="phone" placeholder="010-1234-5678" required>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label for="email" class="form-label">이메일 *</label>
                                             <input type="email" class="form-control" id="email" name="email" required>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- 교육 정보 -->
+                                <!-- 교육 문의 내용 -->
                                 <div class="form-section">
-                                    <h3 class="section-title">교육 정보</h3>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label for="participants" class="form-label">예상 교육 인원 *</label>
-                                            <select class="form-select" id="participants" name="participants" required>
-                                                <option value="">선택하세요</option>
-                                                <option value="1-10">1-10명</option>
-                                                <option value="11-30">11-30명</option>
-                                                <option value="31-50">31-50명</option>
-                                                <option value="51-100">51-100명</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="duration" class="form-label">희망 교육 시간(1차시 50분)</label>
-                                            <select class="form-select" id="duration" name="duration">
-                                                <option value="">선택하세요</option>
-                                                <option value="1day">2차시 </option>
-                                                <option value="2-3days">2~4차시</option>
-                                                <option value="1week">4~8차시</option>
-                                                <option value="2-4weeks">8차시 이상</option>
-                                                <option value="custom">맞춤형</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="level" class="form-label">교육 대상 수준</label>
-                                            <select class="form-select" id="level" name="level">
-                                                <option value="">선택하세요</option>
-                                                <option value="beginner">초급 (AI 기초)</option>
-                                                <option value="intermediate">중급 (AI 활용)</option>
-                                                <option value="advanced">바이브 코딩</option>
-                                                <option value="mixed">혼합</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 교육 내용 -->
-                                <div class="form-section">
-                                    <h3 class="section-title">교육 내용</h3>
+                                    <h3 class="section-title">교육 문의 내용</h3>
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <label class="form-label">관심 교육 분야 (복수 선택 가능)</label>
-                                            <div class="checkbox-grid">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="topic2" name="topics" value="chatgpt">
-                                                    <label class="form-check-label" for="topic2">생성형AI 활용</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="topic3" name="topics" value="prompt-engineering">
-                                                    <label class="form-check-label" for="topic3">프롬프트 엔지니어링</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="topic4" name="topics" value="ai-tools">
-                                                    <label class="form-check-label" for="topic4">AI 도구 활용 및 업무효율화</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="topic5" name="topics" value="workflow">
-                                                    <label class="form-check-label" for="topic5">바이브 코딩</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="topic6" name="topics" value="custom">
-                                                    <label class="form-check-label" for="topic6">맞춤형 교육</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <label for="message" class="form-label">문의 내용 *</label>
+                                            <textarea class="form-control" id="message" name="message" rows="12" required
+                                                placeholder="다음 내용을 자유롭게 작성해 주세요:
 
-                                <!-- 추가 정보 -->
-                                <div class="form-section">
-                                    <h3 class="section-title">추가 정보</h3>
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label for="message" class="form-label">특별 요청사항 또는 기타 문의</label>
-                                            <textarea class="form-control" id="message" name="message" rows="5" 
-                                                placeholder="교육 목적, 특별한 요구사항, 기대효과 등을 자유롭게 작성해 주세요."></textarea>
+• 교육 인원 및 대상
+• 희망 교육 시기 및 기간
+• 교육 형태 (현장/온라인/혼합형)
+• 관심 있는 교육 분야 (생성형AI 활용, 프롬프트 엔지니어링, AI 도구 활용, 업무 효율화 등)
+• 교육 대상자의 AI 활용 수준
+• 특별한 요구사항이나 기대효과
+• 기타 문의사항
+
+예시:
+- 교육 인원: 20명 (직원 대상)
+- 희망 시기: 2024년 12월 중
+- 교육 시간: 4시간 (2시간 × 2회)
+- 교육 분야: ChatGPT 활용 및 업무 효율화
+- 수준: 초급~중급 혼합
+- 요구사항: 실무 중심의 실습 교육 희망"></textarea>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
@@ -269,10 +211,6 @@
                     try {
                         // 폼 데이터 수집
                         const formData = new FormData(form);
-                        const topics = [];
-                        form.querySelectorAll('input[name="topics"]:checked').forEach(cb => {
-                            topics.push(cb.value);
-                        });
                         
                         // 서버로 데이터 전송
                         const response = await fetch('/education-inquiry', {
@@ -283,13 +221,8 @@
                             body: JSON.stringify({
                                 company: formData.get('company'),
                                 name: formData.get('name'),
-                                position: formData.get('position'),
                                 phone: formData.get('phone'),
                                 email: formData.get('email'),
-                                participants: formData.get('participants'),
-                                duration: formData.get('duration'),
-                                level: formData.get('level'),
-                                topics: topics,
                                 message: formData.get('message')
                             })
                         });

@@ -503,6 +503,17 @@ app.get('/education-inquiry', (req, res) => {
     });
 });
 
+// 보좌진전문과정 페이지 라우트 추가
+app.get('/legislative-assistant-program', (req, res) => {
+    res.render('legislative-assistant-program', {
+        title: '보좌진전문과정 - GQ AI',
+        description: '국회 보좌진을 위한 AI 전문 교육과정',
+        path: '/legislative-assistant-program',
+        lectures: lecturesData.lectures,
+        layout: false  // 독립적인 레이아웃 사용
+    });
+});
+
 // 랜딩 페이지 라우트 추가
 app.get('/landing', (req, res) => {
     res.render('landing', {
@@ -522,13 +533,8 @@ app.post('/education-inquiry', async (req, res) => {
         const {
             company,
             name,
-            position,
             phone,
             email,
-            participants,
-            duration,
-            level,
-            topics,
             message
         } = req.body;
 
@@ -541,11 +547,7 @@ app.post('/education-inquiry', async (req, res) => {
             }
         });
 
-        // 선택된 교육 분야 처리
-        const selectedTopics = Array.isArray(topics) ? topics : [topics];
-        const topicsText = selectedTopics ? selectedTopics.join(', ') : '선택 없음';
-
-        // 메일 내용 구성
+        // 메일 내용 구성 (자유양식)
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.RECEIVER_EMAIL, // 받을 이메일 주소
@@ -555,24 +557,16 @@ app.post('/education-inquiry', async (req, res) => {
                 
                 <h3>기본 정보</h3>
                 <ul>
-                    <li><strong>단체명:</strong> ${company}</li>
+                    <li><strong>단체명/기관명:</strong> ${company}</li>
                     <li><strong>담당자명:</strong> ${name}</li>
-                    <li><strong>직급/부서:</strong> ${position || '미입력'}</li>
                     <li><strong>연락처:</strong> ${phone}</li>
                     <li><strong>이메일:</strong> ${email}</li>
                 </ul>
 
-                <h3>교육 정보</h3>
-                <ul>
-                    <li><strong>예상 교육 인원:</strong> ${participants}</li>
-                    <li><strong>희망 교육 시간:</strong> ${duration || '미선택'}</li>
-                    <li><strong>교육 대상 수준:</strong> ${level || '미선택'}</li>
-                    <li><strong>관심 교육 분야:</strong> ${topicsText}</li>
-                </ul>
-
-                <h3>추가 정보</h3>
-                <p><strong>특별 요청사항:</strong></p>
-                <p>${message || '없음'}</p>
+                <h3>교육 문의 내용</h3>
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #007bff;">
+                    <p style="white-space: pre-line;">${message || '내용 없음'}</p>
+                </div>
 
                 <hr>
                 <p><small>접수 시간: ${new Date().toLocaleString('ko-KR')}</small></p>
@@ -591,6 +585,79 @@ app.post('/education-inquiry', async (req, res) => {
         res.status(500).json({ 
             success: false, 
             message: '문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' 
+        });
+    }
+});
+
+// 보좌진전문과정 문의 폼 제출 처리
+app.post('/legislative-assistant-program', async (req, res) => {
+    try {
+        const {
+            name,
+            office,
+            phone,
+            email,
+            message
+        } = req.body;
+
+        // 메일 전송 설정
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
+        // 메일 내용 구성 (보좌진전문과정)
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.RECEIVER_EMAIL,
+            subject: `[GQ AI] 보좌진전문과정 문의 - ${office} (${name})`,
+            html: `
+                <h2>🏛️ 보좌진전문과정 문의가 접수되었습니다</h2>
+                
+                <h3>기본 정보</h3>
+                <ul>
+                    <li><strong>담당자명:</strong> ${name}</li>
+                    <li><strong>의원실명:</strong> ${office}</li>
+                    <li><strong>연락처:</strong> ${phone}</li>
+                    <li><strong>이메일:</strong> ${email}</li>
+                </ul>
+
+                <h3>문의 내용</h3>
+                <div style="background-color: #f0f8ff; padding: 20px; border-radius: 5px; border-left: 4px solid #1e3c72;">
+                    <p style="white-space: pre-line;">${message || '내용 없음'}</p>
+                </div>
+
+                <div style="background-color: #e8f4f8; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                    <p><strong>📋 보좌진전문과정 특징:</strong></p>
+                    <ul>
+                        <li>의원실별 맞춤 교육</li>
+                        <li>소그룹 집중 교육 (5-10명)</li>
+                        <li>실무 중심 커리큘럼</li>
+                        <li>현장/온라인/혼합형 진행</li>
+                    </ul>
+                </div>
+
+                <hr>
+                <p><small>접수 시간: ${new Date().toLocaleString('ko-KR')}</small></p>
+            `
+        };
+
+        // 메일 전송
+        await transporter.sendMail(mailOptions);
+
+        res.json({
+            success: true,
+            message: '보좌진전문과정 문의가 성공적으로 접수되었습니다!'
+        });
+
+    } catch (error) {
+        console.error('보좌진전문과정 문의 처리 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'
         });
     }
 });

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="/css/legislative-assistant-program.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="program-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="header-nav">
+                        <a href="/landing" class="brand-logo">
+                            <span class="logo-text">GQ AI</span>
+                        </a>
+                        <div class="header-links">
+                            <a href="/landing" class="nav-link">홈</a>
+                            <a href="/" class="nav-link">AI 러닝</a>
+                            <a href="/prompt" class="nav-link">프롬프트</a>
+                            <a href="/education-inquiry" class="nav-link">교육문의</a>
+                            <a href="/qna" class="nav-link">Q&A</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="program-main">
+        <!-- Hero Section -->
+        <section class="program-hero">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center">
+                        <div class="hero-content">
+                            <div class="hero-badge">
+                                <i class="fas fa-landmark"></i>
+                                국회 전문교육
+                            </div>
+                            <h1 class="hero-title">
+                                국회 <span class="title-highlight">보좌진</span>을 위한<br>
+                                AI 전문 교육과정
+                            </h1>
+                            <p class="hero-subtitle">
+                                의정활동의 효율성을 높이는 맞춤형 AI 교육<br>
+                                현장 경험과 실무 노하우를 바탕으로 한 전문 프로그램
+                            </p>
+                            <div class="hero-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">의원실 교육 완료</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">200+</div>
+                                    <div class="stat-label">보좌진 수료</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">95%</div>
+                                    <div class="stat-label">만족도</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="program-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">프로그램 특징</h2>
+                        <p class="section-subtitle">국회 보좌진의 실무 환경에 최적화된 교육</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3 class="feature-title">의원실별 맞춤 교육</h3>
+                            <p class="feature-description">
+                                각 의원실의 특성과 업무 환경에 맞춘<br>
+                                개별화된 교육 프로그램 설계
+                            </p>
+                            <ul class="feature-list">
+                                <li>상임위별 특화 교육</li>
+                                <li>정치적 성향 중립적 접근</li>
+                                <li>의원 일정에 맞춘 유연한 스케줄</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="feature-title">소그룹 집중 교육</h3>
+                            <p class="feature-description">
+                                5-10명 소규모 그룹으로 진행하는<br>
+                                밀도 높은 실습 중심 교육
+                            </p>
+                            <ul class="feature-list">
+                                <li>개별 실습 및 피드백</li>
+                                <li>그룹별 토론 및 사례 연구</li>
+                                <li>즉시 질의응답 및 멘토링</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="feature-title">실무 중심 커리큘럼</h3>
+                            <p class="feature-description">
+                                실제 의정활동에서 바로 활용 가능한<br>
+                                실용적인 AI 도구와 기법 교육
+                            </p>
+                            <ul class="feature-list">
+                                <li>국정감사 자료 분석</li>
+                                <li>법안 검토 및 요약</li>
+                                <li>언론 모니터링 자동화</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section class="curriculum-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">교육과정</h2>
+                        <p class="section-subtitle">체계적인 단계별 학습으로 전문성 향상</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="curriculum-card">
+                            <div class="curriculum-header">
+                                <div class="curriculum-number">01</div>
+                                <h3 class="curriculum-title">의정활동 AI 도구</h3>
+                            </div>
+                            <div class="curriculum-content">
+                                <p class="curriculum-description">
+                                    국정감사, 법안 심사, 정책 연구에 활용하는 AI 도구 활용법
+                                </p>
+                                <ul class="curriculum-topics">
+                                    <li>ChatGPT, Claude 등 대화형 AI 활용</li>
+                                    <li>법안 분석 및 요약 자동화</li>
+                                    <li>국정감사 질의서 작성 지원</li>
+                                    <li>정책 자료 검색 및 분석</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="curriculum-card">
+                            <div class="curriculum-header">
+                                <div class="curriculum-number">02</div>
+                                <h3 class="curriculum-title">정책분석 AI</h3>
+                            </div>
+                            <div class="curriculum-content">
+                                <p class="curriculum-description">
+                                    복잡한 정책 데이터를 분석하고 인사이트를 도출하는 AI 활용
+                                </p>
+                                <ul class="curriculum-topics">
+                                    <li>통계 데이터 분석 및 시각화</li>
+                                    <li>정책 영향 분석 자동화</li>
+                                    <li>여론 동향 모니터링</li>
+                                    <li>정책 대안 평가</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="curriculum-card">
+                            <div class="curriculum-header">
+                                <div class="curriculum-number">03</div>
+                                <h3 class="curriculum-title">보고서 작성 AI</h3>
+                            </div>
+                            <div class="curriculum-content">
+                                <p class="curriculum-description">
+                                    업무 보고서, 정책 제안서, 브리핑 자료 작성 효율화
+                                </p>
+                                <ul class="curriculum-topics">
+                                    <li>보고서 구조화 및 개요 작성</li>
+                                    <li>데이터 기반 논증 구성</li>
+                                    <li>프레젠테이션 자료 제작</li>
+                                    <li>언론 대응 자료 작성</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="curriculum-card">
+                            <div class="curriculum-header">
+                                <div class="curriculum-number">04</div>
+                                <h3 class="curriculum-title">업무 자동화</h3>
+                            </div>
+                            <div class="curriculum-content">
+                                <p class="curriculum-description">
+                                    반복적인 업무를 자동화하여 핵심 업무에 집중
+                                </p>
+                                <ul class="curriculum-topics">
+                                    <li>이메일 분류 및 응답 자동화</li>
+                                    <li>일정 관리 및 알림 설정</li>
+                                    <li>문서 정리 및 아카이빙</li>
+                                    <li>정기 보고서 자동 생성</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methods Section -->
+        <section class="methods-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">교육 방식</h2>
+                        <p class="section-subtitle">의원실 상황에 맞는 유연한 교육 진행</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="method-card">
+                            <div class="method-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3 class="method-title">현장 방문 교육</h3>
+                            <p class="method-description">
+                                의원실 또는 지정 장소에서<br>
+                                진행하는 집중 교육
+                            </p>
+                            <ul class="method-features">
+                                <li>맞춤형 교육 환경</li>
+                                <li>실제 업무 도구 활용</li>
+                                <li>즉석 문제 해결</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="method-card">
+                            <div class="method-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3 class="method-title">온라인 교육</h3>
+                            <p class="method-description">
+                                화상회의를 통한<br>
+                                실시간 상호작용 교육
+                            </p>
+                            <ul class="method-features">
+                                <li>시간 장소 제약 없음</li>
+                                <li>화면 공유 실습</li>
+                                <li>녹화본 복습 가능</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="method-card">
+                            <div class="method-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <h3 class="method-title">혼합형 교육</h3>
+                            <p class="method-description">
+                                현장과 온라인을 조합한<br>
+                                효율적인 교육 진행
+                            </p>
+                            <ul class="method-features">
+                                <li>기초는 온라인</li>
+                                <li>실습은 현장</li>
+                                <li>사후 온라인 지원</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="cta-card">
+                            <div class="cta-content">
+                                <h2 class="cta-title">보좌진 전문과정 문의하기</h2>
+                                <p class="cta-description">
+                                    의원실의 특성에 맞는 맞춤형 교육 계획을 제안해드립니다.<br>
+                                    전문 상담을 통해 최적의 교육 방안을 함께 찾아보세요.
+                                </p>
+                                <div class="cta-form">
+                                    <form id="programInquiryForm" class="inquiry-form">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="name" placeholder="담당자명" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="office" placeholder="의원실명" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="tel" class="form-control" name="phone" placeholder="연락처" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" name="email" placeholder="이메일" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <textarea class="form-control" name="message" rows="4" 
+                                                    placeholder="교육 문의 내용을 자유롭게 작성해주세요 (교육 인원, 희망 시기, 특별 요청사항 등)"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="privacy" required>
+                                                    <label class="form-check-label" for="privacy">
+                                                        개인정보 수집 및 이용에 동의합니다.
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-cta">
+                                                    <i class="fas fa-paper-plane"></i>
+                                                    교육 문의하기
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="program-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-text">&copy; 2024 GQ AI. 생성형 AI 전문 교육 플랫폼</p>
+                    <div class="footer-links">
+                        <a href="/landing">홈</a>
+                        <span>|</span>
+                        <a href="/education-inquiry">교육문의</a>
+                        <span>|</span>
+                        <a href="/qna">FAQ</a>
+                        <span>|</span>
+                        <a href="/contact">문의하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('programInquiryForm');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // 폼 검증
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+                if (isValid) {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 전송 중...';
+                    
+                    try {
+                        const formData = new FormData(form);
+                        
+                        const response = await fetch('/legislative-assistant-program', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                name: formData.get('name'),
+                                office: formData.get('office'),
+                                phone: formData.get('phone'),
+                                email: formData.get('email'),
+                                message: formData.get('message')
+                            })
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            alert('문의가 성공적으로 접수되었습니다!\n담당자가 24시간 내 연락드리겠습니다.');
+                            form.reset();
+                        } else {
+                            alert(result.message || '문의 접수 중 오류가 발생했습니다.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                } else {
+                    alert('필수 항목을 모두 입력해 주세요.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
