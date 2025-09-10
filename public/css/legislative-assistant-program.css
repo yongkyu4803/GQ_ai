@@ -165,7 +165,7 @@ body {
 
 /* Features Section */
 .program-features {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background-color: #f8fafc;
 }
 
@@ -184,7 +184,7 @@ body {
 
 .feature-card {
     background: white;
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
     text-align: center;
@@ -246,7 +246,7 @@ body {
 
 /* Curriculum Section */
 .curriculum-section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background-color: #ffffff;
 }
 
@@ -254,7 +254,7 @@ body {
     background: white;
     border: 2px solid #e2e8f0;
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 1.5rem;
     height: 100%;
     transition: all 0.3s ease;
     position: relative;
@@ -336,13 +336,13 @@ body {
 
 /* Methods Section */
 .methods-section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 .method-card {
     background: white;
-    padding: 3rem 2rem;
+    padding: 1.5rem 1rem;
     border-radius: 20px;
     text-align: center;
     height: 100%;
@@ -404,7 +404,7 @@ body {
 
 /* CTA Section */
 .cta-section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
 }
@@ -414,7 +414,7 @@ body {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 24px;
-    padding: 4rem 3rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
 }
 
@@ -486,7 +486,7 @@ body {
 .program-footer {
     background-color: #1a1a1a;
     color: white;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     text-align: center;
 }
 
@@ -558,11 +558,11 @@ body {
     
     .feature-card,
     .method-card {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
     }
     
     .cta-card {
-        padding: 3rem 2rem;
+        padding: 2rem 1.5rem;
     }
     
     .section-title {
