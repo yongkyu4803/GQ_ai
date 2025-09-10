@@ -56,7 +56,8 @@ END;
 $$ LANGUAGE 'plpgsql';
 
 -- visitor_stats 테이블 업데이트 트리거
-CREATE TRIGGER IF NOT EXISTS update_visitor_stats_updated_at 
+DROP TRIGGER IF EXISTS update_visitor_stats_updated_at ON visitor_stats;
+CREATE TRIGGER update_visitor_stats_updated_at 
     BEFORE UPDATE ON visitor_stats 
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
@@ -88,26 +89,29 @@ BEGIN
     IF is_new_visitor THEN
         -- 2. 새 방문자인 경우: 통계 업데이트
         
-        -- 먼저 전체 총 방문자 수 계산 (모든 날짜의 daily_count 합)
+        -- 현재까지의 총 방문자 수 계산
         SELECT COALESCE(SUM(daily_count), 0) INTO total_across_all_days
         FROM visitor_stats;
         
+        -- 새로운 총 방문자 수
+        total_across_all_days := total_across_all_days + 1;
+        
         -- 오늘 통계 삽입/업데이트
         INSERT INTO visitor_stats (date, daily_count, total_count)
-        VALUES (visit_date, 1, total_across_all_days + 1)
+        VALUES (visit_date, 1, total_across_all_days)
         ON CONFLICT (date) 
         DO UPDATE SET 
             daily_count = visitor_stats.daily_count + 1,
-            total_count = total_across_all_days + 1;
+            total_count = total_across_all_days;
             
         -- 업데이트된 값 조회
         SELECT daily_count, total_count INTO current_daily, current_total
         FROM visitor_stats WHERE date = visit_date;
         
-        -- 다른 날짜들의 total_count도 업데이트 (일관성 유지)
+        -- 모든 날짜의 total_count를 최신값으로 동기화 (배치로 최적화)
         UPDATE visitor_stats 
         SET total_count = current_total
-        WHERE date != visit_date;
+        WHERE total_count != current_total;
         
     ELSE
         -- 3. 기존 방문자인 경우: 현재 값만 반환
@@ -242,26 +246,33 @@ $$ LANGUAGE plpgsql;
 ALTER TABLE visitor_stats ENABLE ROW LEVEL SECURITY;
 ALTER TABLE visitor_ips ENABLE ROW LEVEL SECURITY;
 
+-- 기존 정책 삭제 후 재생성 (안전한 방법)
+DROP POLICY IF EXISTS "Allow read access to visitor_stats" ON visitor_stats;
+DROP POLICY IF EXISTS "Allow insert access to visitor_stats" ON visitor_stats;
+DROP POLICY IF EXISTS "Allow update access to visitor_stats" ON visitor_stats;
+DROP POLICY IF EXISTS "Allow insert access to visitor_ips" ON visitor_ips;
+DROP POLICY IF EXISTS "Allow read access to visitor_ips" ON visitor_ips;
+
 -- 읽기 권한 정책 (모든 사용자가 통계 조회 가능)
-CREATE POLICY IF NOT EXISTS "Allow read access to visitor_stats" 
+CREATE POLICY "Allow read access to visitor_stats" 
 ON visitor_stats FOR SELECT 
 USING (true);
 
 -- 쓰기 권한 정책 (인증된 사용자만 데이터 수정 가능)
-CREATE POLICY IF NOT EXISTS "Allow insert access to visitor_stats" 
+CREATE POLICY "Allow insert access to visitor_stats" 
 ON visitor_stats FOR INSERT 
 WITH CHECK (true);
 
-CREATE POLICY IF NOT EXISTS "Allow update access to visitor_stats" 
+CREATE POLICY "Allow update access to visitor_stats" 
 ON visitor_stats FOR UPDATE 
 USING (true);
 
 -- visitor_ips 테이블 정책
-CREATE POLICY IF NOT EXISTS "Allow insert access to visitor_ips" 
+CREATE POLICY "Allow insert access to visitor_ips" 
 ON visitor_ips FOR INSERT 
 WITH CHECK (true);
 
-CREATE POLICY IF NOT EXISTS "Allow read access to visitor_ips" 
+CREATE POLICY "Allow read access to visitor_ips" 
 ON visitor_ips FOR SELECT 
 USING (true);
 
