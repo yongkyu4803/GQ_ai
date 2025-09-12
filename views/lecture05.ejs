@@ -49,6 +49,9 @@
 
         <br>
         <h4 class="mb-4"><strong>페르소나 부여 예시:</strong></h4>
+        
+        <!-- 페르소나 설정 템플릿 -->
+
         <br>
         <!-- 김정훈 페르소나 -->
         <div class="card mb-4 persona-card">
@@ -112,6 +115,59 @@
                 </div>
             </div>
         </div>
+
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0"><strong>실제 페르소나 설정 예시 (복사-붙여넣기)</strong></h6>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="copyPersonaTemplate()" title="페르소나 템플릿 복사">
+                    <i class="fas fa-copy me-1"></i>복사
+                </button>
+            </div>
+            <div class="bg-light p-3 rounded">
+                <pre id="personaTemplate"><code>&lt;role&gt;
+당신은 다음 세 명의 전문가 페르소나를 모두 담당하여, 각각의 관점에서 피드백을 제공합니다.
+&lt;/role&gt;
+
+&lt;personas&gt;
+&lt;persona1&gt;
+  &lt;name&gt;[이름] ([나이]세, [직책])&lt;/name&gt;
+  &lt;work_style&gt;[업무 스타일 설명]&lt;/work_style&gt;
+  &lt;feedback_method&gt;[피드백 방식 설명]&lt;/feedback_method&gt;
+  &lt;focus_areas&gt;[주요 관심사 및 전문 영역]&lt;/focus_areas&gt;
+&lt;/persona1&gt;
+
+&lt;persona2&gt;
+  &lt;name&gt;[이름] ([나이]세, [직책])&lt;/name&gt;
+  &lt;work_style&gt;[업무 스타일 설명]&lt;/work_style&gt;
+  &lt;feedback_method&gt;[피드백 방식 설명]&lt;/feedback_method&gt;
+  &lt;focus_areas&gt;[주요 관심사 및 전문 영역]&lt;/focus_areas&gt;
+&lt;/persona2&gt;
+
+&lt;persona3&gt;
+  &lt;name&gt;[이름] ([나이]세, [직책])&lt;/name&gt;
+  &lt;work_style&gt;[업무 스타일 설명]&lt;/work_style&gt;
+  &lt;feedback_method&gt;[피드백 방식 설명]&lt;/feedback_method&gt;
+  &lt;focus_areas&gt;[주요 관심사 및 전문 영역]&lt;/focus_areas&gt;
+&lt;/persona3&gt;
+&lt;/personas&gt;
+
+&lt;context&gt;
+[검토받고 싶은 내용의 배경이나 목적을 설명]
+&lt;/context&gt;
+
+&lt;content&gt;
+[여기에 피드백을 받고 싶은 구체적인 내용을 입력]
+&lt;/content&gt;
+
+&lt;instructions&gt;
+각 페르소나별로 다음 형식에 따라 피드백을 제공해 주세요:
+- 🟦 [페르소나 이름]: [해당 전문가 관점의 피드백]
+- 구체적인 개선 사항과 권장 사항을 포함
+- 각 페르소나의 전문 영역에 맞는 관점에서 분석
+&lt;/instructions&gt;</code></pre>
+            </div>
+        </div>
+
 
         <br>
         <div>
@@ -264,3 +320,48 @@
         </a>
     </div>
 </div>
+
+<script>
+function copyPersonaTemplate() {
+    const templateElement = document.getElementById('personaTemplate');
+    const templateText = templateElement.textContent;
+    
+    // 클립보드에 복사
+    navigator.clipboard.writeText(templateText).then(function() {
+        // 성공 메시지 표시
+        const button = event.target.closest('button');
+        const originalContent = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check me-1"></i>복사됨!';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-success');
+        
+        // 2초 후 원래 상태로 복원
+        setTimeout(function() {
+            button.innerHTML = originalContent;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-outline-primary');
+        }, 2000);
+    }).catch(function(err) {
+        // 실패 시 대체 방법 (구형 브라우저 지원)
+        const textArea = document.createElement('textarea');
+        textArea.value = templateText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // 성공 메시지 표시
+        const button = event.target.closest('button');
+        const originalContent = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check me-1"></i>복사됨!';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-success');
+        
+        setTimeout(function() {
+            button.innerHTML = originalContent;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-outline-primary');
+        }, 2000);
+    });
+}
+</script>

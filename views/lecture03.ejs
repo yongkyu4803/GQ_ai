@@ -97,8 +97,91 @@
     <hr class="my-5">
 
     <div class="mt-4">
+        <h5 class="mb-3">2. 클로드 최신 프롬프트 가이드 요약 (2025-09-13 기준)</h5>
+        <div class="mb-4">
+            <p>
+                <strong> 글로벌 AI 회사들은 각자의 프롬프트 가이드를 제공하고 있습니다. </strong>
+                자신들의 모델에 기반해서 다양한 프롬프트 기법들을 제시하고 있지만, 그 맥락은 크게 다르지 않습니다. 
+                <br>
+                대부분의 일상적인 업무에서는 충분히 범용적으로 활용할 수 있습니다. 아래는 이 중에서 앤트로픽의 클로드 프롬프트 가이드를 정리해 놓았습니다. 
+                <br>
+                클로드의 공식문서는 한글로도 제공하고 있고 프롬프트를 직접 생성하고 테스트 해볼 수 있는 기능도 제공하고 있습니다. 
+            </p>
+        </div>
+        
+        <div class="mb-5">
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <span style="font-size: 1.5rem;">💡</span> <strong>핵심 요약 -무엇을, 어떻게, 왜 </strong>
+                <br><br>
+                • <strong>목표 정의 → 프롬프트 튜닝</strong> : 정확도·형식·길이 등 <strong>성과 기준</strong>과 간단한 <strong>테스트</strong>을 먼저 세팅하고, 그 다음 프롬프트를 조정.<br>
+                • <strong>명확·직설·구체</strong> : 역할, 범위, 금지/권장, 형식, 평가기준을 구체적으로 제시할수록 성능 상승.<br>
+                • <strong>역할은 `system`에</strong> : 도메인 전문가 <strong>역할 지정은 system</strong>, 개별 작업 지시는 <strong>user</strong>에 배치.<br>
+                • <strong>구조화는 XML 태그로</strong> : 맥락/지시/예시를 분리하면 파싱·정확도·일관성 향상(출력 형식도 강제 가능).<br>
+                • <strong>사고(추론) 유도</strong> : <strong>CoT</strong>와 <strong>확장 사고(Extended thinking)</strong>를 난이도에 맞게 활용. 도구 호출 이후 <strong>반성적 사고(Interleaved thinking)</strong>도 유용.<br>
+                • <strong>형식 통제 & 평가 가능성</strong> : “하지 말라”보다 “이렇게 써라” 지시가 효과적. XML/포맷 지시·스타일 매칭으로 <strong>출력 안정화</strong>.<br>
+                • <strong>가드레일 강화</strong> : 환각 감소, 일관성 향상, 탈옥(jailbreak) 완화, 프롬프트 유출 방지 등 <strong>운영 안전성</strong> 지침 포함.<br>
+                • <strong>라이브러리/튜토리얼 제공</strong> : 용도별 최적화 예시와 튜토리얼로 <strong>빠른 온보딩</strong> 지원.<br>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h6 class="mb-3"><strong>바로 쓰는 체크리스트</strong></h6>
+            <ol>
+                <li><strong>역할(Role)</strong><br>
+                    시스템에 도메인·톤·책임 범위 명시 (예: "공식 문서 중심, 추정 금지").</li>
+                <li><strong>맥락(Context)</strong><br>
+                    과업 배경·제약·데이터 범위를 태그로 분리해 제공.</li>
+                <li><strong>지시(Instructions)</strong><br>
+                    산출 형식(예: JSON 스키마/섹션), 길이, 평가 기준을 구체화.</li>
+                <li><strong>예시(Examples)</strong><br>
+                    긍·부정 예시와 경계 조건을 few-shot으로 제시.</li>
+                <li><strong>사고 유도(Thinking)</strong><br>
+                    "충분히 깊게 생각하고 대안도 검토" 같은 메타지시 + 필요 시 확장 사고 사용.</li>
+                <li><strong>검증(QA/Eval)</strong><br>
+                    테스트 케이스·자체 점검 지시 포함, 실패 시 재시도 규칙 명시.</li>
+            </ol>
+        </div>
+
+        <div class="mb-5">
+            <h6 class="mb-3">
+                <strong>실전 미니 템플릿 (복사-붙여쓰기)</strong>
+                <button type="button" class="btn btn-outline-primary btn-sm ms-2" onclick="copyTemplate()" title="템플릿 복사">
+                    <i class="fas fa-copy me-1"></i>복사
+                </button>
+            </h6>
+            <div class="bg-light p-3 rounded position-relative">
+                <pre id="promptTemplate"><code>&lt;role&gt;
+  당신은 [도메인]의 시니어 전문가다. 사실 검증과 출처 명시를 우선한다.
+&lt;/role&gt;
+&lt;context&gt;
+  목적: [무엇을 왜]
+  자료원/제약: [데이터 범위·금지사항]
+&lt;/context&gt;
+&lt;instructions&gt;
+  1) 출력 형식: [예: 섹션 H2 + 표 1개]
+  2) 포함 요소: [핵심 포인트 n개, 수치/날짜 절대값]
+  3) 톤/스타일: [공식·간결/불필요한 수사 금지]
+  4) 품질검사: 제출 전 스스로 오류/누락 점검 후 수정
+&lt;/instructions&gt;
+&lt;examples&gt;
+  &lt;positive&gt;이런 식의 구조·수준을 모범으로 삼아라: …&lt;/positive&gt;
+  &lt;negative&gt;이런 모호어·주장성 표현은 금지: …&lt;/negative&gt;
+&lt;/examples&gt;
+&lt;format&gt;
+  최종 출력은 마크다운으로, 코드블록 금지 [또는 JSON 스키마].
+&lt;/format&gt;
+&lt;thinking&gt;
+  필요 시 대안 비교 및 근거 제시 후 결론만 출력(추론은 숨김).
+&lt;/thinking&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="mt-4">
         <h5 class="mb-3">
-            2. COSTAR 기법
+            참고. COSTAR 기법
             <button type="button" class="btn btn-outline-secondary btn-sm ms-2" data-bs-toggle="collapse" data-bs-target="#costarContent" aria-expanded="false">
                 <i class="fas fa-chevron-down"></i> 펼치기/접기
             </button>
@@ -204,6 +287,15 @@
 
     <div class="mt-5 mb-4">
         <h5 class="mb-3">3. 시스템 프롬프트와 사용자 프롬프트</h5>
+        <div class="mb-4">
+        <p>
+            실무에서는 시스템 프롬프트와 사용자 프롬프트를 구분해서 사용하는 것이 매우 중요합니다. 
+            시스템 프롬프트는 AI의 기본적인 역할과 행동 방식을 정의하여 일관된 서비스 품질을 유지할 수 있게 해줍니다. 
+            예를 들어 고객센터 챗봇의 경우, 시스템 프롬프트에 "친절하고 정확한 정보 제공", "개인정보 보호 준수" 등의 기본 원칙을 설정하고, 
+            사용자 프롬프트로는 개별 문의사항을 처리하게 됩니다. 
+            이렇게 구분함으로써 AI 서비스의 안정성과 예측 가능성을 크게 향상시킬 수 있습니다.
+        </p>
+        </div>
         <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;"> 
             <div class="mt-3">
                 <p><strong>(1) 시스템 프롬프트 (System Prompt)</strong></p>
@@ -420,3 +512,48 @@
         </a>
     </div>
 </div>
+
+<script>
+function copyTemplate() {
+    const templateElement = document.getElementById('promptTemplate');
+    const templateText = templateElement.textContent;
+    
+    // 클립보드에 복사
+    navigator.clipboard.writeText(templateText).then(function() {
+        // 성공 메시지 표시
+        const button = event.target.closest('button');
+        const originalContent = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check me-1"></i>복사됨!';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-success');
+        
+        // 2초 후 원래 상태로 복원
+        setTimeout(function() {
+            button.innerHTML = originalContent;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-outline-primary');
+        }, 2000);
+    }).catch(function(err) {
+        // 실패 시 대체 방법 (구형 브라우저 지원)
+        const textArea = document.createElement('textarea');
+        textArea.value = templateText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // 성공 메시지 표시
+        const button = event.target.closest('button');
+        const originalContent = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check me-1"></i>복사됨!';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-success');
+        
+        setTimeout(function() {
+            button.innerHTML = originalContent;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-outline-primary');
+        }, 2000);
+    });
+}
+</script>
