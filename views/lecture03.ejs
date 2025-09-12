@@ -97,98 +97,106 @@
     <hr class="my-5">
 
     <div class="mt-4">
-        <h5 class="mb-3">2. COSTAR 기법</h5>
-        <div class="mb-4">
-        <p>
-            <strong>CO-STAR 프레임워크</strong>는 싱가포르 <strong>GovTech</strong>의 
-            데이터 과학 및 인공지능 팀에 의해 개발되었으며, 
-            효과적이고 관련성 높은 AI 응답을 생성하기 위해 프롬프트를 구조화하는 데 도움이 됩니다.
-            <strong>CO-STAR</strong>는 <strong>Context, Objective, Style, Tone, Audience, Response</strong>의 약자로, 
-            각 요소별로 적절한 설명을 입력함으로써 효과적인 프롬프트를 완성할 수 있습니다.
-            <br><br>
-            많은 프롬프트 기법들이 있지만, 대개는 이 맥락을 크게 벗어나지 않습니다. 
-            3단계로 할것인지, 4단계, 5단계로 할 것인지에 따라서 약간의 차이가 있으나, 
-            일반 사용자들에게는 그 차이가 크다고 보기 어려울 것입니다.
-            <br><br>
-            아래 표를 통해서 자세한 프롬프트 적용방법을 살펴보겠습니다.
-        </p>
-        </div>
+        <h5 class="mb-3">
+            2. COSTAR 기법
+            <button type="button" class="btn btn-outline-secondary btn-sm ms-2" data-bs-toggle="collapse" data-bs-target="#costarContent" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i> 펼치기/접기
+            </button>
+        </h5>
+        
+        <div class="collapse" id="costarContent">
+            <div class="mb-4">
+            <p>
+                <strong>CO-STAR 프레임워크</strong>는 싱가포르 <strong>GovTech</strong>의 
+                데이터 과학 및 인공지능 팀에 의해 개발되었으며, 
+                효과적이고 관련성 높은 AI 응답을 생성하기 위해 프롬프트를 구조화하는 데 도움이 됩니다.
+                <strong>CO-STAR</strong>는 <strong>Context, Objective, Style, Tone, Audience, Response</strong>의 약자로, 
+                각 요소별로 적절한 설명을 입력함으로써 효과적인 프롬프트를 완성할 수 있습니다.
+                <br><br>
+                많은 프롬프트 기법들이 있지만, 대개는 이 맥락을 크게 벗어나지 않습니다. 
+                3단계로 할것인지, 4단계, 5단계로 할 것인지에 따라서 약간의 차이가 있으나, 
+                일반 사용자들에게는 그 차이가 크다고 보기 어려울 것입니다.
+                <br><br>
+                아래 표를 통해서 자세한 프롬프트 적용방법을 살펴보겠습니다.
+            </p>
+            </div>
 
-        <div class="mb-5">
-        <div class="table-responsive">
-            <table class="table">
-                <thead class="thead-light">
-                    <tr style="background-color: #f8f9fa;">
-                        <th style="width: 110px; background-color: #f8f9fa; color: #333; padding: 0.5rem;">요소</th>
-                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">설명</th>
-                        <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">예시</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <style>
-                        .table tbody tr td {
-                            padding: 0.5rem;
-                            vertical-align: middle;
-                            border-bottom: 1px solid #e9ecef;
-                        }
-                        .example-text {
-                            color: #666;
-                            padding: 0.3rem;
-                            background-color: #f8f9fa;
-                            border-left: 3px solid #764ba2;
-                        }
-                    </style>
-                    <tr>
-                        <td style="width: 110px;"><strong>Context<br>(맥락)</strong></td>
-                        <td>AI가 응답을 생성하는 데 필요한 배경 정보를 제공합니다.</td>
-                        <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트입니다."</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Objective<br>(목표)</strong></td>
-                        <td>AI가 수행해야 할 구체적인 작업이나 목표를 명확하게 정의합니다.</td>
-                        <td>"최근 프로젝트에서의 지원과 팀워크에 대한 감사를 표현하는 감사 편지를 작성해주세요."</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Style<br>(스타일)</strong></td>
-                        <td>응답의 스타일을 지정합니다. 특정 인물이나 전문가의 스타일을 모방할 수 있습니다.</td>
-                        <td>"전문적인 업무용 편지 형식으로 작성해주세요."</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tone<br>(톤)</strong></td>
-                        <td>응답의 태도나 분위기를 설정합니다.</td>
-                        <td>"따뜻하고 감사한 톤으로 작성해주세요."</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Audience<br>(청중)</strong></td>
-                        <td>응답이 의도된 청중을 명시합니다. AI가 청중에 맞는 언어와 표현을 사용하도록 합니다.</td>
-                        <td>"기업 환경에서 일하는 동료를 위한 편지입니다."</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Response<br>(응답 형식)</strong></td>
-                        <td>응답의 길이와 형식을 지정합니다.</td>
-                        <td>"세 단락으로 구성된 간단한 감사 편지를 작성해주세요."</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
+            <div class="mb-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr style="background-color: #f8f9fa;">
+                            <th style="width: 110px; background-color: #f8f9fa; color: #333; padding: 0.5rem;">요소</th>
+                            <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">설명</th>
+                            <th style="background-color: #f8f9fa; color: #333; padding: 0.5rem;">예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <style>
+                            .table tbody tr td {
+                                padding: 0.5rem;
+                                vertical-align: middle;
+                                border-bottom: 1px solid #e9ecef;
+                            }
+                            .example-text {
+                                color: #666;
+                                padding: 0.3rem;
+                                background-color: #f8f9fa;
+                                border-left: 3px solid #764ba2;
+                            }
+                        </style>
+                        <tr>
+                            <td style="width: 110px;"><strong>Context<br>(맥락)</strong></td>
+                            <td>AI가 응답을 생성하는 데 필요한 배경 정보를 제공합니다.</td>
+                            <td>"당신은 동료의 프로젝트 도움에 대한 감사 편지를 작성하는 것을 돕는 AI 어시스턴트입니다."</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Objective<br>(목표)</strong></td>
+                            <td>AI가 수행해야 할 구체적인 작업이나 목표를 명확하게 정의합니다.</td>
+                            <td>"최근 프로젝트에서의 지원과 팀워크에 대한 감사를 표현하는 감사 편지를 작성해주세요."</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Style<br>(스타일)</strong></td>
+                            <td>응답의 스타일을 지정합니다. 특정 인물이나 전문가의 스타일을 모방할 수 있습니다.</td>
+                            <td>"전문적인 업무용 편지 형식으로 작성해주세요."</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tone<br>(톤)</strong></td>
+                            <td>응답의 태도나 분위기를 설정합니다.</td>
+                            <td>"따뜻하고 감사한 톤으로 작성해주세요."</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Audience<br>(청중)</strong></td>
+                            <td>응답이 의도된 청중을 명시합니다. AI가 청중에 맞는 언어와 표현을 사용하도록 합니다.</td>
+                            <td>"기업 환경에서 일하는 동료를 위한 편지입니다."</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Response<br>(응답 형식)</strong></td>
+                            <td>응답의 길이와 형식을 지정합니다.</td>
+                            <td>"세 단락으로 구성된 간단한 감사 편지를 작성해주세요."</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
 
-        <div class="mb-5">
-        <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
-            <span style="font-size: 1.5rem;">💡</span> <strong>[CO-STAR] 프롬프트 예시</strong>
-            <br><br>
-            • <strong>맥락</strong> : 당신은 {대학에서 20년 가까이 수학을 강의해온 교수}로서 {나의 수학능력 향상을 위한 멘토} 역할이야
-            <br>
-            • <strong>목표</strong> : 이번 대화의 목표는 {내가 선형대수학의 기본}을 이해하는 것이야
-            <br>
-            • <strong>스타일</strong> : 전문적인 대학교수로서 설명해줘
-            <br>
-            • <strong>톤</strong> : 나는 {선형대수학}에 대한 이해가 깊지 못해. 부드럽고 친절한 대화를 원해
-            <br>
-            • <strong>청중</strong> : 이 대화는 너와 나의 둘만의 대화니 편안하게 대화를 해줘
-            <br>
-            • <strong>응답</strong> : 설명문 형식, 장황한 설명을 안돼. 모든 답변은 {300단어}를 넘기지 않아 한국어로 답해줘
-        </div>
+            <div class="mb-5">
+            <div class="alert alert-light" role="alert" style="border-left: 5px solid #f8c51c;">
+                <span style="font-size: 1.5rem;">💡</span> <strong>[CO-STAR] 프롬프트 예시</strong>
+                <br><br>
+                • <strong>맥락</strong> : 당신은 {대학에서 20년 가까이 수학을 강의해온 교수}로서 {나의 수학능력 향상을 위한 멘토} 역할이야
+                <br>
+                • <strong>목표</strong> : 이번 대화의 목표는 {내가 선형대수학의 기본}을 이해하는 것이야
+                <br>
+                • <strong>스타일</strong> : 전문적인 대학교수로서 설명해줘
+                <br>
+                • <strong>톤</strong> : 나는 {선형대수학}에 대한 이해가 깊지 못해. 부드럽고 친절한 대화를 원해
+                <br>
+                • <strong>청중</strong> : 이 대화는 너와 나의 둘만의 대화니 편안하게 대화를 해줘
+                <br>
+                • <strong>응답</strong> : 설명문 형식, 장황한 설명을 안돼. 모든 답변은 {300단어}를 넘기지 않아 한국어로 답해줘
+            </div>
+            </div>
         </div>
     </div>
 
