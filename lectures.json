@@ -75,7 +75,7 @@
         {
             "number": "4강",
             "title": "프롬프트 엔지니어링 II",
-            "description": "추론/비추론 모델 이해하기와 구조화된 결과(Structured Output) 받기",
+            "description": "추론/비추론 모델 이해와 구조화된 결과(Structured Output) 받기",
             "link": "/lecture04",
             "mainTopics": [
                 {
