@@ -51,7 +51,7 @@
         {
             "number": "3강",
             "title": "프롬프트 엔지니어링 I",
-            "description": "프롬프트에 대한 이해와 COSTAR 기법",
+            "description": "프롬프트에 대한 이해와 Claude 프롬프트 엔지니어링 가이드",
             "link": "/lecture03",
             "mainTopics": [
                 {
@@ -63,9 +63,9 @@
                     ]
                 },
                 {
-                    "title": "COSTAR 기법 활용",
+                    "title": "Claude 프롬프트 엔지니어링 가이드",
                     "subTopics": [
-                        "COSTAR 프레임워크 이해",
+                        "Claude 프롬프트 엔지니어링 가이드",
                         "실제 프롬프트 작성 실습",
                         "프롬프트 최적화 방법"
                     ]
@@ -75,21 +75,22 @@
         {
             "number": "4강",
             "title": "프롬프트 엔지니어링 II",
-            "description": "구조화된 결과(Structured Output) 받기",
+            "description": "추론/비추론 모델 이해하기와 구조화된 결과(Structured Output) 받기",
             "link": "/lecture04",
             "mainTopics": [
                 {
-                    "title": "잘 입력하기",
+                    "title": "추론/비추론 모델 이해하기",
                     "subTopics": [
-                        "입력 형식 지정",
-                        "예시 제시",
+                        "추론 모델 이해하기",
+                        "비추론 모델 이해하기",
                         "추가 요청"
                     ]
                 },
                 {
                     "title": "구조화된 결과(Structured Output) 받기",
                     "subTopics": [
-                        "프롬프트 설계와 실행",
+                        "프롬프트 작성시 기호 사용법",
+                        "구조화된 결과(Structured Output) 받기",
                         "반환형식 지정"
                     ]
                 }
