@@ -37,7 +37,7 @@
 </div>
 
 <!-- 실제 컨텐츠 영역 -->
-<div class="content-card">
+<div class="content-card" id="lecture07-content">
     <h4><i class="fas fa-edit me-2 mb-3"></i>생성형 AI로 일하기 - '가혹한 글 수정'</h4>
 
     <div class="content">
@@ -532,26 +532,138 @@ function copyHarshWritingTemplate() {
 </script>
 
 <style>
-.content-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 2rem;
-    margin-bottom: 2rem;
+/* 강의 7번 전용 스타일 - 글로벌 CSS 오버라이드 */
+#lecture07-content .content-card {
+    background: #fff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    border: none !important;
 }
 
-.card {
-    border: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border-radius: 12px;
-    overflow: hidden;
+#lecture07-content .card {
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin-bottom: 1rem !important;
 }
 
-.card-header {
-    background: linear-gradient(45deg, #2196F3, #1976D2);
-    color: white;
-    border-bottom: none;
-    padding: 1rem 1.5rem;
+#lecture07-content .card-header {
+    background: linear-gradient(45deg, #2196F3, #1976D2) !important;
+    color: white !important;
+    border-bottom: none !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+#lecture07-content .card-header.bg-danger {
+    background: linear-gradient(45deg, #dc3545, #c82333) !important;
+}
+
+#lecture07-content .card-header.bg-success {
+    background: linear-gradient(45deg, #28a745, #20c997) !important;
+}
+
+#lecture07-content .card-header.bg-info {
+    background: linear-gradient(45deg, #17a2b8, #138496) !important;
+}
+
+#lecture07-content .card-header.bg-warning {
+    background: linear-gradient(45deg, #ffc107, #e0a800) !important;
+    color: #212529 !important;
+}
+
+#lecture07-content .card-body {
+    padding: 1.5rem !important;
+    background: #fff !important;
+}
+
+#lecture07-content .border-success {
+    border: 2px solid #28a745 !important;
+}
+
+#lecture07-content .border-warning {
+    border: 2px solid #ffc107 !important;
+}
+
+#lecture07-content .border-danger {
+    border: 2px solid #dc3545 !important;
+}
+
+#lecture07-content .h-100 {
+    height: 100% !important;
+    min-height: 300px !important;
+}
+
+/* 테이블 스타일 강화 */
+#lecture07-content .table-responsive {
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+#lecture07-content .table {
+    margin-bottom: 0 !important;
+    background: #fff !important;
+}
+
+#lecture07-content .table th {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef) !important;
+    border-bottom: 2px solid #dee2e6 !important;
+    font-weight: 600 !important;
+    color: #495057 !important;
+}
+
+#lecture07-content .table td {
+    border-top: 1px solid #dee2e6 !important;
+    padding: 0.75rem !important;
+}
+
+#lecture07-content .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.02) !important;
+}
+
+/* 아코디언 스타일 강화 */
+#lecture07-content .accordion-item {
+    border: 1px solid #e5e7eb !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+#lecture07-content .accordion-button {
+    background-color: #eef2ff !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    padding: 1rem 1.25rem !important;
+}
+
+#lecture07-content .accordion-button:hover {
+    background-color: #dbeafe !important;
+}
+
+#lecture07-content .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+    box-shadow: none !important;
+}
+
+#lecture07-content .accordion-button:focus {
+    box-shadow: none !important;
+    border-color: rgba(0,0,0,.125) !important;
+}
+
+#lecture07-content .accordion-collapse {
+    border-top: none !important;
+}
+
+#lecture07-content .accordion-body {
+    padding: 1.25rem !important;
+    background: #fff !important;
 }
 
 .process-step {
