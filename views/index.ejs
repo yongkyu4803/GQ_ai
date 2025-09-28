@@ -309,6 +309,26 @@
                             <div class="lecture-number">13</div>
                         </div>
                     </div>
+                    <!-- 14강 카드 -->
+                    <%
+                      const lecture14 = lectures.find(l => l.number === "14강");
+                    %>
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card" onclick="window.location.href='<%= lecture14.link %>'" style="cursor: pointer;">
+                            <div class="card-header-custom expert">
+                                <div class="card-header-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <h3 class="card-title-header"><%= lecture14.number %>. <%= lecture14.title %></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-content">
+                                    <p class="card-text"><%= lecture14.description %></p>
+                                </div>
+                            </div>
+                            <div class="lecture-number">14</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>     
@@ -374,7 +394,7 @@
                             <h6 class="footer-subtitle">강의 과정</h6>
                             <div class="course-stats">
                                 <div class="course-item">
-                                    <span class="course-number">13</span>
+                                    <span class="course-number">14</span>
                                     <span class="course-label">개 강의</span>
                                 </div>
                                 <div class="course-item">
