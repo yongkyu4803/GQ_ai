@@ -1,0 +1,723 @@
+<!-- 주요 주제 영역 -->
+<div class="content-card mb-3">
+    <h5 class="d-flex align-items-center py-2 border-bottom"><i class="fas fa-lightbulb me-2 text-warning"></i>주요 주제</h5>
+    <div class="py-2">
+        <div class="row">
+            <% lectures.find(l => l.link === '/lecture15').mainTopics.forEach((topic, index) => { %>
+                <div class="col-md-6">
+                    <div class="topic-item py-1 h-100">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle mt-1 me-2 text-primary"></i>
+                            <div>
+                                <span class="fw-medium"><%= topic.title %></span>
+                                <% if (topic.subTopics && topic.subTopics.length > 0) { %>
+                                    <ul class="subtopic-list ps-3 mt-1 mb-0">
+                                        <% topic.subTopics.forEach(subTopic => { %>
+                                            <li class="small text-secondary">• <%= subTopic %></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<!-- 강의 안내 -->
+<div class="content-card mb-3">
+    <div class="alert alert-info" role="alert">
+        <h5><i class="fas fa-info-circle me-2"></i>바이브코딩을 시작하기 전에</h5>
+        <p class="mb-2">바이브코딩 강의를 수강하기 전에 필수적으로 완료해야 할 개발환경 설정을 안내합니다.</p>
+        <p class="mb-0"><strong>목표 시간:</strong> 1시간 내 완료 | <strong>대상:</strong> 완전 초보 ~ 초중급</p>
+    </div>
+</div>
+
+<!-- 준비 체크리스트 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-clipboard-check me-2"></i>준비 체크리스트 (5분)</h4>
+    <div class="checklist-container mt-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="check1">
+            <label class="form-check-label" for="check1">
+                개인 이메일(구글 권장) 준비
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="check2">
+            <label class="form-check-label" for="check2">
+                관리자 권한 확인 (회사 PC라면 보안 정책 확인)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="check3">
+            <label class="form-check-label" for="check3">
+                브라우저: Chrome/Edge/Safari 최신 버전
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- 1단계: VS Code 설치 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-code me-2"></i>1단계: VS Code 설치 (10분)</h4>
+
+    <!-- 플랫폼별 탭 -->
+    <ul class="nav nav-tabs mt-3" id="vscodeTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="windows-tab" data-bs-toggle="tab" data-bs-target="#windows" type="button" role="tab">
+                <i class="fab fa-windows me-2"></i>Windows
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="macos-tab" data-bs-toggle="tab" data-bs-target="#macos" type="button" role="tab">
+                <i class="fab fa-apple me-2"></i>macOS
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="vscodeTabsContent">
+        <!-- Windows 설치 -->
+        <div class="tab-pane fade show active" id="windows" role="tabpanel">
+            <ol>
+                <li>다운로드: <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a> → <strong>Download for Windows</strong></li>
+                <li>설치 실행 → 모든 기본값으로 Next</li>
+                <li>옵션 권장 체크</li>
+                <li>실행: 시작 메뉴 → <strong>Visual Studio Code</strong></li>
+            </ol>
+        </div>
+
+        <!-- macOS 설치 -->
+        <div class="tab-pane fade" id="macos" role="tabpanel">
+            <ol>
+                <li>다운로드: <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a> → <strong>Download for macOS</strong> (Apple Silicon/Intel 확인)</li>
+                <li>압축 해제 후 <strong>Visual Studio Code.app</strong>를 <strong>Applications</strong> 폴더로 드래그</li>
+                <li>실행: Launchpad → <strong>Visual Studio Code</strong></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 필수 확장 프로그램 -->
+    <div class="alert alert-success mt-3">
+        <h6><i class="fas fa-puzzle-piece me-2"></i>2025년 필수 확장 프로그램 (단계별 설치 권장)</h6>
+
+        <!-- 1단계: 기본 설정 -->
+        <div class="extension-category mb-3">
+            <h6 class="text-primary"><i class="fas fa-cog me-2"></i>1단계: 기본 설정</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Korean Language Pack for VS Code</strong> (한국어 UI)</li>
+                        <li><strong>Material Icon Theme</strong> (파일 아이콘)</li>
+                        <li><strong>One Dark Pro</strong> 또는 <strong>GitHub Theme</strong> (테마)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Peacock</strong> (워크스페이스 색상 구분)</li>
+                        <li><strong>Bracket Pair Colorizer 2</strong> (괄호 색상)</li>
+                        <li><strong>indent-rainbow</strong> (들여쓰기 가시화)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2단계: 코드 품질 & 포맷팅 -->
+        <div class="extension-category mb-3">
+            <h6 class="text-success"><i class="fas fa-check-circle me-2"></i>2단계: 코드 품질 & 포맷팅</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Prettier - Code formatter</strong> (48M+ 설치)</li>
+                        <li><strong>ESLint</strong> (코드 품질 검사)</li>
+                        <li><strong>Auto Rename Tag</strong> (HTML/JSX 태그 자동 수정)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Path Intellisense</strong> (파일 경로 자동완성)</li>
+                        <li><strong>IntelliSense for CSS class names</strong></li>
+                        <li><strong>Auto Close Tag</strong> (태그 자동 닫기)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3단계: AI & 생산성 도구 -->
+        <div class="extension-category mb-3">
+            <h6 class="text-warning"><i class="fas fa-robot me-2"></i>3단계: AI & 생산성 도구 (2025년 핵심)</h6>
+            <div class="alert alert-info">
+                <small><strong>💡 팁:</strong> AI 도구는 하나씩 설치해서 사용법을 익힌 후 다음으로 진행하세요!</small>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>GitHub Copilot</strong> (41M+ 설치, AI 코드 자동완성)</li>
+                        <li><strong>Claude Code</strong> (공식 CLI 연동)</li>
+                        <li><strong>Claude Coder</strong> (Claude 3.5 Sonnet 기반)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Tabnine</strong> (AI 기반 코드 완성)</li>
+                        <li><strong>Live Server</strong> (실시간 미리보기)</li>
+                        <li><strong>Turbo Console Log</strong> (디버깅 로그)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4단계: 개발 언어별 -->
+        <div class="extension-category mb-3">
+            <h6 class="text-info"><i class="fas fa-code me-2"></i>4단계: 개발 언어별 (필요에 따라 선택)</h6>
+
+            <!-- JavaScript/TypeScript -->
+            <div class="language-section mb-2">
+                <strong>JavaScript/TypeScript/React:</strong>
+                <ul class="mt-1 mb-1">
+                    <li><strong>ES7+ React/Redux/React-Native snippets</strong></li>
+                    <li><strong>Simple React Snippets</strong></li>
+                    <li><strong>Import Cost</strong> (패키지 크기 표시)</li>
+                    <li><strong>Quokka.js</strong> (실시간 JS/TS 실행)</li>
+                </ul>
+            </div>
+
+            <!-- Python -->
+            <div class="language-section mb-2">
+                <strong>Python:</strong>
+                <ul class="mt-1 mb-1">
+                    <li><strong>Python</strong> (Microsoft, 173M+ 설치)</li>
+                    <li><strong>Pylance</strong> (고급 Python 언어 지원)</li>
+                    <li><strong>autoDocstring</strong> (문서화 자동생성)</li>
+                    <li><strong>AREPL</strong> (실시간 Python 코드 실행)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5단계: Git & 협업 -->
+        <div class="extension-category mb-0">
+            <h6 class="text-secondary"><i class="fab fa-git-alt me-2"></i>5단계: Git & 협업</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>GitLens</strong> (Git 히스토리 가시화)</li>
+                        <li><strong>GitHub Pull Requests and Issues</strong></li>
+                        <li><strong>Live Share</strong> (실시간 협업)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li><strong>Git History</strong> (Git 로그 뷰어)</li>
+                        <li><strong>GitBlame</strong> (코드 작성자 표시)</li>
+                        <li><strong>Remote - SSH</strong> (원격 개발)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 설치 가이드 -->
+    <div class="alert alert-info mt-3">
+        <h6><i class="fas fa-download me-2"></i>확장 프로그램 설치 방법</h6>
+        <ol class="mb-0">
+            <li>VS Code 좌측 Activity Bar → <strong>Extensions</strong> (<code>Ctrl+Shift+X</code>)</li>
+            <li>검색창에 확장 프로그램 이름 입력</li>
+            <li><strong>Install</strong> 버튼 클릭</li>
+            <li>설치 후 <strong>Reload</strong> 또는 VS Code 재시작</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 2단계: Node.js 설치 -->
+<div class="content-card mb-4">
+    <h4><i class="fab fa-node-js me-2"></i>2단계: Node.js 설치 (15~20분)</h4>
+    <div class="alert alert-info">
+        <strong><i class="fas fa-lightbulb me-2"></i>설치 방법 선택 가이드:</strong>
+        <ul class="mb-0 mt-2">
+            <li><strong>직접 설치:</strong> 초보자 추천 - 간단하고 빠른 설치</li>
+            <li><strong>nvm 설치:</strong> 고급 사용자용 - 여러 Node.js 버전 관리 필요시</li>
+        </ul>
+    </div>
+
+    <!-- 설치 방법별 탭 -->
+    <ul class="nav nav-tabs mt-3" id="nodeTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="node-direct-tab" data-bs-toggle="tab" data-bs-target="#node-direct" type="button" role="tab">
+                <i class="fas fa-download me-2"></i>직접 설치 (추천)
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="node-nvm-windows-tab" data-bs-toggle="tab" data-bs-target="#node-nvm-windows" type="button" role="tab">
+                <i class="fab fa-windows me-2"></i>nvm (Windows)
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="node-nvm-macos-tab" data-bs-toggle="tab" data-bs-target="#node-nvm-macos" type="button" role="tab">
+                <i class="fab fa-apple me-2"></i>nvm (macOS)
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="nodeTabsContent">
+        <!-- 직접 설치 (공식 홈페이지) -->
+        <div class="tab-pane fade show active" id="node-direct" role="tabpanel">
+            <div class="alert alert-success">
+                <strong><i class="fas fa-thumbs-up me-2"></i>초보자 추천:</strong> 간단하고 빠른 설치 방법입니다.
+            </div>
+
+            <h6 class="mt-3"><i class="fas fa-download me-2"></i>공식 홈페이지에서 다운로드</h6>
+            <ol>
+                <li><a href="https://nodejs.org" target="_blank" class="btn btn-success btn-sm me-2">
+                    <i class="fab fa-node-js me-1"></i>Node.js 공식 홈페이지</a>로 이동</li>
+                <li><strong>LTS</strong> (Long Term Support) 버전 다운로드 클릭
+                    <small class="text-muted d-block">※ LTS는 장기 지원 버전으로 안정성이 보장됩니다</small>
+                </li>
+                <li>운영체제에 맞는 인스톨러 자동 감지 및 다운로드</li>
+                <li>다운로드된 인스톨러 실행 → 기본 설정으로 설치 진행</li>
+                <li>설치 완료 후 확인:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <pre><code># 터미널/명령 프롬프트에서 확인
+node -v              # 예: v20.16.0
+npm -v               # 예: 10.8.1</code></pre>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <h6><i class="fas fa-info-circle me-2"></i>설치 후 주의사항</h6>
+                <ul class="mb-0">
+                    <li><strong>Windows:</strong> 설치 후 터미널(PowerShell/명령 프롬프트) 재시작 필요</li>
+                    <li><strong>macOS:</strong> 터미널 재시작 후 확인</li>
+                    <li>설치 경로: Windows는 <code>C:\Program Files\nodejs\</code>, macOS는 <code>/usr/local/bin/</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Windows nvm 설치 -->
+        <div class="tab-pane fade" id="node-nvm-windows" role="tabpanel">
+            <div class="alert alert-warning">
+                <strong><i class="fas fa-tools me-2"></i>고급 사용자용:</strong> 여러 Node.js 버전 관리가 필요한 경우 사용
+            </div>
+            <ol>
+                <li>GitHub 릴리스: <a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank">nvm-windows releases</a> → <code>nvm-setup.exe</code> 설치</li>
+                <li>설치 중 Node 경로는 기본값 유지 권장</li>
+                <li>터미널 재실행 후:</li>
+            </ol>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <pre><code>nvm version
+nvm list available   # 설치 가능한 버전 목록
+nvm install 20.16.0  # LTS 권장
+nvm use 20.16.0
+node -v              # v20.16.0
+npm -v</code></pre>
+            </div>
+        </div>
+
+        <!-- macOS nvm 설치 -->
+        <div class="tab-pane fade" id="node-nvm-macos" role="tabpanel">
+            <div class="alert alert-warning">
+                <strong><i class="fas fa-tools me-2"></i>고급 사용자용:</strong> 여러 Node.js 버전 관리가 필요한 경우 사용
+            </div>
+            <ol>
+                <li>Homebrew 설치(미설치 시): <a href="https://brew.sh" target="_blank">https://brew.sh</a></li>
+                <li>nvm 설치:</li>
+            </ol>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <pre><code>brew install nvm
+mkdir -p ~/.nvm
+# 쉘 초기화 파일에 nvm 설정 추가 (zsh 기준)
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+echo '[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"' >> ~/.zshrc
+source ~/.zshrc
+nvm --version</code></pre>
+            </div>
+            <ol start="3">
+                <li>Node 설치:</li>
+            </ol>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <pre><code>nvm ls-remote | tail -n 20  # 최신 LTS 확인
+nvm install 20.16.0
+nvm use 20.16.0
+node -v
+npm -v</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3단계: GitHub 설정 -->
+<div class="content-card mb-4">
+    <h4><i class="fab fa-github me-2"></i>3단계: GitHub 계정 및 Git 설정 (10~15분)</h4>
+
+    <h6 class="mt-3"><i class="fas fa-user-plus me-2"></i>계정 생성</h6>
+    <ol>
+        <li><a href="https://github.com" target="_blank">https://github.com</a> → <strong>Sign up</strong></li>
+        <li>이메일 인증 → 사용자명 설정 → <strong>Free 플랜</strong>으로 시작</li>
+        <li><strong>2단계 인증(2FA)</strong> 활성화 권장</li>
+    </ol>
+
+    <h6 class="mt-4"><i class="fas fa-download me-2"></i>Git 설치 확인</h6>
+    <ul>
+        <li>Windows: <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 설치</li>
+        <li>macOS: <code>xcode-select --install</code> 또는 <code>brew install git</code></li>
+    </ul>
+
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+        <pre><code>git --version</code></pre>
+    </div>
+
+    <h6 class="mt-4"><i class="fas fa-key me-2"></i>SSH 키 생성 및 GitHub 연결</h6>
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+        <pre><code># 이메일은 GitHub에 등록한 이메일로 변경
+ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519 -N ""
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub  # 출력값 복사</code></pre>
+    </div>
+
+    <div class="alert alert-info mt-2">
+        <strong>다음 단계:</strong> GitHub → Settings → <strong>SSH and GPG keys</strong> → New SSH key → 위에서 복사한 키 붙여넣기
+    </div>
+
+    <h6 class="mt-4">연결 테스트 및 사용자 정보 설정</h6>
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+        <pre><code># 연결 테스트
+ssh -T git@github.com
+
+# 사용자 정보 설정
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"</code></pre>
+    </div>
+</div>
+
+<!-- 4단계: Vercel 설정 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-cloud me-2"></i>4단계: Vercel 계정 및 배포 설정 (10~15분)</h4>
+
+    <h6 class="mt-3"><i class="fas fa-user-plus me-2"></i>계정 생성</h6>
+    <ol>
+        <li><a href="https://vercel.com" target="_blank">https://vercel.com</a> → <strong>Sign Up</strong></li>
+        <li><strong>Continue with GitHub</strong> (연동 허용)</li>
+        <li>대시보드 진입 후 <strong>Hobby(Free)</strong> 플랜으로 시작</li>
+    </ol>
+
+    <h6 class="mt-4"><i class="fas fa-rocket me-2"></i>첫 저장소 만들기 및 배포</h6>
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+        <pre><code>mkdir vibe-sideproject && cd vibe-sideproject
+echo "# Vibe Coding Side Project" > README.md
+git init
+git add .
+git commit -m "chore: init"
+git branch -M main
+git remote add origin git@github.com:&lt;username&gt;/vibe-sideproject.git
+git push -u origin main</code></pre>
+    </div>
+
+    <div class="alert alert-success mt-3">
+        <strong>Vercel에서 배포:</strong> 대시보드 → New Project → Import Git Repository → vibe-sideproject 선택 → Deploy
+    </div>
+</div>
+
+<!-- 터미널 사용법 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-terminal me-2"></i>터미널/명령 프롬프트 기본 사용법</h4>
+
+    <h6 class="mt-3">실행 방법</h6>
+    <ul>
+        <li><strong>VS Code 내부(권장):</strong> <code>Ctrl + `</code> (백틱)</li>
+        <li><strong>Windows:</strong> Win + X → Windows Terminal 또는 PowerShell</li>
+        <li><strong>macOS:</strong> Cmd + Space → Terminal 검색</li>
+    </ul>
+
+    <h6 class="mt-3">자주 쓰는 명령어</h6>
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li><code>pwd</code> - 현재 위치 보기</li>
+                <li><code>ls</code> (Mac/PowerShell), <code>dir</code> (cmd) - 목록 보기</li>
+                <li><code>cd &lt;폴더&gt;</code> - 폴더 이동</li>
+                <li><code>mkdir &lt;폴더&gt;</code> - 폴더 생성</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li><code>code .</code> - 현재 폴더를 VS Code로 열기</li>
+                <li><code>clear</code> (Mac/PowerShell), <code>cls</code> (cmd) - 화면 지우기</li>
+                <li><code>node app.js</code> - Node 스크립트 실행</li>
+                <li><code>npm run dev</code> - 개발 서버 실행</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 최종 점검 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-check-double me-2"></i>최종 점검 (5분)</h4>
+    <div class="checklist-container mt-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final1">
+            <label class="form-check-label" for="final1">
+                VS Code 설치 및 필수 확장 프로그램 설치 완료
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final2">
+            <label class="form-check-label" for="final2">
+                터미널을 VS Code에서 Ctrl+` 로 열 수 있음
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final3">
+            <label class="form-check-label" for="final3">
+                <code>node -v</code> / <code>npm -v</code>가 정상 출력됨
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final4">
+            <label class="form-check-label" for="final4">
+                Git 설치 및 사용자 정보 설정 완료
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final5">
+            <label class="form-check-label" for="final5">
+                SSH 키 생성 후 GitHub 연결 성공
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final6">
+            <label class="form-check-label" for="final6">
+                GitHub 저장소 생성 및 첫 푸시 완료
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="final7">
+            <label class="form-check-label" for="final7">
+                Vercel 연동 후 첫 배포 완료
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- 트러블슈팅 -->
+<div class="content-card mb-4">
+    <h4><i class="fas fa-tools me-2"></i>트러블슈팅 FAQ</h4>
+
+    <div class="accordion" id="troubleshootingAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="trouble1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    nvm으로 설치했는데 node가 인식되지 않아요
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>Windows:</strong> 새 터미널/PC 재부팅, <code>nvm use &lt;버전&gt;</code> 재실행</li>
+                        <li><strong>macOS:</strong> <code>source ~/.zshrc</code>, 터미널 재시작</li>
+                        <li>경로 충돌 확인: <code>where node</code>(Win) / <code>which node</code>(Mac)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="trouble2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    GitHub SSH 인증이 실패해요
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>공개키(.pub)를 정확히 붙여넣었는지 확인</li>
+                        <li><code>ssh-agent</code> 실행 여부 확인</li>
+                        <li>방화벽/회사망 정책 확인</li>
+                        <li>키 파일 권한 확인: <code>chmod 600 ~/.ssh/id_ed25519</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="trouble3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    Vercel 빌드가 실패해요
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Node 버전 불일치 → package.json에 engines 필드 추가</li>
+                        <li>환경변수 누락 → Vercel Environment Variables 확인</li>
+                        <li>빌드 명령 확인 → Vercel Project Settings에서 Build Command 확인</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 단계 안내 -->
+<div class="content-card">
+    <h4><i class="fas fa-arrow-right me-2"></i>다음 단계</h4>
+    <p>개발환경 설정이 완료되었다면, 이제 바이브코딩을 시작해보세요!</p>
+
+    <div class="row mt-3">
+        <div class="col-md-6 mb-2">
+            <a href="/lecture11" class="btn btn-primary w-100">
+                <i class="fas fa-play me-2"></i>11강: 바이브코딩 기초
+            </a>
+        </div>
+        <div class="col-md-6 mb-2">
+            <a href="/lecture12" class="btn btn-outline-primary w-100">
+                <i class="fas fa-code me-2"></i>12강: 바이브코딩 기초 실습
+            </a>
+        </div>
+    </div>
+
+    <div class="alert alert-success mt-3">
+        <h6><i class="fas fa-lightbulb me-2"></i>추천 학습 순서</h6>
+        <p class="mb-0">15강(환경설정) → 11강(기초) → 12강(기초실습) → 13강(마스터) → 14강(완전정복)</p>
+    </div>
+</div>
+
+<style>
+.code-block {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.code-block pre {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    font-size: 0.875rem;
+    overflow-x: auto;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #5a6268;
+}
+
+.checklist-container .form-check {
+    margin-bottom: 0.75rem;
+}
+
+.checklist-container .form-check-label {
+    font-weight: 500;
+}
+
+.tab-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 1rem;
+    border-radius: 0 0 0.375rem 0.375rem;
+}
+
+.extension-category {
+    border-left: 3px solid #e9ecef;
+    padding-left: 1rem;
+    margin-left: 0.5rem;
+}
+
+.extension-category h6 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.extension-category .text-primary {
+    border-left-color: #0d6efd;
+}
+
+.extension-category .text-success {
+    border-left-color: #198754;
+}
+
+.extension-category .text-warning {
+    border-left-color: #ffc107;
+}
+
+.extension-category .text-info {
+    border-left-color: #0dcaf0;
+}
+
+.extension-category .text-secondary {
+    border-left-color: #6c757d;
+}
+
+.language-section {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    border-left: 3px solid #0dcaf0;
+}
+
+.language-section strong {
+    color: #0c63e4;
+    font-weight: 600;
+}
+</style>
+
+<script>
+function copyCode(button) {
+    const codeBlock = button.nextElementSibling;
+    const code = codeBlock.textContent;
+
+    navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '복사됨!';
+        button.style.background = '#28a745';
+
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '#6c757d';
+        }, 2000);
+    });
+}
+
+// 체크리스트 상태 저장
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.checklist-container .form-check-input');
+
+    // 저장된 상태 불러오기
+    checkboxes.forEach(checkbox => {
+        const saved = localStorage.getItem(checkbox.id);
+        if (saved === 'true') {
+            checkbox.checked = true;
+        }
+    });
+
+    // 상태 변경 시 저장
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            localStorage.setItem(this.id, this.checked);
+        });
+    });
+});
+</script>

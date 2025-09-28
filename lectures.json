@@ -343,6 +343,46 @@
                     ]
                 }
             ]
+        },
+        {
+            "number": "15강",
+            "title": "바이브코딩 개발환경 설정",
+            "description": "VS Code부터 GitHub까지, 1시간 완성 가이드",
+            "link": "/lecture15",
+            "mainTopics": [
+                {
+                    "title": "필수 도구 설치",
+                    "subTopics": [
+                        "VS Code 설치 및 확장 프로그램 설정",
+                        "Node.js 설치 (nvm 권장)",
+                        "Git 설치 및 기본 설정"
+                    ]
+                },
+                {
+                    "title": "GitHub 연동",
+                    "subTopics": [
+                        "GitHub 계정 생성 및 2FA 설정",
+                        "SSH 키 생성 및 GitHub 연결",
+                        "첫 저장소 생성 및 푸시"
+                    ]
+                },
+                {
+                    "title": "배포 환경 설정",
+                    "subTopics": [
+                        "Vercel 계정 생성 및 GitHub 연동",
+                        "첫 배포 및 자동 배포 설정",
+                        "환경변수 설정"
+                    ]
+                },
+                {
+                    "title": "터미널 및 트러블슈팅",
+                    "subTopics": [
+                        "Windows PowerShell/macOS Terminal 사용법",
+                        "자주 발생하는 문제 해결법",
+                        "개발 워크플로우 확인"
+                    ]
+                }
+            ]
         }
     ]
 }
