@@ -6,17 +6,36 @@
     <title><%= title %></title>
     <meta name="description" content="<%= description %>">
     
-    <!-- Preconnect -->
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+    <!-- Critical CSS inline for initial render -->
+    <style>
+        /* Critical Bootstrap Grid & Utilities */
+        *,::after,::before{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.5;color:#212529;background-color:#fff}.container{width:100%;padding-right:var(--bs-gutter-x,.75rem);padding-left:var(--bs-gutter-x,.75rem);margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}@media (min-width:1400px){.container{max-width:1320px}}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(-1 * var(--bs-gutter-y));margin-right:calc(-.5 * var(--bs-gutter-x));margin-left:calc(-.5 * var(--bs-gutter-x))}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x) * .5);padding-left:calc(var(--bs-gutter-x) * .5);margin-top:var(--bs-gutter-y)}.col-12{flex:0 0 auto;width:100%}@media (min-width:768px){.col-md-4{flex:0 0 auto;width:33.33333333%}.col-md-6{flex:0 0 auto;width:50%}}@media (min-width:992px){.col-lg-4{flex:0 0 auto;width:33.33333333%}.col-lg-8{flex:0 0 auto;width:66.66666667%}}.justify-content-center{justify-content:center!important}.text-center{text-align:center!important}.g-3{--bs-gutter-x:1rem;--bs-gutter-y:1rem}.g-4{--bs-gutter-x:1.5rem;--bs-gutter-y:1.5rem}.mb-3{margin-bottom:1rem!important}.ms-3{margin-left:1rem!important}.btn{display:inline-block;font-weight:400;line-height:1.5;text-align:center;text-decoration:none;vertical-align:middle;cursor:pointer;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out}.img-fluid{max-width:100%;height:auto}
+        /* Critical layout to prevent CLS */
+        .hero-section{min-height:400px}.service-card{min-height:500px}.card-image{position:relative;padding-top:56.25%;overflow:hidden}.card-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+    </style>
+
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/landing.css">
+
+    <!-- Fallback for no-JS -->
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css">
+    </noscript>
 
     <!-- 카드 제목 발광 효과 -->
     <style>
@@ -79,7 +98,13 @@
                     <a href="/learning" class="card-link">
                         <div class="service-card learning-card">
                             <div class="card-image">
-                                <img src="/images/landing/ai-learning-card.jpg" alt="AI 러닝 플랫폼" class="img-fluid">
+                                <img src="/images/landing/ai-learning-card.jpg"
+                                     alt="AI 러닝 플랫폼"
+                                     class="img-fluid"
+                                     loading="eager"
+                                     width="400"
+                                     height="225"
+                                     decoding="async">
                                 <div class="card-overlay">
                                     <i class="fas fa-graduation-cap card-icon"></i>
                                 </div>
@@ -111,7 +136,13 @@
                     <a href="/prompt" class="card-link">
                         <div class="service-card prompt-card">
                             <div class="card-image">
-                                <img src="/images/landing/prompt-library-card.jpg" alt="프롬프트 라이브러리" class="img-fluid">
+                                <img src="/images/landing/prompt-library-card.jpg"
+                                     alt="프롬프트 라이브러리"
+                                     class="img-fluid"
+                                     loading="eager"
+                                     width="400"
+                                     height="225"
+                                     decoding="async">
                                 <div class="card-overlay">
                                     <i class="fas fa-magic card-icon"></i>
                                 </div>
@@ -143,7 +174,13 @@
                     <a href="/genpro" class="card-link">
                         <div class="service-card generator-card">
                             <div class="card-image">
-                                <img src="/images/landing/genpro.png" alt="Prompt Generator" class="img-fluid">
+                                <img src="/images/landing/genpro.png"
+                                     alt="Prompt Generator"
+                                     class="img-fluid"
+                                     loading="eager"
+                                     width="400"
+                                     height="225"
+                                     decoding="async">
                                 <div class="card-overlay">
                                     <i class="fas fa-cogs card-icon"></i>
                                 </div>
@@ -246,10 +283,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript - Deferred for performance -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script>
-        // 방문자 카운트 로드 (랜딩 페이지용)
+        // 방문자 카운트 로드 (랜딩 페이지용) - 비동기 처리로 초기 렌더링 차단 방지
         async function loadLandingVisitorCounts() {
             try {
                 const response = await fetch('/api/visitors');
@@ -290,52 +327,61 @@
             }
         }
 
-        // 카드 호버 효과 및 애니메이션
+        // 카드 호버 효과 및 애니메이션 - requestAnimationFrame으로 최적화
         document.addEventListener('DOMContentLoaded', function() {
-            // 방문자 카운트 로드
-            loadLandingVisitorCounts();
-            
+            // 방문자 카운트 비동기 로드 (낮은 우선순위)
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => loadLandingVisitorCounts());
+            } else {
+                setTimeout(loadLandingVisitorCounts, 1000);
+            }
+
+            // 카드 호버 효과 - transform으로 GPU 가속 활용
             const cards = document.querySelectorAll('.service-card');
-            
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-10px) scale(1.02)';
                 });
-                
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
                 });
             });
 
-            // 페이지 로드 시 애니메이션
+            // 페이지 로드 시 애니메이션 - Intersection Observer로 최적화
             const heroContent = document.querySelector('.hero-content');
             const serviceCards = document.querySelectorAll('.service-card');
-            
-            setTimeout(() => {
-                if (heroContent) {
+
+            // 즉시 보이는 영역만 애니메이션
+            if (heroContent) {
+                requestAnimationFrame(() => {
                     heroContent.style.opacity = '1';
                     heroContent.style.transform = 'translateY(0)';
-                }
-            }, 200);
+                });
+            }
 
-            serviceCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 400 + (index * 200));
-            });
+            // 카드 애니메이션 - 뷰포트 진입 시에만 실행
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            serviceCards.forEach(card => observer.observe(card));
 
             // 서브 서비스 버튼 호버 효과
             const subServiceBtns = document.querySelectorAll('.sub-service-btn[data-bg-image]');
-            
             subServiceBtns.forEach(btn => {
                 const bgImage = btn.getAttribute('data-bg-image');
-                
                 btn.addEventListener('mouseenter', function() {
                     this.style.backgroundImage = `url('${bgImage}')`;
                     this.classList.add('hover-bg');
                 });
-                
                 btn.addEventListener('mouseleave', function() {
                     this.style.backgroundImage = '';
                     this.classList.remove('hover-bg');
