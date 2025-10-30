@@ -282,41 +282,203 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 2;
 }
 
-/* 인덱스 랜딩 섹션 (index.ejs) */
+/* 인덱스 랜딩 섹션 (index.ejs) - 개선된 디자인 */
 #landing {
     background-image: url('/images/main_ai.jpg');
     background-size: cover;
     background-position: center;
-    height: 50vh;
+    height: 60vh;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     color: white;
     text-align: center;
-    animation: fadeInBackground 2s ease-in-out;
+    overflow: hidden;
+}
+
+/* 그라데이션 오버레이 - 다크 블루/네이비 톤으로 세련되게 */
+.landing-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 60, 114, 0.5) 0%,
+        rgba(42, 82, 152, 0.55) 50%,
+        rgba(24, 48, 88, 0.6) 100%
+    );
+    z-index: 1;
+}
+
+/* 파티클 배경 효과 */
+.landing-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: particleFloat 15s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes particleFloat {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 0.6; transform: translateY(-20px); }
 }
 
 /* landing 전용 텍스트 묶음에만 슬라이드·페이드인 */
 .landing-container {
+    position: relative;
+    z-index: 3;
     opacity: 0;
-    animation: slideFadeIn 0.8s ease-out 0.5s forwards;
+    animation: slideFadeIn 1s ease-out 0.3s forwards;
 }
 
-/* landing 텍스트 스타일 유지 */
+/* AI 아이콘 래퍼 */
+.landing-icon-wrapper {
+    margin-bottom: 2rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* AI 아이콘 스타일 */
+.landing-icon {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.1),
+            0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 15px 50px rgba(0, 0, 0, 0.4),
+            inset 0 0 30px rgba(255, 255, 255, 0.2),
+            0 0 0 20px rgba(255, 255, 255, 0);
+    }
+}
+
+.landing-icon i {
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: iconRotate 4s linear infinite;
+}
+
+@keyframes iconRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* landing 텍스트 스타일 개선 */
 #landing h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: #9fd3f5;
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 4px 20px rgba(118, 75, 162, 0.5);
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 #landing p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* 스크롤 인디케이터 */
+.landing-scroll-indicator {
+    margin-top: 3rem;
+    animation: scrollBounce 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.landing-scroll-indicator i {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.landing-scroll-indicator:hover i {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.2);
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(10px); opacity: 1; }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    #landing {
+        height: 70vh;
+        min-height: 400px;
+    }
+
+    .landing-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .landing-icon i {
+        font-size: 2rem;
+    }
+
+    #landing h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    #landing p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .landing-scroll-indicator {
+        margin-top: 2rem;
+    }
+
+    .landing-scroll-indicator i {
+        font-size: 1.5rem;
+    }
 }
 
 /* 카드 스타일 - 개선된 현대적 디자인 */
@@ -1302,8 +1464,8 @@ html {
     background: #fff !important;
     border-bottom: 2.5px solid #e2e8f0 !important;
     box-shadow: none !important;
-    padding: 0.55rem 1rem;
-    height: 62px;
+    padding: 1.2rem 1rem;
+    height: 93px;
     display: flex;
     align-items: center;
     z-index: 10;
@@ -1313,7 +1475,7 @@ html {
 .navbar-brand {
     font-family: 'Pretendard', 'Noto Sans KR', 'Segoe UI', 'Apple SD Gothic Neo', Arial, sans-serif;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     color: #764ba2 !important;
     letter-spacing: -0.01em;
     transition: color 0.22s;
@@ -1325,20 +1487,51 @@ html {
 
 .nav-link {
     font-family: 'Pretendard', 'Noto Sans KR', 'Segoe UI', 'Apple SD Gothic Neo', Arial, sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: 1.05rem;
     color: #3e2763 !important;
-    margin: 0 0.5rem;
-    padding: 0.5rem 0.8rem;
-    border-radius: 5px;
-    transition: background-color 0.22s, color 0.22s;
+    margin: 0 0.35rem;
+    padding: 0.1rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(118, 75, 162, 0.15);
+    transition: all 0.3s ease;
     letter-spacing: -0.01em;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 80%;
 }
 
 .nav-link.active,
 .nav-link:hover {
-    background-color: #f5f2fa !important;
+    background-color: rgba(118, 75, 162, 0.08) !important;
     color: #764ba2 !important;
+    border-color: rgba(118, 75, 162, 0.3);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12)) !important;
+    border-color: rgba(118, 75, 162, 0.35);
+}
+
+.nav-link.active::before {
+    width: 80%;
 }
 
 .navbar-toggler {

@@ -122,8 +122,8 @@
         },
         {
             "number": "6강",
-            "title": "[생성형 AI 활용] 보고서 작성",
-            "description": "Deep Research 활용법",
+            "title": "[생성형 AI 활용] 보고서 작성과 가혹한 글쓰기",
+            "description": "Deep Research 활용법과 AI를 활용한 체계적 글 개선 방법론",
             "link": "/lecture06",
             "mainTopics": [
                 {
@@ -141,15 +141,7 @@
                         "맞춤형 개선 제안",
                         "보고서 품질 향상 전략"
                     ]
-                }
-            ]
-        },
-        {
-            "number": "7강",
-            "title": "[생성형 AI 활용] 가혹한 글쓰기",
-            "description": "AI를 활용한 체계적 글 개선 방법론",
-            "link": "/lecture07",
-            "mainTopics": [
+                },
                 {
                     "title": "가혹한 글쓰기 7단계 프로세스",
                     "subTopics": [
@@ -166,6 +158,50 @@
                         "비판 강도 조절 가이드",
                         "글 유형별 맞춤 활용법",
                         "Before/After 실전 예시"
+                    ]
+                }
+            ]
+        },
+        {
+            "number": "7강",
+            "title": "AI 에이전트 사용하기",
+            "description": "AI 에이전트의 개념부터 실전 활용까지",
+            "link": "/lecture07",
+            "mainTopics": [
+                {
+                    "title": "AI 에이전트 개념 및 기초",
+                    "subTopics": [
+                        "AI 에이전트 정의와 핵심 특징",
+                        "챗봇과 AI 에이전트의 차이",
+                        "자율성과 적응성의 이해",
+                        "2025년 에이전트 시대 트렌드"
+                    ]
+                },
+                {
+                    "title": "주요 AI 에이전트 플랫폼",
+                    "subTopics": [
+                        "ChatGPT Agent: Agent Mode 활용법",
+                        "Claude Agent: 서브 에이전트와 Skills",
+                        "Gemini Agent: Enterprise와 CLI",
+                        "플랫폼별 비교 및 선택 가이드"
+                    ]
+                },
+                {
+                    "title": "실전 활용 사례",
+                    "subTopics": [
+                        "한국 기업의 AI 에이전트 도입 사례",
+                        "업무 자동화 및 생산성 향상",
+                        "데이터 분석 및 리서치 활용",
+                        "고객 서비스 자동화 사례"
+                    ]
+                },
+                {
+                    "title": "사용법 및 주의사항",
+                    "subTopics": [
+                        "효과적인 프롬프트 작성법",
+                        "실전 예시 템플릿",
+                        "보안 및 개인정보 이슈",
+                        "한계점과 대응 방안"
                     ]
                 }
             ]
